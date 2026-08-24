@@ -72,6 +72,8 @@ class OptimizationInput:
         panel_inputs: dict = None,
         passive_modifiers: dict = None,
         team_configs: list = None,
+        # 完整天赋效果结构：{modifiers{}, conversions[], er_scalings[], er_pct}
+        passive_effects: dict = None,
     ):
         self.character_id = str(character_id)
         self.constellation_level = constellation_level
@@ -91,6 +93,8 @@ class OptimizationInput:
         self.panel_inputs = panel_inputs or {}
         # 已启用的固有天赋修饰器合集：{attr: value}
         self.passive_modifiers = passive_modifiers or {}
+        # 完整天赋效果（含属性转换/充能缩放）；为空时退回仅 modifiers 模式
+        self.passive_effects = passive_effects or {}
         # 队伍成员独立配置列表（4 项，None 表示空位）：
         # [{character_id, weapon_id, refinement, artifact_set_2, artifact_set_4,
         #   talent_levels{normal,skill,burst}, panel{atk,crit_rate_pct,crit_dmg_pct,em},
@@ -164,7 +168,26 @@ class DamageOptimizer:
             char.elemental_mastery += float(pi["em"])
         # 已启用的固有天赋修饰器
         char.apply_passive(self.input.passive_modifiers)
+        self._apply_full_effects(char, self.input.passive_effects,
+                                 (self.input.panel_inputs or {}).get("er_pct"))
         return char
+
+    @staticmethod
+    def _apply_full_effects(char: Character, effects: dict, er_pct=None):
+        """应用完整天赋效果：属性转换 / 充能缩放 / 充能效率上下文"""
+        if not effects:
+            if er_pct:
+                char.er_total = 1.0 + float(er_pct) / 100.0
+            return
+        for conv in effects.get("conversions") or []:
+            char.apply_conversion(conv)
+        for sc in effects.get("er_scalings") or []:
+            char.apply_er_scaling(sc)
+        eff_er = effects.get("er_pct")
+        if er_pct or eff_er:
+            base = float(er_pct) if er_pct else 0.0
+            extra = float(eff_er) if eff_er else 0.0
+            char.er_total = 1.0 + base + extra
 
     def _build_member_character(self, cfg: dict) -> Character:
         """按队伍成员独立配置构建队友角色（武器/圣遗物/面板/固有天赋）"""
@@ -181,6 +204,8 @@ class DamageOptimizer:
         if panel.get("lunar_bonus_pct"):
             char.lunar_dmg_bonus += float(panel["lunar_bonus_pct"]) / 100.0
         char.apply_passive(cfg.get("passive_modifiers"))
+        self._apply_full_effects(char, cfg.get("passive_effects"),
+                                 panel.get("er_pct"))
         return char
 
     def _build_effect_manager(self, char: Character, weapon_id=None,

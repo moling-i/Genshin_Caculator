@@ -107,8 +107,12 @@ def calculate_damage(
         # 实际应从技能元素与敌人元素判断
         coeff = 2.0 if reaction_type == "vaporize" else 2.0
         em_bonus = constants.em_bonus_amplifying(panel["elemental_mastery"])
-        reaction_factor = coeff * (1 + em_bonus)
-        reaction_detail = {"type": "amplify", "coeff": coeff, "em_bonus": em_bonus}
+        amplify_extra = panel.get("amplify_bonus", 0.0)
+        reaction_factor = coeff * (1 + em_bonus + amplify_extra)
+        reaction_detail = {
+            "type": "amplify", "coeff": coeff, "em_bonus": em_bonus,
+            "amplify_bonus": amplify_extra,
+        }
 
     elif reaction_type in ("overload", "superconduct", "swirl", "shatter", "electrocharged"):
         # 剧变反应（不暴击，不受攻击/增伤影响）

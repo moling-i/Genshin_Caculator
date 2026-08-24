@@ -223,6 +223,26 @@ _EFFECT_RULES = [
     (_re.compile(r"元素精通(?:提升|提高)"), "elemental_mastery", "flat"),
 ]
 
+# 减抗/无视防御："Q技能无视60%防御"
+_DEF_IGNORE_RE = _re.compile(r"无视\s*(\d+(?:\.\d+)?)\s*%\s*的?防御")
+
+# 增幅反应（蒸发/融化）专属增伤："触发蒸发时造成的伤害提升15%"
+_AMPLIFY_RE = _re.compile(r"(蒸发|融化)")
+
+# 属性转换："基于生命值上限的6%，转化为攻击力" 等
+_CONV_RE = _re.compile(
+    r"(生命值上限|防御力|攻击力|元素精通)[^。%]{0,8}?(\d+(?:\.\d+)?)\s*%"
+    r"[^。]{0,20}?(?:转化|转换|换算)为?(攻击力)"
+)
+_CONV_FROM_MAP = {"生命值上限": "hp", "防御力": "def", "攻击力": "atk", "元素精通": "em"}
+
+# 充能转伤害（如雷电将军固有）：充能效率超出100%的部分每1%提供X%某系伤害
+_ER_SCALE_RE = _re.compile(
+    r"充能效率[^。]{0,24}超[出过]\s*100\s*%[^。]*?"
+    r"每\s*1\s*%[^。]{0,24}?(\d+(?:\.\d+)?)\s*%\s*"
+    r"(?:[火水冰雷风岩草]元素)?伤害(?:加成)?"
+)
+
 _PCT_RE = _re.compile(r"(\d+(?:\.\d+)?)\s*%")
 _FLAT_RE = _re.compile(r"(\d+(?:\.\d+)?)\s*点")
 
@@ -238,12 +258,13 @@ def parse_effect(description: str) -> dict:
     将固有天赋描述文本解析为结构化修饰器。
 
     返回: {
-        "modifiers": {attr: value, ...},   # 可直接叠加到角色面板的加成
-        "conditional": bool,               # 是否为条件触发型（UI 需提供条件开关）
-        "unparsed": bool,                  # 是否未能识别出任何数值加成
+        "modifiers": {attr: value, ...},     # 直接数值加成（叠加到面板属性）
+        "conditional": bool,                 # 是否条件触发型（UI 需提供条件控制）
+        "hp_threshold": float | None,        # 血量阈值（如半血天赋为 0.5）
+        "conversion": {...} | None,          # 属性转换 {from, to, ratio}
+        "er_scaling": {...} | None,          # 充能转伤害 {threshold, per_unit, stat}
+        "unparsed": bool,                    # 是否未能识别出任何可计算效果
     }
-    说明：仅覆盖直接数值加成型固有天赋；复杂机制类天赋标记为 unparsed，
-    UI 中仍可勾选展示，但不参与面板计算。
     """
     text = description or ""
     modifiers = {}
@@ -259,14 +280,12 @@ def parse_effect(description: str) -> dict:
             vm = _PCT_RE.search(tail)
             if not vm:
                 # 回退：取关键词之前、距离最近的百分数（限制在 16 字符窗口内）
-                vm = None
                 for vm_c in _PCT_RE.finditer(text[: m.start()]):
                     if m.start() - vm_c.end() <= 16:
                         vm = vm_c
         else:
             vm = _FLAT_RE.search(tail)
             if not vm:
-                vm = None
                 for vm_c in _FLAT_RE.finditer(text[: m.start()]):
                     if m.start() - vm_c.end() <= 16:
                         vm = vm_c
@@ -277,9 +296,51 @@ def parse_effect(description: str) -> dict:
             val /= 100.0
         modifiers[attr] = modifiers.get(attr, 0.0) + val
 
+    # ---- 扩展类型解析 ----
+    conversion = None
+    cm = _CONV_RE.search(text)
+    if cm:
+        conversion = {
+            "from": _CONV_FROM_MAP[cm.group(1)],
+            "to": "atk_flat",
+            "ratio": float(cm.group(2)) / 100.0,
+            "text": cm.group(0),
+        }
+
+    er_scaling = None
+    em2 = _ER_SCALE_RE.search(text)
+    if em2:
+        er_scaling = {
+            "threshold": 1.0,               # 充能效率超出 100% 的部分
+            "per_unit": float(em2.group(1)) / 100.0,  # 每 1% 充能提供的增伤
+            "stat": "elemental_dmg_bonus",
+            "text": em2.group(0),
+        }
+
+    dm = _DEF_IGNORE_RE.search(text)
+    if dm:
+        modifiers["def_ignore"] = modifiers.get("def_ignore", 0.0) + float(dm.group(1)) / 100.0
+
+    am = _AMPLIFY_RE.search(text)
+    amplify_hit = bool(am)
+
     conditional = any(w in text for w in _CONDITION_WORDS)
+
+    # 血量条件阈值（"生命值低于或等于50%" → 0.5）
+    hp_threshold = None
+    hm = _re.search(r"生命值[^。%]{0,6}(?:低于或等于|低于|低于等于)\s*(\d+(?:\.\d+)?)\s*%", text)
+    if hm:
+        hp_threshold = float(hm.group(1)) / 100.0
+
+    computable = (
+        modifiers or conversion is not None or er_scaling is not None or amplify_hit
+    )
     return {
         "modifiers": modifiers,
         "conditional": conditional,
-        "unparsed": not modifiers,
+        "hp_threshold": hp_threshold,
+        "conversion": conversion,
+        "er_scaling": er_scaling,
+        "amplify_reaction": amplify_hit and not (modifiers or conversion or er_scaling),
+        "unparsed": not computable,
     }

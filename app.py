@@ -142,14 +142,17 @@ def render_talent_info(char_id):
 
 def render_passive_toggles(char_id, member_idx):
     """
-    渲染固有天赋开关列表，返回已启用天赋合并后的修饰器 dict。
-    条件型天赋额外提供「视为满足触发条件」开关。
+    渲染固有天赋开关列表，返回完整效果结构：
+    {modifiers{}, conversions[], er_scalings[]}（均已合并启用项）。
+    条件型天赋：
+      - 血量阈值类 → 提供「当前生命值%」滑块，按实际数值判定是否生效；
+      - 其他条件   → 「视为满足触发条件」开关。
     """
+    effects = {"modifiers": {}, "conversions": [], "er_scalings": []}
     passives = load_passive_skills_cached(char_id)
-    merged = {}
     if not passives:
         st.caption("（Meropide 数据中暂无该角色的固有天赋）")
-        return merged
+        return effects
     for i, p in enumerate(passives):
         parsed = parse_effect(p.get("description", ""))
         label = p.get("name", f"天赋{i + 1}")
@@ -158,19 +161,57 @@ def render_passive_toggles(char_id, member_idx):
         st.caption(("☑ " if enabled else "☐ ") + (desc[:80] + "…" if len(desc) > 80 else desc))
         if not enabled:
             continue
-        if parsed["unparsed"]:
+        if parsed["unparsed"] and not (
+            parsed.get("conversion") or parsed.get("er_scaling")
+        ):
             st.caption("　↳ 已启用（复杂机制类，暂不参与数值计算）")
             continue
+
+        # ---- 条件判定 ----
         if parsed["conditional"]:
-            cond_ok = st.checkbox(
-                "视为满足触发条件", value=True,
-                key=f"cond_{member_idx}_{char_id}_{i}",
-            )
+            ht = parsed.get("hp_threshold")
+            if ht is not None:
+                hp_now = st.slider(
+                    f"　当前生命值%（天赋要求 ≤{ht * int(100) / 100:g}%）",
+                    0, 100, min(int(ht * 100), 100),
+                    key=f"hps_{member_idx}_{char_id}_{i}",
+                )
+                cond_ok = (hp_now / 100.0) <= ht
+                st.caption(
+                    f"　↳ 血量条件{'✅ 满足' if cond_ok else '❌ 未满足'}"
+                    f"（当前 {hp_now}% / 要求 ≤{ht * 100:g}%）"
+                )
+            else:
+                cond_ok = st.checkbox(
+                    "视为满足触发条件", value=True,
+                    key=f"cond_{member_idx}_{char_id}_{i}",
+                )
             if not cond_ok:
                 continue
+
+        # ---- 数值合并 ----
         for attr, val in parsed["modifiers"].items():
-            merged[attr] = merged.get(attr, 0.0) + val
-    return merged
+            effects["modifiers"][attr] = effects["modifiers"].get(attr, 0.0) + val
+        if parsed.get("conversion"):
+            conv = {k: v for k, v in parsed["conversion"].items() if k != "text"}
+            effects["conversions"].append(conv)
+            c = parsed["conversion"]
+            st.caption(
+                f"　↳ 属性转换已计入：{_CONV_CN.get(c['from'], c['from'])}"
+                f" × {c['ratio'] * 100:g}% → 攻击力"
+            )
+        if parsed.get("er_scaling"):
+            sc = {k: v for k, v in parsed["er_scaling"].items() if k != "text"}
+            effects["er_scalings"].append(sc)
+            s = parsed["er_scaling"]
+            st.caption(
+                f"　↳ 充能转化已计入：超出100%的充能每1% → "
+                f"+{s['per_unit'] * 100:g}% 元素伤害加成"
+            )
+    return effects
+
+
+_CONV_CN = {"hp": "生命值上限", "atk": "攻击力", "def": "防御力", "em": "元素精通"}
 
 
 REACTION_OPTIONS = {
@@ -200,6 +241,26 @@ SKILL_TYPE_KEYS = {"normal": "normal", "skill": "skill", "burst": "burst", "char
 parse_effect = data_loader.parse_effect
 
 
+def searchable_select(label, all_options, key, default_index=0):
+    """带搜索过滤的下拉选择框：上方搜索框实时过滤下方选项列表
+
+    返回选中的选项字符串；无匹配项时返回 None。
+    """
+    term = st.text_input(f"🔍 搜索{label}", key=f"{key}_search").strip().lower()
+    if term:
+        filtered = [o for o in all_options if term in str(o).lower()]
+    else:
+        filtered = list(all_options)
+    if not filtered:
+        st.caption(f"⚠️ 无匹配「{term}」的{label}，请调整搜索词")
+        return None
+    # 过滤后当前已选值不在列表中时，重置选择避免异常
+    if key in st.session_state and st.session_state[key] not in filtered:
+        del st.session_state[key]
+    idx = min(default_index, len(filtered) - 1)
+    return st.selectbox(label, filtered, index=idx, key=key)
+
+
 def member_config_panel(idx):
     """单个队伍成员配置面板（expander），返回成员配置 dict"""
     with st.expander(
@@ -208,8 +269,12 @@ def member_config_panel(idx):
     ):
         col_pic, col_sel = st.columns([1, 4])
         with col_sel:
-            cname = st.selectbox("角色", ["无"] + char_names,
-                                 index=1 if idx == 0 else 0, key=f"m{idx}_char")
+            cname = searchable_select(
+                "角色", ["无"] + char_names, f"m{idx}_char",
+                default_index=1 if idx == 0 else 0,
+            )
+            if cname is None:
+                cname = "无"
         cid = char_ids.get(cname) if cname != "无" else None
         with col_pic:
             show_icon("avatar", cid)
@@ -220,7 +285,7 @@ def member_config_panel(idx):
             "weapon_id": None, "refinement": 1,
             "artifact_set_2": None, "artifact_set_4": None,
             "talent_levels": {"normal": 10, "skill": 10, "burst": 10},
-            "panel": {}, "passive_modifiers": {},
+            "panel": {}, "passive_modifiers": {}, "passive_effects": {},
             "display_name": cname if cid else None,
         }
         if not cid:
@@ -231,7 +296,9 @@ def member_config_panel(idx):
         # ---- 武器（名称 + 图片）----
         col_wpic, col_wsel = st.columns([1, 4])
         with col_wsel:
-            wname = st.selectbox("武器", wp_names, key=f"m{idx}_wp")
+            wname = searchable_select("武器", wp_names, f"m{idx}_wp")
+            if wname is None:
+                wname = "无"
         wid = wp_ids.get(wname) if wname != "无" else None
         with col_wpic:
             show_icon("weapon", wid)
@@ -242,11 +309,15 @@ def member_config_panel(idx):
         # ---- 圣遗物（2件套/4件套独立选择 + 效果展示）----
         col_apic, col_asel = st.columns([1, 4])
         with col_asel:
-            a2 = st.selectbox("圣遗物 2件套", art_names, key=f"m{idx}_a2")
+            a2 = searchable_select("圣遗物 2件套", art_names, f"m{idx}_a2")
+            if a2 is None:
+                a2 = "无"
         sid2 = art_ids.get(a2) if a2 != "无" else None
         with col_apic:
             show_icon("relic", sid2, suffix="_5")
-        a4 = st.selectbox("圣遗物 4件套", art_names, key=f"m{idx}_a4")
+        a4 = searchable_select("圣遗物 4件套", art_names, f"m{idx}_a4")
+        if a4 is None:
+            a4 = "无"
         sid4 = art_ids.get(a4) if a4 != "无" else None
         cfg["artifact_set_2"], cfg["artifact_set_4"] = sid2, sid4
 
@@ -272,20 +343,26 @@ def member_config_panel(idx):
 
         # ---- 固有天赋开关 ----
         st.markdown("**✨ 固有天赋**")
-        cfg["passive_modifiers"] = render_passive_toggles(cid, idx)
+        pe = render_passive_toggles(cid, idx)
+        cfg["passive_modifiers"] = pe["modifiers"]
+        cfg["passive_effects"] = pe
 
         # ---- 面板属性输入（不含副词条的基础值；主词条无需单独设置）----
         st.markdown("**📈 面板属性**")
-        pc = st.columns(5)
+        pc = st.columns(6)
         atk = pc[0].number_input("攻击力", 0, 5000, 1500, key=f"m{idx}_atk")
         cr = pc[1].number_input("暴击率%", 0.0, 100.0, 5.0, key=f"m{idx}_cr")
         cd = pc[2].number_input("暴击伤害%", 0.0, 300.0, 50.0, key=f"m{idx}_cd")
         em = pc[3].number_input("元素精通", 0, 1000, 0, key=f"m{idx}_em")
         lb = pc[4].number_input("月反应加成%", 0.0, 100.0, 0.0, key=f"m{idx}_lb")
+        erp = pc[5].number_input(
+            "充能加成%（超出基础的充能效率部分，如200%总充能填100）",
+            0.0, 400.0, 0.0, key=f"m{idx}_er",
+        )
         cfg["panel"] = {
             "atk": float(atk), "crit_rate_pct": float(cr),
             "crit_dmg_pct": float(cd), "em": float(em),
-            "lunar_bonus_pct": float(lb),
+            "lunar_bonus_pct": float(lb), "er_pct": float(erp),
         }
     return cfg
 
@@ -357,6 +434,7 @@ if optimize_btn:
                         if k != "lunar_bonus_pct"
                     },
                     passive_modifiers=main_cfg["passive_modifiers"],
+                    passive_effects=main_cfg["passive_effects"],
                     team_configs=team_configs,
                 )
 

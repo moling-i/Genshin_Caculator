@@ -48,6 +48,12 @@ class Character:
         self.reaction_dmg_bonus = 0
         self.dmg_bonus = 0
         self.def_ignore = 0  # 无视防御比例（如雷电将军C2）
+        # 扩展：属性转换 / 充能缩放 / 血量上下文（由固有天赋注入，get_effective_panel 时生效）
+        self.pending_conversions = []   # [{from, to, ratio}]
+        self.er_scalings = []           # [{threshold, per_unit, stat}]
+        self.er_total = 1.0             # 元素充能效率（默认 100%）
+        self.hp_ratio_context = None    # 当前血量比例上下文（None 表示满血）
+        self.amplify_bonus = 0.0        # 蒸发/融化增幅反应专属加成
 
         # 命座效果（从 constellations.json 加载）
         self.constellation_effects = self._load_constellations()
@@ -71,6 +77,38 @@ class Character:
         for attr, val in (modifiers or {}).items():
             if hasattr(self, attr) and not callable(getattr(self, attr)):
                 setattr(self, attr, getattr(self, attr) - val)
+
+    def apply_conversion(self, conversion: dict):
+        """注册属性转换型天赋（如"基于生命值上限6%转化为攻击力"）"""
+        if conversion and conversion not in self.pending_conversions:
+            self.pending_conversions.append(dict(conversion))
+
+    def remove_conversion(self, conversion: dict):
+        c = dict(conversion)
+        self.pending_conversions = [
+            x for x in self.pending_conversions if x != c
+        ]
+
+    def apply_er_scaling(self, scaling: dict):
+        """注册充能效率转伤害型天赋（如雷电将军：超出100%每1%充能+0.4%雷伤）"""
+        if scaling and scaling not in self.er_scalings:
+            self.er_scalings.append(dict(scaling))
+
+    def remove_er_scaling(self, scaling: dict):
+        s = dict(scaling)
+        self.er_scalings = [x for x in self.er_scalings if x != s]
+
+    def _conversion_source_value(self, src: str) -> float:
+        """属性转换的来源数值（使用当前面板总值）"""
+        if src == "hp":
+            return (self.base_hp + self.flat_hp) * (1 + self.hp_percent)
+        if src == "atk":
+            return (self.base_atk + self.flat_atk) * (1 + self.atk_percent)
+        if src == "def":
+            return (self.base_def + self.flat_def) * (1 + self.def_percent)
+        if src == "em":
+            return self.elemental_mastery
+        return 0.0
 
 
     def _load_constellations(self) -> list:
@@ -153,6 +191,21 @@ class Character:
         total_hp = (self.base_hp + self.flat_hp) * (1 + self.hp_percent)
         total_def = (self.base_def + self.flat_def) * (1 + self.def_percent)
 
+        # 属性转换型天赋（如"生命值上限的X%转化为攻击力"）→ 追加固定攻击
+        conv_flat_atk = 0.0
+        for conv in self.pending_conversions:
+            if conv.get("to") == "atk_flat":
+                src_val = self._conversion_source_value(conv.get("from"))
+                conv_flat_atk += src_val * float(conv.get("ratio", 0.0))
+        total_atk += conv_flat_atk
+
+        # 充能效率转伤害型天赋（如雷电将军固有）
+        # 超出阈值的部分按"百分点"计：总充能200%、阈值100% → 超出100点
+        dmg_bonus_extra = 0.0
+        for scaling in self.er_scalings:
+            over_pts = max(0.0, self.er_total - float(scaling.get("threshold", 1.0))) * 100.0
+            dmg_bonus_extra += over_pts * float(scaling.get("per_unit", 0.0))
+
         # 暴击/暴伤 = 基础 + 面板输入
         crit_rate = min(self.base_crit_rate + self.crit_rate, 1.0)
         crit_dmg = self.base_crit_dmg + self.crit_dmg
@@ -167,7 +220,11 @@ class Character:
             "elemental_dmg_bonus": self.elemental_dmg_bonus,
             "lunar_dmg_bonus": self.lunar_dmg_bonus,
             "reaction_dmg_bonus": self.reaction_dmg_bonus,
-            "dmg_bonus": self.dmg_bonus,
+            "dmg_bonus": self.dmg_bonus + dmg_bonus_extra,
             "def_ignore": self.def_ignore,
+            "amplify_bonus": getattr(self, "amplify_bonus", 0.0),
+            "conversion_flat_atk": conv_flat_atk,
+            "er_bonus_applied": dmg_bonus_extra,
+            "hp_ratio": self.hp_ratio_context if self.hp_ratio_context is not None else 1.0,
             "element": self.element,
         }
