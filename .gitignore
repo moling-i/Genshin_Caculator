@@ -1,0 +1,22 @@
+# ---- 缓存与临时文件 ----
+.cache/
+.version/
+__pycache__/
+*.pyc
+*.log
+*.bak
+
+# ---- 本地密钥（切勿提交）----
+.streamlit/secrets.toml
+
+# ---- 数据采集期的原始大文件（线上运行不需要）----
+TextMapCHS.json
+TextMapCHS_raw.json
+AvatarExcelConfigData.json
+AvatarSkillDepotExcelConfigData.json
+AvatarTalentExcelConfigData.json
+
+# ---- 临时勘察脚本与报告 ----
+_inspect*.py
+validate_report*.txt
+backend_log.txt

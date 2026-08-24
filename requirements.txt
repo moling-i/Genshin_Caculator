@@ -1,0 +1,8 @@
+# 原神伤害计算器 - Streamlit Cloud 部署依赖
+# 仅包含线上运行（app.py + src/）所需的最小集合
+streamlit>=1.28.0
+pandas>=2.0.0
+numpy>=1.24.0
+
+# 注：数据采集/API 后端等开发期依赖（requests, bs4, fastapi, uvicorn,
+# pydantic, httpx）不参与云端部署，详见 requirements_py312.txt 与各脚本头部说明。

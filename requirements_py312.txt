@@ -1,0 +1,10 @@
+# 原神伤害计算器依赖（适用于 Python 3.8 - 3.12）
+# Python 3.14 请使用 requirements.txt 中的新版依赖
+
+streamlit==1.28.0
+pandas==1.5.3
+numpy==1.24.3
+fastapi==0.104.1
+uvicorn==0.24.0
+pydantic==2.5.0
+httpx==0.25.2

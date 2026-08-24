@@ -1,0 +1,2943 @@
+[
+  {
+    "set_id": 10001,
+    "name": "",
+    "name_cn": "行者之心",
+    "contains": [
+      51140,
+      51120,
+      51150,
+      51110,
+      51130
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "攻击力提高18%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "2件套：攻击力提高18%；4件套：超载、蒸发、融化、雷元素扩散、火元素扩散、水元素扩散反应造成的伤害提升50%。施放元素爆发后，2件套的效果提升50%，持续10秒。",
+        "param_list": [
+          0.3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_ExtraAtkCritUp"
+      }
+    ]
+  },
+  {
+    "set_id": 10002,
+    "name": "",
+    "name_cn": "勇士之心",
+    "contains": [
+      52140,
+      52120,
+      52150,
+      52110,
+      52130
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "攻击力提高18%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "2件套：生命值低于50%时，造成的伤害增加。",
+        "param_list": [
+          0.3,
+          0.5,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_GiantKiller"
+      }
+    ]
+  },
+  {
+    "set_id": 10003,
+    "name": "",
+    "name_cn": "守护之心",
+    "contains": [
+      53140,
+      53120,
+      53150,
+      53110,
+      53130
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "防御力提高30%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "2件套：元素精通提高80点；4件套：队伍中附近的角色获得对应元素抗性穿透。",
+        "param_list": [
+          0.3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_AbsorbTeamElemResist"
+      }
+    ]
+  },
+  {
+    "set_id": 10004,
+    "name": "",
+    "name_cn": "奇迹",
+    "contains": [
+      54140,
+      54120,
+      54150,
+      54110,
+      54130
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "2件套：元素抗性提高；4件套：全元素抗性提升。",
+        "param_list": [
+          0.2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_AllElemResistUp"
+      },
+      {
+        "pieces": 4,
+        "desc": "2件套：对应元素伤害提高；4件套：元素抗性提升。",
+        "param_list": [
+          0.3,
+          10,
+          10,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_ElemDmgEnhanceElemResist"
+      }
+    ]
+  },
+  {
+    "set_id": 10005,
+    "name": "",
+    "name_cn": "战狂",
+    "contains": [
+      55140,
+      55120,
+      55150,
+      55110,
+      55130
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "暴击率提高12%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "2件套：生命值低于50%时，暴击率提升。",
+        "param_list": [
+          0.24,
+          0.7,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_LowHPGainExtraCritRate"
+      }
+    ]
+  },
+  {
+    "set_id": 10006,
+    "name": "",
+    "name_cn": "武人",
+    "contains": [
+      56140,
+      56120,
+      56150,
+      56110,
+      56130
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "2件套：攻击力提高；4件套：攻击力进一步提升。",
+        "param_list": [
+          0.15,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_AtkAndExtraAtkUp"
+      },
+      {
+        "pieces": 4,
+        "desc": "2件套：普通攻击与重击伤害提升；4件套：元素战技伤害提升。",
+        "param_list": [
+          8,
+          1,
+          0.25,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_SkillEnhanceNormalAtkAndExtraAtk"
+      }
+    ]
+  },
+  {
+    "set_id": 10007,
+    "name": "",
+    "name_cn": "教官",
+    "contains": [
+      57140,
+      57120,
+      57150,
+      57110,
+      57130
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "元素精通提高80",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "2件套：元素精通提高；4件套：触发元素反应后全队元素精通提升。",
+        "param_list": [
+          8,
+          120,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_ReactionGainExtraElemMasteryForTeam"
+      }
+    ]
+  },
+  {
+    "set_id": 10008,
+    "name": "",
+    "name_cn": "赌徒",
+    "contains": [
+      58240,
+      58220,
+      58250,
+      58210,
+      58230
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "2件套：元素战技伤害提高。",
+        "param_list": [
+          0.2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_SkillDamageUp"
+      },
+      {
+        "pieces": 4,
+        "desc": "2件套：击败敌人后刷新元素战技冷却。",
+        "param_list": [
+          15,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_KillingRefreshSkill"
+      }
+    ]
+  },
+  {
+    "set_id": 10009,
+    "name": "",
+    "name_cn": "流放者",
+    "contains": [
+      59140,
+      59120,
+      59150,
+      59110,
+      59130
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "元素充能效率提高20%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "2件套：施放元素爆发后全队获得能量。",
+        "param_list": [
+          2,
+          6,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_UltGainEnergyForTeam"
+      }
+    ]
+  },
+  {
+    "set_id": 10010,
+    "name": "",
+    "name_cn": "冒险家",
+    "contains": [
+      60140,
+      60120,
+      60150,
+      60110,
+      60130
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "生命值提高1000",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "2件套：开启宝箱后治疗自身。",
+        "param_list": [
+          5,
+          1,
+          0.06,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_ChestHealSelf"
+      }
+    ]
+  },
+  {
+    "set_id": 10011,
+    "name": "",
+    "name_cn": "幸运儿",
+    "contains": [
+      61140,
+      61120,
+      61150,
+      61110,
+      61130
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "防御力提高100",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "2件套：拾取摩拉后治疗自身。",
+        "param_list": [
+          300,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_CoinHealSelf"
+      }
+    ]
+  },
+  {
+    "set_id": 10012,
+    "name": "",
+    "name_cn": "学士",
+    "contains": [
+      62140,
+      62120,
+      62150,
+      62110,
+      62130
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "元素充能效率提高20%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "2件套：恢复能量后全队获得额外能量。",
+        "param_list": [
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_RestoreEnergyGainExtraEnergyForTeam"
+      }
+    ]
+  },
+  {
+    "set_id": 10013,
+    "name": "",
+    "name_cn": "游医",
+    "contains": [
+      63140,
+      63120,
+      63150,
+      63110,
+      63130
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "受治疗加成提高20%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "2件套：施放元素爆发后治疗自身。",
+        "param_list": [
+          0.2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_UltHealSelf"
+      }
+    ]
+  },
+  {
+    "set_id": 14001,
+    "name": "",
+    "name_cn": "冰风迷途的勇士",
+    "contains": [
+      71340,
+      71320,
+      71350,
+      71310,
+      71330
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "冰元素伤害提高15%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "2件套：对冰元素影响下的敌人暴击率提升。",
+        "param_list": [
+          0.2,
+          0.2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_CriticUpAgainstIceAndFrozen"
+      }
+    ]
+  },
+  {
+    "set_id": 14002,
+    "name": "",
+    "name_cn": "平息鸣雷的尊者",
+    "contains": [
+      72340,
+      72320,
+      72350,
+      72310,
+      72330
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "雷元素抗性提高40%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "2件套：对雷元素附着的敌人伤害提升。",
+        "param_list": [
+          0.35,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_DamageUpAgainstElectric"
+      }
+    ]
+  },
+  {
+    "set_id": 14003,
+    "name": "",
+    "name_cn": "渡过烈火的贤人",
+    "contains": [
+      73340,
+      73320,
+      73350,
+      73310,
+      73330
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "火元素抗性提高40%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "2件套：对火元素附着的敌人伤害提升。",
+        "param_list": [
+          0.35,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_DamageUpAgainstFireAndBurning"
+      }
+    ]
+  },
+  {
+    "set_id": 14004,
+    "name": "",
+    "name_cn": "被怜爱的少女",
+    "contains": [
+      74340,
+      74320,
+      74350,
+      74310,
+      74330
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "治疗加成提高15%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "2件套：受到治疗后元素战技伤害提升。",
+        "param_list": [
+          0.2,
+          10,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_SkillEnhanceCured"
+      }
+    ]
+  },
+  {
+    "set_id": 15001,
+    "name": "",
+    "name_cn": "角斗士的终幕礼",
+    "contains": [
+      75340,
+      75320,
+      75350,
+      75310,
+      75330
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "攻击力提高18%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "2件套：近战攻击伤害提升。",
+        "param_list": [
+          0.35,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_MeleeAttackUp"
+      }
+    ]
+  },
+  {
+    "set_id": 15002,
+    "name": "",
+    "name_cn": "翠绿之影",
+    "contains": [
+      76340,
+      76320,
+      76350,
+      76310,
+      76330
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "风元素伤害提高15%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "2件套：风元素扩散反应伤害提升。",
+        "param_list": [
+          0.6,
+          0.4,
+          10,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_ReactionWindEnhance"
+      }
+    ]
+  },
+  {
+    "set_id": 15003,
+    "name": "",
+    "name_cn": "流浪大地的乐团",
+    "contains": [
+      77340,
+      77320,
+      77350,
+      77310,
+      77330
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "元素精通提高80",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "2件套：远程角色攻击力提升。",
+        "param_list": [
+          0.35,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relci_RangerAttackUp"
+      }
+    ]
+  },
+  {
+    "set_id": 15004,
+    "name": "",
+    "name_cn": "",
+    "contains": [
+      78340,
+      78320,
+      78350,
+      78310,
+      78330
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "冰元素伤害提高15%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "2件套：冰元素反应伤害提升。",
+        "param_list": [
+          1,
+          0.15,
+          10,
+          0.3,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_ReactionIceEnhance"
+      }
+    ]
+  },
+  {
+    "set_id": 15005,
+    "name": "",
+    "name_cn": "如雷的盛怒",
+    "contains": [
+      79340,
+      79320,
+      79350,
+      79310,
+      79330
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "雷元素伤害提高15%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "2件套：雷元素反应伤害提升。",
+        "param_list": [
+          0.4,
+          0.8,
+          0.2,
+          0.2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_ReactionElectricEnhance"
+      }
+    ]
+  },
+  {
+    "set_id": 15006,
+    "name": "",
+    "name_cn": "炽烈的炎之魔女",
+    "contains": [
+      80340,
+      80320,
+      80350,
+      80310,
+      80330
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "火元素伤害提高15%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "2件套：火元素反应伤害提升。",
+        "param_list": [
+          0.4,
+          0.15,
+          0.15,
+          0.5,
+          10,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_ReactionFireEnhance"
+      }
+    ]
+  },
+  {
+    "set_id": 15007,
+    "name": "",
+    "name_cn": "昔日宗室之仪",
+    "contains": [
+      81340,
+      81320,
+      81350,
+      81310,
+      81330
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "2件套：元素爆发伤害提升。",
+        "param_list": [
+          0.2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_ElementalBurstUp"
+      },
+      {
+        "pieces": 4,
+        "desc": "2件套：施放元素爆发后全队攻击力提升。",
+        "param_list": [
+          0.2,
+          12,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_TeamAtkupAfterElementalBurst"
+      }
+    ]
+  },
+  {
+    "set_id": 15008,
+    "name": "",
+    "name_cn": "染血的骑士道",
+    "contains": [
+      82340,
+      82320,
+      82350,
+      82310,
+      82330
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "物理伤害提高25%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "2件套：击败敌人后攻击力提升。",
+        "param_list": [
+          10,
+          0.5,
+          -5,
+          0.1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_KillEnhanceExtraAtk"
+      }
+    ]
+  },
+  {
+    "set_id": 15009,
+    "name": "",
+    "name_cn": "祭火之人",
+    "contains": [
+      83330
+    ],
+    "need_num": [
+      1
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "",
+        "param_list": [
+          0.4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_FireResistance"
+      }
+    ]
+  },
+  {
+    "set_id": 15010,
+    "name": "",
+    "name_cn": "祭水之人",
+    "contains": [
+      84330
+    ],
+    "need_num": [
+      1
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "",
+        "param_list": [
+          0.4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_WaterResistance"
+      }
+    ]
+  },
+  {
+    "set_id": 15011,
+    "name": "",
+    "name_cn": "祭雷之人",
+    "contains": [
+      85330
+    ],
+    "need_num": [
+      1
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "",
+        "param_list": [
+          0.4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_ElectricResistance"
+      }
+    ]
+  },
+  {
+    "set_id": 15012,
+    "name": "",
+    "name_cn": "",
+    "contains": [
+      86330
+    ],
+    "need_num": [
+      1
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "",
+        "param_list": [
+          0.4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_WindResistance"
+      }
+    ]
+  },
+  {
+    "set_id": 15013,
+    "name": "",
+    "name_cn": "祭冰之人",
+    "contains": [
+      87330
+    ],
+    "need_num": [
+      1
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "",
+        "param_list": [
+          0.4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_IceResistance"
+      }
+    ]
+  },
+  {
+    "set_id": 15014,
+    "name": "",
+    "name_cn": "悠古的磐岩",
+    "contains": [
+      88340,
+      88320,
+      88350,
+      88310,
+      88330
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "岩元素伤害提高15%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          0.35,
+          10,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_ElementDmgUpAfterCrystalShield"
+      }
+    ]
+  },
+  {
+    "set_id": 15015,
+    "name": "",
+    "name_cn": "逆飞的流星",
+    "contains": [
+      89340,
+      89320,
+      89350,
+      89310,
+      89330
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "护盾强效提高35%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          0.4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_ShieldEnhanceAtk"
+      }
+    ]
+  },
+  {
+    "set_id": 15016,
+    "name": "",
+    "name_cn": "沉沦之心",
+    "contains": [
+      90340,
+      90320,
+      90350,
+      90310,
+      90330
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "水元素伤害提高15%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          0.3,
+          1,
+          15,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_WaterSkillEnhanceNormalAtkAndExtraAtk"
+      }
+    ]
+  },
+  {
+    "set_id": 15017,
+    "name": "",
+    "name_cn": "千岩牢固",
+    "contains": [
+      91340,
+      91320,
+      91350,
+      91310,
+      91330
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "生命值提高20%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          0.2,
+          0.3,
+          3,
+          0.5,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_ShieldCostUpWhenElementalArtHit"
+      }
+    ]
+  },
+  {
+    "set_id": 15018,
+    "name": "",
+    "name_cn": "苍白之火",
+    "contains": [
+      92340,
+      92320,
+      92350,
+      92310,
+      92330
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "物理伤害提高25%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          0.09,
+          7,
+          0.3,
+          0.25,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_AttackUpWhenNormalAtkAndExtraAtkHit"
+      }
+    ]
+  },
+  {
+    "set_id": 15019,
+    "name": "",
+    "name_cn": "追忆之注连",
+    "contains": [
+      93442,
+      93422,
+      93452,
+      93412,
+      93432
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "攻击力提高18%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          15,
+          0.5,
+          10,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_NormalDamageUpIfCostEnergy"
+      }
+    ]
+  },
+  {
+    "set_id": 15020,
+    "name": "",
+    "name_cn": "绝缘之旗印",
+    "contains": [
+      94442,
+      94422,
+      94452,
+      94412,
+      94432
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "元素充能效率提高20%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          0.25,
+          0.75,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_ElementalBurstUpByChargeEfficiency"
+      }
+    ]
+  },
+  {
+    "set_id": 15021,
+    "name": "",
+    "name_cn": "华馆梦醒形骸记",
+    "contains": [
+      95442,
+      95422,
+      95452,
+      95412,
+      95432
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "防御力提高30%",
+        "param_list": [
+          0.3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          0.3,
+          3,
+          0.06,
+          0.06,
+          6,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_RaiseDefenceAndRock"
+      }
+    ]
+  },
+  {
+    "set_id": 15022,
+    "name": "",
+    "name_cn": "海染砗磲",
+    "contains": [
+      96442,
+      96422,
+      96452,
+      96412,
+      96432
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "治疗加成提高15%",
+        "param_list": [
+          0.15,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          3,
+          0.9,
+          0,
+          3.5,
+          30000,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_HealAndHolyNova"
+      }
+    ]
+  },
+  {
+    "set_id": 15023,
+    "name": "",
+    "name_cn": "辰砂往生录",
+    "contains": [
+      97442,
+      97422,
+      97452,
+      97412,
+      97432
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "攻击力提高18%",
+        "param_list": [
+          0.18,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          16,
+          0.08,
+          0.1,
+          4,
+          0.8,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_AttackUpWhenHPdown"
+      }
+    ]
+  },
+  {
+    "set_id": 15024,
+    "name": "",
+    "name_cn": "来歆余响",
+    "contains": [
+      98442,
+      98422,
+      98452,
+      98412,
+      98432
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "攻击力提高18%",
+        "param_list": [
+          0.18,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          0.36,
+          0.7,
+          0.05,
+          0.2,
+          0.2,
+          0.2,
+          0,
+          0
+        ],
+        "open_config": "Relic_AttackWithExtraDamage"
+      }
+    ]
+  },
+  {
+    "set_id": 15025,
+    "name": "",
+    "name_cn": "深林的记忆",
+    "contains": [
+      20442,
+      20422,
+      20452,
+      20412,
+      20432
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "草元素伤害提高15%",
+        "param_list": [
+          0.15,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          0.3,
+          8,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_ReactionGrassEnhance"
+      }
+    ]
+  },
+  {
+    "set_id": 15026,
+    "name": "",
+    "name_cn": "饰金之梦",
+    "contains": [
+      21442,
+      21422,
+      21452,
+      21412,
+      21432
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "元素精通提高80",
+        "param_list": [
+          80,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          0.14,
+          50,
+          8,
+          8,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_ElemMasteryGathering"
+      }
+    ]
+  },
+  {
+    "set_id": 15027,
+    "name": "",
+    "name_cn": "沙上楼阁史话",
+    "contains": [
+      27442,
+      27422,
+      27452,
+      27412,
+      27432
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "风元素伤害提高15%",
+        "param_list": [
+          0.15,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          0.1,
+          0.4,
+          15,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_ExtraAttackCauseSpeedAndDamage"
+      }
+    ]
+  },
+  {
+    "set_id": 15028,
+    "name": "",
+    "name_cn": "乐园遗落之花",
+    "contains": [
+      28442,
+      28422,
+      28452,
+      28412,
+      28432
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "元素精通提高80",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          0.4,
+          0.4,
+          0.4,
+          10,
+          4,
+          0.25,
+          1,
+          0.1
+        ],
+        "open_config": "Relic_OvergrowReactionEnhance"
+      }
+    ]
+  },
+  {
+    "set_id": 15029,
+    "name": "",
+    "name_cn": "水仙之梦",
+    "contains": [
+      29442,
+      29422,
+      29452,
+      29412,
+      29432
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "水元素伤害提高15%",
+        "param_list": [
+          0.15,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          8,
+          0.07,
+          0.16,
+          0.25,
+          0.04,
+          0.09,
+          0.15,
+          0
+        ],
+        "open_config": "Relic_Narcissus"
+      }
+    ]
+  },
+  {
+    "set_id": 15030,
+    "name": "",
+    "name_cn": "花海甘露之光",
+    "contains": [
+      30442,
+      30422,
+      30452,
+      30412,
+      30432
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "生命值提高20%",
+        "param_list": [
+          0.2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          0.1,
+          0.8,
+          5,
+          5,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_Pari"
+      }
+    ]
+  },
+  {
+    "set_id": 15031,
+    "name": "",
+    "name_cn": "逐影猎人",
+    "contains": [
+      31442,
+      31422,
+      31452,
+      31412,
+      31432
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "",
+        "param_list": [
+          0.15,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_NorAndExtraAtkUp"
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          0.12,
+          5,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_BuffWhenHPUpAndDown"
+      }
+    ]
+  },
+  {
+    "set_id": 15032,
+    "name": "",
+    "name_cn": "黄金剧团",
+    "contains": [
+      32442,
+      32422,
+      32452,
+      32412,
+      32432
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "",
+        "param_list": [
+          0.2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_ArtSkillDamageUp"
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          0.25,
+          1,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_OffStageArtDamageUp"
+      }
+    ]
+  },
+  {
+    "set_id": 15033,
+    "name": "",
+    "name_cn": "昔时之歌",
+    "contains": [
+      33442,
+      33422,
+      33452,
+      33412,
+      33432
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "治疗加成提高15%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          6,
+          10,
+          5,
+          0.08,
+          15000,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_HealToDamageExtra"
+      }
+    ]
+  },
+  {
+    "set_id": 15034,
+    "name": "",
+    "name_cn": "回声之林夜话",
+    "contains": [
+      34442,
+      34422,
+      34452,
+      34412,
+      34432
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "攻击力提高18%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          10,
+          0.2,
+          1.5,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_CrystalShieldToRockDamageUp"
+      }
+    ]
+  },
+  {
+    "set_id": 15035,
+    "name": "",
+    "name_cn": "谐律异想断章",
+    "contains": [
+      35442,
+      35422,
+      35452,
+      35412,
+      35432
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "攻击力提高18%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          0.18,
+          6,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_BuffWhenHPdebtsUpAndDown"
+      }
+    ]
+  },
+  {
+    "set_id": 15036,
+    "name": "",
+    "name_cn": "未竟的遐思",
+    "contains": [
+      36442,
+      36422,
+      36452,
+      36412,
+      36432
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "攻击力提高18%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          5,
+          0.1,
+          6,
+          1,
+          1,
+          3,
+          0,
+          0
+        ],
+        "open_config": "Relic_CheckBuringDamageUp"
+      }
+    ]
+  },
+  {
+    "set_id": 15037,
+    "name": "",
+    "name_cn": "烬城勇者绘卷",
+    "contains": [
+      37442,
+      37422,
+      37452,
+      37412,
+      37432
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "",
+        "param_list": [
+          6,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_NyxTime_2"
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          0.12,
+          15,
+          0.28,
+          20,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_NyxTime_4"
+      }
+    ]
+  },
+  {
+    "set_id": 15038,
+    "name": "",
+    "name_cn": "黑曜秘典",
+    "contains": [
+      38442,
+      38422,
+      38452,
+      38412,
+      38432
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "",
+        "param_list": [
+          0.15,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_InNyxState_2"
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          1,
+          0.4,
+          6,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_InNyxState_4"
+      }
+    ]
+  },
+  {
+    "set_id": 15039,
+    "name": "",
+    "name_cn": "长夜之誓",
+    "contains": [
+      39442,
+      39422,
+      39452,
+      39412,
+      39432
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "",
+        "param_list": [
+          0.25,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_FallingAttack_2"
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          1,
+          2,
+          2,
+          0.15,
+          6,
+          1,
+          5,
+          0
+        ],
+        "open_config": "Relic_FallingAttack_4"
+      }
+    ]
+  },
+  {
+    "set_id": 15040,
+    "name": "",
+    "name_cn": "深廊终曲",
+    "contains": [
+      40442,
+      40422,
+      40452,
+      40412,
+      40432
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "冰元素伤害提高15%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          0.6,
+          0.6,
+          6,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_SpiralAbyss"
+      }
+    ]
+  },
+  {
+    "set_id": 15041,
+    "name": "",
+    "name_cn": "穹境示现之夜",
+    "contains": [
+      41442,
+      41422,
+      41452,
+      41412,
+      41432
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "元素精通提高80",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          4,
+          0.15,
+          0.3,
+          0.1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_6.0_Carry"
+      }
+    ]
+  },
+  {
+    "set_id": 15042,
+    "name": "",
+    "name_cn": "纺月的夜歌",
+    "contains": [
+      42442,
+      42422,
+      42452,
+      42412,
+      42432
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "元素充能效率提高20%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          8,
+          60,
+          120,
+          0.1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_6.0_Support"
+      }
+    ]
+  },
+  {
+    "set_id": 15043,
+    "name": "",
+    "name_cn": "晨星与月的晓歌",
+    "contains": [
+      43442,
+      43422,
+      43452,
+      43412,
+      43432
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "元素精通提高80",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          0.2,
+          0.4,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_6.3_Columbia"
+      }
+    ]
+  },
+  {
+    "set_id": 15044,
+    "name": "",
+    "name_cn": "风起之日",
+    "contains": [
+      44442,
+      44422,
+      44452,
+      44412,
+      44432
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "攻击力提高18%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          6,
+          0.25,
+          0.2,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_6.3_MajoKai"
+      }
+    ]
+  },
+  {
+    "set_id": 15045,
+    "name": "",
+    "name_cn": "天之美赐",
+    "contains": [
+      45442,
+      45422,
+      45452,
+      45412,
+      45432
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "元素充能效率提高20%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          0.2,
+          20,
+          0.4,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_6.6_Nicole"
+      }
+    ]
+  },
+  {
+    "set_id": 15046,
+    "name": "",
+    "name_cn": "影中沉凝的幻灭",
+    "contains": [
+      46442,
+      46422,
+      46452,
+      46412,
+      46432
+    ],
+    "need_num": [
+      2,
+      4
+    ],
+    "effects": [
+      {
+        "pieces": 2,
+        "desc": "攻击力提高18%",
+        "param_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": ""
+      },
+      {
+        "pieces": 4,
+        "desc": "",
+        "param_list": [
+          0.8,
+          0.16,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "open_config": "Relic_6.6_Superconductor"
+      }
+    ]
+  },
+  {
+    "set_id": 15000,
+    "name": "",
+    "name_cn": "",
+    "contains": [
+      99340,
+      99320,
+      99350,
+      99310,
+      99330
+    ],
+    "need_num": [
+      3,
+      5
+    ],
+    "effects": []
+  }
+]
