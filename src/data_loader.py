@@ -112,6 +112,21 @@ def find_artifact_set(set_id) -> dict:
             return a
     return None
 
+
+def find_meropide_artifact(name_cn: str) -> dict:
+    """按中文名在 meropide 圣遗物数据中查找（权威套装文案：set_2_effect/set_4_effect）"""
+    try:
+        items = _load(os.path.join("meropide", "artifacts_meropide.json"))
+    except (FileNotFoundError, json.JSONDecodeError):
+        return None
+    if isinstance(items, dict):
+        items = items.get("items", [])
+    for m in items:
+        if m.get("set_name") == name_cn:
+            return m
+    return None
+
+
 def find_constellation_by_char_id(char_id) -> dict:
     cons = get_constellations()
     for c in cons:

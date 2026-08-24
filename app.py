@@ -52,8 +52,10 @@ def load_options():
     wp_ids = {w.get("name_cn") or w.get("name"): str(w.get("id")) for w in valid_wps}
 
     arts = data_loader.get_artifacts()
-    art_names = ["无"] + [a.get("name_cn") or a.get("name") for a in arts]
-    art_ids = {a.get("name_cn") or a.get("name"): str(a.get("set_id")) for a in arts}
+    # 过滤无名称的坏数据条目（如内部测试套装 set_id=15004 等）
+    valid_arts = [a for a in arts if (a.get("name_cn") or a.get("name"))]
+    art_names = ["无"] + [a.get("name_cn") or a.get("name") for a in valid_arts]
+    art_ids = {a.get("name_cn") or a.get("name"): str(a.get("set_id")) for a in valid_arts}
 
     return char_names, char_ids, wp_names, wp_ids, art_names, art_ids
 
@@ -63,10 +65,11 @@ char_names, char_ids, wp_names, wp_ids, art_names, art_ids = load_options()
 
 @st.cache_data
 def get_artifact_effect(set_id):
-    """从 artifacts.json 读取指定套装的 2件套/4件套效果描述
+    """读取指定套装的 2件套/4件套效果描述，返回 (e2, e4)
 
-    注：实际数据结构为 effects 数组（每项含 pieces 与 desc），
-    此处兼容读取 pieces==2 / pieces==4 的描述文本。
+    数据源优先级：
+      1. meropide 权威套装文案（artifacts_meropide.json 的 set_2_effect/set_4_effect）
+      2. 本地 artifacts.json 的 effects 数组（pieces==2/4 的 desc）
     """
     if not set_id or set_id == "无":
         return "", ""
@@ -74,11 +77,20 @@ def get_artifact_effect(set_id):
     if not art:
         return "", ""
     e2, e4 = "", ""
+    # 本地数据解析
     for eff in art.get("effects", []):
         if eff.get("pieces") == 2:
-            e2 = eff.get("desc", "") or "（暂无描述）"
+            e2 = eff.get("desc", "") or ""
         elif eff.get("pieces") == 4:
-            e4 = eff.get("desc", "") or "（暂无描述）"
+            e4 = eff.get("desc", "") or ""
+    # meropide 权威文案覆盖（文本更完整准确；如魔女套本地 4 件套为劣质占位符）
+    name_cn = art.get("name_cn") or ""
+    mp = data_loader.find_meropide_artifact(name_cn) if name_cn else None
+    if mp:
+        if (mp.get("set_2_effect") or "").strip():
+            e2 = mp["set_2_effect"].strip()
+        if (mp.get("set_4_effect") or "").strip():
+            e4 = mp["set_4_effect"].strip()
     return e2, e4
 
 
@@ -157,8 +169,10 @@ def render_passive_toggles(char_id, member_idx):
         parsed = parse_effect(p.get("description", ""))
         label = p.get("name", f"天赋{i + 1}")
         enabled = st.checkbox(label, value=True, key=f"pass_{member_idx}_{char_id}_{i}")
-        desc = (p.get("description") or "").strip().replace("\n", " ")
-        st.caption(("☑ " if enabled else "☐ ") + (desc[:80] + "…" if len(desc) > 80 else desc))
+        # 完整显示天赋描述全文（不截断；长文本换行保留）
+        desc = (p.get("description") or "").strip()
+        prefix = "☑ " if enabled else "☐ "
+        st.markdown(prefix + desc.replace("\n", "  \n"), unsafe_allow_html=False)
         if not enabled:
             continue
         if parsed["unparsed"] and not (
