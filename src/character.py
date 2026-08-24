@@ -52,6 +52,27 @@ class Character:
         # 命座效果（从 constellations.json 加载）
         self.constellation_effects = self._load_constellations()
 
+        # 固有天赋（Meropide 数据；由 app 层勾选后调用 apply_passive 生效）
+        self.passive_skills = data_loader.load_passive_skills(self.id)
+
+    def apply_passive(self, modifiers: dict):
+        """
+        将解析后的固有天赋修饰器叠加到面板属性。
+        :param modifiers: {attr: value}，attr 为 Character 面板属性名
+                          （如 atk_percent / crit_rate / elemental_dmg_bonus）
+                          未识别的属性名将被忽略（如 er 计算引擎暂未使用）
+        """
+        for attr, val in (modifiers or {}).items():
+            if hasattr(self, attr) and not callable(getattr(self, attr)):
+                setattr(self, attr, getattr(self, attr) + val)
+
+    def revert_passive(self, modifiers: dict):
+        """撤销已应用的固有天赋修饰器（用于 UI 取消勾选）"""
+        for attr, val in (modifiers or {}).items():
+            if hasattr(self, attr) and not callable(getattr(self, attr)):
+                setattr(self, attr, getattr(self, attr) - val)
+
+
     def _load_constellations(self) -> list:
         """加载命座效果（仅取 <= constellation_level 的命座）"""
         cons_data = data_loader.find_constellation_by_char_id(self.id)

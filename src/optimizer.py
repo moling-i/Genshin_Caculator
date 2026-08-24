@@ -68,6 +68,10 @@ class OptimizationInput:
         min_crit_rate: float = 0.2,
         main_stats: dict = None,
         team_members: list = None,
+        # ---- 扩展输入（UI 队伍面板 / 固有天赋）----
+        panel_inputs: dict = None,
+        passive_modifiers: dict = None,
+        team_configs: list = None,
     ):
         self.character_id = str(character_id)
         self.constellation_level = constellation_level
@@ -83,6 +87,15 @@ class OptimizationInput:
         self.min_crit_rate = min_crit_rate
         self.main_stats = main_stats or {}
         self.team_members = team_members or []
+        # 用户直接输入的最终面板值（不含副词条）：{atk, crit_rate_pct, crit_dmg_pct, em}
+        self.panel_inputs = panel_inputs or {}
+        # 已启用的固有天赋修饰器合集：{attr: value}
+        self.passive_modifiers = passive_modifiers or {}
+        # 队伍成员独立配置列表（4 项，None 表示空位）：
+        # [{character_id, weapon_id, refinement, artifact_set_2, artifact_set_4,
+        #   talent_levels{normal,skill,burst}, panel{atk,crit_rate_pct,crit_dmg_pct,em},
+        #   lunar_bonus_pct, passive_modifiers}, ...]
+        self.team_configs = team_configs
 
 
 class OptimizationResult:
@@ -131,7 +144,7 @@ class DamageOptimizer:
             setattr(char, circlet, getattr(char, circlet) + val)
 
     def _build_character(self, substats: dict) -> Character:
-        """根据副词条分配构建角色（含主词条）"""
+        """根据副词条分配构建角色（含主词条、用户面板输入与固有天赋）"""
         char = Character(self.input.character_id, self.input.constellation_level)
         self._apply_main_stats(char)
         for k, v in substats.items():
@@ -139,17 +152,51 @@ class DamageOptimizer:
                 char.elemental_mastery += v
             else:
                 setattr(char, k, getattr(char, k) + v)
+        # 用户直接输入的面板值（视为不含副词条的基础配置）
+        pi = self.input.panel_inputs or {}
+        if pi.get("atk"):
+            char.flat_atk += max(0.0, float(pi["atk"]) - char.base_atk)
+        if pi.get("crit_rate_pct"):
+            char.crit_rate += float(pi["crit_rate_pct"]) / 100.0
+        if pi.get("crit_dmg_pct"):
+            char.crit_dmg += float(pi["crit_dmg_pct"]) / 100.0
+        if pi.get("em"):
+            char.elemental_mastery += float(pi["em"])
+        # 已启用的固有天赋修饰器
+        char.apply_passive(self.input.passive_modifiers)
         return char
 
-    def _build_effect_manager(self, char: Character) -> EffectManager:
-        """构建并应用效果管理器"""
+    def _build_member_character(self, cfg: dict) -> Character:
+        """按队伍成员独立配置构建队友角色（武器/圣遗物/面板/固有天赋）"""
+        char = Character(cfg.get("character_id"), cfg.get("constellation_level", 0))
+        panel = cfg.get("panel") or {}
+        if panel.get("atk"):
+            char.flat_atk += max(0.0, float(panel["atk"]) - char.base_atk)
+        if panel.get("crit_rate_pct"):
+            char.crit_rate += float(panel["crit_rate_pct"]) / 100.0
+        if panel.get("crit_dmg_pct"):
+            char.crit_dmg += float(panel["crit_dmg_pct"]) / 100.0
+        if panel.get("em"):
+            char.elemental_mastery += float(panel["em"])
+        if panel.get("lunar_bonus_pct"):
+            char.lunar_dmg_bonus += float(panel["lunar_bonus_pct"]) / 100.0
+        char.apply_passive(cfg.get("passive_modifiers"))
+        return char
+
+    def _build_effect_manager(self, char: Character, weapon_id=None,
+                              refinement: int = 1, artifact_set_2=None,
+                              artifact_set_4=None) -> EffectManager:
+        """构建并应用效果管理器（默认使用主角配置）"""
         em = EffectManager(char)
-        if self.input.weapon_id:
-            em.apply_weapon_effect(self.input.weapon_id, 1)
-        if self.input.artifact_set_2:
-            em.apply_artifact_effect(set_2_id=self.input.artifact_set_2)
-        if self.input.artifact_set_4:
-            em.apply_artifact_effect(set_4_id=self.input.artifact_set_4)
+        wid = weapon_id or self.input.weapon_id
+        a2 = artifact_set_2 or self.input.artifact_set_2
+        a4 = artifact_set_4 or self.input.artifact_set_4
+        if wid:
+            em.apply_weapon_effect(wid, refinement)
+        if a2:
+            em.apply_artifact_effect(set_2_id=a2)
+        if a4:
+            em.apply_artifact_effect(set_4_id=a4)
         em.apply_constellation_effects()
         em.trigger_event("always")
         return em
@@ -161,26 +208,36 @@ class DamageOptimizer:
         char = self._build_character(substats)
         em = self._build_effect_manager(char)
 
-        # 队伍构建：当配置了 >=2 名成员时即构建 Team（用于月反应加权与元素共鸣）
+        # 队伍构建：优先使用成员独立配置（UI 队伍面板），否则回退 team_members
         team = None
-        active_members = [m for m in self.input.team_members if m]
-        if len(active_members) >= 2:
+        if self.input.team_configs and any(self.input.team_configs):
             from .team import Team
             members = []
-            for mid in self.input.team_members:
-                if mid:
-                    mc = self._build_character({}) if mid == self.input.character_id \
-                        else Character(mid, self.input.constellation_level)
-                    if mid != self.input.character_id:
-                        # 队友也应用主词条（简化：仅基础）
-                        pass
-                    mem = self._build_effect_manager(mc)
-                    members.append(mem.character)
+            for cfg in self.input.team_configs:
+                if cfg and cfg.get("character_id"):
+                    mc = self._build_member_character(cfg)
+                    members.append(mc)
                 else:
                     members.append(None)
             while len(members) < 4:
                 members.append(None)
             team = Team(members[:4])
+        else:
+            active_members = [m for m in self.input.team_members if m]
+            if len(active_members) >= 2:
+                from .team import Team
+                members = []
+                for mid in self.input.team_members:
+                    if mid:
+                        mc = self._build_character({}) if mid == self.input.character_id \
+                            else Character(mid, self.input.constellation_level)
+                        mem = self._build_effect_manager(mc)
+                        members.append(mem.character)
+                    else:
+                        members.append(None)
+                while len(members) < 4:
+                    members.append(None)
+                team = Team(members[:4])
 
         result = calculate_damage(
             character=char,

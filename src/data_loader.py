@@ -121,3 +121,165 @@ def find_constellation_by_char_id(char_id) -> dict:
 
 def clear_cache():
     _cache.clear()
+
+
+# ==================== 图标 / 天赋 / 固有天赋 ====================
+
+_ENKA_UI = "https://enka.network/ui/{icon}.png"
+
+
+def get_icons() -> dict:
+    """读取 data/icons.json（avatar/weapon/relic 的 id -> 图标名映射）"""
+    try:
+        return _load("icons.json")
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {"avatar": {}, "weapon": {}, "relic": {}}
+
+
+def get_icon_url(kind: str, obj_id, default_suffix: str = "") -> str:
+    """
+    获取 enka CDN 图片直链；未知 id 返回空字符串（UI 显示占位符）。
+    kind: "avatar" | "weapon" | "relic"
+    圣遗物图标名若不含件数后缀，用 default_suffix 补全（如 "_5"）。
+    """
+    icon = get_icons().get(kind, {}).get(str(obj_id), "")
+    if not icon:
+        return ""
+    if kind == "relic" and icon.endswith("_"):
+        icon = icon.rstrip("_") + default_suffix
+    return _ENKA_UI.format(icon=icon)
+
+
+def _find_meropide_character(name_cn: str) -> dict:
+    """按中文名在 meropide 角色数据中查找"""
+    try:
+        items = _load(os.path.join("meropide", "characters_meropide.json"))
+    except (FileNotFoundError, json.JSONDecodeError):
+        return None
+    if isinstance(items, dict):
+        items = items.get("items", [])
+    for m in items:
+        if m.get("name") == name_cn:
+            return m
+    return None
+
+
+def get_talent_display(character_id) -> list:
+    """
+    获取角色的天赋展示信息（来自 meropide 权威文案）。
+    返回: [{skill_name, skill_type, desc, rows: [{label, value_text}]}]
+    数据源缺失时返回 []。
+    """
+    char = find_character_by_name(character_id)
+    if not char:
+        return []
+    mp = _find_meropide_character(char.get("name_cn") or "")
+    if not mp:
+        return []
+    return mp.get("talents") or []
+
+
+def load_passive_skills(character_id) -> list:
+    """
+    读取角色的所有固有天赋（Meropide 数据）。
+    返回: [{"name": ..., "description": ...}]，数据缺失时返回 []。
+    """
+    char = find_character_by_name(character_id)
+    if not char:
+        return []
+    mp = _find_meropide_character(char.get("name_cn") or "")
+    if not mp:
+        return []
+    result = []
+    for pt in mp.get("passive_talents") or []:
+        result.append({
+            "name": pt.get("name", ""),
+            "description": pt.get("desc", pt.get("description", "")),
+        })
+    return result
+
+
+# ---- 固有天赋描述 -> 结构化修饰器解析 ----
+
+import re as _re
+
+# 属性关键词映射（顺序敏感：具体关键词优先于泛化关键词）
+_EFFECT_RULES = [
+    # 各元素伤害加成 -> 统一计入元素伤害加成区
+    (_re.compile(r"([火水冰雷风岩草])元素伤害加成"), "elemental_dmg_bonus", "pct"),
+    (_re.compile(r"月曜反应伤害(?:提升|提高)"), "lunar_dmg_bonus", "pct"),
+    (_re.compile(r"月反应伤害(?:提升|提高)"), "lunar_dmg_bonus", "pct"),
+    (_re.compile(r"元素爆发造成的伤害(?:提升|提高)"), "dmg_bonus", "pct"),
+    (_re.compile(r"元素战技造成的伤害(?:提升|提高)"), "dmg_bonus", "pct"),
+    (_re.compile(r"普通攻击造成的伤害(?:提升|提高)"), "dmg_bonus", "pct"),
+    (_re.compile(r"重击造成的伤害(?:提升|提高)"), "dmg_bonus", "pct"),
+    (_re.compile(r"造成的伤害(?:提升|提高)"), "dmg_bonus", "pct"),
+    (_re.compile(r"攻击力(?:提升|提高)"), "atk_percent", "pct"),
+    (_re.compile(r"生命值上限(?:提升|提高)"), "hp_percent", "pct"),
+    (_re.compile(r"防御力(?:提升|提高)"), "def_percent", "pct"),
+    (_re.compile(r"暴击伤害(?:提升|提高)"), "crit_dmg", "pct"),
+    (_re.compile(r"暴击率(?:提升|提高)"), "crit_rate", "pct"),
+    (_re.compile(r"元素充能效率(?:提升|提高)"), "er", "pct"),  # 计算引擎暂未使用，标记解析
+    (_re.compile(r"元素精通(?:提升|提高)"), "elemental_mastery", "flat"),
+]
+
+_PCT_RE = _re.compile(r"(\d+(?:\.\d+)?)\s*%")
+_FLAT_RE = _re.compile(r"(\d+(?:\.\d+)?)\s*点")
+
+# 条件触发短语：命中任一则视为条件型天赋（UI 提供条件满足开关）
+_CONDITION_WORDS = [
+    "低于", "以下", "处于", "结束时", "结束后", "命中敌人时", "施放",
+    "触发", "持续期间", "场上", "附近的角色", "受到", "拾取", "击败",
+]
+
+
+def parse_effect(description: str) -> dict:
+    """
+    将固有天赋描述文本解析为结构化修饰器。
+
+    返回: {
+        "modifiers": {attr: value, ...},   # 可直接叠加到角色面板的加成
+        "conditional": bool,               # 是否为条件触发型（UI 需提供条件开关）
+        "unparsed": bool,                  # 是否未能识别出任何数值加成
+    }
+    说明：仅覆盖直接数值加成型固有天赋；复杂机制类天赋标记为 unparsed，
+    UI 中仍可勾选展示，但不参与面板计算。
+    """
+    text = description or ""
+    modifiers = {}
+
+    for pattern, attr, vtype in _EFFECT_RULES:
+        m = pattern.search(text)
+        if not m:
+            continue
+        # 数值可能在关键词之后（"提升12%"）或之前（"获得33%火元素伤害加成"）
+        tail = text[m.end():]
+        vm = None
+        if vtype == "pct":
+            vm = _PCT_RE.search(tail)
+            if not vm:
+                # 回退：取关键词之前、距离最近的百分数（限制在 16 字符窗口内）
+                vm = None
+                for vm_c in _PCT_RE.finditer(text[: m.start()]):
+                    if m.start() - vm_c.end() <= 16:
+                        vm = vm_c
+        else:
+            vm = _FLAT_RE.search(tail)
+            if not vm:
+                vm = None
+                for vm_c in _FLAT_RE.finditer(text[: m.start()]):
+                    if m.start() - vm_c.end() <= 16:
+                        vm = vm_c
+        if not vm:
+            continue
+        val = float(vm.group(1))
+        if vtype == "pct":
+            val /= 100.0
+        modifiers[attr] = modifiers.get(attr, 0.0) + val
+
+    conditional = any(w in text for w in _CONDITION_WORDS)
+    return {
+        "modifiers": modifiers,
+        "conditional": conditional,
+        "unparsed": not modifiers,
+    }
