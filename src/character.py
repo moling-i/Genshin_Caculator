@@ -61,6 +61,9 @@ class Character:
         # 固有天赋（Meropide 数据；由 app 层勾选后调用 apply_passive 生效）
         self.passive_skills = data_loader.load_passive_skills(self.id)
 
+        # 角色固有状态标签（夜魂/魔导/星超导/星扩散/月兆；只读展示，暂无数值效果）
+        self.states = data_loader.get_character_states(self.id)
+
     def apply_passive(self, modifiers: dict):
         """
         将解析后的固有天赋修饰器叠加到面板属性。

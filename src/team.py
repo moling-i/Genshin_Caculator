@@ -70,3 +70,19 @@ class Team:
         if len(elements) == 1:
             modifiers.append({"type": "elemental_resonance", "element": list(elements)[0]})
         return modifiers
+
+    def calculate_lunar_state(self) -> dict:
+        """计算队伍当前的月兆状态
+        - 初辉：队伍中月兆角色数量 >= 1
+        - 满辉：队伍中月兆角色数量 >= 2
+        当前阶段仅作状态标记，不产生数值加成。
+        """
+        lunar_count = sum(
+            1 for m in self.members
+            if m is not None and "月兆" in getattr(m, "states", [])
+        )
+        return {
+            "lunar_count": lunar_count,
+            "chuhui": lunar_count >= 1,   # 初辉
+            "manhui": lunar_count >= 2,   # 满辉
+        }

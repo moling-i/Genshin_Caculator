@@ -275,7 +275,12 @@ def member_config_panel(idx):
             )
             if cname is None:
                 cname = "无"
-        cid = char_ids.get(cname) if cname != "无" else None
+            cid = char_ids.get(cname) if cname != "无" else None
+            # 固有状态标签（只读，如 夜魂 / 月兆 / 魔导）
+            if cid:
+                char_states = data_loader.get_character_states(cid)
+                if char_states:
+                    st.caption(f"🔖 {' · '.join(char_states)}")
         with col_pic:
             show_icon("avatar", cid)
 
@@ -286,10 +291,12 @@ def member_config_panel(idx):
             "artifact_set_2": None, "artifact_set_4": None,
             "talent_levels": {"normal": 10, "skill": 10, "burst": 10},
             "panel": {}, "passive_modifiers": {}, "passive_effects": {},
+            "states": [],
             "display_name": cname if cid else None,
         }
         if not cid:
             return cfg
+        cfg["states"] = data_loader.get_character_states(cid)
 
         cfg["constellation_level"] = st.slider("命座等级", 0, 6, 0, key=f"m{idx}_cons")
 
@@ -375,6 +382,18 @@ with main_col:
     st.caption("成员1 为伤害计算主力；其余成员用于月反应加权与元素共鸣（可留空）。"
                "圣遗物主词条已含在面板数值中，无需单独设置。")
     team_configs = [member_config_panel(i) for i in range(4)]
+
+    # ---- 队伍动态状态（初辉/满辉，按月兆角色数量自动计算）----
+    lunar_count = sum(
+        1 for c in team_configs
+        if c.get("character_id") and "月兆" in c.get("states", [])
+    )
+    state_lines = [f"**👥 队伍状态**　月兆角色数量：{lunar_count}"]
+    if lunar_count >= 1:
+        state_lines.append("🟡 **初辉已激活**")
+    if lunar_count >= 2:
+        state_lines.append("🟢 **满辉已激活**")
+    st.markdown("　|　".join(state_lines))
 
 with side_col:
     with st.container(border=True):

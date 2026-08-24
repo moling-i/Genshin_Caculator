@@ -199,6 +199,75 @@ def load_passive_skills(character_id) -> list:
     return result
 
 
+# ==================== 角色状态标签系统 ====================
+# 状态类型：夜魂(纳塔) / 魔导 / 星超导(至冬) / 星扩散(至冬) / 月兆(挪德卡莱)
+# 当前阶段仅作展示，不产生数值加成；后续通过 `if "夜魂" in char.states` 触发效果。
+
+# 固有状态硬编码映射表（优先级高于 region 推断，用于精确指定与多状态角色）
+STATE_MAPPING = {
+    # === 纳塔 → 夜魂 ===
+    "玛薇卡": ["夜魂"],
+    "基尼奇": ["夜魂"],
+    "希诺宁": ["夜魂"],
+    "卡齐娜": ["夜魂"],
+    "恰斯卡": ["夜魂"],
+    "玛拉妮": ["夜魂"],
+    "欧洛伦": ["夜魂"],
+    "茜特菈莉": ["夜魂"],
+    "伊安珊": ["夜魂"],
+    "瓦雷莎": ["夜魂"],  # meropide 数据用字
+    "瓦蕾莎": ["夜魂"],  # 兼容常见别名写法
+    # === 至冬/特殊 ===
+    "尼可": ["星超导"],
+    "伊法": ["星扩散"],  # 注意：meropide region 标记为纳塔，此处按需求文档显式指定
+    # === 魔导（可与其他状态并存）===
+    "埃洛伊": ["魔导"],
+    "丝柯克": ["夜魂", "魔导"],
+}
+
+# 按 meropide region 字段推断的兜底映射（states 字段与 STATE_MAPPING 均未命中时使用）
+_REGION_STATE_FALLBACK = {
+    "纳塔": ["夜魂"],
+    "挪德卡莱": ["月兆"],
+}
+
+_states_cache = {}
+
+
+def get_character_states(character_id) -> list:
+    """
+    获取角色固有状态标签列表。
+    数据源优先级：
+      1. data/meropide/characters_meropide.json 的 states 字段
+      2. STATE_MAPPING 硬编码映射
+      3. meropide region 字段推断（纳塔→夜魂、挪德卡莱→月兆）
+      4. 均未命中返回 []（不显示任何标签）
+    """
+    key = str(character_id)
+    if key in _states_cache:
+        return list(_states_cache[key])
+
+    char = find_character_by_name(key)
+    name_cn = (char or {}).get("name_cn") or ""
+    mp = _find_meropide_character(name_cn) if name_cn else None
+
+    states = []
+    if mp and mp.get("states"):
+        states = list(mp["states"])
+    elif name_cn in STATE_MAPPING:
+        states = list(STATE_MAPPING[name_cn])
+    else:
+        region = (mp or {}).get("region", "") or ""
+        for rkey, rstates in _REGION_STATE_FALLBACK.items():
+            if rkey in region:
+                states = list(rstates)
+                break
+
+    _states_cache[key] = states
+    return list(states)
+
+
+
 # ---- 固有天赋描述 -> 结构化修饰器解析 ----
 
 import re as _re
