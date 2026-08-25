@@ -1,11 +1,13 @@
 """
-三合一修复验证测试：
-1. 优化器输入透传：面板输入的暴击伤害 / 精通应作为上限约束，
-   优化结果不超过用户输入；用户输入的精通在结果中保留。
-2. 暴击区系数：优化器输出 breakdown 中 crit_factor 应反映期望伤害乘数
-   (1 + CR×CD)，而非 calculate_damage 内部的占位值 1.0。
-3. 武器效果展示：get_weapon_effect 应能返回 Meropide 权威文案，
-   且按精炼等级附上对应参数。
+优化器面板语义测试：用户输入为基础面板（起点），所有效果在其上叠加。
+
+验证场景（用户需求）：
+1. 输入暴击率60% + 圣遗物4件套暴击率+12%  → 最终面板暴击率 = 72%
+2. 输入暴击伤害200% + 武器特效暴击伤害+20% → 最终面板暴击伤害 = 220%
+3. 输入精通100 + 天赋精通转化加成          → 最终面板精通 = 100 + 转化值
+4. 输入攻击力1000 + 圣遗物2件套攻击+18%    → 最终面板攻击力 = 1180
+
+另含：crit_factor 期望系数校验、武器效果展示回退链。
 """
 import os
 import sys
@@ -17,95 +19,111 @@ from src import data_loader
 from src.optimizer import DamageOptimizer, OptimizationInput
 
 
-class TestOptimizerInputPassthrough(unittest.TestCase):
-    """问题1：用户输入应作为上限约束。"""
+def _make_input(panel_inputs, passive_modifiers=None):
+    return OptimizationInput(
+        character_id="10000016",  # 迪卢克
+        constellation_level=0,
+        talent_level=10,
+        skill_type="burst",
+        enemy_level=90,
+        enemy_res=0.1,
+        reaction_type=None,
+        weapon_id=None,
+        artifact_set_2=None,
+        artifact_set_4=None,
+        total_substat_rolls=30,
+        min_crit_rate=0.2,
+        main_stats={"sands": None, "goblet": None, "circlet": None},
+        panel_inputs=panel_inputs,
+        passive_modifiers=passive_modifiers,
+    )
 
-    def _run(self, crit_dmg_pct, em, crit_rate_pct=5.0, atk=1500):
-        params = OptimizationInput(
-            character_id="10000016",  # 迪卢克（用于稳定数据）
-            constellation_level=0,
-            talent_level=10,
-            skill_type="burst",
-            enemy_level=90,
-            enemy_res=0.1,
-            reaction_type=None,
-            weapon_id=None,
-            artifact_set_2=None,
-            artifact_set_4=None,
-            total_substat_rolls=30,
-            min_crit_rate=0.2,
-            main_stats={"sands": "atk_percent",
-                        "goblet": "elemental_dmg",
-                        "circlet": "crit_dmg"},
-            panel_inputs={
-                "atk": float(atk),
-                "crit_rate_pct": float(crit_rate_pct),
-                "crit_dmg_pct": float(crit_dmg_pct),
-                "em": float(em),
-            },
+
+class TestPanelAsStartingPoint(unittest.TestCase):
+    """用户输入为起点，效果叠加而非截断。"""
+
+    def _panel_of(self, panel_inputs, passive_modifiers=None):
+        opt = DamageOptimizer(_make_input(panel_inputs, passive_modifiers))
+        char = opt._build_character({})
+        return char.get_effective_panel()
+
+    def test_crit_rate_input_plus_set_bonus(self):
+        """场景1：输入暴击率60% + 4件套暴击率+12% → 72%"""
+        panel = self._panel_of(
+            {"crit_rate_pct": 60.0},
+            passive_modifiers={"crit_rate": 0.12},
         )
-        result = DamageOptimizer(params).optimize(iterations=500,
-                                                  progress_callback=None)
-        return result
+        self.assertAlmostEqual(panel["crit_rate"], 0.72, places=6)
 
-    def test_crit_dmg_does_not_exceed_input(self):
-        """用户输入 240% 暴击伤害，结果不应超过 240%（约束为上限）。"""
-        result = self._run(crit_dmg_pct=240.0, em=105.0)
-        cd = result.optimal_stats["crit_dmg"]
-        self.assertLessEqual(cd, 2.40 + 1e-6,
-                             f"暴击伤害 {cd} 超过了用户输入 240%")
-
-    def test_em_preserved(self):
-        """用户输入 105 精通，结果应保留（约 105）。"""
-        result = self._run(crit_dmg_pct=240.0, em=105.0)
-        em = result.optimal_stats["em"]
-        self.assertGreaterEqual(em, 100.0,
-                                f"元素精通 {em} 未保留用户输入的 105")
-
-    def test_crit_factor_not_one(self):
-        """暴击区系数应反映期望乘数，而非 1.0。"""
-        result = self._run(crit_dmg_pct=240.0, em=105.0, crit_rate_pct=50.0)
-        bd = result.damage_breakdown
-        self.assertIn("crit_factor", bd)
-        # 期望暴击区系数 ≈ 1 + CR×CD
-        expected = 1.0 + 0.50 * 2.40
-        self.assertAlmostEqual(bd["crit_factor"], expected, places=3,
-                               msg=f"crit_factor={bd['crit_factor']} 应为 {expected}")
-
-
-class TestCritZoneCoefficient(unittest.TestCase):
-    """问题2：暴击区系数显示正确。"""
-
-    def test_breakdown_crit_factor_is_expectation(self):
-        params = OptimizationInput(
-            character_id="10000016",
-            constellation_level=0,
-            talent_level=10,
-            skill_type="burst",
-            enemy_level=90,
-            enemy_res=0.1,
-            reaction_type=None,
-            total_substat_rolls=10,
-            min_crit_rate=0.2,
-            main_stats={"sands": "atk_percent",
-                        "goblet": "elemental_dmg",
-                        "circlet": "crit_dmg"},
-            panel_inputs={"atk": 1500, "crit_rate_pct": 50.0,
-                          "crit_dmg_pct": 235.0, "em": 0.0},
+    def test_crit_dmg_input_plus_weapon_bonus(self):
+        """场景2：输入暴击伤害200% + 武器特效暴击伤害+20% → 220%"""
+        panel = self._panel_of(
+            {"crit_dmg_pct": 200.0},
+            passive_modifiers={"crit_dmg": 0.20},
         )
-        result = DamageOptimizer(params).optimize(iterations=200,
-                                                  progress_callback=None)
+        self.assertAlmostEqual(panel["crit_dmg"], 2.20, places=6)
+
+    def test_em_input_plus_conversion_bonus(self):
+        """场景3：输入精通100 + 天赋精通加成50 → 150"""
+        panel = self._panel_of(
+            {"em": 100.0},
+            passive_modifiers={"elemental_mastery": 50.0},
+        )
+        self.assertAlmostEqual(panel["elemental_mastery"], 150.0, places=6)
+
+    def test_atk_input_plus_set_percent(self):
+        """场景4：输入攻击力1000 + 2件套攻击+18% → 1180"""
+        panel = self._panel_of(
+            {"atk": 1000.0},
+            passive_modifiers={"atk_percent": 0.18},
+        )
+        self.assertAlmostEqual(panel["atk"], 1180.0, places=6)
+
+    def test_substats_stack_on_panel(self):
+        """副词条分配在用户基础面板之上继续叠加（优化器自由度保留）。"""
+        opt = DamageOptimizer(_make_input({"crit_rate_pct": 20.0}))
+        char = opt._build_character({"crit_rate": 0.10})
+        panel = char.get_effective_panel()
+        self.assertAlmostEqual(panel["crit_rate"], 0.30, places=6)
+
+    def test_crit_rate_input_validated_to_100(self):
+        """合法性校验：输入超过100%按100%处理（仅校验，不截断效果）。"""
+        panel = self._panel_of(
+            {"crit_rate_pct": 150.0},
+            passive_modifiers={"crit_rate": 0.12},
+        )
+        # get_effective_panel 内部 min(..., 1.0)，效果仍参与计算
+        self.assertLessEqual(panel["crit_rate"], 1.0)
+
+
+class TestOptimizerEndToEnd(unittest.TestCase):
+    """完整优化流程冒烟：面板起点 + crit_factor 真实化。"""
+
+    def _run(self, crit_rate_pct, crit_dmg_pct, em):
+        params = _make_input({
+            "atk": 1500.0,
+            "crit_rate_pct": float(crit_rate_pct),
+            "crit_dmg_pct": float(crit_dmg_pct),
+            "em": float(em),
+        })
+        return DamageOptimizer(params).optimize(iterations=500,
+                                                progress_callback=None)
+
+    def test_optimize_runs_and_crit_factor_is_expectation(self):
+        result = self._run(crit_rate_pct=50.0, crit_dmg_pct=235.0, em=105.0)
         bd = result.damage_breakdown
         cr = result.optimal_stats["crit_rate"]
         cd = result.optimal_stats["crit_dmg"]
         expected_cf = 1.0 + cr * cd
         self.assertAlmostEqual(bd["crit_factor"], expected_cf, places=3)
-        # 不应为占位值 1.0（除非 CR/CD 为 0，这里显然不是）
         self.assertGreater(bd["crit_factor"], 1.5)
+        # 用户面板作为起点：结果应 ≥ 起点（副词条只增不减）
+        self.assertGreaterEqual(cd, 2.35 - 1e-6)
+        self.assertGreaterEqual(em_val := result.optimal_stats["em"], 105.0 - 1e-6)
 
 
 class TestWeaponEffectDisplay(unittest.TestCase):
-    """问题3：武器效果展示。"""
+    """武器被动效果展示（Meropide 权威文案 → 本地参数 → desc 回退链）。"""
 
     def test_known_weapon_returns_meropide_text(self):
         # 和璞鸢（5星长柄武器）在 Meropide 中有权威文案（首句为别名"昭理的鸢之枪"）
@@ -114,15 +132,14 @@ class TestWeaponEffectDisplay(unittest.TestCase):
         self.assertIn("昭理的鸢之枪", text)
 
     def test_refinement_note_generated(self):
-        # 精炼参数应被格式化进输出（即便无 meropide 文案也至少返回参数行）
         text = data_loader.get_weapon_effect("13505", refinement=5)
         self.assertIsInstance(text, str)
         self.assertIn("精炼", text)
 
     def test_unknown_weapon_returns_string(self):
-        # 不存在的武器应返回空字符串而非报错
         self.assertEqual(data_loader.get_weapon_effect("99999999"), "")
 
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
+

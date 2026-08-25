@@ -96,7 +96,7 @@ class OptimizationInput:
         self.min_crit_rate = min_crit_rate
         self.main_stats = main_stats or {}
         self.team_members = team_members or []
-        # 用户直接输入的最终面板值（不含副词条）：{atk, crit_rate_pct, crit_dmg_pct, em}
+        # 用户直接输入的基础面板值（起点，效果在此之上叠加）：{atk, crit_rate_pct, crit_dmg_pct, em}
         self.panel_inputs = panel_inputs or {}
         # 已启用的固有天赋修饰器合集：{attr: value}
         self.passive_modifiers = passive_modifiers or {}
@@ -155,52 +155,47 @@ class DamageOptimizer:
             setattr(char, circlet, getattr(char, circlet) + val)
 
     def _build_character(self, substats: dict) -> Character:
-        """根据副词条分配构建角色（含主词条、用户面板输入与固有天赋）"""
+        """根据副词条分配构建角色。
+
+        面板叠加顺序（用户输入为起点，所有加成在其上叠加，不做截断）：
+          1) 用户输入的基础面板值（起点：不含任何装备/天赋/命座加成）
+          2) 主词条与副词条分配
+          3) 常驻加成（圣遗物2件套、武器基础属性等）
+          4) 触发型/条件型加成（武器特效、圣遗物4件套、天赋、命座等，
+             经 passive_modifiers / passive_effects 注入）
+        """
         char = Character(self.input.character_id, self.input.constellation_level)
+
+        # ---- 1) 用户输入的基础面板值（起点）----
+        pi = self.input.panel_inputs or {}
+        if pi.get("atk"):
+            # 调整固定攻击使 (base_atk + flat_atk) = 输入值，
+            # 后续 ATK% 类加成可正确作用于该基础值
+            char.flat_atk += max(0.0, float(pi["atk"]) - char.base_atk)
+        # 注意：base_crit_rate / base_crit_dmg 已含突破加成；用户输入的是
+        # 实际观察到的面板值（同样已含突破），因此以角色总基础值为锚点，
+        # 增减部分允许为负，保证最终基础面板精确等于用户输入。
+        if pi.get("crit_rate_pct") is not None:
+            cr_in = min(float(pi["crit_rate_pct"]) / 100.0, 1.0)  # 合法性校验: ≤100%
+            char.crit_rate = cr_in - char.base_crit_rate
+        if pi.get("crit_dmg_pct") is not None:
+            cd_in = float(pi["crit_dmg_pct"]) / 100.0
+            char.crit_dmg = cd_in - char.base_crit_dmg
+        if pi.get("em") is not None:
+            char.elemental_mastery = float(pi["em"])
+
+        # ---- 2) 主词条与副词条分配 ----
         self._apply_main_stats(char)
         for k, v in substats.items():
             if k == "em":
                 char.elemental_mastery += v
             else:
                 setattr(char, k, getattr(char, k) + v)
-        # 用户直接输入的面板值（视为不含副词条的基础配置）
-        pi = self.input.panel_inputs or {}
-        if pi.get("atk"):
-            char.flat_atk += max(0.0, float(pi["atk"]) - char.base_atk)
-        if pi.get("crit_rate_pct"):
-            char.crit_rate += float(pi["crit_rate_pct"]) / 100.0
-        if pi.get("crit_dmg_pct"):
-            char.crit_dmg += float(pi["crit_dmg_pct"]) / 100.0
-        if pi.get("em"):
-            char.elemental_mastery += float(pi["em"])
-        # 已启用的固有天赋修饰器
+
+        # ---- 3)+4) 常驻/触发/条件型效果：全部在基础面板之上叠加 ----
         char.apply_passive(self.input.passive_modifiers)
         self._apply_full_effects(char, self.input.passive_effects,
-                                 (self.input.panel_inputs or {}).get("er_pct"))
-
-        # ---- 用户面板约束 (cap) ----
-        # 用户输入 crit_rate / crit_dmg / em 作为最终面板上限：优化器不得把
-        # 这些属性优化到超过用户输入的值。
-        # 需注意 crit_rate/crit_dmg 有基础值（base_crit_rate/base_crit_dmg），
-        # 约束作用于“增减部分”：additive = cap - base。
-        caps = {
-            "crit_rate": ("crit_rate_pct", 100.0, "base_crit_rate"),
-            "crit_dmg": ("crit_dmg_pct", 100.0, "base_crit_dmg"),
-            "elemental_mastery": ("em", 1.0, None),
-        }
-        applied_caps = {}
-        for attr, (key, scale, base_attr) in caps.items():
-            if pi.get(key) is None:
-                continue
-            cap = float(pi[key]) / scale
-            base = float(getattr(char, base_attr, 0.0)) if base_attr else 0.0
-            limit = cap - base  # 增减部分上限
-            cur = getattr(char, attr)
-            if cur > limit:
-                setattr(char, attr, limit)
-                applied_caps[attr] = (cur, limit)
-        if applied_caps:
-            logger.debug("面板约束触发: %s", applied_caps)
+                                 pi.get("er_pct"))
         return char
 
     @staticmethod
@@ -363,7 +358,7 @@ class DamageOptimizer:
         best_score = -1.0
         best_alloc = None
 
-        # 用户已直接指定暴击率时，最终暴击率被面板约束 (cap) 固定，
+        # 用户已直接指定暴击率时，输入值作为基础面板起点，
         # 不应再因低于 min_crit_rate 而拒绝所有分配方案
         pi = self.input.panel_inputs or {}
         eff_min_cr = 0.0 if pi.get("crit_rate_pct") is not None \
