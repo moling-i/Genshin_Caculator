@@ -50,6 +50,19 @@ def load_options():
     valid_wps = [w for w in wps if w.get("name_cn") and not w["name_cn"].startswith("Weapon_")]
     wp_names = ["无"] + [w.get("name_cn") or w.get("name") for w in valid_wps]
     wp_ids = {w.get("name_cn") or w.get("name"): str(w.get("id")) for w in valid_wps}
+    # 按武器类型分组（中文标签 → [(name_cn, id), ...]），供角色武器过滤使用
+    wp_by_type = {}
+    for w in valid_wps:
+        cn = data_loader.get_weapon_type(str(w.get("id")))
+        if cn:
+            wp_by_type.setdefault(cn, []).append(
+                (w.get("name_cn") or w.get("name"), str(w.get("id")))
+            )
+    # 角色 id → 武器类型（中文标签）
+    char_wtypes = {
+        str(c.get("id")): data_loader.get_character_weapon_type(str(c.get("id")))
+        for c in valid_chars
+    }
 
     arts = data_loader.get_artifacts()
     # 过滤无名称的坏数据条目（如内部测试套装 set_id=15004 等）
@@ -57,10 +70,10 @@ def load_options():
     art_names = ["无"] + [a.get("name_cn") or a.get("name") for a in valid_arts]
     art_ids = {a.get("name_cn") or a.get("name"): str(a.get("set_id")) for a in valid_arts}
 
-    return char_names, char_ids, wp_names, wp_ids, art_names, art_ids
+    return char_names, char_ids, wp_names, wp_ids, art_names, art_ids, char_wtypes, wp_by_type
 
 
-char_names, char_ids, wp_names, wp_ids, art_names, art_ids = load_options()
+char_names, char_ids, wp_names, wp_ids, art_names, art_ids, char_wtypes, wp_by_type = load_options()
 
 
 @st.cache_data
@@ -345,11 +358,17 @@ def member_config_panel(idx):
             if cname is None:
                 cname = "无"
             cid = char_ids.get(cname) if cname != "无" else None
-            # 固有状态标签（只读，如 夜魂 / 月兆 / 魔导）
             if cid:
+                # 固有状态标签（只读，如 夜魂 / 月兆 / 魔导） + 武器类型标签
                 char_states = data_loader.get_character_states(cid)
+                wtype = char_wtypes.get(cid) or data_loader.get_character_weapon_type(cid)
+                _tags = []
                 if char_states:
-                    st.caption(f"🔖 {' · '.join(char_states)}")
+                    _tags.append(f"🔖 {' · '.join(char_states)}")
+                if wtype:
+                    _tags.append(f"⚔️ {wtype}")
+                if _tags:
+                    st.caption("  ".join(_tags))
         with col_pic:
             show_icon("avatar", cid)
 
@@ -370,12 +389,27 @@ def member_config_panel(idx):
         cfg["constellation_level"] = st.slider("命座等级", 0, 6, 0, key=f"m{idx}_cons")
 
         # ---- 武器（名称 + 图片）----
+        # 仅显示与当前角色武器类型匹配的武器
+        wtype = char_wtypes.get(cid) or data_loader.get_character_weapon_type(cid)
+        if wtype:
+            scoped = wp_by_type.get(wtype)
+            if scoped:
+                wp_names_sel = ["无"] + [n for n, _ in scoped]
+                wp_ids_sel = {n: i for n, i in scoped}
+            else:
+                wp_names_sel = wp_names
+                wp_ids_sel = wp_ids
+                st.caption(f"⚠️ 该武器类型「{wtype}」暂无匹配武器，显示全部武器。")
+        else:
+            wp_names_sel = wp_names
+            wp_ids_sel = wp_ids
+            st.caption("⚠️ 未知武器类型，显示全部武器。")
         col_wpic, col_wsel = st.columns([1, 4])
         with col_wsel:
-            wname = searchable_select("武器", wp_names, f"m{idx}_wp")
+            wname = searchable_select("武器", wp_names_sel, f"m{idx}_wp")
             if wname is None:
                 wname = "无"
-        wid = wp_ids.get(wname) if wname != "无" else None
+        wid = wp_ids_sel.get(wname) if wname != "无" else None
         with col_wpic:
             show_icon("weapon", wid)
         cfg["weapon_id"] = wid

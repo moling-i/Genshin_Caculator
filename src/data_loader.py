@@ -106,6 +106,88 @@ def find_weapon_by_name(name: str) -> dict:
             return w
     return None
 
+# ==================== 武器类型匹配与过滤 ====================
+
+# 游戏内武器类型枚举 → 中文标签
+_WEAPON_TYPE_CN = {
+    "WEAPON_SWORD_ONE_HAND": "单手剑",
+    "WEAPON_CLAYMORE": "双手剑",
+    "WEAPON_POLE": "长柄武器",
+    "WEAPON_CATALYST": "法器",
+    "WEAPON_BOW": "弓",
+}
+
+# 回退映射：当 Meropide 与 characters.json 均缺失 weapon_type 时使用（按中文名）
+CHARACTER_WEAPON_MAPPING = {
+    # 单手剑
+    "琴": "单手剑", "刻晴": "单手剑", "神里绫华": "单手剑", "班尼特": "单手剑",
+    "行秋": "单手剑", "凯亚": "单手剑", "七七": "单手剑", "枫原万叶": "单手剑",
+    "白术": "单手剑", "琳妮特": "单手剑", "千织": "单手剑", "克洛琳德": "单手剑",
+    "希诺宁": "单手剑", "空": "单手剑", "荧": "单手剑",
+    # 双手剑
+    "迪卢克": "双手剑", "优菈": "双手剑", "玛薇卡": "双手剑", "雷泽": "双手剑",
+    "北斗": "双手剑", "基尼奇": "双手剑", "迪希雅": "双手剑", "嘉明": "双手剑",
+    "重云": "双手剑", "辛焱": "双手剑", "云堇": "双手剑", "惠寄": "双手剑",
+    # 长柄武器
+    "胡桃": "长柄武器", "雷电将军": "长柄武器", "香菱": "长柄武器", "魈": "长柄武器",
+    "阿蕾奇诺": "长柄武器", "艾梅莉埃": "长柄武器", "卡齐娜": "长柄武器",
+    "伊安珊": "长柄武器", "钟离": "长柄武器", "申鹤": "长柄武器", "赛诺": "长柄武器",
+    "罗莎莉亚": "长柄武器", "坎蒂丝": "长柄武器", "托马": "长柄武器",
+    # 法器
+    "纳西妲": "法器", "八重神子": "法器", "丽莎": "法器", "芭芭拉": "法器",
+    "凝光": "法器", "可莉": "法器", "玛拉妮": "法器", "茜特菈莉": "法器",
+    "蓝砚": "法器", "梦见月瑞希": "法器", "瓦雷莎": "法器", "莫娜": "法器",
+    "珊瑚宫心海": "法器", "烟绯": "法器", "砂糖": "法器", "菲谢尔": "法器",
+    # 弓
+    "甘雨": "弓", "夜兰": "弓", "安柏": "弓", "温迪": "弓", "希格雯": "弓",
+    "恰斯卡": "弓", "欧洛伦": "弓", "赛索斯": "弓", "达达利亚": "弓",
+    "宵宫": "弓", "提纳里": "弓", "迪奥娜": "弓", "菲米尼": "弓", "珐露珊": "弓",
+}
+
+
+def get_character_weapon_type(character_id: str) -> str:
+    """
+    返回角色的武器类型（如「双手剑」）。
+    优先级：Meropide 角色数据 > characters.json 枚举映射 > 硬编码映射。
+    找不到时返回空字符串（调用方应回退为「显示全部武器」）。
+    """
+    c = find_character_by_name(character_id)
+    name_cn = (c or {}).get("name_cn") or (c or {}).get("name") if c else None
+    if name_cn:
+        mp = _find_meropide_character(name_cn)
+        if mp and mp.get("weapon_type"):
+            return mp["weapon_type"]
+    if c and c.get("weapon_type"):
+        return _WEAPON_TYPE_CN.get(c["weapon_type"], c["weapon_type"])
+    if name_cn:
+        return CHARACTER_WEAPON_MAPPING.get(name_cn, "")
+    return ""
+
+
+def get_weapon_type(weapon_id: str) -> str:
+    """返回武器的武器类型（中文标签）。找不到时返回空字符串。"""
+    w = find_weapon_by_name(weapon_id)
+    if not w:
+        return ""
+    return _WEAPON_TYPE_CN.get(w.get("weapon_type"), w.get("weapon_type") or "")
+
+
+def get_weapons_by_type(weapon_type: str) -> list:
+    """
+    返回指定类型（中文标签）的所有武器（含中文名与 id）。
+    返回: [{"id": str, "name_cn": str, "weapon_type": str}, ...]
+    """
+    result = []
+    for w in get_weapons():
+        cn = _WEAPON_TYPE_CN.get(w.get("weapon_type"))
+        if cn == weapon_type:
+            result.append({
+                "id": str(w.get("id")),
+                "name_cn": w.get("name_cn") or w.get("name") or "",
+                "weapon_type": cn,
+            })
+    return result
+
 def find_artifact_set(set_id) -> dict:
     arts = get_artifacts()
     for a in arts:
