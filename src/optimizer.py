@@ -7,11 +7,18 @@
 2. 每个有效词条(roll)提供固定数值（五星圣遗物副词条平均值）
 3. 主词条提供额外固定数值（根据 main_stats 选择）
 4. 使用随机搜索 + 局部细化寻找最优分配
+
+用户面板约束（v2）：
+  面板输入的 crit_rate_pct / crit_dmg_pct / em 作为**最终上限 (cap)**，
+  构建完成的属性值不允许超过该上限，确保优化器忠实于用户输入。
 """
+import logging
 import random
 from .character import Character
 from .effects import EffectManager
 from .calculator import calculate_damage
+
+logger = logging.getLogger(__name__)
 
 # 每个有效副词条(roll)提供的数值（五星圣遗物副词条平均值）
 ROLL_VALUES = {
@@ -170,6 +177,30 @@ class DamageOptimizer:
         char.apply_passive(self.input.passive_modifiers)
         self._apply_full_effects(char, self.input.passive_effects,
                                  (self.input.panel_inputs or {}).get("er_pct"))
+
+        # ---- 用户面板约束 (cap) ----
+        # 用户输入 crit_rate / crit_dmg / em 作为最终面板上限：优化器不得把
+        # 这些属性优化到超过用户输入的值。
+        # 需注意 crit_rate/crit_dmg 有基础值（base_crit_rate/base_crit_dmg），
+        # 约束作用于“增减部分”：additive = cap - base。
+        caps = {
+            "crit_rate": ("crit_rate_pct", 100.0, "base_crit_rate"),
+            "crit_dmg": ("crit_dmg_pct", 100.0, "base_crit_dmg"),
+            "elemental_mastery": ("em", 1.0, None),
+        }
+        applied_caps = {}
+        for attr, (key, scale, base_attr) in caps.items():
+            if pi.get(key) is None:
+                continue
+            cap = float(pi[key]) / scale
+            base = float(getattr(char, base_attr, 0.0)) if base_attr else 0.0
+            limit = cap - base  # 增减部分上限
+            cur = getattr(char, attr)
+            if cur > limit:
+                setattr(char, attr, limit)
+                applied_caps[attr] = (cur, limit)
+        if applied_caps:
+            logger.debug("面板约束触发: %s", applied_caps)
         return char
 
     @staticmethod
@@ -301,8 +332,17 @@ class DamageOptimizer:
 
         if self.input.reaction_type in TRANSFORMATIVE:
             expected = non_crit
+            # 剧变反应不暴击，暴击区保持 1.0
         else:
             expected = non_crit * (1 + crit_rate * crit_dmg)
+            # 暴击区系数应反映期望伤害的实际乘数 (1 + CR×CD)，
+            # 而非 calculate_damage 内部 is_crit=False 的占位值 1.0
+            result["breakdown"]["crit_factor"] = 1.0 + crit_rate * crit_dmg
+            result["breakdown"]["is_crit"] = False
+            logger.debug(
+                "暴击区系数: %.4f (CR=%.4f, CD=%.4f)",
+                result["breakdown"]["crit_factor"], crit_rate, crit_dmg,
+            )
 
         return expected, result, crit_rate, crit_dmg
 
@@ -323,6 +363,17 @@ class DamageOptimizer:
         best_score = -1.0
         best_alloc = None
 
+        # 用户已直接指定暴击率时，最终暴击率被面板约束 (cap) 固定，
+        # 不应再因低于 min_crit_rate 而拒绝所有分配方案
+        pi = self.input.panel_inputs or {}
+        eff_min_cr = 0.0 if pi.get("crit_rate_pct") is not None \
+            else self.input.min_crit_rate
+        if eff_min_cr != self.input.min_crit_rate:
+            logger.debug(
+                "用户指定 crit_rate=%.1f%%，min_crit_rate 约束已放宽",
+                float(pi["crit_rate_pct"]),
+            )
+
         random.seed(42)
         refine_iterations = 3000
         total_steps = iterations + refine_iterations
@@ -336,7 +387,7 @@ class DamageOptimizer:
 
             # 构建一次角色，约束检查与评估复用同一实例
             char_tmp = self._build_character(substats)
-            if char_tmp.get_effective_panel()["crit_rate"] < self.input.min_crit_rate:
+            if char_tmp.get_effective_panel()["crit_rate"] < eff_min_cr:
                 continue
 
             score, result, cr, cd = self._evaluate(substats, char_tmp)
@@ -363,7 +414,7 @@ class DamageOptimizer:
                         alloc[dst] += 1
                 substats = self._allocation_to_substats(alloc)
                 char_tmp = self._build_character(substats)
-                if char_tmp.get_effective_panel()["crit_rate"] < self.input.min_crit_rate:
+                if char_tmp.get_effective_panel()["crit_rate"] < eff_min_cr:
                     continue
                 score, result, cr, cd = self._evaluate(substats, char_tmp)
                 if score > best_score:

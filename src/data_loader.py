@@ -188,6 +188,61 @@ def get_weapons_by_type(weapon_type: str) -> list:
             })
     return result
 
+
+def _find_meropide_weapon(name_cn: str) -> dict:
+    """按中文名在 meropide 武器数据中查找（权威被动文案）。"""
+    try:
+        items = _load(os.path.join("meropide", "weapons_meropide.json"))
+    except (FileNotFoundError, json.JSONDecodeError):
+        return None
+    if isinstance(items, dict):
+        items = items.get("items", [])
+    target = (name_cn or "").replace("『", "").replace("〗", "").strip()
+    for m in items:
+        nm = (m.get("name") or "").replace("『", "").replace("〗", "").strip()
+        if nm == target:
+            return m
+    return None
+
+
+def get_weapon_effect(weapon_id, refinement: int = 1) -> str:
+    """
+    返回武器当前精炼等级的被动效果文案。
+    优先级：
+      1. Meropide 权威全精炼文案（passive_effect_text，含全部精炼数值）
+      2. 本地 refinements[精炼-1].param_list 数值
+      3. weapons.json 的 desc
+    找不到或无特效时返回空字符串。
+    """
+    w = find_weapon_by_name(weapon_id)
+    if not w:
+        return ""
+    name_cn = w.get("name_cn") or w.get("name") or ""
+
+    # 1) Meropide 权威文案
+    mp = _find_meropide_weapon(name_cn) if name_cn else None
+    meropide_text = (mp or {}).get("passive_effect_text", "") or ""
+
+    # 2) 当前精炼等级对应的本地 param_list 数值
+    refinement_note = ""
+    refs = w.get("refinements") or []
+    if refs:
+        idx = max(0, min(int(refinement) - 1, len(refs) - 1))
+        params = (refs[idx] or {}).get("param_list") or []
+        nums = []
+        for p in params:
+            if not isinstance(p, (int, float)) or p == 0:
+                continue
+            nums.append(f"{p*100:.1f}%" if 0 < p < 1 else f"{p}")
+        if nums:
+            refinement_note = f"（精炼{idx+1}参数：{', '.join(nums)}）"
+
+    if meropide_text.strip():
+        return (meropide_text + ("\n" + refinement_note if refinement_note else "")).strip()
+    if refinement_note:
+        return refinement_note
+    return ((w.get("desc") or "").strip())
+
 def find_artifact_set(set_id) -> dict:
     arts = get_artifacts()
     for a in arts:

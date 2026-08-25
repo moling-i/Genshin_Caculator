@@ -415,6 +415,13 @@ def member_config_panel(idx):
         cfg["weapon_id"] = wid
         if wid:
             cfg["refinement"] = st.slider("精炼等级", 1, 5, 1, key=f"m{idx}_ref")
+            # ---- 武器被动效果展示 ----
+            _wp_effect = data_loader.get_weapon_effect(wid, cfg["refinement"])
+            if _wp_effect:
+                st.caption(f"⚔️ **{wname}** 被动效果")
+                st.write(_wp_effect)
+            else:
+                st.caption(f"⚔️ {wname} 无特殊被动效果")
 
         # ---- 圣遗物（2件套/4件套独立选择 + 效果展示）----
         col_apic, col_asel = st.columns([1, 4])
