@@ -242,11 +242,13 @@ class DamageOptimizer:
         em.trigger_event("always")
         return em
 
-    def _evaluate(self, substats: dict):
+    def _evaluate(self, substats: dict, char: Character = None):
         """
         评估一组副词条分配，返回 (期望伤害, 计算结果, 暴击率, 暴击伤害)
+        :param char: 可选，已构建好的角色实例（避免重复构建）
         """
-        char = self._build_character(substats)
+        if char is None:
+            char = self._build_character(substats)
         em = self._build_effect_manager(char)
 
         # 队伍构建：优先使用成员独立配置（UI 队伍面板），否则回退 team_members
@@ -308,10 +310,12 @@ class DamageOptimizer:
         """将词条分配列表转换为属性字典"""
         return {k: alloc[i] * ROLL_VALUES[k] for i, k in enumerate(SUBSTAT_KEYS)}
 
-    def optimize(self, iterations: int = 15000) -> OptimizationResult:
+    def optimize(self, iterations: int = 15000,
+                 progress_callback=None) -> OptimizationResult:
         """
         执行优化搜索
         :param iterations: 随机搜索迭代次数
+        :param progress_callback: 可选 fn(done, total)，用于 UI 进度显示
         :return: OptimizationResult
         """
         N = self.input.total_substat_rolls
@@ -320,6 +324,8 @@ class DamageOptimizer:
         best_alloc = None
 
         random.seed(42)
+        refine_iterations = 3000
+        total_steps = iterations + refine_iterations
 
         for i in range(iterations):
             # 随机分配 N 个词条到 4 个属性
@@ -328,12 +334,12 @@ class DamageOptimizer:
                 alloc[random.randrange(4)] += 1
             substats = self._allocation_to_substats(alloc)
 
-            # 最小暴击率约束检查
+            # 构建一次角色，约束检查与评估复用同一实例
             char_tmp = self._build_character(substats)
             if char_tmp.get_effective_panel()["crit_rate"] < self.input.min_crit_rate:
                 continue
 
-            score, result, cr, cd = self._evaluate(substats)
+            score, result, cr, cd = self._evaluate(substats, char_tmp)
             if score > best_score:
                 best_score = score
                 best = (substats, result, cr, cd)
@@ -341,10 +347,12 @@ class DamageOptimizer:
 
             if i % 1000 == 0:
                 self.history.append({"iteration": i, "damage": score})
+            if progress_callback and i % 500 == 0:
+                progress_callback(i, total_steps)
 
         # 局部细化：在最优分配附近 ±2 词条搜索
         if best_alloc is not None:
-            for _ in range(3000):
+            for j in range(refine_iterations):
                 alloc = best_alloc[:]
                 # 随机移动 1~2 个词条
                 for _ in range(random.randint(1, 2)):
@@ -357,11 +365,16 @@ class DamageOptimizer:
                 char_tmp = self._build_character(substats)
                 if char_tmp.get_effective_panel()["crit_rate"] < self.input.min_crit_rate:
                     continue
-                score, result, cr, cd = self._evaluate(substats)
+                score, result, cr, cd = self._evaluate(substats, char_tmp)
                 if score > best_score:
                     best_score = score
                     best = (substats, result, cr, cd)
                     best_alloc = alloc[:]
+                if progress_callback and j % 500 == 0:
+                    progress_callback(iterations + j, total_steps)
+
+        if progress_callback:
+            progress_callback(total_steps, total_steps)
 
         if best is None:
             raise ValueError("未找到满足约束的属性分配，请降低最小暴击率要求或减少总词条数")

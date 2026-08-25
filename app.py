@@ -499,6 +499,14 @@ if optimize_btn:
         talent_key = SKILL_TYPE_KEYS[SKILL_OPTIONS[skill_type]]
         with st.spinner("正在搜索最优属性分配..."):
             try:
+                progress_bar = st.progress(0.0, text="优化搜索进行中...")
+
+                def _update_progress(done, total):
+                    progress_bar.progress(
+                        min(1.0, done / max(total, 1)),
+                        text=f"优化搜索进行中... {done}/{total} 次迭代",
+                    )
+
                 input_params = OptimizationInput(
                     character_id=main_cfg["character_id"],
                     constellation_level=main_cfg["constellation_level"],
@@ -527,7 +535,8 @@ if optimize_btn:
                 )
 
                 optimizer = DamageOptimizer(input_params)
-                result = optimizer.optimize()
+                result = optimizer.optimize(progress_callback=_update_progress)
+                progress_bar.empty()
 
                 col1, col2 = st.columns([1, 1])
 

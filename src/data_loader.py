@@ -3,6 +3,7 @@
 """
 import json
 import os
+from functools import lru_cache
 
 _DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data")
 
@@ -583,9 +584,12 @@ _CONDITION_WORDS = [
 ]
 
 
+@lru_cache(maxsize=4096)
 def parse_effect(description: str) -> dict:
     """
     将固有天赋描述文本解析为结构化修饰器。
+
+    结果按描述文本缓存（同一描述只解析一次）；调用方应视返回值为只读。
 
     返回: {
         "modifiers": {attr: value, ...},     # 直接数值加成（叠加到面板属性）
