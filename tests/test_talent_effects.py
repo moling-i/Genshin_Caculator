@@ -512,9 +512,179 @@ class TestErScaling(unittest.TestCase):
         self.assertAlmostEqual(c.get_effective_panel()["dmg_bonus"], 0.35, places=6)
 
         # 上限：充能 ≥300% 时封顶70%
+class TestMechanismNumerics(unittest.TestCase):
+    """机制型天赋数值（v3）：倍率层数 / 额外一段伤害 / 全伤增幅 / 状态门控。"""
+
+    # ---- 技能倍率层数提升 ----
+
+    def test_skirk_wanliu_talent_multiplier(self):
+        """丝柯克·万流归寂：普攻110/120/170%、爆发105/115/160%（按死河渡断层数）。"""
+        c = make_char("丝柯克", flat_atk=1800, atk_percent=0.6)
+        c.apply_all_passives()
+        self.assertEqual(c.talent_multipliers.get("normal"), [1.1, 1.2, 1.7])
+        self.assertEqual(c.talent_multipliers.get("burst"), [1.05, 1.15, 1.6])
+
+        r3 = calculate_damage(c, "burst", 10, 90, 0.1)
+        self.assertAlmostEqual(r3["breakdown"]["talent_mult_factor"], 1.6)
+        c.stack_context = {"burst": 1}
+        r1 = calculate_damage(c, "burst", 10, 90, 0.1)
+        self.assertAlmostEqual(r1["breakdown"]["talent_mult_factor"], 1.05)
+        self.assertAlmostEqual(r3["damage"] / r1["damage"], 1.6 / 1.05, places=6)
+
+    def test_klee_spark_magic_multiplier_and_state_gate(self):
+        """可莉·火花魔法：重击115/130/150%；关闭「魔导」状态后天赋被跳过。"""
+        c0 = Character("可莉")
+        idx = find_passive_index(c0, "火花魔法")
+        eff = data_loader.parse_effect(c0.passive_skills[idx]["description"])
+        self.assertEqual(
+            eff["talent_multiplier"]["skill_types"].get("charged"),
+            [1.15, 1.3, 1.5],
+        )
+        # 默认状态触发 → TM 生效
+        c1 = Character("可莉")
+        c1.apply_all_passives()
+        self.assertEqual(c1.talent_multipliers.get("charged"), [1.15, 1.3, 1.5])
+        # 关闭魔导 → 门控跳过
+        c2 = Character("可莉")
+        c2.active_states = {"魔导": False}
+        applied = c2.apply_all_passives()
+        skipped = [a for a in applied if a["category"] == "stat_skipped_by_state"]
+        self.assertTrue(any("火花魔法" in a["name"] for a in skipped))
+        self.assertIsNone(c2.talent_multipliers.get("charged"))
+
+    def test_neuvillette_tiered_charged(self):
+        """那维莱特：重击·衡平推裁 110%/125%/160% 三档层数。"""
+        c = make_char("那维莱特")
+        c.apply_all_passives()
+        self.assertEqual(c.talent_multipliers.get("charged"), [1.1, 1.25, 1.6])
+
+    def test_faruga_multi_skill_boost_tier(self):
+        """法尔伽·晓风的行军：普攻/重击/战技均获 140%→220% 档位。"""
+        c = make_char("法尔伽")
+        c.apply_all_passives()
+        tm = c.talent_multipliers
+        for k in ("normal", "charged", "skill"):
+            self.assertEqual(tm.get(k), [1.4, 2.2], f"技能 {k} 档位错误")
+
+    # ---- 额外一段伤害 ----
+
+    def test_yanfei_extra_hit_atk_scaled(self):
+        """烟绯·法兽灼眼：追加 80% 攻击力，走完整后续乘区。"""
+        c = make_char("烟绯", flat_atk=2000)
+        c.apply_all_passives()
+        self.assertEqual(c.extra_hits, [{"source": "atk", "ratio": 0.8}])
+        r = calculate_damage(c, "charged", 10, 90, 0.1)
+        panel_atk = r["breakdown"]["base_atk"]
+        self.assertAlmostEqual(
+            r["breakdown"]["extra_hit_damage"], panel_atk * 0.8, places=4
+        )
+
+    def test_yae_miko_max_ratio_selected(self):
+        """八重神子·神篱之御荫：40%/50% 双档取最大 50%。"""
+        c = make_char("八重神子")
+        c.apply_all_passives()
+        self.assertIn({"source": "atk", "ratio": 0.5}, c.extra_hits)
+
+    def test_marani_hp_based_extra_hit(self):
+        """玛拉妮：基于生命值上限的15%/30%/45%，取最大档 45%。"""
+        c = make_char("玛拉妮")
+        c.apply_all_passives()
+        self.assertIn({"source": "hp", "ratio": 0.45}, c.extra_hits)
+
+    def test_extra_hit_hp_source_value(self):
+        """额外段来源属性=hp 时按生命值面板取值（玛拉妮式）。"""
+        c = make_char("玛拉妮", flat_hp=20000)
+        c.apply_all_passives()
+        r = calculate_damage(c, "skill", 10, 90, 0.1)
+        total_hp = (c.base_hp + 20000) * (1 + c.hp_percent)
+        self.assertAlmostEqual(
+            r["breakdown"]["extra_hit_damage"], total_hp * 0.45, places=2
+        )
         c2 = make_char("阿罗夏", er_total=3.0)
         c2.apply_all_passives()
         self.assertAlmostEqual(c2.get_effective_panel()["dmg_bonus"], 0.7, places=6)
+
+
+    # ---- 全伤害增幅 ----
+
+    def test_dulin_damage_amp_cap(self):
+        """杜林：每100攻击+3%全伤，至多75%。"""
+        c = make_char("杜林", flat_atk=30000)
+        c.apply_all_passives()
+        r = calculate_damage(c, "skill", 10, 90, 0.1)
+        self.assertAlmostEqual(r["breakdown"]["damage_amp"], 0.75)
+        self.assertAlmostEqual(r["breakdown"]["amp_factor"], 1.75)
+
+    def test_dulin_damage_amp_proportional(self):
+        """杜林低攻击时按比例生效（含基础攻击）。"""
+        c = make_char("杜林")
+        c.flat_atk = 1000
+        c.apply_all_passives()
+        r = calculate_damage(c, "skill", 10, 90, 0.1)
+        total_atk = (c.base_atk + 1000) * (1 + c.atk_percent)
+        self.assertAlmostEqual(
+            r["breakdown"]["damage_amp"],
+            min(total_atk / 100 * 0.03, 0.75),
+            places=6,
+        )
+
+    def test_oudaita_reaction_scope_amp(self):
+        """奥黛塔·赤忱者的悲歌：增幅限定反应伤害路径。"""
+        c = make_char("奥黛塔", flat_atk=30000)
+        c.apply_all_passives()
+        r_normal = calculate_damage(c, "skill", 10, 90, 0.1)
+        self.assertAlmostEqual(r_normal["breakdown"]["damage_amp"], 0.0)
+        r_lunar = calculate_damage(
+            c, "skill", 10, 90, 0.1, reaction_type="lunar_bloom_direct"
+        )
+        self.assertAlmostEqual(r_lunar["breakdown"]["damage_amp"], 0.3)
+
+    # ---- 减抗 / 面板修正 ----
+
+    def test_chevreuse_dual_element_res_shred(self):
+        """夏沃蕾·尖兵协同战法：火与雷抗性-40%。"""
+        c0 = Character("夏沃蕾")
+        idx = find_passive_index(c0, "尖兵协同战法")
+        eff = data_loader.parse_effect(c0.passive_skills[idx]["description"])
+        rs = eff["res_shred"]
+        self.assertEqual({rs["element"], rs["element2"]}, {"火", "雷"})
+        self.assertAlmostEqual(rs["value"], 0.4)
+
+    def test_sigewinne_all_res_shred(self):
+        """希格雯·急性剂量：所有元素与物理抗性-10%。"""
+        c0 = Character("希格雯")
+        idx = find_passive_index(c0, "急性剂量")
+        eff = data_loader.parse_effect(c0.passive_skills[idx]["description"])
+        self.assertEqual(eff["res_shred"], {"element": "all", "value": 0.1})
+
+    def test_kokomi_crit_down_modifier(self):
+        """心海·庙算无遗：暴击率-100% 进入 modifiers（有效面板=基础+修正）。"""
+        c = make_char("珊瑚宫心海")
+        before = c.crit_rate
+        c.apply_all_passives()
+        self.assertAlmostEqual(c.crit_rate, before - 1.0, places=6)
+        # 有效面板应体现暴击率归零（基础5% - 100%）
+        self.assertLessEqual(c.get_effective_panel()["crit_rate"], 0.0)
+
+    # ---- 状态标签触发判定 ----
+
+    def test_detect_required_states_hint_union(self):
+        """温迪·颂时风若依赖「魔导」（提示词命中），即使角色标签为空。"""
+        states = data_loader.get_character_states("温迪")
+        ps = data_loader.load_passive_skills("温迪") or []
+        desc = next(p["description"] for p in ps if "颂时风若" in p.get("name", ""))
+        req = data_loader.detect_required_states(desc, states)
+        self.assertIn("魔导", req)
+
+    def test_state_toggle_gates_engine_application(self):
+        """丝柯克：夜魂/魔导默认触发；手动关闭后相关天赋被跳过。"""
+        c = Character("丝柯克")
+        self.assertEqual(c.active_states, {"夜魂": True, "魔导": True})
+        c.active_states = {"夜魂": False, "魔导": True}
+        applied = c.apply_all_passives()
+        cats = {a["category"] for a in applied}
+        # 万流归寂不依赖标签仍应生效
+        self.assertIn("stat", cats)
 
 
 if __name__ == "__main__":

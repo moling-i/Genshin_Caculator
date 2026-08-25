@@ -160,7 +160,29 @@ def render_passive_toggles(char_id, member_idx):
       - 血量阈值类 → 提供「当前生命值%」滑块，按实际数值判定是否生效；
       - 其他条件   → 「视为满足触发条件」开关。
     """
-    effects = {"modifiers": {}, "conversions": [], "er_scalings": []}
+    effects = {
+        "modifiers": {}, "conversions": [], "er_scalings": [],
+        "talent_multipliers": {}, "extra_hits": [], "damage_amps": [],
+        "stack_context": {}, "active_states": {},
+    }
+    # ---- 状态标签触发判定（夜魂/魔导/星超导/星扩散/月兆）----
+    # 开关列表 = 角色固有标签 ∪ 各天赋描述中检测到的依赖状态
+    char_states = list(data_loader.get_character_states(char_id))
+    _all_passives = load_passive_skills_cached(char_id) or []
+    for _p in _all_passives:
+        for _s in data_loader.detect_required_states(
+            _p.get("description") or "", char_states
+        ):
+            if _s not in char_states:
+                char_states.append(_s)
+    if char_states:
+        with st.expander("🔖 状态标签触发判定", expanded=False):
+            st.caption("关闭某状态后，依赖该状态的固有天赋将不参与计算")
+            for s in char_states:
+                effects["active_states"][s] = st.checkbox(
+                    f"状态「{s}」已触发", value=True,
+                    key=f"state_{member_idx}_{char_id}_{s}",
+                )
     passives = load_passive_skills_cached(char_id)
     if not passives:
         st.caption("（Meropide 数据中暂无该角色的固有天赋）")
@@ -221,6 +243,39 @@ def render_passive_toggles(char_id, member_idx):
             st.caption(
                 f"　↳ 充能转化已计入：超出100%的充能每1% → "
                 f"+{s['per_unit'] * 100:g}% 元素伤害加成"
+            )
+        # ---- 机制型天赋数值（v3）----
+        tm = parsed.get("talent_multiplier")
+        if tm:
+            for k, tiers in tm.get("skill_types", {}).items():
+                prev = effects["talent_multipliers"].get(k) or []
+                effects["talent_multipliers"][k] = (
+                    [max(a, b) for a, b in zip(prev + [0.0] * len(tiers), tiers)]
+                    if prev else list(tiers)
+                )
+                n = len(tiers)
+                stacks = st.slider(
+                    f"　层数（{k}，{ '/'.join(f'{t*100:g}%' for t in tiers) }）",
+                    1, n, n, key=f"stk_{member_idx}_{char_id}_{i}_{k}",
+                )
+                effects["stack_context"][k] = stacks
+            st.caption("　↳ 技能倍率层数提升已计入（按当前层数档位）")
+        eh = parsed.get("extra_hit")
+        if eh:
+            if eh not in effects["extra_hits"]:
+                effects["extra_hits"].append(dict(eh))
+            st.caption(
+                f"　↳ 额外一段伤害已计入：{_CONV_CN.get(eh['source'], eh['source'])}"
+                f" × {eh['ratio'] * 100:g}%"
+            )
+        da = parsed.get("damage_amp")
+        if da:
+            if da not in effects["damage_amps"]:
+                effects["damage_amps"].append(dict(da))
+            st.caption(
+                f"　↳ 全伤害增幅已计入：每 {da['per_points']:g} 点"
+                f"{_CONV_CN.get(da['source'], da['source'])} → +{da['per_bonus'] * 100:g}%"
+                f"（至多 +{da['cap'] * 100:g}%）"
             )
     return effects
 

@@ -188,6 +188,22 @@ class DamageOptimizer:
             base = float(er_pct) if er_pct else 0.0
             extra = float(eff_er) if eff_er else 0.0
             char.er_total = 1.0 + base + extra
+        # ---- 机制型天赋数值（v3）----
+        for k, tiers in (effects.get("talent_multipliers") or {}).items():
+            prev = char.talent_multipliers.get(k) or []
+            char.talent_multipliers[k] = (
+                [max(a, b) for a, b in zip(prev + [0.0] * len(tiers), tiers)]
+                if prev else list(tiers)
+            )
+        for eh in effects.get("extra_hits") or []:
+            if eh not in char.extra_hits:
+                char.extra_hits.append(dict(eh))
+        for da in effects.get("damage_amps") or []:
+            if da not in char.damage_amps:
+                char.damage_amps.append(dict(da))
+        char.stack_context.update(effects.get("stack_context") or {})
+        # 状态标签触发上下文（UI 开关 → 引擎门控）
+        char.active_states.update(effects.get("active_states") or {})
 
     def _build_member_character(self, cfg: dict) -> Character:
         """按队伍成员独立配置构建队友角色（武器/圣遗物/面板/固有天赋）"""

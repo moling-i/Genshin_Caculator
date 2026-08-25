@@ -282,6 +282,36 @@ def get_character_states(character_id) -> list:
     return list(states)
 
 
+# 状态触发短语提示：天赋描述中出现这些关键词即视为依赖对应状态标签
+# （即使角色 states 列表未显式包含，如可莉「魔导·秘仪」）
+_STATE_TRIGGER_HINTS = {
+    "夜魂": ["夜魂加持", "夜魂迸发"],
+    "魔导": ["魔导·秘仪", "魔导角色"],
+    "星超导": ["星超导"],
+    "星扩散": ["星扩散"],
+    "月兆": ["月曜反应", "月之领域"],
+}
+
+
+def detect_required_states(text: str, states: list) -> list:
+    """
+    检测天赋描述依赖哪些状态标签。
+    命中规则：
+      1. 触发短语提示（魔导·秘仪/夜魂加持/星超导/月曜反应等）→ 依赖对应状态
+        （即使角色 states 列表未显式包含，如可莉「魔导·秘仪」、温迪「颂时风若」）；
+      2. 角色 states 列表中的状态名直接出现在描述中。
+    返回依赖的状态名列表（用于 UI 触发开关与引擎门控）。
+    """
+    req = []
+    for s, hints in _STATE_TRIGGER_HINTS.items():
+        if s in text or any(h in text for h in hints):
+            req.append(s)
+    for s in states or []:
+        if s in text and s not in req:
+            req.append(s)
+    return req
+
+
 
 # ---- 固有天赋描述 -> 结构化修饰器解析 ----
 
@@ -462,6 +492,86 @@ _LUNAR_SRC_MAP = {"攻击力": "atk", "元素精通": "em", "生命值上限": "
 
 # 满层覆盖（魈式递增："至多获得25%伤害加成"→ 按满层数值计）
 _DMG_CAP_RE = _re.compile(r"至多获得\s*(\d+(?:\.\d+)?)\s*%伤害加成")
+
+# ---- 机制型天赋数值解析（丝柯克万流归寂/可莉火花魔法等）----
+# 技能倍率层数提升："普通攻击造成原本110%/120%/170%的伤害"（带技能关键词）
+_TALENT_MULT_RE = _re.compile(
+    r"(下落攻击|普通攻击|元素爆发|元素战技|重击)[^。]{0,60}?造成原本\s*"
+    r"((?:\d+(?:\.\d+)?%[/／])+)?\s*(\d+(?:\.\d+)?)%\s*的伤害"
+)
+# 技能倍率层数提升-无关键词变体（雅珂达式："造成原本130%的伤害"，视为元素爆发段）
+_TALENT_MULT_NOKEY_RE = _re.compile(
+    r"造成原本\s*((?:\d+(?:\.\d+)?%[/／])+)?\s*(\d+(?:\.\d+)?)%\s*的伤害"
+)
+_TM_SKILL_MAP = {"普通攻击": "normal", "重击": "charged",
+                 "下落攻击": "charged", "元素爆发": "burst", "元素战技": "skill"}
+
+# 额外一段伤害（烟绯/八重神子/伊涅芙/欧洛伦式）：来源属性×X% 的独立追加命中
+_EXTRA_HIT_VARIANTS = [
+    # "造成相当于伊涅芙攻击力65%的 雷元素范围伤害"（「的」可省略）
+    _re.compile(
+        r"造成相当于[^。，；]{0,14}(攻击力|生命值上限|防御力|元素精通)的?\s*"
+        r"(\d+(?:\.\d+)?)\s*%"
+    ),
+    # "会额外造成一次80%攻击力的 火元素范围伤害"/"额外造成180%攻击力的伤害"
+    _re.compile(
+        r"额外造成(?:一次)?\s*(\d+(?:\.\d+)?)\s*%(?:的)?"
+        r"(攻击力|生命值上限|防御力|元素精通)"
+    ),
+    # "分别造成35%攻击力的 风元素伤害"（流浪者）
+    _re.compile(
+        r"分别造成\s*(\d+(?:\.\d+)?)\s*%(?:的)?"
+        r"(攻击力|生命值上限|防御力|元素精通)"
+    ),
+    # "将附加200%攻击力的对应元素伤害"（枫原万叶）
+    _re.compile(
+        r"附加(?:原本)?\s*(\d+(?:\.\d+)?)\s*%(?:的)?"
+        r"(攻击力|生命值上限|防御力|元素精通)"
+    ),
+    # "基于攻击力的80%提高造成的伤害"（林尼）/
+    # "基于生命值上限的15%/30%/45%提高…伤害"（玛拉妮，多档取最大）
+    _re.compile(
+        r"基于[^。，；]{0,10}(攻击力|生命值上限|防御力)的\s*"
+        r"((?:\d+(?:\.\d+)?%[/／])*\d+(?:\.\d+)?)\s*%提高"
+    ),
+    # 数值在属性前（八重神子式）："造成相当于八重神子40%攻击力的 雷元素伤害"
+    _re.compile(
+        r"(?:造成|伤害)相当于[^。，；\d]{0,10}(\d+(?:\.\d+)?)\s*%\s*(?:的)?"
+        r"(攻击力|生命值上限|防御力|元素精通)"
+    ),
+    # 属性直接跟数值（布伦妮式）："造成布伦妮攻击力150%的对应类型的元素伤害"
+    _re.compile(
+        r"(?:造成|附加)[^。，；%，]{0,10}(攻击力|生命值上限|防御力|元素精通)"
+        r"\s*(\d+(?:\.\d+)?)\s*%"
+    ),
+    # 条件独立命中（欧洛伦式）："基于欧洛伦攻击力的160%，对周围…敌人造成…伤害"
+    _re.compile(
+        r"基于[^。，；]{0,10}(攻击力|生命值上限|防御力)的\s*(\d+(?:\.\d+)?)\s*%"
+        r"\s*[，,][^。]*?对[^。]*?造成"
+    ),
+]
+
+# 全伤害增幅（杜林混沌如黑夜构成式）：
+# "每100点攻击力都将额外造成相当于原本3%的伤害，至多…75%"
+# 奥黛塔变体省略"相当于"，且可限定反应伤害（scope=reaction）
+_DAMAGE_AMP_RE = _re.compile(
+    r"每\s*(\d+(?:\.\d+)?)\s*点(攻击力|生命值上限|防御力|元素精通)"
+    r"[^。]*?额外造成(?:相当于)?原本\s*(\d+(?:\.\d+)?)\s*%的伤害[^。]*?"
+    r"至多[^。]*?(\d+(?:\.\d+)?)\s*%"
+)
+
+# 敌人双元素抗性降低（夏沃蕾尖兵协同战法式）：
+# "火元素 与 雷元素 抗性降低40%"
+_ENEMY_RES_SHRED_MULTI_RE = _re.compile(
+    r"(火|水|雷|冰|风|岩|草)元素\s*(?:与|和)\s*(火|水|雷|冰|风|岩|草)元素\s*抗性(?:降低|下降)\s*(\d+(?:\.\d+)?)\s*%"
+)
+# 敌人全抗性降低（希格雯急性剂量式）："所有元素抗性和物理抗性下降10%"
+_ENEMY_RES_SHRED_ALL_RE = _re.compile(
+    r"所有元素抗性和物理抗性(?:下降|降低)\s*(\d+(?:\.\d+)?)\s*%"
+)
+# 自身暴击率降低（珊瑚宫心海庙算无遗式）："暴击率降低100%"
+_CRIT_DOWN_RE = _re.compile(r"暴击率(?:降低|下降)\s*(\d+(?:\.\d+)?)\s*%")
+
 
 _PCT_RE = _re.compile(r"(\d+(?:\.\d+)?)\s*%")
 _FLAT_RE = _re.compile(r"(\d+(?:\.\d+)?)\s*点")
@@ -724,6 +834,90 @@ def parse_effect(description: str) -> dict:
             "stat": "elemental_dmg_bonus",
         }
 
+    # ---- 机制型天赋数值解析 v3 ----
+    # 自身暴击率降低（心海庙算无遗式）
+    cdm = _CRIT_DOWN_RE.search(text)
+    if cdm:
+        modifiers["crit_rate"] = modifiers.get("crit_rate", 0.0) - float(cdm.group(1)) / 100.0
+
+    # 敌人双元素/全抗性降低（夏沃蕾/希格雯式；单元素版已在上方处理）
+    if res_shred is None:
+        rsm = _ENEMY_RES_SHRED_MULTI_RE.search(text)
+        if rsm:
+            res_shred = {
+                "element": rsm.group(1), "element2": rsm.group(2),
+                "value": float(rsm.group(3)) / 100.0,
+            }
+        else:
+            rsa = _ENEMY_RES_SHRED_ALL_RE.search(text)
+            if rsa:
+                res_shred = {"element": "all", "value": float(rsa.group(1)) / 100.0}
+
+    # 技能倍率层数提升（万流归寂/火花魔法/法尔伽/那维莱特式）：
+    # {"skill_types": {normal: [1.10,1.20,1.70], burst: [...]}}
+    talent_multiplier = None
+    tm_tiers = {}
+    for tmm in _TALENT_MULT_RE.finditer(text):
+        nums = [
+            float(x) / 100.0
+            for x in _re.findall(r"(\d+(?:\.\d+)?)\s*%", tmm.group(2) or "") + [tmm.group(3)]
+        ]
+        # 条件强化档（法尔伽式："则会使上述效果提升至220%"）追加为更高档
+        boost = _re.search(r"提升至\s*(\d+(?:\.\d+)?)\s*%", text[tmm.end(): tmm.end() + 120])
+        if boost:
+            nums.append(float(boost.group(1)) / 100.0)
+        # 命中文段内的全部技能关键词均获得该档位（法尔伽式："普通攻击、重击…元素战技…造成原本140%"）
+        keys = [_TM_SKILL_MAP[k] for k in _TM_SKILL_MAP if k in tmm.group(0)]
+        for key in keys:
+            prev = tm_tiers.get(key) or []
+            tm_tiers[key] = [max(a, b) for a, b in zip(prev + [0.0] * len(nums), nums)] \
+                if prev else nums
+    if not tm_tiers and not (_DAMAGE_AMP_RE.search(text) or "额外造成原本" in text):
+        tnk = _TALENT_MULT_NOKEY_RE.search(text)
+        if tnk:
+            nums = [
+                float(x) / 100.0
+                for x in _re.findall(r"(\d+(?:\.\d+)?)\s*%", tnk.group(1) or "") + [tnk.group(2)]
+            ]
+            tm_tiers["burst"] = nums
+    if tm_tiers:
+        talent_multiplier = {"skill_types": tm_tiers}
+
+    # 额外一段伤害（烟绯/八重神子/伊涅芙式）：取全部命中中的最大倍率
+    extra_hit = None
+
+    def _extract_ratio_attr(groups):
+        """从变体命中组中提取 (倍率, 属性)；数值组可能是多档字符串（取最大）。"""
+        num_g = next(
+            g for g in groups
+            if g and (_re.fullmatch(r"\d+(?:\.\d+)?", g) or "%" in g)
+        )
+        attr_g = next(g for g in groups if g and g != num_g)
+        nums = [float(x) for x in _re.findall(r"(\d+(?:\.\d+)?)", num_g)]
+        return max(nums) / 100.0, attr_g
+
+    best_ratio, best_src = 0.0, None
+    for variant in _EXTRA_HIT_VARIANTS:
+        for evm in variant.finditer(text):
+            ratio, attr_g = _extract_ratio_attr(list(evm.groups()))
+            if ratio > best_ratio:
+                best_ratio, best_src = ratio, _LUNAR_SRC_MAP[attr_g]
+    if best_src is not None:
+        extra_hit = {"source": best_src, "ratio": best_ratio}
+
+    # 全伤害增幅（杜林/奥黛塔式）：每X点来源属性 → 伤害+N%，至多cap；
+    # 若限定反应伤害（"星烁反应伤害"等），标记 scope=reaction
+    damage_amp = None
+    dam = _DAMAGE_AMP_RE.search(text)
+    if dam:
+        damage_amp = {
+            "source": _LUNAR_SRC_MAP[dam.group(2)],
+            "per_points": float(dam.group(1)),
+            "per_bonus": float(dam.group(3)) / 100.0,
+            "cap": float(dam.group(4)) / 100.0,
+            "scope": "reaction" if "反应" in dam.group(0) else None,
+        }
+
     # 月曜反应基础伤害缩放
     lunar_scaling = None
     lsm = _LUNAR_SCALE_RE.search(text)
@@ -764,6 +958,8 @@ def parse_effect(description: str) -> dict:
         or res_shred or talent_level_up or team_effects or lunar_scaling
         or atk_over_scaling is not None or flat_dmg_scaling is not None
         or attr_scaling is not None
+        or talent_multiplier is not None or extra_hit is not None
+        or damage_amp is not None
     )
 
     # 三级分类：stat=数值型已结构化；mechanism=纯机制（冷却/能量/召唤物行为等，不参与面板计算）；
@@ -784,6 +980,9 @@ def parse_effect(description: str) -> dict:
         "atk_over_scaling": atk_over_scaling,
         "flat_dmg_scaling": flat_dmg_scaling,
         "attr_scaling": attr_scaling,
+        "talent_multiplier": talent_multiplier,
+        "extra_hit": extra_hit,
+        "damage_amp": damage_amp,
         "category": category,
         "unparsed": not computable,
     }

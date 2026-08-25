@@ -63,6 +63,11 @@ class Character:
         self.flat_dmg_scalings = []     # [{source, ratio}] 伤害值flat加算（蓝砚/赛索斯式：来源属性×X%）
         self.team_effects_received = {"em_flat": 0.0, "em_pct": 0.0, "em_from": {}, "em_to_dmg": 0.0, "atk_pct": 0.0}
         self.passive_level_bonus = {}   # {normal/skill/burst: n} 天赋等级加成（如达达利亚诸武精通）
+        # 扩展 v3：机制型天赋数值（万流归寂/烟绯/杜林式，由固有天赋注入，calculate_damage 消费）
+        self.talent_multipliers = {}    # {skill_type: [tier1, tier2, ...]} 技能倍率层数提升
+        self.extra_hits = []            # [{source, ratio}] 额外一段伤害（来源属性×X%）
+        self.damage_amps = []           # [{source, per_points, per_bonus, cap}] 全伤害增幅
+        self.stack_context = {}         # {skill_type: stacks} 层数上下文（缺省取最高层）
 
         # 命座效果（从 constellations.json 加载）
         self.constellation_effects = self._load_constellations()
@@ -72,6 +77,9 @@ class Character:
 
         # 角色固有状态标签（夜魂/魔导/星超导/星扩散/月兆；只读展示，暂无数值效果）
         self.states = data_loader.get_character_states(self.id)
+        # 状态触发上下文：{状态名: bool}，默认全部视为已触发（不丢伤害）；
+        # UI 开关可关闭某状态 → 依赖该状态的固有天赋被跳过
+        self.active_states = {s: True for s in self.states}
 
     def apply_passive(self, modifiers: dict):
         """
@@ -142,6 +150,15 @@ class Character:
                                     "category": "stat_skipped_by_condition",
                                     "effect": None})
                     continue
+            # 状态标签门控：天赋描述依赖某状态（夜魂/魔导/月兆等）且该状态未触发时跳过
+            req_states = data_loader.detect_required_states(desc, self.states)
+            if req_states and not all(
+                self.active_states.get(s, True) for s in req_states
+            ):
+                applied.append({"index": idx, "name": p.get("name", ""),
+                                "category": "stat_skipped_by_state",
+                                "effect": None})
+                continue
             self.apply_passive(eff["modifiers"])
             if eff["conversion"]:
                 self.apply_conversion(eff["conversion"])
@@ -155,6 +172,18 @@ class Character:
                 self.attr_scalings.append(dict(eff["attr_scaling"]))
             if eff.get("flat_dmg_scaling"):
                 self.flat_dmg_scalings.append(dict(eff["flat_dmg_scaling"]))
+            if eff.get("talent_multiplier"):
+                for k, tiers in eff["talent_multiplier"].get("skill_types", {}).items():
+                    # 多天赋/重复启用时逐档取最大，避免叠加放大
+                    prev = self.talent_multipliers.get(k) or []
+                    self.talent_multipliers[k] = (
+                        [max(a, b) for a, b in zip(prev + [0.0] * len(tiers), tiers)]
+                        if prev else list(tiers)
+                    )
+            if eff.get("extra_hit") and eff["extra_hit"] not in self.extra_hits:
+                self.extra_hits.append(dict(eff["extra_hit"]))
+            if eff.get("damage_amp") and eff["damage_amp"] not in self.damage_amps:
+                self.damage_amps.append(dict(eff["damage_amp"]))
             if eff["talent_level_up"]:
                 for k, v in eff["talent_level_up"].items():
                     self.passive_level_bonus[k] = max(self.passive_level_bonus.get(k, 0), v)

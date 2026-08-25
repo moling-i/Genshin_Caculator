@@ -78,6 +78,45 @@ def calculate_damage(
         breakdown["base_damage"] = base_damage
         breakdown["flat_dmg_bonus"] = panel["flat_dmg_bonus"]
 
+    # 技能倍率层数提升（万流归寂/火花魔法式：层数 → 整段倍率乘区，默认取最高层）
+    talent_mult_factor = 1.0
+    tm_tiers = getattr(character, "talent_multipliers", {}).get(skill_type)
+    if tm_tiers:
+        stacks = int(getattr(character, "stack_context", {}).get(skill_type, len(tm_tiers)))
+        idx = min(max(stacks, 1), len(tm_tiers)) - 1
+        talent_mult_factor = float(tm_tiers[idx])
+        base_damage *= talent_mult_factor
+    breakdown["talent_mult_factor"] = talent_mult_factor
+
+    # 额外一段伤害（烟绯/八重神子式：来源属性×X% 追加命中，走完整后续乘区）
+    extra_hit_total = 0.0
+    for eh in getattr(character, "extra_hits", []):
+        src_val = character._conversion_source_value(eh.get("source", "atk"))
+        extra_hit_total += src_val * float(eh.get("ratio", 0.0))
+    if extra_hit_total:
+        base_damage += extra_hit_total
+        breakdown["base_damage"] = base_damage
+        breakdown["extra_hit_damage"] = extra_hit_total
+
+    # 全伤害增幅（杜林式：每X点来源属性→最终伤害+N%，逐条取cap后求和）
+    # scope=reaction 时仅作用于月曜/星曜反应伤害路径
+    damage_amp_total = 0.0
+    is_reaction_path = bool(reaction_type and (
+        reaction_type.startswith("lunar") or reaction_type.startswith("stellar")
+    ))
+    for da in getattr(character, "damage_amps", []):
+        if da.get("scope") == "reaction" and not is_reaction_path:
+            continue
+        src_val = character._conversion_source_value(da.get("source", "atk"))
+        damage_amp_total += min(
+            src_val / float(da["per_points"]) * float(da["per_bonus"]),
+            float(da["cap"]),
+        )
+    amp_factor = 1.0 + damage_amp_total
+    base_damage *= amp_factor
+    breakdown["damage_amp"] = damage_amp_total
+    breakdown["amp_factor"] = amp_factor
+
     # 3. 增伤区（物理伤害加成并入通配增伤区：对物理输出正确；元素附魔场景为保守近似）
     dmg_bonus_factor = (
         1 + panel["elemental_dmg_bonus"] + panel["dmg_bonus"]
@@ -163,7 +202,8 @@ def calculate_damage(
         lunar_bonus = panel["lunar_dmg_bonus"]
         reaction_bonus = panel["reaction_dmg_bonus"]
         direct_dmg = (
-            (coeff * panel["atk"] * talent_ratio * (1 + lunar_bonus) * (1 + em_bonus + reaction_bonus))
+            (coeff * panel["atk"] * talent_ratio * talent_mult_factor * amp_factor
+             * (1 + lunar_bonus) * (1 + em_bonus + reaction_bonus))
             * res_factor * crit_factor
         )
         breakdown["lunar_direct_damage"] = direct_dmg
