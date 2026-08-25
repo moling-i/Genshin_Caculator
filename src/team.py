@@ -2,6 +2,7 @@
 队伍类 - 管理 4 个角色，实现月反应间接伤害的排序加权算法
 """
 from . import constants
+from . import data_loader
 
 class Team:
     def __init__(self, members: list):
@@ -58,6 +59,66 @@ class Team:
             total += dmg * weight
 
         return total
+
+    def apply_team_passives(self) -> dict:
+        """
+        应用队伍型固有天赋（跨角色增益）：
+        - em_share：全队精通共享（砂糖触媒置换术/小小的慧风、伊涅芙全相重构协议）
+          施加者自身不受益（与游戏一致），其余成员获得加成
+        - em_to_elemental_dmg：万叶式"每点精通→0.04%对应元素伤"，
+          按施加者触发后的精通计算，注入受益者的 elemental_dmg_bonus
+
+        :return: {"em_gain": {char_name: 总共获得多少点精通},
+                  "dmg_from_em": {char_name: 获得的元素伤害加成}}
+        """
+        em_gain = {}
+        dmg_from_em = {}
+        for giver in self.members:
+            if giver is None:
+                continue
+            for p in giver.passive_skills:
+                desc = (p.get("description") or "").strip()
+                if not desc:
+                    continue
+                eff = data_loader.parse_effect(desc)
+                for te in eff.get("team_effects") or []:
+                    for receiver in self.members:
+                        if receiver is None or receiver is giver:
+                            continue
+                        if te["type"] == "em_share":
+                            if te.get("from") == "em_max":
+                                # 纳西妲式：按全队最高精通的 X%，至多 cap 点
+                                em_values = [
+                                    m._conversion_source_value("em")
+                                    for m in self.members if m is not None
+                                ]
+                                base = max(em_values) if em_values else 0.0
+                                gain = base * float(te.get("pct", 0.0))
+                                cap = te.get("cap")
+                                if cap is not None:
+                                    gain = min(gain, float(cap))
+                                receiver.team_effects_received["em_flat"] += gain
+                                em_gain[receiver.name] = em_gain.get(receiver.name, 0.0) + gain
+                            elif "flat" in te:
+                                receiver.team_effects_received["em_flat"] += float(te["flat"])
+                                em_gain[receiver.name] = em_gain.get(receiver.name, 0.0) + float(te["flat"])
+                            elif "pct" in te:
+                                frm = te.get("from", "em")
+                                if frm == "em":
+                                    src_val = giver._conversion_source_value("em")
+                                    flat_eq = src_val * float(te["pct"])
+                                    receiver.team_effects_received["em_flat"] += flat_eq
+                                    em_gain[receiver.name] = em_gain.get(receiver.name, 0.0) + flat_eq
+                                else:
+                                    recv_map = receiver.team_effects_received.setdefault("em_from", {})
+                                    recv_map[frm] = max(recv_map.get(frm, 0.0), float(te["pct"]))
+                        elif te["type"] == "atk_share":
+                            receiver.team_effects_received["atk_pct"] += float(te.get("pct", 0.0))
+                        elif te["type"] == "em_to_elemental_dmg":
+                            bonus = giver._conversion_source_value("em") * float(te["ratio"])
+                            receiver.team_effects_received["em_to_dmg"] += bonus
+                            dmg_from_em[receiver.name] = dmg_from_em.get(receiver.name, 0.0) + bonus
+        return {"em_gain": em_gain, "dmg_from_em": dmg_from_em}
 
     def get_active_modifiers(self) -> list:
         """获取队伍中所有激活的常驻效果（如元素共鸣、武器特效等）"""

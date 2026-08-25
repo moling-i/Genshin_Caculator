@@ -72,14 +72,26 @@ def calculate_damage(
         "base_damage": base_damage,
     }
 
-    # 3. 增伤区
-    dmg_bonus_factor = 1 + panel["elemental_dmg_bonus"] + panel["dmg_bonus"]
+    # flat 伤害加算（蓝砚/赛索斯式天赋：来源属性×X% 直接加到伤害值）
+    if panel.get("flat_dmg_bonus"):
+        base_damage += panel["flat_dmg_bonus"]
+        breakdown["base_damage"] = base_damage
+        breakdown["flat_dmg_bonus"] = panel["flat_dmg_bonus"]
+
+    # 3. 增伤区（物理伤害加成并入通配增伤区：对物理输出正确；元素附魔场景为保守近似）
+    dmg_bonus_factor = (
+        1 + panel["elemental_dmg_bonus"] + panel["dmg_bonus"]
+        + panel.get("physical_dmg_bonus", 0.0)
+    )
     breakdown["dmg_bonus_factor"] = dmg_bonus_factor
 
-    # 4. 防御区（考虑无视防御）
+    # 4. 防御区（考虑无视防御与敌人防御降低，减防上限40%）
     def_factor = constants.defense_factor(character.char_level, enemy_level)
     if panel["def_ignore"] > 0:
         def_factor = def_factor * (1 - panel["def_ignore"])
+    enemy_shred = panel.get("enemy_def_shred", 0.0)
+    if enemy_shred > 0:
+        def_factor = def_factor * (1 - enemy_shred)
     breakdown["def_factor"] = def_factor
 
     # 5. 抗性区
