@@ -18,7 +18,61 @@ from src import (
 )
 
 st.set_page_config(page_title="原神伤害计算器", layout="wide")
-st.title("🎮 原神伤害计算器 · 属性配平工具")
+
+# ---------- 极简主题样式 ----------
+st.markdown(
+    """
+<style>
+    :root {
+        --bg: #F8F9FA; --card: #FFFFFF; --text: #1A1A2E;
+        --text-2: #6B7280; --border: #E5E7EB; --accent: #4F46E5;
+    }
+    /* 主标题：纯文字 + 细分隔线 */
+    .minimal-header {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+            "Microsoft YaHei", sans-serif;
+        font-size: 1.5rem; font-weight: 600; color: var(--text);
+        padding-bottom: 0.5rem; margin-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+    }
+    h1, h2, h3 { color: var(--text) !important; font-weight: 600 !important; }
+    /* 卡片：细边框、无阴影 */
+    .stExpander, [data-testid="stExpander"] {
+        border: 1px solid var(--border) !important;
+        border-radius: 6px !important;
+        box-shadow: none !important;
+        background: var(--card);
+    }
+    /* 图片：无边框、轻圆角 */
+    .stImage img, [data-testid="stImage"] img {
+        border: none !important; border-radius: 4px !important;
+    }
+    /* 图标加载失败的简洁占位块（无图案） */
+    .icon-fallback {
+        display: flex; align-items: center; justify-content: center;
+        background: var(--bg); border: 1px solid var(--border);
+        border-radius: 4px;
+    }
+    /* 表格：去边框、紧凑 */
+    .stTable td, .stTable th,
+    [data-testid="stTable"] td, [data-testid="stTable"] th {
+        border: none !important; padding: 0.25rem 0.6rem !important;
+        font-size: 0.85rem;
+    }
+    thead tr th { color: var(--text-2) !important; font-weight: 500 !important; }
+    /* 按钮：小圆角、常规字重 */
+    .stButton button {
+        border-radius: 4px !important; font-weight: 500 !important;
+        border: 1px solid var(--border) !important;
+    }
+    /* 分割线减淡 */
+    hr { border-color: var(--border); margin: 0.75rem 0; }
+</style>
+""",
+    unsafe_allow_html=True,
+)
+
+st.markdown('<div class="minimal-header">原神伤害计算器</div>', unsafe_allow_html=True)
 
 # ---------- 数据准备 ----------
 # 角色下拉框排除关键词（与 fetch_data.py 保持一致）
@@ -121,17 +175,31 @@ def _fetch_image(url):
         return None
 
 
-def show_icon(kind, obj_id, width=72, suffix=""):
-    """显示图标（enka CDN）；未知 id 或加载失败时显示占位符"""
-    url = data_loader.get_icon_url(kind, obj_id, default_suffix=suffix) if obj_id else ""
-    data = _fetch_image(url) if url else None
+@st.cache_data(show_spinner=False)
+def _fetch_image_first(urls):
+    """依次尝试候选直链（高清源优先），全部失败返回 None"""
+    for url in urls:
+        data = _fetch_image(url)
+        if data:
+            return data
+    return None
+
+
+def show_icon(kind, obj_id, width=56, suffix=""):
+    """显示图标（enka CDN）：高清源优先，失败回退标准源，仍失败显示纯色占位块"""
+    base = data_loader.get_icon_url(kind, obj_id, default_suffix=suffix) if obj_id else ""
+    candidates = []
+    if base:
+        # 先试高清命名变体，404 时自动回退标准图
+        candidates.append(base.replace(".png", "_HD.png"))
+        candidates.append(base)
+    data = _fetch_image_first(tuple(candidates)) if candidates else None
     if data:
         st.image(data, width=width)
     else:
         st.markdown(
-            "<div style='display:flex;align-items:center;justify-content:center;"
-            f"width:{width}px;height:{int(width * 1.15)}px;background:#262730;"
-            "border-radius:6px;font-size:22px;color:#666'>⚠️</div>",
+            "<div class='icon-fallback' style='width:%dpx;height:%dpx'></div>"
+            % (width, int(width * 0.6)),
             unsafe_allow_html=True,
         )
 
@@ -189,7 +257,7 @@ def render_passive_toggles(char_id, member_idx):
             if _s not in char_states:
                 char_states.append(_s)
     if char_states:
-        with st.expander("🔖 状态标签触发判定", expanded=False):
+        with st.expander("状态标签触发判定", expanded=False):
             st.caption("关闭某状态后，依赖该状态的固有天赋将不参与计算")
             for s in char_states:
                 effects["active_states"][s] = st.checkbox(
@@ -206,8 +274,7 @@ def render_passive_toggles(char_id, member_idx):
         enabled = st.checkbox(label, value=True, key=f"pass_{member_idx}_{char_id}_{i}")
         # 完整显示天赋描述全文（不截断；长文本换行保留）
         desc = (p.get("description") or "").strip()
-        prefix = "☑ " if enabled else "☐ "
-        st.markdown(prefix + desc.replace("\n", "  \n"), unsafe_allow_html=False)
+        st.markdown(desc.replace("\n", "  \n"), unsafe_allow_html=False)
         if not enabled:
             continue
         if parsed["unparsed"] and not (
@@ -227,7 +294,7 @@ def render_passive_toggles(char_id, member_idx):
                 )
                 cond_ok = (hp_now / 100.0) <= ht
                 st.caption(
-                    f"　↳ 血量条件{'✅ 满足' if cond_ok else '❌ 未满足'}"
+                    f"　↳ 血量条件{'满足' if cond_ok else '未满足'}"
                     f"（当前 {hp_now}% / 要求 ≤{ht * 100:g}%）"
                 )
             else:
@@ -338,13 +405,13 @@ def searchable_select(label, all_options, key, default_index=0):
 
     返回选中的选项字符串；无匹配项时返回 None。
     """
-    term = st.text_input(f"🔍 搜索{label}", key=f"{key}_search").strip().lower()
+    term = st.text_input(f"搜索{label}", key=f"{key}_search").strip().lower()
     if term:
         filtered = [o for o in all_options if term in str(o).lower()]
     else:
         filtered = list(all_options)
     if not filtered:
-        st.caption(f"⚠️ 无匹配「{term}」的{label}，请调整搜索词")
+        st.caption(f"无匹配「{term}」的{label}，请调整搜索词")
         return None
     # 过滤后当前已选值不在列表中时，重置选择避免异常
     if key in st.session_state and st.session_state[key] not in filtered:
@@ -356,7 +423,7 @@ def searchable_select(label, all_options, key, default_index=0):
 def member_config_panel(idx):
     """单个队伍成员配置面板（expander），返回成员配置 dict"""
     with st.expander(
-        f"{'🧑‍🎤' if idx == 0 else '👤'} 成员{idx + 1}" + ("（主力）" if idx == 0 else ""),
+        f"成员{idx + 1}" + ("（主力）" if idx == 0 else ""),
         expanded=(idx == 0),
     ):
         col_pic, col_sel = st.columns([1, 4])
@@ -410,11 +477,11 @@ def member_config_panel(idx):
             else:
                 wp_names_sel = wp_names
                 wp_ids_sel = wp_ids
-                st.caption(f"⚠️ 该武器类型「{wtype}」暂无匹配武器，显示全部武器。")
+                st.caption(f"该武器类型「{wtype}」暂无匹配武器，显示全部武器。")
         else:
             wp_names_sel = wp_names
             wp_ids_sel = wp_ids
-            st.caption("⚠️ 未知武器类型，显示全部武器。")
+            st.caption("未知武器类型，显示全部武器。")
         col_wpic, col_wsel = st.columns([1, 4])
         with col_wsel:
             wname = searchable_select("武器", wp_names_sel, f"m{idx}_wp")
@@ -422,17 +489,17 @@ def member_config_panel(idx):
                 wname = "无"
         wid = wp_ids_sel.get(wname) if wname != "无" else None
         with col_wpic:
-            show_icon("weapon", wid)
+            show_icon("weapon", wid, width=48)
         cfg["weapon_id"] = wid
         if wid:
             cfg["refinement"] = st.slider("精炼等级", 1, 5, 1, key=f"m{idx}_ref")
             # ---- 武器被动效果展示 ----
             _wp_effect = data_loader.get_weapon_effect(wid, cfg["refinement"])
             if _wp_effect:
-                st.caption(f"⚔️ **{wname}** 被动效果")
+                st.caption(f"**{wname}** 被动效果")
                 st.write(_wp_effect)
             else:
-                st.caption(f"⚔️ {wname} 无特殊被动效果")
+                st.caption(f"{wname} 无特殊被动效果")
 
         # ---- 圣遗物（四件套 / 2+2 分支选择）----
         col_apic, col_asel = st.columns([1, 4])
@@ -451,12 +518,12 @@ def member_config_panel(idx):
             sidA = art_ids.get(aA) if aA != "无" else None
             sidB = art_ids.get(aB) if aB != "无" else None
             with col_apic:
-                show_icon("relic", sidA, suffix="_5")
+                show_icon("relic", sidA, width=48, suffix="_5")
             cfg["artifact_set_2"], cfg["artifact_set_4"] = sidA, sidB
             for nm, sid in ((aA, sidA), (aB, sidB)):
                 if sid:
                     e2, _ = get_artifact_effect(sid)
-                    st.caption(f"**📜 {nm} · 2件套**")
+                    st.caption(f"**{nm} · 2件套**")
                     st.write(e2 or "（暂无描述）")
         else:
             # 单四件套：只选一个套装，自动同时触发其 2件套 + 4件套效果
@@ -466,32 +533,32 @@ def member_config_panel(idx):
                     a4 = "无"
             sid4 = art_ids.get(a4) if a4 != "无" else None
             with col_apic:
-                show_icon("relic", sid4, suffix="_5")
+                show_icon("relic", sid4, width=48, suffix="_5")
             cfg["artifact_set_2"], cfg["artifact_set_4"] = None, sid4
             if sid4:
                 e2, e4 = get_artifact_effect(sid4)
-                st.caption(f"**📜 {a4} · 四件套（2件套 + 4件套效果同时生效）**")
+                st.caption(f"**{a4} · 四件套（2件套 + 4件套效果同时生效）**")
                 st.write("**2件套：** " + (e2 or "（暂无描述）"))
                 st.write("**4件套：** " + (e4 or "（暂无描述）"))
 
         # ---- 天赋等级（3 个滑块）+ Meropide 天赋信息 ----
-        st.markdown("**🎯 天赋等级**")
+        st.markdown("**天赋等级**")
         tl = st.columns(3)
         cfg["talent_levels"]["normal"] = tl[0].slider("普攻", 1, 13, 10, key=f"m{idx}_tn")
         cfg["talent_levels"]["skill"] = tl[1].slider("E技能", 1, 13, 10, key=f"m{idx}_ts")
         cfg["talent_levels"]["burst"] = tl[2].slider("Q技能", 1, 13, 10, key=f"m{idx}_tb")
 
-        with st.expander("📊 天赋信息（Meropide 权威文案）", expanded=(idx == 0)):
+        with st.expander("天赋信息（Meropide 权威文案）", expanded=(idx == 0)):
             render_talent_info(cid)
 
         # ---- 固有天赋开关 ----
-        st.markdown("**✨ 固有天赋**")
+        st.markdown("**固有天赋**")
         pe = render_passive_toggles(cid, idx)
         cfg["passive_modifiers"] = pe["modifiers"]
         cfg["passive_effects"] = pe
 
         # ---- 面板属性输入（不含副词条的基础值；主词条无需单独设置）----
-        st.markdown("**📈 面板属性**")
+        st.markdown("**面板属性**")
         pc = st.columns(6)
         atk = pc[0].number_input("攻击力", 0, 5000, 1500, key=f"m{idx}_atk")
         cr = pc[1].number_input("暴击率%", 0.0, 100.0, 5.0, key=f"m{idx}_cr")
@@ -514,7 +581,7 @@ def member_config_panel(idx):
 main_col, side_col = st.columns([3, 1])
 
 with main_col:
-    st.subheader("👥 队伍配置")
+    st.subheader("队伍配置")
     st.caption("成员1 为伤害计算主力；其余成员用于月反应加权与元素共鸣（可留空）。"
                "圣遗物主词条已含在面板数值中，无需单独设置。")
     team_configs = [member_config_panel(i) for i in range(4)]
@@ -524,29 +591,29 @@ with main_col:
         1 for c in team_configs
         if c.get("character_id") and "月兆" in c.get("states", [])
     )
-    state_lines = [f"**👥 队伍状态**　月兆角色数量：{lunar_count}"]
+    state_lines = [f"**队伍状态**　月兆角色数量：{lunar_count}"]
     if lunar_count >= 1:
-        state_lines.append("🟡 **初辉已激活**")
+        state_lines.append("**初辉已激活**")
     if lunar_count >= 2:
-        state_lines.append("🟢 **满辉已激活**")
+        state_lines.append("**满辉已激活**")
     st.markdown("　|　".join(state_lines))
 
 with side_col:
     with st.container(border=True):
-        st.header("⚙️ 战斗与优化参数")
+        st.header("战斗与优化参数")
         enemy_level = st.slider("敌人等级", 1, 100, 90)
         enemy_res = st.slider("敌人抗性", 0.0, 1.0, 0.1, step=0.05)
         reaction = st.selectbox("反应类型", list(REACTION_OPTIONS.keys()))
         skill_type = st.selectbox("主力技能类型", list(SKILL_OPTIONS.keys()))
 
         st.divider()
-        st.subheader("🎯 优化参数")
+        st.subheader("优化参数")
         total_rolls = st.slider("总有效词条数", 15, 45, 30)
         min_cr = st.slider("最小暴击率要求", 0.2, 0.8, 0.2, step=0.05)
         sands = st.selectbox("时之沙主词条", list(MAIN_SANDS.keys()))
         goblet = st.selectbox("空之杯主词条", list(MAIN_GOBLET.keys()))
         circlet = st.selectbox("理之冠主词条", list(MAIN_CIRCLET.keys()))
-        optimize_btn = st.button("🚀 开始优化", type="primary")
+        optimize_btn = st.button("开始优化", type="primary")
 
 # ---------- 主界面 ----------
 if optimize_btn:
@@ -554,13 +621,13 @@ if optimize_btn:
     main_cfg = team_configs[0]
 
     if not main_cfg.get("character_id"):
-        st.error("⚠️ 请先在「成员1」中选择主力角色！")
+        st.error("请先在「成员1」中选择主力角色！")
     elif REACTION_OPTIONS[reaction] in (
         "lunar_charged", "lunar_crystallize", "lunar_bloom"
     ) and len(active_members) < 1:
-        st.error("⚠️ 月反应间接伤害需要配置至少1名队伍成员！")
+        st.error("月反应间接伤害需要配置至少1名队伍成员！")
     elif min_cr > 0.95:
-        st.error("⚠️ 最小暴击率要求过高（>95%），可能无法找到可行解，请降低。")
+        st.error("最小暴击率要求过高（>95%），可能无法找到可行解，请降低。")
     else:
         character_name = main_cfg["display_name"]
         talent_key = SKILL_TYPE_KEYS[SKILL_OPTIONS[skill_type]]
@@ -609,10 +676,15 @@ if optimize_btn:
                 col1, col2 = st.columns([1, 1])
 
                 with col1:
-                    st.subheader("📊 最优属性分配")
+                    st.subheader("最优属性分配")
                     os_stats = result.optimal_stats
                     alloc = result.allocation
                     total_alloc = sum(alloc.values()) or 1
+
+                    def _alloc_cell(key):
+                        n = alloc.get(key, 0)
+                        return f"{n}词条 · {n / total_alloc * 100:.0f}%"
+
                     stats_df = pd.DataFrame({
                         "属性": ["攻击力加成", "暴击率", "暴击伤害", "元素精通"],
                         "最优值": [
@@ -621,17 +693,11 @@ if optimize_btn:
                             f"{os_stats['crit_dmg']*100:.1f}%",
                             f"{os_stats['em']:.0f}",
                         ],
-                        "分配词条数": [
-                            alloc.get("atk_percent", 0),
-                            alloc.get("crit_rate", 0),
-                            alloc.get("crit_dmg", 0),
-                            alloc.get("em", 0),
-                        ],
-                        "占比": [
-                            f"{alloc.get('atk_percent',0)/total_alloc*100:.0f}%",
-                            f"{alloc.get('crit_rate',0)/total_alloc*100:.0f}%",
-                            f"{alloc.get('crit_dmg',0)/total_alloc*100:.0f}%",
-                            f"{alloc.get('em',0)/total_alloc*100:.0f}%",
+                        "词条分配": [
+                            _alloc_cell("atk_percent"),
+                            _alloc_cell("crit_rate"),
+                            _alloc_cell("crit_dmg"),
+                            _alloc_cell("em"),
                         ],
                     })
                     st.table(stats_df)
@@ -644,14 +710,14 @@ if optimize_btn:
                         "max_damage": round(result.max_damage, 2),
                     }
                     st.download_button(
-                        "📥 下载优化结果 (JSON)",
+                        "下载优化结果 (JSON)",
                         data=__import__("json").dumps(export_data, ensure_ascii=False, indent=2),
                         file_name="optimization_result.json",
                         mime="application/json",
                     )
 
                 with col2:
-                    st.subheader("💥 伤害预期")
+                    st.subheader("伤害预期")
                     st.metric("最大期望伤害", f"{result.max_damage:,.2f}")
 
                     st.write("**乘区明细：**")
@@ -675,18 +741,18 @@ if optimize_btn:
                     for label, val in breakdown_rows:
                         st.write(f"- {label}: **{val}**")
 
-                st.subheader("💡 培养建议")
+                st.subheader("培养建议")
                 st.info(result.suggestion)
 
                 if result.history:
-                    st.subheader("📈 优化收敛曲线")
+                    st.subheader("优化收敛曲线")
                     hist_df = pd.DataFrame(result.history).set_index("iteration")
                     st.line_chart(hist_df, use_container_width=True)
 
             except Exception as e:
-                st.error(f"❌ 优化失败: {e}")
+                st.error(f"优化失败: {e}")
 else:
-    st.info("👆 配置好队伍与参数后，点击「🚀 开始优化」按钮查看结果。")
+    st.info("配置好队伍与参数后，点击「开始优化」按钮查看结果。")
     st.markdown(
         """
         ### 使用说明
