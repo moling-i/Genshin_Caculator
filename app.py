@@ -42,26 +42,24 @@ st.markdown(
         border: 1px solid rgba(255, 255, 255, 0.4) !important;
         border-radius: 6px !important;
         box-shadow: none !important;
-        background: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
     }
     /* 带边框容器（参数面板等）同样做毛玻璃 */
     [data-testid="stVerticalBlockBorderWrapper"] {
-        background: rgba(255, 255, 255, 0.85) !important;
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.92) !important;
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
         border: 1px solid rgba(255, 255, 255, 0.4) !important;
         border-radius: 8px !important;
     }
-    /* 全屏海报背景：上层压暗渐变保证文字对比度，图片加载失败时兜底为深色底 */
+    /* 全屏壁纸背景：高清星空原图直出（无压暗遮罩），加载失败时兜底为深色底 */
     .stApp {
         background-color: #16213e;
-        background-image:
-            linear-gradient(180deg, rgba(26, 26, 46, 0.30), rgba(15, 52, 96, 0.42)),
-            url("/app/static/furina_starry_bg.jpg");
+        background-image: url("/app/static/furina_starry_bg.png");
         background-size: cover;
-        background-position: center top;
+        background-position: center;
         background-attachment: fixed;
         background-repeat: no-repeat;
     }
@@ -230,14 +228,13 @@ def _fetch_image_first(urls):
 
 
 def show_icon(kind, obj_id, width=56, suffix=""):
-    """显示图标（enka CDN）：高清源优先，失败回退标准源，仍失败显示纯色占位块"""
-    base = data_loader.get_icon_url(kind, obj_id, default_suffix=suffix) if obj_id else ""
-    candidates = []
-    if base:
-        # 先试高清命名变体，404 时自动回退标准图
-        candidates.append(base.replace(".png", "_HD.png"))
-        candidates.append(base)
-    data = _fetch_image_first(tuple(candidates)) if candidates else None
+    """显示图标（多源高清回退：米社官方 → Yatta → enka），全部失败显示纯色占位块"""
+    urls = (
+        data_loader.get_icon_url_candidates(kind, obj_id, default_suffix=suffix)
+        if obj_id
+        else []
+    )
+    data = _fetch_image_first(tuple(urls)) if urls else None
     if data:
         st.image(data, width=width)
     else:
@@ -671,7 +668,7 @@ with side_col:
                 uploaded_bg = st.file_uploader(
                     "上传背景图", type=["jpg", "jpeg", "png", "webp"]
                 )
-            st.caption("海报来源：原神官方名称牌原画（enka 资产库）")
+            st.caption("壁纸来源：芙宁娜·枫丹星夜莲池 4K（qimanbz 壁纸库，本地静态托管）")
 
 # ---------- 主界面 ----------
 if optimize_btn:

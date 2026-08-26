@@ -301,7 +301,17 @@ def clear_cache():
 
 # ==================== 图标 / 天赋 / 固有天赋 ====================
 
+# 图标源优先级：米游社官方 CDN（同图标体积最大、最清晰）→ Yatta 高清站 → enka（兜底，覆盖最全）。
+# 注意：Yatta 不托管圣遗物（UI_RelicIcon_* 全部 404）；米社 CDN 缺少部分新武器/新圣遗物。
+_MHY_EQUIP_UI = "https://upload-os-bbs.mihoyo.com/game_record/genshin/equip/{icon}.png"
+_YATTA_UI = "https://gi.yatta.moe/assets/UI/{icon}.png"
 _ENKA_UI = "https://enka.network/ui/{icon}.png"
+
+_ICON_SOURCES = {
+    "avatar": (_MHY_EQUIP_UI, _YATTA_UI, _ENKA_UI),
+    "weapon": (_MHY_EQUIP_UI, _YATTA_UI, _ENKA_UI),
+    "relic": (_MHY_EQUIP_UI, _ENKA_UI),
+}
 
 
 def get_icons() -> dict:
@@ -312,18 +322,24 @@ def get_icons() -> dict:
         return {"avatar": {}, "weapon": {}, "relic": {}}
 
 
-def get_icon_url(kind: str, obj_id, default_suffix: str = "") -> str:
+def get_icon_url_candidates(kind: str, obj_id, default_suffix: str = "") -> list:
     """
-    获取 enka CDN 图片直链；未知 id 返回空字符串（UI 显示占位符）。
+    获取按清晰度排序的多源图标直链列表（依次回退）；未知 id 返回空列表。
     kind: "avatar" | "weapon" | "relic"
     圣遗物图标名若不含件数后缀，用 default_suffix 补全（如 "_5"）。
     """
     icon = get_icons().get(kind, {}).get(str(obj_id), "")
     if not icon:
-        return ""
+        return []
     if kind == "relic" and icon.endswith("_"):
         icon = icon.rstrip("_") + default_suffix
-    return _ENKA_UI.format(icon=icon)
+    return [tpl.format(icon=icon) for tpl in _ICON_SOURCES.get(kind, (_ENKA_UI,))]
+
+
+def get_icon_url(kind: str, obj_id, default_suffix: str = "") -> str:
+    """获取首选（最清晰的可用）图标直链；未知 id 返回空字符串。"""
+    urls = get_icon_url_candidates(kind, obj_id, default_suffix=default_suffix)
+    return urls[0] if urls else ""
 
 
 def _find_meropide_character(name_cn: str) -> dict:
