@@ -1,0 +1,38 @@
+{
+ "site": "https://meropide.com",
+ "crawl_finished_at": "2026-08-25T11:29:15+00:00",
+ "totals": {
+  "characters": 165,
+  "weapons": 0,
+  "artifacts": 0,
+  "stygian": 0,
+  "reference": 0
+ },
+ "details": {
+  "characters": {
+   "fetched": 75,
+   "skipped": 90,
+   "error": 0
+  },
+  "weapons": {
+   "fetched": 0,
+   "skipped": 0,
+   "error": 0
+  },
+  "artifacts": {
+   "fetched": 0,
+   "skipped": 0,
+   "error": 0
+  },
+  "stygian": {
+   "fetched": 0,
+   "skipped": 0,
+   "error": 0
+  },
+  "reference": {
+   "fetched": 0,
+   "skipped": 0,
+   "error": 0
+  }
+ }
+}

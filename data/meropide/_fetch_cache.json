@@ -1,0 +1,4980 @@
+{
+ "https://meropide.com/chs/characters/%E4%B8%83%E4%B8%83/": {
+  "fetch_date": "2026-08-25T09:53:37+00:00",
+  "last_modified": "",
+  "fingerprint": "5d24264bab108c3a"
+ },
+ "https://meropide.com/chs/characters/%E4%B8%83%E4%B8%83/materials/": {
+  "fetch_date": "2026-08-25T09:53:38+00:00",
+  "last_modified": "",
+  "fingerprint": "183c40415c0787b2"
+ },
+ "https://meropide.com/chs/characters/%E4%B8%83%E4%B8%83/stats/": {
+  "fetch_date": "2026-08-25T09:53:39+00:00",
+  "last_modified": "",
+  "fingerprint": "1b7da931acc3edd4"
+ },
+ "https://meropide.com/chs/weapons/%E3%80%8C%E6%B8%94%E8%8E%B7%E3%80%8D/": {
+  "fetch_date": "2026-08-25T09:51:33+00:00",
+  "last_modified": "",
+  "fingerprint": "e7bf83344409d0ef"
+ },
+ "https://meropide.com/chs/weapons/%E3%80%8C%E7%A9%B6%E6%9E%81%E9%9C%B8%E7%8E%8B%E8%B6%85%E7%BA%A7%E9%AD%94%E5%89%91%E3%80%8D/": {
+  "fetch_date": "2026-08-25T09:51:33+00:00",
+  "last_modified": "",
+  "fingerprint": "bc857c5b933d29c5"
+ },
+ "https://meropide.com/chs/weapons/%E4%B8%87%E4%B8%96%E6%B5%81%E6%B6%8C%E5%A4%A7%E5%85%B8/": {
+  "fetch_date": "2026-08-25T09:51:34+00:00",
+  "last_modified": "",
+  "fingerprint": "bc391e3dfbb66108"
+ },
+ "https://meropide.com/chs/artifacts/%E4%B9%90%E5%9B%AD%E9%81%97%E8%90%BD%E4%B9%8B%E8%8A%B1/": {
+  "fetch_date": "2026-08-25T09:51:35+00:00",
+  "last_modified": "",
+  "fingerprint": "40eae064cb6f775a"
+ },
+ "https://meropide.com/chs/artifacts/%E5%86%92%E9%99%A9%E5%AE%B6/": {
+  "fetch_date": "2026-08-25T09:51:36+00:00",
+  "last_modified": "",
+  "fingerprint": "bd7fdfb17b764b90"
+ },
+ "https://meropide.com/chs/artifacts/%E5%86%B0%E9%A3%8E%E8%BF%B7%E9%80%94%E7%9A%84%E5%8B%87%E5%A3%AB/": {
+  "fetch_date": "2026-08-25T09:51:37+00:00",
+  "last_modified": "",
+  "fingerprint": "0251a0fbb949ced2"
+ },
+ "https://meropide.com/chs/stygian/%E5%85%86%E8%BD%BD%E6%B0%B8%E5%8A%AB%E9%BE%99%E5%85%BD%C2%B7%E6%AD%BC%E7%81%AD%E6%9E%84%E5%9E%8B/": {
+  "fetch_date": "2026-08-25T09:51:38+00:00",
+  "last_modified": "",
+  "fingerprint": "1a5490b1f0761cb6"
+ },
+ "https://meropide.com/chs/stygian/%E5%85%86%E8%BD%BD%E6%B0%B8%E5%8A%AB%E9%BE%99%E5%85%BD%C2%B7%E6%AD%BC%E7%81%AD%E6%9E%84%E5%9E%8B/theorycraft/": {
+  "fetch_date": "2026-08-25T09:51:39+00:00",
+  "last_modified": "",
+  "fingerprint": "a31ad7ba9994f89d"
+ },
+ "https://meropide.com/chs/stygian/%E5%8E%86%E7%BB%8F%E7%99%BE%E6%88%98%E7%9A%84%E5%85%88%E9%A9%B1%E7%A7%98%E6%BA%90%E7%BB%9F%E8%BE%96%E9%98%B5%E5%88%97%C2%B7%E8%9C%82%E5%B7%A2%E6%84%8F%E5%BF%97/": {
+  "fetch_date": "2026-08-25T09:51:39+00:00",
+  "last_modified": "",
+  "fingerprint": "b873bd9f57443f27"
+ },
+ "https://meropide.com/chs/reference/%E4%BA%8C%E6%AC%A1%E8%BD%AC%E5%8C%96%E7%BB%9F%E8%AE%A1/": {
+  "fetch_date": "2026-08-25T09:51:40+00:00",
+  "last_modified": "",
+  "fingerprint": "22c484c5cfacb7ee"
+ },
+ "https://meropide.com/chs/reference/%E4%BC%A4%E5%AE%B3%E5%85%AC%E5%BC%8F/": {
+  "fetch_date": "2026-08-25T09:51:41+00:00",
+  "last_modified": "",
+  "fingerprint": "9fbeacf5eb001df7"
+ },
+ "https://meropide.com/chs/reference/%E4%BD%93%E5%8A%9B%E6%B6%88%E8%80%97/": {
+  "fetch_date": "2026-08-25T09:51:42+00:00",
+  "last_modified": "",
+  "fingerprint": "916f096c6a14541e"
+ },
+ "https://meropide.com/chs/characters/%E4%B8%83%E4%B8%83/theorycraft/": {
+  "fetch_date": "2026-08-25T09:53:41+00:00",
+  "last_modified": "",
+  "fingerprint": "7ddeb5cce82fcd16"
+ },
+ "https://meropide.com/chs/characters/%E4%B8%9D%E6%9F%AF%E5%85%8B/": {
+  "fetch_date": "2026-08-25T09:53:43+00:00",
+  "last_modified": "",
+  "fingerprint": "1057e2f14eb002da"
+ },
+ "https://meropide.com/chs/characters/%E4%B8%9D%E6%9F%AF%E5%85%8B/materials/": {
+  "fetch_date": "2026-08-25T09:53:44+00:00",
+  "last_modified": "",
+  "fingerprint": "f88f50dd55e0e5b1"
+ },
+ "https://meropide.com/chs/characters/%E4%B8%9D%E6%9F%AF%E5%85%8B/stats/": {
+  "fetch_date": "2026-08-25T09:53:46+00:00",
+  "last_modified": "",
+  "fingerprint": "37857192db4d42e6"
+ },
+ "https://meropide.com/chs/characters/%E4%B8%9D%E6%9F%AF%E5%85%8B/theorycraft/": {
+  "fetch_date": "2026-08-25T09:53:48+00:00",
+  "last_modified": "",
+  "fingerprint": "a04bfd18ba4570a4"
+ },
+ "https://meropide.com/chs/characters/%E4%B8%BD%E8%8E%8E/": {
+  "fetch_date": "2026-08-25T09:53:50+00:00",
+  "last_modified": "",
+  "fingerprint": "26ad59317ea7857c"
+ },
+ "https://meropide.com/chs/characters/%E4%B8%BD%E8%8E%8E/materials/": {
+  "fetch_date": "2026-08-25T09:53:51+00:00",
+  "last_modified": "",
+  "fingerprint": "c173e6d784586ae5"
+ },
+ "https://meropide.com/chs/characters/%E4%B8%BD%E8%8E%8E/stats/": {
+  "fetch_date": "2026-08-25T09:53:53+00:00",
+  "last_modified": "",
+  "fingerprint": "c450e342b21e7c10"
+ },
+ "https://meropide.com/chs/characters/%E4%B8%BD%E8%8E%8E/theorycraft/": {
+  "fetch_date": "2026-08-25T09:53:55+00:00",
+  "last_modified": "",
+  "fingerprint": "1454e5a9fbf03d37"
+ },
+ "https://meropide.com/chs/characters/%E4%B9%85%E5%B2%90%E5%BF%8D/": {
+  "fetch_date": "2026-08-25T09:53:57+00:00",
+  "last_modified": "",
+  "fingerprint": "f94512046e749ffe"
+ },
+ "https://meropide.com/chs/characters/%E4%B9%85%E5%B2%90%E5%BF%8D/materials/": {
+  "fetch_date": "2026-08-25T09:53:58+00:00",
+  "last_modified": "",
+  "fingerprint": "6577c6825b0ab390"
+ },
+ "https://meropide.com/chs/characters/%E4%B9%85%E5%B2%90%E5%BF%8D/stats/": {
+  "fetch_date": "2026-08-25T09:54:00+00:00",
+  "last_modified": "",
+  "fingerprint": "51a813d0d25c3824"
+ },
+ "https://meropide.com/chs/characters/%E4%B9%85%E5%B2%90%E5%BF%8D/theorycraft/": {
+  "fetch_date": "2026-08-25T09:54:02+00:00",
+  "last_modified": "",
+  "fingerprint": "8cca7eaab8a6b7c6"
+ },
+ "https://meropide.com/chs/characters/%E4%B9%9D%E6%9D%A1%E8%A3%9F%E7%BD%97/": {
+  "fetch_date": "2026-08-25T09:54:04+00:00",
+  "last_modified": "",
+  "fingerprint": "dfc0309b806f4352"
+ },
+ "https://meropide.com/chs/characters/%E4%B9%9D%E6%9D%A1%E8%A3%9F%E7%BD%97/materials/": {
+  "fetch_date": "2026-08-25T09:54:06+00:00",
+  "last_modified": "",
+  "fingerprint": "923a27bc15122a81"
+ },
+ "https://meropide.com/chs/characters/%E4%B9%9D%E6%9D%A1%E8%A3%9F%E7%BD%97/stats/": {
+  "fetch_date": "2026-08-25T09:54:07+00:00",
+  "last_modified": "",
+  "fingerprint": "3528ab9da3c94914"
+ },
+ "https://meropide.com/chs/characters/%E4%B9%9D%E6%9D%A1%E8%A3%9F%E7%BD%97/theorycraft/": {
+  "fetch_date": "2026-08-25T09:54:09+00:00",
+  "last_modified": "",
+  "fingerprint": "c3f5d0d0c22ddfff"
+ },
+ "https://meropide.com/chs/characters/%E4%BA%91%E5%A0%87/": {
+  "fetch_date": "2026-08-25T09:54:11+00:00",
+  "last_modified": "",
+  "fingerprint": "e88acdba60f9b9d7"
+ },
+ "https://meropide.com/chs/characters/%E4%BA%91%E5%A0%87/materials/": {
+  "fetch_date": "2026-08-25T09:54:13+00:00",
+  "last_modified": "",
+  "fingerprint": "a6d84a397a9c6ec4"
+ },
+ "https://meropide.com/chs/characters/%E4%BA%91%E5%A0%87/stats/": {
+  "fetch_date": "2026-08-25T09:54:14+00:00",
+  "last_modified": "",
+  "fingerprint": "1c05cd92fea4f8fc"
+ },
+ "https://meropide.com/chs/characters/%E4%BA%91%E5%A0%87/theorycraft/": {
+  "fetch_date": "2026-08-25T09:54:16+00:00",
+  "last_modified": "",
+  "fingerprint": "31d9cab0f8b92b44"
+ },
+ "https://meropide.com/chs/characters/%E4%BA%94%E9%83%8E/": {
+  "fetch_date": "2026-08-25T09:54:19+00:00",
+  "last_modified": "",
+  "fingerprint": "213f01bebe0863eb"
+ },
+ "https://meropide.com/chs/characters/%E4%BA%94%E9%83%8E/materials/": {
+  "fetch_date": "2026-08-25T09:54:20+00:00",
+  "last_modified": "",
+  "fingerprint": "7e0808559695d54e"
+ },
+ "https://meropide.com/chs/characters/%E4%BA%94%E9%83%8E/stats/": {
+  "fetch_date": "2026-08-25T09:54:22+00:00",
+  "last_modified": "",
+  "fingerprint": "49fc7aa7ecde1cfd"
+ },
+ "https://meropide.com/chs/characters/%E4%BA%94%E9%83%8E/theorycraft/": {
+  "fetch_date": "2026-08-25T09:54:24+00:00",
+  "last_modified": "",
+  "fingerprint": "8777702b36c656f3"
+ },
+ "https://meropide.com/chs/characters/%E4%BC%8A%E5%AE%89%E7%8F%8A/": {
+  "fetch_date": "2026-08-25T09:54:26+00:00",
+  "last_modified": "",
+  "fingerprint": "5d5ba474b49b4215"
+ },
+ "https://meropide.com/chs/characters/%E4%BC%8A%E5%AE%89%E7%8F%8A/materials/": {
+  "fetch_date": "2026-08-25T09:54:28+00:00",
+  "last_modified": "",
+  "fingerprint": "34f9a04912501c43"
+ },
+ "https://meropide.com/chs/characters/%E4%BC%8A%E5%AE%89%E7%8F%8A/stats/": {
+  "fetch_date": "2026-08-25T09:54:30+00:00",
+  "last_modified": "",
+  "fingerprint": "ec5ef572e4f4dbdb"
+ },
+ "https://meropide.com/chs/characters/%E4%BC%8A%E5%AE%89%E7%8F%8A/theorycraft/": {
+  "fetch_date": "2026-08-25T09:54:31+00:00",
+  "last_modified": "",
+  "fingerprint": "6ad01011cf91a100"
+ },
+ "https://meropide.com/chs/characters/%E4%BC%8A%E6%B3%95/": {
+  "fetch_date": "2026-08-25T09:54:34+00:00",
+  "last_modified": "",
+  "fingerprint": "84be6013e54be10a"
+ },
+ "https://meropide.com/chs/characters/%E4%BC%8A%E6%B3%95/materials/": {
+  "fetch_date": "2026-08-25T09:54:36+00:00",
+  "last_modified": "",
+  "fingerprint": "20e5e932bd35e5fb"
+ },
+ "https://meropide.com/chs/characters/%E4%BC%8A%E6%B3%95/stats/": {
+  "fetch_date": "2026-08-25T09:54:38+00:00",
+  "last_modified": "",
+  "fingerprint": "c8e80c54c1f51c45"
+ },
+ "https://meropide.com/chs/characters/%E4%BC%8A%E6%B3%95/theorycraft/": {
+  "fetch_date": "2026-08-25T09:54:39+00:00",
+  "last_modified": "",
+  "fingerprint": "a97bafeb00e96ecd"
+ },
+ "https://meropide.com/chs/characters/%E4%BC%8A%E6%B6%85%E8%8A%99/": {
+  "fetch_date": "2026-08-25T09:54:41+00:00",
+  "last_modified": "",
+  "fingerprint": "67bf1f6892c87524"
+ },
+ "https://meropide.com/chs/characters/%E4%BC%8A%E6%B6%85%E8%8A%99/materials/": {
+  "fetch_date": "2026-08-25T09:54:43+00:00",
+  "last_modified": "",
+  "fingerprint": "09982218c413719a"
+ },
+ "https://meropide.com/chs/characters/%E4%BC%8A%E6%B6%85%E8%8A%99/stats/": {
+  "fetch_date": "2026-08-25T09:54:45+00:00",
+  "last_modified": "",
+  "fingerprint": "ef80d78b7cc2d49b"
+ },
+ "https://meropide.com/chs/characters/%E4%BC%8A%E6%B6%85%E8%8A%99/theorycraft/": {
+  "fetch_date": "2026-08-25T09:54:46+00:00",
+  "last_modified": "",
+  "fingerprint": "f764679a48b308de"
+ },
+ "https://meropide.com/chs/characters/%E4%BC%98%E8%8F%88/": {
+  "fetch_date": "2026-08-25T09:54:48+00:00",
+  "last_modified": "",
+  "fingerprint": "949c817f3e7ded06"
+ },
+ "https://meropide.com/chs/characters/%E4%BC%98%E8%8F%88/materials/": {
+  "fetch_date": "2026-08-25T09:54:50+00:00",
+  "last_modified": "",
+  "fingerprint": "63abf10410ed24a6"
+ },
+ "https://meropide.com/chs/characters/%E4%BC%98%E8%8F%88/stats/": {
+  "fetch_date": "2026-08-25T09:54:52+00:00",
+  "last_modified": "",
+  "fingerprint": "72621b39e6056ffe"
+ },
+ "https://meropide.com/chs/characters/%E4%BC%98%E8%8F%88/theorycraft/": {
+  "fetch_date": "2026-08-25T09:54:53+00:00",
+  "last_modified": "",
+  "fingerprint": "2164a3fc1dd60637"
+ },
+ "https://meropide.com/chs/characters/%E5%85%8B%E6%B4%9B%E7%90%B3%E5%BE%B7/": {
+  "fetch_date": "2026-08-25T09:54:55+00:00",
+  "last_modified": "",
+  "fingerprint": "e140987ad0ef2714"
+ },
+ "https://meropide.com/chs/characters/%E5%85%8B%E6%B4%9B%E7%90%B3%E5%BE%B7/materials/": {
+  "fetch_date": "2026-08-25T09:54:57+00:00",
+  "last_modified": "",
+  "fingerprint": "d0fcb08bf0c7181c"
+ },
+ "https://meropide.com/chs/characters/%E5%85%8B%E6%B4%9B%E7%90%B3%E5%BE%B7/stats/": {
+  "fetch_date": "2026-08-25T09:54:59+00:00",
+  "last_modified": "",
+  "fingerprint": "2945effb8d12c83f"
+ },
+ "https://meropide.com/chs/characters/%E5%85%8B%E6%B4%9B%E7%90%B3%E5%BE%B7/theorycraft/": {
+  "fetch_date": "2026-08-25T09:55:01+00:00",
+  "last_modified": "",
+  "fingerprint": "3efdbaf60b00913b"
+ },
+ "https://meropide.com/chs/characters/%E5%85%AB%E9%87%8D%E7%A5%9E%E5%AD%90/": {
+  "fetch_date": "2026-08-25T09:55:03+00:00",
+  "last_modified": "",
+  "fingerprint": "35875d79bcce6c54"
+ },
+ "https://meropide.com/chs/characters/%E5%85%AB%E9%87%8D%E7%A5%9E%E5%AD%90/materials/": {
+  "fetch_date": "2026-08-25T09:55:06+00:00",
+  "last_modified": "",
+  "fingerprint": "84eed11dd2d12917"
+ },
+ "https://meropide.com/chs/characters/%E5%85%AB%E9%87%8D%E7%A5%9E%E5%AD%90/stats/": {
+  "fetch_date": "2026-08-25T09:55:08+00:00",
+  "last_modified": "",
+  "fingerprint": "c43b44d8ee1b8bc5"
+ },
+ "https://meropide.com/chs/characters/%E5%85%AB%E9%87%8D%E7%A5%9E%E5%AD%90/theorycraft/": {
+  "fetch_date": "2026-08-25T09:55:10+00:00",
+  "last_modified": "",
+  "fingerprint": "43a79e6536d8bc63"
+ },
+ "https://meropide.com/chs/characters/%E5%85%B9%E7%99%BD/": {
+  "fetch_date": "2026-08-25T09:55:13+00:00",
+  "last_modified": "",
+  "fingerprint": "dee034e2b2708663"
+ },
+ "https://meropide.com/chs/characters/%E5%85%B9%E7%99%BD/materials/": {
+  "fetch_date": "2026-08-25T09:55:15+00:00",
+  "last_modified": "",
+  "fingerprint": "a79dce3411c63c7f"
+ },
+ "https://meropide.com/chs/characters/%E5%85%B9%E7%99%BD/stats/": {
+  "fetch_date": "2026-08-25T09:55:17+00:00",
+  "last_modified": "",
+  "fingerprint": "4e8c2daedb5b88c3"
+ },
+ "https://meropide.com/chs/characters/%E5%85%B9%E7%99%BD/theorycraft/": {
+  "fetch_date": "2026-08-25T09:55:19+00:00",
+  "last_modified": "",
+  "fingerprint": "91472de6ab68dd6a"
+ },
+ "https://meropide.com/chs/characters/%E5%87%9D%E5%85%89/": {
+  "fetch_date": "2026-08-25T09:55:21+00:00",
+  "last_modified": "",
+  "fingerprint": "f8ccbbe1ef037c0b"
+ },
+ "https://meropide.com/chs/characters/%E5%87%9D%E5%85%89/materials/": {
+  "fetch_date": "2026-08-25T09:55:23+00:00",
+  "last_modified": "",
+  "fingerprint": "ddbd861456e5fd91"
+ },
+ "https://meropide.com/chs/characters/%E5%87%9D%E5%85%89/stats/": {
+  "fetch_date": "2026-08-25T09:55:25+00:00",
+  "last_modified": "",
+  "fingerprint": "0ac3d303ce9d02f8"
+ },
+ "https://meropide.com/chs/characters/%E5%87%9D%E5%85%89/theorycraft/": {
+  "fetch_date": "2026-08-25T09:55:27+00:00",
+  "last_modified": "",
+  "fingerprint": "9cea6c6d73fbc2ef"
+ },
+ "https://meropide.com/chs/characters/%E5%87%AF%E4%BA%9A/": {
+  "fetch_date": "2026-08-25T09:55:29+00:00",
+  "last_modified": "",
+  "fingerprint": "2825550f09d09f1a"
+ },
+ "https://meropide.com/chs/characters/%E5%87%AF%E4%BA%9A/materials/": {
+  "fetch_date": "2026-08-25T09:55:30+00:00",
+  "last_modified": "",
+  "fingerprint": "7bd4952332acb1b9"
+ },
+ "https://meropide.com/chs/characters/%E5%87%AF%E4%BA%9A/stats/": {
+  "fetch_date": "2026-08-25T09:55:32+00:00",
+  "last_modified": "",
+  "fingerprint": "f5c2c37d720c10cd"
+ },
+ "https://meropide.com/chs/characters/%E5%87%AF%E4%BA%9A/theorycraft/": {
+  "fetch_date": "2026-08-25T09:55:34+00:00",
+  "last_modified": "",
+  "fingerprint": "104e21aaca9241af"
+ },
+ "https://meropide.com/chs/characters/%E5%88%BB%E6%99%B4/": {
+  "fetch_date": "2026-08-25T09:55:35+00:00",
+  "last_modified": "",
+  "fingerprint": "0180081bd287794d"
+ },
+ "https://meropide.com/chs/characters/%E5%88%BB%E6%99%B4/materials/": {
+  "fetch_date": "2026-08-25T09:55:37+00:00",
+  "last_modified": "",
+  "fingerprint": "0adf19253b452e48"
+ },
+ "https://meropide.com/chs/characters/%E5%88%BB%E6%99%B4/stats/": {
+  "fetch_date": "2026-08-25T09:55:39+00:00",
+  "last_modified": "",
+  "fingerprint": "c76398f6842652f3"
+ },
+ "https://meropide.com/chs/characters/%E5%88%BB%E6%99%B4/theorycraft/": {
+  "fetch_date": "2026-08-25T09:55:41+00:00",
+  "last_modified": "",
+  "fingerprint": "9b8a331c9fd030f5"
+ },
+ "https://meropide.com/chs/characters/%E5%8C%97%E6%96%97/": {
+  "fetch_date": "2026-08-25T09:55:43+00:00",
+  "last_modified": "",
+  "fingerprint": "252220b28d8cbb58"
+ },
+ "https://meropide.com/chs/characters/%E5%8C%97%E6%96%97/materials/": {
+  "fetch_date": "2026-08-25T09:55:45+00:00",
+  "last_modified": "",
+  "fingerprint": "64b75aa43c147bec"
+ },
+ "https://meropide.com/chs/characters/%E5%8C%97%E6%96%97/stats/": {
+  "fetch_date": "2026-08-25T09:55:46+00:00",
+  "last_modified": "",
+  "fingerprint": "762bbefc22c878f7"
+ },
+ "https://meropide.com/chs/characters/%E5%8C%97%E6%96%97/theorycraft/": {
+  "fetch_date": "2026-08-25T09:55:48+00:00",
+  "last_modified": "",
+  "fingerprint": "8dbd6e16cd316edb"
+ },
+ "https://meropide.com/chs/characters/%E5%8D%83%E7%BB%87/": {
+  "fetch_date": "2026-08-25T09:55:50+00:00",
+  "last_modified": "",
+  "fingerprint": "6d6b1eec9d03d02e"
+ },
+ "https://meropide.com/chs/characters/%E5%8D%83%E7%BB%87/materials/": {
+  "fetch_date": "2026-08-25T09:55:51+00:00",
+  "last_modified": "",
+  "fingerprint": "3542a84b1bc8adea"
+ },
+ "https://meropide.com/chs/characters/%E5%8D%83%E7%BB%87/stats/": {
+  "fetch_date": "2026-08-25T09:55:53+00:00",
+  "last_modified": "",
+  "fingerprint": "aa77dae8d5845603"
+ },
+ "https://meropide.com/chs/characters/%E5%8D%83%E7%BB%87/theorycraft/": {
+  "fetch_date": "2026-08-25T09:55:55+00:00",
+  "last_modified": "",
+  "fingerprint": "eda1e6e3ade0535d"
+ },
+ "https://meropide.com/chs/characters/%E5%8D%A1%E7%BB%B4/": {
+  "fetch_date": "2026-08-25T09:55:58+00:00",
+  "last_modified": "",
+  "fingerprint": "08d088eb988b9b47"
+ },
+ "https://meropide.com/chs/characters/%E5%8D%A1%E7%BB%B4/materials/": {
+  "fetch_date": "2026-08-25T09:56:00+00:00",
+  "last_modified": "",
+  "fingerprint": "c5bded606f0aa3f6"
+ },
+ "https://meropide.com/chs/characters/%E5%8D%A1%E7%BB%B4/stats/": {
+  "fetch_date": "2026-08-25T09:56:02+00:00",
+  "last_modified": "",
+  "fingerprint": "badeda9905541b17"
+ },
+ "https://meropide.com/chs/characters/%E5%8D%A1%E7%BB%B4/theorycraft/": {
+  "fetch_date": "2026-08-25T09:56:07+00:00",
+  "last_modified": "",
+  "fingerprint": "8df72da8d6a3b607"
+ },
+ "https://meropide.com/chs/characters/%E5%8D%A1%E9%BD%90%E5%A8%9C/": {
+  "fetch_date": "2026-08-25T09:56:09+00:00",
+  "last_modified": "",
+  "fingerprint": "9d147ccacc86a3f5"
+ },
+ "https://meropide.com/chs/characters/%E5%8D%A1%E9%BD%90%E5%A8%9C/materials/": {
+  "fetch_date": "2026-08-25T09:56:11+00:00",
+  "last_modified": "",
+  "fingerprint": "b77eb858b15f8ba4"
+ },
+ "https://meropide.com/chs/characters/%E5%8D%A1%E9%BD%90%E5%A8%9C/stats/": {
+  "fetch_date": "2026-08-25T09:56:13+00:00",
+  "last_modified": "",
+  "fingerprint": "70eb307314362d55"
+ },
+ "https://meropide.com/chs/characters/%E5%8D%A1%E9%BD%90%E5%A8%9C/theorycraft/": {
+  "fetch_date": "2026-08-25T09:56:15+00:00",
+  "last_modified": "",
+  "fingerprint": "1b0f3654a277cca0"
+ },
+ "https://meropide.com/chs/characters/%E5%8F%AF%E8%8E%89/": {
+  "fetch_date": "2026-08-25T09:56:16+00:00",
+  "last_modified": "",
+  "fingerprint": "5ef7f75abe023871"
+ },
+ "https://meropide.com/chs/characters/%E5%8F%AF%E8%8E%89/materials/": {
+  "fetch_date": "2026-08-25T09:56:19+00:00",
+  "last_modified": "",
+  "fingerprint": "30f9b6a2d05cc9f7"
+ },
+ "https://meropide.com/chs/characters/%E5%8F%AF%E8%8E%89/stats/": {
+  "fetch_date": "2026-08-25T09:56:21+00:00",
+  "last_modified": "",
+  "fingerprint": "a7388920cb38c891"
+ },
+ "https://meropide.com/chs/characters/%E5%8F%AF%E8%8E%89/theorycraft/": {
+  "fetch_date": "2026-08-25T09:56:22+00:00",
+  "last_modified": "",
+  "fingerprint": "eaeb82685dff9b1c"
+ },
+ "https://meropide.com/chs/characters/%E5%8F%B6%E6%B4%9B%E4%BA%9A/": {
+  "fetch_date": "2026-08-25T09:56:24+00:00",
+  "last_modified": "",
+  "fingerprint": "9fa16315206b2449"
+ },
+ "https://meropide.com/chs/characters/%E5%8F%B6%E6%B4%9B%E4%BA%9A/materials/": {
+  "fetch_date": "2026-08-25T09:56:26+00:00",
+  "last_modified": "",
+  "fingerprint": "b5c9b80f6df2dce6"
+ },
+ "https://meropide.com/chs/characters/%E5%8F%B6%E6%B4%9B%E4%BA%9A/stats/": {
+  "fetch_date": "2026-08-25T09:56:29+00:00",
+  "last_modified": "",
+  "fingerprint": "06750dad4d17ac83"
+ },
+ "https://meropide.com/chs/characters/%E5%8F%B6%E6%B4%9B%E4%BA%9A/theorycraft/": {
+  "fetch_date": "2026-08-25T09:56:31+00:00",
+  "last_modified": "",
+  "fingerprint": "62d1bd374a64ce6d"
+ },
+ "https://meropide.com/chs/characters/%E5%93%A5%E4%BC%A6%E6%AF%94%E5%A8%85/": {
+  "fetch_date": "2026-08-25T09:56:33+00:00",
+  "last_modified": "",
+  "fingerprint": "45e7ac6af4d91416"
+ },
+ "https://meropide.com/chs/characters/%E5%93%A5%E4%BC%A6%E6%AF%94%E5%A8%85/materials/": {
+  "fetch_date": "2026-08-25T09:56:35+00:00",
+  "last_modified": "",
+  "fingerprint": "93136a90b148db0f"
+ },
+ "https://meropide.com/chs/characters/%E5%93%A5%E4%BC%A6%E6%AF%94%E5%A8%85/stats/": {
+  "fetch_date": "2026-08-25T09:56:37+00:00",
+  "last_modified": "",
+  "fingerprint": "90441263ed5633b7"
+ },
+ "https://meropide.com/chs/characters/%E5%93%A5%E4%BC%A6%E6%AF%94%E5%A8%85/theorycraft/": {
+  "fetch_date": "2026-08-25T09:56:40+00:00",
+  "last_modified": "",
+  "fingerprint": "308b3d9125cbce78"
+ },
+ "https://meropide.com/chs/characters/%E5%98%89%E6%98%8E/": {
+  "fetch_date": "2026-08-25T09:56:41+00:00",
+  "last_modified": "",
+  "fingerprint": "1c0f196bb1b3daca"
+ },
+ "https://meropide.com/chs/characters/%E5%98%89%E6%98%8E/materials/": {
+  "fetch_date": "2026-08-25T09:56:43+00:00",
+  "last_modified": "",
+  "fingerprint": "b08d97d64f49ce71"
+ },
+ "https://meropide.com/chs/characters/%E5%98%89%E6%98%8E/stats/": {
+  "fetch_date": "2026-08-25T09:56:46+00:00",
+  "last_modified": "",
+  "fingerprint": "7cef914d9c59d00a"
+ },
+ "https://meropide.com/chs/characters/%E5%98%89%E6%98%8E/theorycraft/": {
+  "fetch_date": "2026-08-25T09:56:47+00:00",
+  "last_modified": "",
+  "fingerprint": "f7eaf9144224b6f7"
+ },
+ "https://meropide.com/chs/characters/%E5%9D%8E%E8%92%82%E4%B8%9D/": {
+  "fetch_date": "2026-08-25T09:56:49+00:00",
+  "last_modified": "",
+  "fingerprint": "5c4cee773bd21244"
+ },
+ "https://meropide.com/chs/characters/%E5%9D%8E%E8%92%82%E4%B8%9D/materials/": {
+  "fetch_date": "2026-08-25T09:56:51+00:00",
+  "last_modified": "",
+  "fingerprint": "29afa58fb2479901"
+ },
+ "https://meropide.com/chs/characters/%E5%9D%8E%E8%92%82%E4%B8%9D/stats/": {
+  "fetch_date": "2026-08-25T09:56:55+00:00",
+  "last_modified": "",
+  "fingerprint": "ebac2dd86cfaca9f"
+ },
+ "https://meropide.com/chs/characters/%E5%9D%8E%E8%92%82%E4%B8%9D/theorycraft/": {
+  "fetch_date": "2026-08-25T09:56:57+00:00",
+  "last_modified": "",
+  "fingerprint": "a2b0e05a5f82483b"
+ },
+ "https://meropide.com/chs/characters/%E5%9F%83%E6%B4%9B%E4%BC%8A/": {
+  "fetch_date": "2026-08-25T09:56:59+00:00",
+  "last_modified": "",
+  "fingerprint": "686e8e81c5e938a0"
+ },
+ "https://meropide.com/chs/characters/%E5%9F%83%E6%B4%9B%E4%BC%8A/materials/": {
+  "fetch_date": "2026-08-25T09:57:01+00:00",
+  "last_modified": "",
+  "fingerprint": "008eca1e9657c740"
+ },
+ "https://meropide.com/chs/characters/%E5%9F%83%E6%B4%9B%E4%BC%8A/stats/": {
+  "fetch_date": "2026-08-25T09:57:02+00:00",
+  "last_modified": "",
+  "fingerprint": "fe9db4e5699faddc"
+ },
+ "https://meropide.com/chs/characters/%E5%9F%83%E6%B4%9B%E4%BC%8A/theorycraft/": {
+  "fetch_date": "2026-08-25T09:57:05+00:00",
+  "last_modified": "",
+  "fingerprint": "0e0defb7d45a91dc"
+ },
+ "https://meropide.com/chs/characters/%E5%9F%BA%E5%B0%BC%E5%A5%87/": {
+  "fetch_date": "2026-08-25T09:57:07+00:00",
+  "last_modified": "",
+  "fingerprint": "389baccbaa503ca5"
+ },
+ "https://meropide.com/chs/characters/%E5%9F%BA%E5%B0%BC%E5%A5%87/materials/": {
+  "fetch_date": "2026-08-25T09:57:09+00:00",
+  "last_modified": "",
+  "fingerprint": "acd19f2143638614"
+ },
+ "https://meropide.com/chs/characters/%E5%9F%BA%E5%B0%BC%E5%A5%87/stats/": {
+  "fetch_date": "2026-08-25T09:57:11+00:00",
+  "last_modified": "",
+  "fingerprint": "d8f11e27c7013f20"
+ },
+ "https://meropide.com/chs/characters/%E5%9F%BA%E5%B0%BC%E5%A5%87/theorycraft/": {
+  "fetch_date": "2026-08-25T09:57:12+00:00",
+  "last_modified": "",
+  "fingerprint": "c6b5c4fb7c8d5efc"
+ },
+ "https://meropide.com/chs/characters/%E5%A1%94%E5%88%A9%E9%9B%85/": {
+  "fetch_date": "2026-08-25T09:57:14+00:00",
+  "last_modified": "",
+  "fingerprint": "633e1b575ebb3b56"
+ },
+ "https://meropide.com/chs/characters/%E5%A1%94%E5%88%A9%E9%9B%85/materials/": {
+  "fetch_date": "2026-08-25T09:57:16+00:00",
+  "last_modified": "",
+  "fingerprint": "f4e96da8c2b2581c"
+ },
+ "https://meropide.com/chs/characters/%E5%A1%94%E5%88%A9%E9%9B%85/stats/": {
+  "fetch_date": "2026-08-25T09:57:18+00:00",
+  "last_modified": "",
+  "fingerprint": "43edf5a6349f8f8f"
+ },
+ "https://meropide.com/chs/characters/%E5%A1%94%E5%88%A9%E9%9B%85/theorycraft/": {
+  "fetch_date": "2026-08-25T09:57:20+00:00",
+  "last_modified": "",
+  "fingerprint": "38696d0dda033783"
+ },
+ "https://meropide.com/chs/characters/%E5%A4%8F%E6%B2%83%E8%95%BE/": {
+  "fetch_date": "2026-08-25T09:57:23+00:00",
+  "last_modified": "",
+  "fingerprint": "2cc6f5b0e29454a8"
+ },
+ "https://meropide.com/chs/characters/%E5%A4%8F%E6%B2%83%E8%95%BE/materials/": {
+  "fetch_date": "2026-08-25T09:57:24+00:00",
+  "last_modified": "",
+  "fingerprint": "cc51d1cddc95b02f"
+ },
+ "https://meropide.com/chs/characters/%E5%A4%8F%E6%B2%83%E8%95%BE/stats/": {
+  "fetch_date": "2026-08-25T09:57:26+00:00",
+  "last_modified": "",
+  "fingerprint": "49b66f3b46b7903c"
+ },
+ "https://meropide.com/chs/characters/%E5%A4%8F%E6%B2%83%E8%95%BE/theorycraft/": {
+  "fetch_date": "2026-08-25T09:57:28+00:00",
+  "last_modified": "",
+  "fingerprint": "974e1f7d2034aa08"
+ },
+ "https://meropide.com/chs/characters/%E5%A4%8F%E6%B4%9B%E8%92%82/": {
+  "fetch_date": "2026-08-25T09:57:30+00:00",
+  "last_modified": "",
+  "fingerprint": "8ca76b5ef0523877"
+ },
+ "https://meropide.com/chs/characters/%E5%A4%8F%E6%B4%9B%E8%92%82/materials/": {
+  "fetch_date": "2026-08-25T09:57:32+00:00",
+  "last_modified": "",
+  "fingerprint": "d97501ad527fc139"
+ },
+ "https://meropide.com/chs/characters/%E5%A4%8F%E6%B4%9B%E8%92%82/stats/": {
+  "fetch_date": "2026-08-25T09:57:34+00:00",
+  "last_modified": "",
+  "fingerprint": "49a009ef9467fba4"
+ },
+ "https://meropide.com/chs/characters/%E5%A4%8F%E6%B4%9B%E8%92%82/theorycraft/": {
+  "fetch_date": "2026-08-25T09:57:36+00:00",
+  "last_modified": "",
+  "fingerprint": "14e9bcbf5eae8933"
+ },
+ "https://meropide.com/chs/characters/%E5%A4%9A%E8%8E%89/": {
+  "fetch_date": "2026-08-25T09:57:38+00:00",
+  "last_modified": "",
+  "fingerprint": "b7e432064900533d"
+ },
+ "https://meropide.com/chs/characters/%E5%A4%9A%E8%8E%89/materials/": {
+  "fetch_date": "2026-08-25T09:57:40+00:00",
+  "last_modified": "",
+  "fingerprint": "829d3890f0a4df00"
+ },
+ "https://meropide.com/chs/characters/%E5%A4%9A%E8%8E%89/stats/": {
+  "fetch_date": "2026-08-25T09:57:43+00:00",
+  "last_modified": "",
+  "fingerprint": "1bdc2acb5d78541b"
+ },
+ "https://meropide.com/chs/characters/%E5%A4%9A%E8%8E%89/theorycraft/": {
+  "fetch_date": "2026-08-25T09:57:45+00:00",
+  "last_modified": "",
+  "fingerprint": "1c9b47faa91989d0"
+ },
+ "https://meropide.com/chs/characters/%E5%A4%9C%E5%85%B0/": {
+  "fetch_date": "2026-08-25T09:57:47+00:00",
+  "last_modified": "",
+  "fingerprint": "bb0bd307c2c75ff4"
+ },
+ "https://meropide.com/chs/characters/%E5%A4%9C%E5%85%B0/materials/": {
+  "fetch_date": "2026-08-25T09:57:49+00:00",
+  "last_modified": "",
+  "fingerprint": "9f06b33c0f833716"
+ },
+ "https://meropide.com/chs/characters/%E5%A4%9C%E5%85%B0/stats/": {
+  "fetch_date": "2026-08-25T09:57:51+00:00",
+  "last_modified": "",
+  "fingerprint": "783e54f1d4eee511"
+ },
+ "https://meropide.com/chs/characters/%E5%A4%9C%E5%85%B0/theorycraft/": {
+  "fetch_date": "2026-08-25T09:57:52+00:00",
+  "last_modified": "",
+  "fingerprint": "8f44c711e13e0a0c"
+ },
+ "https://meropide.com/chs/characters/%E5%A5%88%E8%8A%99%E5%B0%94/": {
+  "fetch_date": "2026-08-25T09:57:55+00:00",
+  "last_modified": "",
+  "fingerprint": "27349daedb0f734b"
+ },
+ "https://meropide.com/chs/characters/%E5%A5%88%E8%8A%99%E5%B0%94/materials/": {
+  "fetch_date": "2026-08-25T09:57:57+00:00",
+  "last_modified": "",
+  "fingerprint": "f56eb7b34b90b271"
+ },
+ "https://meropide.com/chs/characters/%E5%A5%88%E8%8A%99%E5%B0%94/stats/": {
+  "fetch_date": "2026-08-25T09:57:59+00:00",
+  "last_modified": "",
+  "fingerprint": "f5af219d20e207b2"
+ },
+ "https://meropide.com/chs/characters/%E5%A5%88%E8%8A%99%E5%B0%94/theorycraft/": {
+  "fetch_date": "2026-08-25T09:58:00+00:00",
+  "last_modified": "",
+  "fingerprint": "5ff673ad3ce185d7"
+ },
+ "https://meropide.com/chs/characters/%E5%A5%A5%E9%BB%9B%E5%A1%94/": {
+  "fetch_date": "2026-08-25T09:58:02+00:00",
+  "last_modified": "",
+  "fingerprint": "d56afddee3aeeca2"
+ },
+ "https://meropide.com/chs/characters/%E5%A5%A5%E9%BB%9B%E5%A1%94/materials/": {
+  "fetch_date": "2026-08-25T09:58:04+00:00",
+  "last_modified": "",
+  "fingerprint": "a8ef1b119beba054"
+ },
+ "https://meropide.com/chs/characters/%E5%A5%A5%E9%BB%9B%E5%A1%94/stats/": {
+  "fetch_date": "2026-08-25T09:58:07+00:00",
+  "last_modified": "",
+  "fingerprint": "b4a71c6a642756ba"
+ },
+ "https://meropide.com/chs/characters/%E5%A5%A5%E9%BB%9B%E5%A1%94/theorycraft/": {
+  "fetch_date": "2026-08-25T09:58:09+00:00",
+  "last_modified": "",
+  "fingerprint": "50ba71dc4952e044"
+ },
+ "https://meropide.com/chs/characters/%E5%A6%AE%E9%9C%B2/": {
+  "fetch_date": "2026-08-25T09:58:11+00:00",
+  "last_modified": "",
+  "fingerprint": "c754c447ea213801"
+ },
+ "https://meropide.com/chs/characters/%E5%A6%AE%E9%9C%B2/materials/": {
+  "fetch_date": "2026-08-25T09:58:13+00:00",
+  "last_modified": "",
+  "fingerprint": "dbf90400039d4288"
+ },
+ "https://meropide.com/chs/characters/%E5%A6%AE%E9%9C%B2/stats/": {
+  "fetch_date": "2026-08-25T09:58:14+00:00",
+  "last_modified": "",
+  "fingerprint": "488aa4a7b5960b49"
+ },
+ "https://meropide.com/chs/characters/%E6%9D%9C%E6%9E%97/stats/": {
+  "fetch_date": "2026-08-25T10:38:13+00:00",
+  "last_modified": "",
+  "fingerprint": "0530021623c6d47e"
+ },
+ "https://meropide.com/chs/characters/%E6%9D%9C%E6%9E%97/theorycraft/": {
+  "fetch_date": "2026-08-25T10:38:14+00:00",
+  "last_modified": "",
+  "fingerprint": "e5a98920a857181f"
+ },
+ "https://meropide.com/chs/characters/%E6%9E%97%E5%B0%BC/": {
+  "fetch_date": "2026-08-25T10:38:16+00:00",
+  "last_modified": "",
+  "fingerprint": "4958c9ef02d2ae5f"
+ },
+ "https://meropide.com/chs/characters/%E6%9E%97%E5%B0%BC/materials/": {
+  "fetch_date": "2026-08-25T10:38:18+00:00",
+  "last_modified": "",
+  "fingerprint": "80272fe161865380"
+ },
+ "https://meropide.com/chs/characters/%E6%9E%97%E5%B0%BC/stats/": {
+  "fetch_date": "2026-08-25T10:38:19+00:00",
+  "last_modified": "",
+  "fingerprint": "c08c7ebb0fb91372"
+ },
+ "https://meropide.com/chs/characters/%E6%9E%97%E5%B0%BC/theorycraft/": {
+  "fetch_date": "2026-08-25T10:38:21+00:00",
+  "last_modified": "",
+  "fingerprint": "0898731fa56710d7"
+ },
+ "https://meropide.com/chs/characters/%E6%9E%AB%E5%8E%9F%E4%B8%87%E5%8F%B6/": {
+  "fetch_date": "2026-08-25T10:38:23+00:00",
+  "last_modified": "",
+  "fingerprint": "3821434a0524bfaa"
+ },
+ "https://meropide.com/chs/characters/%E6%9E%AB%E5%8E%9F%E4%B8%87%E5%8F%B6/materials/": {
+  "fetch_date": "2026-08-25T10:38:25+00:00",
+  "last_modified": "",
+  "fingerprint": "38409f04b5a07b6b"
+ },
+ "https://meropide.com/chs/characters/%E6%9E%AB%E5%8E%9F%E4%B8%87%E5%8F%B6/stats/": {
+  "fetch_date": "2026-08-25T10:38:26+00:00",
+  "last_modified": "",
+  "fingerprint": "20969dcd8532cc96"
+ },
+ "https://meropide.com/chs/characters/%E6%9E%AB%E5%8E%9F%E4%B8%87%E5%8F%B6/theorycraft/": {
+  "fetch_date": "2026-08-25T10:38:28+00:00",
+  "last_modified": "",
+  "fingerprint": "259494077375ee6c"
+ },
+ "https://meropide.com/chs/characters/%E6%9F%AF%E8%8E%B1/": {
+  "fetch_date": "2026-08-25T10:38:29+00:00",
+  "last_modified": "",
+  "fingerprint": "54220cec5a9a1d30"
+ },
+ "https://meropide.com/chs/characters/%E6%9F%AF%E8%8E%B1/materials/": {
+  "fetch_date": "2026-08-25T10:38:31+00:00",
+  "last_modified": "",
+  "fingerprint": "e0aaaba19c382926"
+ },
+ "https://meropide.com/chs/characters/%E6%9F%AF%E8%8E%B1/stats/": {
+  "fetch_date": "2026-08-25T10:38:33+00:00",
+  "last_modified": "",
+  "fingerprint": "997a17742882c9e6"
+ },
+ "https://meropide.com/chs/characters/%E6%9F%AF%E8%8E%B1/theorycraft/": {
+  "fetch_date": "2026-08-25T10:38:34+00:00",
+  "last_modified": "",
+  "fingerprint": "8aea53fccb0e12d6"
+ },
+ "https://meropide.com/chs/characters/%E6%A1%91%E5%A4%9A%E6%B6%85/": {
+  "fetch_date": "2026-08-25T10:38:36+00:00",
+  "last_modified": "",
+  "fingerprint": "422b0d2119245e36"
+ },
+ "https://meropide.com/chs/characters/%E6%A1%91%E5%A4%9A%E6%B6%85/materials/": {
+  "fetch_date": "2026-08-25T10:38:37+00:00",
+  "last_modified": "",
+  "fingerprint": "01a55e37f7ebb752"
+ },
+ "https://meropide.com/chs/characters/%E6%A1%91%E5%A4%9A%E6%B6%85/stats/": {
+  "fetch_date": "2026-08-25T10:38:40+00:00",
+  "last_modified": "",
+  "fingerprint": "f069677adcba9a30"
+ },
+ "https://meropide.com/chs/characters/%E6%A1%91%E5%A4%9A%E6%B6%85/theorycraft/": {
+  "fetch_date": "2026-08-25T10:38:41+00:00",
+  "last_modified": "",
+  "fingerprint": "0678ef5530f291d9"
+ },
+ "https://meropide.com/chs/characters/%E6%A2%A6%E8%A7%81%E6%9C%88%E7%91%9E%E5%B8%8C/": {
+  "fetch_date": "2026-08-25T10:38:43+00:00",
+  "last_modified": "",
+  "fingerprint": "d8a67a03d1102e8b"
+ },
+ "https://meropide.com/chs/characters/%E6%A2%A6%E8%A7%81%E6%9C%88%E7%91%9E%E5%B8%8C/materials/": {
+  "fetch_date": "2026-08-25T10:38:45+00:00",
+  "last_modified": "",
+  "fingerprint": "1603f4336b4f9502"
+ },
+ "https://meropide.com/chs/characters/%E6%A2%A6%E8%A7%81%E6%9C%88%E7%91%9E%E5%B8%8C/stats/": {
+  "fetch_date": "2026-08-25T10:38:47+00:00",
+  "last_modified": "",
+  "fingerprint": "0dacdbe7f4ae2cf9"
+ },
+ "https://meropide.com/chs/characters/%E6%A2%A6%E8%A7%81%E6%9C%88%E7%91%9E%E5%B8%8C/theorycraft/": {
+  "fetch_date": "2026-08-25T10:38:49+00:00",
+  "last_modified": "",
+  "fingerprint": "771a06ac93db24a9"
+ },
+ "https://meropide.com/chs/characters/%E6%AC%A7%E6%B4%9B%E4%BC%A6/": {
+  "fetch_date": "2026-08-25T10:38:50+00:00",
+  "last_modified": "",
+  "fingerprint": "06a50c644faa84d7"
+ },
+ "https://meropide.com/chs/characters/%E6%AC%A7%E6%B4%9B%E4%BC%A6/materials/": {
+  "fetch_date": "2026-08-25T10:38:52+00:00",
+  "last_modified": "",
+  "fingerprint": "5484a56f5862ecaf"
+ },
+ "https://meropide.com/chs/characters/%E6%AC%A7%E6%B4%9B%E4%BC%A6/stats/": {
+  "fetch_date": "2026-08-25T10:38:53+00:00",
+  "last_modified": "",
+  "fingerprint": "8871066129055c48"
+ },
+ "https://meropide.com/chs/characters/%E6%AC%A7%E6%B4%9B%E4%BC%A6/theorycraft/": {
+  "fetch_date": "2026-08-25T10:38:55+00:00",
+  "last_modified": "",
+  "fingerprint": "7e544ca1d7ad332d"
+ },
+ "https://meropide.com/chs/characters/%E6%B3%95%E5%B0%94%E4%BC%BD/": {
+  "fetch_date": "2026-08-25T10:38:57+00:00",
+  "last_modified": "",
+  "fingerprint": "087ddf6e331c5006"
+ },
+ "https://meropide.com/chs/characters/%E6%B3%95%E5%B0%94%E4%BC%BD/materials/": {
+  "fetch_date": "2026-08-25T10:38:59+00:00",
+  "last_modified": "",
+  "fingerprint": "362d7249daf73715"
+ },
+ "https://meropide.com/chs/characters/%E6%B3%95%E5%B0%94%E4%BC%BD/stats/": {
+  "fetch_date": "2026-08-25T10:39:01+00:00",
+  "last_modified": "",
+  "fingerprint": "a72e8ecc757b5433"
+ },
+ "https://meropide.com/chs/characters/%E6%B3%95%E5%B0%94%E4%BC%BD/theorycraft/": {
+  "fetch_date": "2026-08-25T10:39:03+00:00",
+  "last_modified": "",
+  "fingerprint": "0b7af775ea16d2a7"
+ },
+ "https://meropide.com/chs/characters/%E6%B4%9B%E6%81%A9/": {
+  "fetch_date": "2026-08-25T10:39:06+00:00",
+  "last_modified": "",
+  "fingerprint": "afb40a95244cc33c"
+ },
+ "https://meropide.com/chs/characters/%E6%B4%9B%E6%81%A9/materials/": {
+  "fetch_date": "2026-08-25T10:39:08+00:00",
+  "last_modified": "",
+  "fingerprint": "5bdf2860500c6fa4"
+ },
+ "https://meropide.com/chs/characters/%E6%B4%9B%E6%81%A9/stats/": {
+  "fetch_date": "2026-08-25T10:39:09+00:00",
+  "last_modified": "",
+  "fingerprint": "c65f2ee12973a331"
+ },
+ "https://meropide.com/chs/characters/%E6%B4%9B%E6%81%A9/theorycraft/": {
+  "fetch_date": "2026-08-25T10:39:12+00:00",
+  "last_modified": "",
+  "fingerprint": "a43ff66facc7011a"
+ },
+ "https://meropide.com/chs/characters/%E6%B5%81%E6%B5%AA%E8%80%85/": {
+  "fetch_date": "2026-08-25T10:39:14+00:00",
+  "last_modified": "",
+  "fingerprint": "0da1108545dc6612"
+ },
+ "https://meropide.com/chs/characters/%E6%B5%81%E6%B5%AA%E8%80%85/materials/": {
+  "fetch_date": "2026-08-25T10:39:15+00:00",
+  "last_modified": "",
+  "fingerprint": "74536609c07fdf42"
+ },
+ "https://meropide.com/chs/characters/%E6%B5%81%E6%B5%AA%E8%80%85/stats/": {
+  "fetch_date": "2026-08-25T10:39:17+00:00",
+  "last_modified": "",
+  "fingerprint": "f124d4b8b529757e"
+ },
+ "https://meropide.com/chs/characters/%E6%B5%81%E6%B5%AA%E8%80%85/theorycraft/": {
+  "fetch_date": "2026-08-25T10:39:19+00:00",
+  "last_modified": "",
+  "fingerprint": "34721f60268a2aab"
+ },
+ "https://meropide.com/chs/characters/%E6%B8%A9%E8%BF%AA/": {
+  "fetch_date": "2026-08-25T10:39:21+00:00",
+  "last_modified": "",
+  "fingerprint": "e02b1d4ac0d182ca"
+ },
+ "https://meropide.com/chs/characters/%E6%B8%A9%E8%BF%AA/materials/": {
+  "fetch_date": "2026-08-25T10:39:22+00:00",
+  "last_modified": "",
+  "fingerprint": "4f2c717fd7215a65"
+ },
+ "https://meropide.com/chs/characters/%E6%B8%A9%E8%BF%AA/stats/": {
+  "fetch_date": "2026-08-25T10:39:24+00:00",
+  "last_modified": "",
+  "fingerprint": "de6653796b1990dc"
+ },
+ "https://meropide.com/chs/characters/%E6%B8%A9%E8%BF%AA/theorycraft/": {
+  "fetch_date": "2026-08-25T10:39:26+00:00",
+  "last_modified": "",
+  "fingerprint": "0cd249f294e2f71a"
+ },
+ "https://meropide.com/chs/characters/%E7%83%9F%E7%BB%AF/": {
+  "fetch_date": "2026-08-25T10:39:27+00:00",
+  "last_modified": "",
+  "fingerprint": "206252fa596a40ce"
+ },
+ "https://meropide.com/chs/characters/%E7%83%9F%E7%BB%AF/materials/": {
+  "fetch_date": "2026-08-25T10:39:29+00:00",
+  "last_modified": "",
+  "fingerprint": "2670a3ccb2a7b332"
+ },
+ "https://meropide.com/chs/characters/%E7%83%9F%E7%BB%AF/stats/": {
+  "fetch_date": "2026-08-25T10:39:31+00:00",
+  "last_modified": "",
+  "fingerprint": "4a4dc611c3099a30"
+ },
+ "https://meropide.com/chs/characters/%E7%83%9F%E7%BB%AF/theorycraft/": {
+  "fetch_date": "2026-08-25T10:39:33+00:00",
+  "last_modified": "",
+  "fingerprint": "b5f4310d019e5ee2"
+ },
+ "https://meropide.com/chs/characters/%E7%88%B1%E5%8F%AF%E8%8F%B2/": {
+  "fetch_date": "2026-08-25T10:39:34+00:00",
+  "last_modified": "",
+  "fingerprint": "ea90f5a99570c4b4"
+ },
+ "https://meropide.com/chs/characters/%E7%88%B1%E5%8F%AF%E8%8F%B2/materials/": {
+  "fetch_date": "2026-08-25T10:39:36+00:00",
+  "last_modified": "",
+  "fingerprint": "b404c7c705cd1267"
+ },
+ "https://meropide.com/chs/characters/%E7%88%B1%E5%8F%AF%E8%8F%B2/stats/": {
+  "fetch_date": "2026-08-25T10:39:38+00:00",
+  "last_modified": "",
+  "fingerprint": "4aee84e510393fbf"
+ },
+ "https://meropide.com/chs/characters/%E7%88%B1%E5%8F%AF%E8%8F%B2/theorycraft/": {
+  "fetch_date": "2026-08-25T10:39:40+00:00",
+  "last_modified": "",
+  "fingerprint": "2291dca2f54cd419"
+ },
+ "https://meropide.com/chs/characters/%E7%88%B1%E8%AF%BA/": {
+  "fetch_date": "2026-08-25T10:39:41+00:00",
+  "last_modified": "",
+  "fingerprint": "c35e0a08557ad5ac"
+ },
+ "https://meropide.com/chs/characters/%E7%88%B1%E8%AF%BA/materials/": {
+  "fetch_date": "2026-08-25T10:39:44+00:00",
+  "last_modified": "",
+  "fingerprint": "7e5a9c7090cd53c7"
+ },
+ "https://meropide.com/chs/characters/%E7%88%B1%E8%AF%BA/stats/": {
+  "fetch_date": "2026-08-25T10:39:46+00:00",
+  "last_modified": "",
+  "fingerprint": "b8ac6e1980ad0af6"
+ },
+ "https://meropide.com/chs/characters/%E7%88%B1%E8%AF%BA/theorycraft/": {
+  "fetch_date": "2026-08-25T10:39:48+00:00",
+  "last_modified": "",
+  "fingerprint": "668f4262e724be22"
+ },
+ "https://meropide.com/chs/characters/%E7%8E%9B%E6%8B%89%E5%A6%AE/": {
+  "fetch_date": "2026-08-25T10:39:49+00:00",
+  "last_modified": "",
+  "fingerprint": "55767428ad3d0ce4"
+ },
+ "https://meropide.com/chs/characters/%E7%8E%9B%E6%8B%89%E5%A6%AE/materials/": {
+  "fetch_date": "2026-08-25T10:39:51+00:00",
+  "last_modified": "",
+  "fingerprint": "d8ddc91e64606917"
+ },
+ "https://meropide.com/chs/characters/%E7%8E%9B%E6%8B%89%E5%A6%AE/stats/": {
+  "fetch_date": "2026-08-25T10:39:53+00:00",
+  "last_modified": "",
+  "fingerprint": "68bae951e4368124"
+ },
+ "https://meropide.com/chs/characters/%E7%8E%9B%E6%8B%89%E5%A6%AE/theorycraft/": {
+  "fetch_date": "2026-08-25T10:39:55+00:00",
+  "last_modified": "",
+  "fingerprint": "3aa5ea2425de8fae"
+ },
+ "https://meropide.com/chs/characters/%E7%8E%9B%E8%96%87%E5%8D%A1/": {
+  "fetch_date": "2026-08-25T10:39:56+00:00",
+  "last_modified": "",
+  "fingerprint": "a63a0bf0c7e81729"
+ },
+ "https://meropide.com/chs/characters/%E7%8E%9B%E8%96%87%E5%8D%A1/materials/": {
+  "fetch_date": "2026-08-25T10:39:59+00:00",
+  "last_modified": "",
+  "fingerprint": "aa9af5d954d18aa3"
+ },
+ "https://meropide.com/chs/characters/%E7%8E%9B%E8%96%87%E5%8D%A1/stats/": {
+  "fetch_date": "2026-08-25T10:40:01+00:00",
+  "last_modified": "",
+  "fingerprint": "3b4b0773f4c9e4ae"
+ },
+ "https://meropide.com/chs/characters/%E7%8E%9B%E8%96%87%E5%8D%A1/theorycraft/": {
+  "fetch_date": "2026-08-25T10:40:02+00:00",
+  "last_modified": "",
+  "fingerprint": "16d1c7343d1f14de"
+ },
+ "https://meropide.com/chs/characters/%E7%8F%8A%E7%91%9A%E5%AE%AB%E5%BF%83%E6%B5%B7/": {
+  "fetch_date": "2026-08-25T10:40:05+00:00",
+  "last_modified": "",
+  "fingerprint": "2e7d33140afdf4c5"
+ },
+ "https://meropide.com/chs/characters/%E7%8F%8A%E7%91%9A%E5%AE%AB%E5%BF%83%E6%B5%B7/materials/": {
+  "fetch_date": "2026-08-25T10:40:06+00:00",
+  "last_modified": "",
+  "fingerprint": "c61461ab184edb7c"
+ },
+ "https://meropide.com/chs/characters/%E7%8F%8A%E7%91%9A%E5%AE%AB%E5%BF%83%E6%B5%B7/stats/": {
+  "fetch_date": "2026-08-25T10:40:08+00:00",
+  "last_modified": "",
+  "fingerprint": "5eac04e561dc9eda"
+ },
+ "https://meropide.com/chs/characters/%E7%8F%8A%E7%91%9A%E5%AE%AB%E5%BF%83%E6%B5%B7/theorycraft/": {
+  "fetch_date": "2026-08-25T10:40:10+00:00",
+  "last_modified": "",
+  "fingerprint": "61761c4b89339e9b"
+ },
+ "https://meropide.com/chs/characters/%E7%8F%90%E9%9C%B2%E7%8F%8A/": {
+  "fetch_date": "2026-08-25T10:44:16+00:00",
+  "last_modified": "",
+  "fingerprint": "917667c84737a8e5"
+ },
+ "https://meropide.com/chs/characters/%E7%8F%90%E9%9C%B2%E7%8F%8A/materials/": {
+  "fetch_date": "2026-08-25T10:44:17+00:00",
+  "last_modified": "",
+  "fingerprint": "258ed633d4ffd527"
+ },
+ "https://meropide.com/chs/characters/%E7%8F%90%E9%9C%B2%E7%8F%8A/stats/": {
+  "fetch_date": "2026-08-25T10:44:19+00:00",
+  "last_modified": "",
+  "fingerprint": "6d584a54bcc3eaa9"
+ },
+ "https://meropide.com/chs/characters/%E7%8F%90%E9%9C%B2%E7%8F%8A/theorycraft/": {
+  "fetch_date": "2026-08-25T10:44:20+00:00",
+  "last_modified": "",
+  "fingerprint": "7967fca1f2561738"
+ },
+ "https://meropide.com/chs/characters/%E7%8F%AD%E5%B0%BC%E7%89%B9/": {
+  "fetch_date": "2026-08-25T10:44:22+00:00",
+  "last_modified": "",
+  "fingerprint": "c248f5270b1b490a"
+ },
+ "https://meropide.com/chs/characters/%E7%8F%AD%E5%B0%BC%E7%89%B9/materials/": {
+  "fetch_date": "2026-08-25T10:44:24+00:00",
+  "last_modified": "",
+  "fingerprint": "ff5e39a8f6298f12"
+ },
+ "https://meropide.com/chs/characters/%E7%8F%AD%E5%B0%BC%E7%89%B9/stats/": {
+  "fetch_date": "2026-08-25T10:44:25+00:00",
+  "last_modified": "",
+  "fingerprint": "7d72f40817efab67"
+ },
+ "https://meropide.com/chs/characters/%E7%8F%AD%E5%B0%BC%E7%89%B9/theorycraft/": {
+  "fetch_date": "2026-08-25T10:44:27+00:00",
+  "last_modified": "",
+  "fingerprint": "da500ac180943757"
+ },
+ "https://meropide.com/chs/characters/%E7%90%B3%E5%A6%AE%E7%89%B9/": {
+  "fetch_date": "2026-08-25T10:44:29+00:00",
+  "last_modified": "",
+  "fingerprint": "380f3a9bbb3cc613"
+ },
+ "https://meropide.com/chs/characters/%E7%90%B3%E5%A6%AE%E7%89%B9/materials/": {
+  "fetch_date": "2026-08-25T10:44:30+00:00",
+  "last_modified": "",
+  "fingerprint": "32bb7838a4bc6cc3"
+ },
+ "https://meropide.com/chs/characters/%E7%90%B3%E5%A6%AE%E7%89%B9/stats/": {
+  "fetch_date": "2026-08-25T10:44:32+00:00",
+  "last_modified": "",
+  "fingerprint": "8391191f9938f89e"
+ },
+ "https://meropide.com/chs/characters/%E7%90%B3%E5%A6%AE%E7%89%B9/theorycraft/": {
+  "fetch_date": "2026-08-25T10:44:34+00:00",
+  "last_modified": "",
+  "fingerprint": "b275af3e34208629"
+ },
+ "https://meropide.com/chs/characters/%E7%90%B4/": {
+  "fetch_date": "2026-08-25T10:44:35+00:00",
+  "last_modified": "",
+  "fingerprint": "aa6f767c8d6d03a7"
+ },
+ "https://meropide.com/chs/characters/%E7%90%B4/materials/": {
+  "fetch_date": "2026-08-25T10:44:37+00:00",
+  "last_modified": "",
+  "fingerprint": "8aaa0ed267aa46f8"
+ },
+ "https://meropide.com/chs/characters/%E7%90%B4/stats/": {
+  "fetch_date": "2026-08-25T10:44:38+00:00",
+  "last_modified": "",
+  "fingerprint": "03a05c4dd38437dd"
+ },
+ "https://meropide.com/chs/characters/%E7%90%B4/theorycraft/": {
+  "fetch_date": "2026-08-25T10:44:40+00:00",
+  "last_modified": "",
+  "fingerprint": "4615acb8a57ebc5f"
+ },
+ "https://meropide.com/chs/characters/%E7%91%B6%E7%91%B6/": {
+  "fetch_date": "2026-08-25T10:44:42+00:00",
+  "last_modified": "",
+  "fingerprint": "b15cba6794e779f2"
+ },
+ "https://meropide.com/chs/characters/%E7%91%B6%E7%91%B6/materials/": {
+  "fetch_date": "2026-08-25T10:44:43+00:00",
+  "last_modified": "",
+  "fingerprint": "2ac84e417ec09e0b"
+ },
+ "https://meropide.com/chs/characters/%E7%91%B6%E7%91%B6/stats/": {
+  "fetch_date": "2026-08-25T10:44:45+00:00",
+  "last_modified": "",
+  "fingerprint": "c5f76f074f490ee3"
+ },
+ "https://meropide.com/chs/characters/%E7%91%B6%E7%91%B6/theorycraft/": {
+  "fetch_date": "2026-08-25T10:44:47+00:00",
+  "last_modified": "",
+  "fingerprint": "7bc300dcd3ff3439"
+ },
+ "https://meropide.com/chs/characters/%E7%93%A6%E9%9B%B7%E8%8E%8E/": {
+  "fetch_date": "2026-08-25T10:44:48+00:00",
+  "last_modified": "",
+  "fingerprint": "ec689048e171f693"
+ },
+ "https://meropide.com/chs/characters/%E7%93%A6%E9%9B%B7%E8%8E%8E/materials/": {
+  "fetch_date": "2026-08-25T10:44:50+00:00",
+  "last_modified": "",
+  "fingerprint": "a4bc8fcf0c1136c4"
+ },
+ "https://meropide.com/chs/characters/%E7%93%A6%E9%9B%B7%E8%8E%8E/stats/": {
+  "fetch_date": "2026-08-25T10:44:51+00:00",
+  "last_modified": "",
+  "fingerprint": "8a77f80e81f81a68"
+ },
+ "https://meropide.com/chs/characters/%E7%93%A6%E9%9B%B7%E8%8E%8E/theorycraft/": {
+  "fetch_date": "2026-08-25T10:44:54+00:00",
+  "last_modified": "",
+  "fingerprint": "9df05b794cd1b198"
+ },
+ "https://meropide.com/chs/characters/%E7%94%98%E9%9B%A8/": {
+  "fetch_date": "2026-08-25T10:44:55+00:00",
+  "last_modified": "",
+  "fingerprint": "423218c3f0abac99"
+ },
+ "https://meropide.com/chs/characters/%E7%94%98%E9%9B%A8/materials/": {
+  "fetch_date": "2026-08-25T10:44:57+00:00",
+  "last_modified": "",
+  "fingerprint": "313abf65462f898d"
+ },
+ "https://meropide.com/chs/characters/%E7%94%98%E9%9B%A8/stats/": {
+  "fetch_date": "2026-08-25T10:44:58+00:00",
+  "last_modified": "",
+  "fingerprint": "c9b424b698340e9a"
+ },
+ "https://meropide.com/chs/characters/%E7%94%98%E9%9B%A8/theorycraft/": {
+  "fetch_date": "2026-08-25T10:45:00+00:00",
+  "last_modified": "",
+  "fingerprint": "2c0fd31bd50cff31"
+ },
+ "https://meropide.com/chs/characters/%E7%94%B3%E9%B9%A4/": {
+  "fetch_date": "2026-08-25T10:45:02+00:00",
+  "last_modified": "",
+  "fingerprint": "c3bb05d70c6bf6cf"
+ },
+ "https://meropide.com/chs/characters/%E7%94%B3%E9%B9%A4/materials/": {
+  "fetch_date": "2026-08-25T10:45:03+00:00",
+  "last_modified": "",
+  "fingerprint": "86a3e77e774c46b6"
+ },
+ "https://meropide.com/chs/characters/%E7%94%B3%E9%B9%A4/stats/": {
+  "fetch_date": "2026-08-25T10:45:05+00:00",
+  "last_modified": "",
+  "fingerprint": "5c218ba935b1a146"
+ },
+ "https://meropide.com/chs/characters/%E7%94%B3%E9%B9%A4/theorycraft/": {
+  "fetch_date": "2026-08-25T10:45:06+00:00",
+  "last_modified": "",
+  "fingerprint": "790d8c59a4b39f87"
+ },
+ "https://meropide.com/chs/characters/%E7%99%BD%E6%9C%AF/": {
+  "fetch_date": "2026-08-25T10:45:08+00:00",
+  "last_modified": "",
+  "fingerprint": "8fd968c0ec056be4"
+ },
+ "https://meropide.com/chs/characters/%E7%99%BD%E6%9C%AF/materials/": {
+  "fetch_date": "2026-08-25T10:45:09+00:00",
+  "last_modified": "",
+  "fingerprint": "893cc5c89a00fa88"
+ },
+ "https://meropide.com/chs/characters/%E7%99%BD%E6%9C%AF/stats/": {
+  "fetch_date": "2026-08-25T10:45:11+00:00",
+  "last_modified": "",
+  "fingerprint": "615064b35064cdc2"
+ },
+ "https://meropide.com/chs/characters/%E7%99%BD%E6%9C%AF/theorycraft/": {
+  "fetch_date": "2026-08-25T10:45:13+00:00",
+  "last_modified": "",
+  "fingerprint": "a330763059527884"
+ },
+ "https://meropide.com/chs/characters/%E7%A0%82%E7%B3%96/": {
+  "fetch_date": "2026-08-25T10:45:14+00:00",
+  "last_modified": "",
+  "fingerprint": "fde22a6e1b2fcba0"
+ },
+ "https://meropide.com/chs/characters/%E7%A0%82%E7%B3%96/materials/": {
+  "fetch_date": "2026-08-25T10:45:16+00:00",
+  "last_modified": "",
+  "fingerprint": "cd6a59c28f1eb727"
+ },
+ "https://meropide.com/chs/characters/%E7%A0%82%E7%B3%96/stats/": {
+  "fetch_date": "2026-08-25T10:45:18+00:00",
+  "last_modified": "",
+  "fingerprint": "2b6ffe94545beb0d"
+ },
+ "https://meropide.com/chs/characters/%E7%A0%82%E7%B3%96/theorycraft/": {
+  "fetch_date": "2026-08-25T10:45:19+00:00",
+  "last_modified": "",
+  "fingerprint": "8ae7da60e00bd5e6"
+ },
+ "https://meropide.com/chs/characters/%E7%A5%9E%E9%87%8C%E7%BB%AB%E4%BA%BA/": {
+  "fetch_date": "2026-08-25T10:49:57+00:00",
+  "last_modified": "",
+  "fingerprint": "58296ed22c983615"
+ },
+ "https://meropide.com/chs/characters/%E7%A5%9E%E9%87%8C%E7%BB%AB%E4%BA%BA/materials/": {
+  "fetch_date": "2026-08-25T10:49:59+00:00",
+  "last_modified": "",
+  "fingerprint": "9c6db22939c3bdd0"
+ },
+ "https://meropide.com/chs/characters/%E7%A5%9E%E9%87%8C%E7%BB%AB%E4%BA%BA/stats/": {
+  "fetch_date": "2026-08-25T10:50:00+00:00",
+  "last_modified": "",
+  "fingerprint": "d55999cacf79fa37"
+ },
+ "https://meropide.com/chs/characters/%E7%A5%9E%E9%87%8C%E7%BB%AB%E4%BA%BA/theorycraft/": {
+  "fetch_date": "2026-08-25T10:50:02+00:00",
+  "last_modified": "",
+  "fingerprint": "11333d8afe2f9f3a"
+ },
+ "https://meropide.com/chs/characters/%E7%A5%9E%E9%87%8C%E7%BB%AB%E5%8D%8E/": {
+  "fetch_date": "2026-08-25T10:50:04+00:00",
+  "last_modified": "",
+  "fingerprint": "fd4f257130025a00"
+ },
+ "https://meropide.com/chs/characters/%E7%A5%9E%E9%87%8C%E7%BB%AB%E5%8D%8E/materials/": {
+  "fetch_date": "2026-08-25T10:54:47+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "9dee070d62d08218"
+ },
+ "https://meropide.com/chs/characters/%E7%A5%9E%E9%87%8C%E7%BB%AB%E5%8D%8E/stats/": {
+  "fetch_date": "2026-08-25T10:54:49+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "240af6344d3ec46d"
+ },
+ "https://meropide.com/chs/characters/%E7%A5%9E%E9%87%8C%E7%BB%AB%E5%8D%8E/theorycraft/": {
+  "fetch_date": "2026-08-25T10:54:51+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "afbc1791a6f1a1db"
+ },
+ "https://meropide.com/chs/characters/%E7%B1%B3%E5%8D%A1/": {
+  "fetch_date": "2026-08-25T10:54:52+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "53a4fe083a33e20c"
+ },
+ "https://meropide.com/chs/characters/%E7%B1%B3%E5%8D%A1/materials/": {
+  "fetch_date": "2026-08-25T10:54:54+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "53f7bee32c918b55"
+ },
+ "https://meropide.com/chs/characters/%E7%B1%B3%E5%8D%A1/stats/": {
+  "fetch_date": "2026-08-25T10:54:56+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "8e9d7be2a65f00ac"
+ },
+ "https://meropide.com/chs/characters/%E7%B1%B3%E5%8D%A1/theorycraft/": {
+  "fetch_date": "2026-08-25T10:54:57+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "13e0371cefd3febe"
+ },
+ "https://meropide.com/chs/characters/%E7%BA%B3%E8%A5%BF%E5%A6%B2/": {
+  "fetch_date": "2026-08-25T10:54:59+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "18e74f6a76f0427f"
+ },
+ "https://meropide.com/chs/characters/%E7%BA%B3%E8%A5%BF%E5%A6%B2/materials/": {
+  "fetch_date": "2026-08-25T10:55:01+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "af96fa74f419204e"
+ },
+ "https://meropide.com/chs/characters/%E7%BA%B3%E8%A5%BF%E5%A6%B2/stats/": {
+  "fetch_date": "2026-08-25T10:55:03+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "d4cdfec368b28617"
+ },
+ "https://meropide.com/chs/characters/%E7%BA%B3%E8%A5%BF%E5%A6%B2/theorycraft/": {
+  "fetch_date": "2026-08-25T10:55:04+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "72bff68acd2bf54b"
+ },
+ "https://meropide.com/chs/characters/%E7%BB%AE%E8%89%AF%E8%89%AF/": {
+  "fetch_date": "2026-08-25T10:55:06+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "b778824cf9102575"
+ },
+ "https://meropide.com/chs/characters/%E7%BB%AE%E8%89%AF%E8%89%AF/materials/": {
+  "fetch_date": "2026-08-25T10:55:08+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "f502486529e510ff"
+ },
+ "https://meropide.com/chs/characters/%E7%BB%AE%E8%89%AF%E8%89%AF/stats/": {
+  "fetch_date": "2026-08-25T10:55:09+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "ed0b32c6117f7f52"
+ },
+ "https://meropide.com/chs/characters/%E7%BB%AE%E8%89%AF%E8%89%AF/theorycraft/": {
+  "fetch_date": "2026-08-25T10:55:11+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "b8bf29c4a36bdb0e"
+ },
+ "https://meropide.com/chs/characters/%E7%BD%97%E8%8E%8E%E8%8E%89%E4%BA%9A/": {
+  "fetch_date": "2026-08-25T10:55:13+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "9e02a7f1c162cd0c"
+ },
+ "https://meropide.com/chs/characters/%E7%BD%97%E8%8E%8E%E8%8E%89%E4%BA%9A/materials/": {
+  "fetch_date": "2026-08-25T10:55:14+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "964cb5d47ed70c46"
+ },
+ "https://meropide.com/chs/characters/%E7%BD%97%E8%8E%8E%E8%8E%89%E4%BA%9A/stats/": {
+  "fetch_date": "2026-08-25T10:55:16+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "f99b66e5010fe0e6"
+ },
+ "https://meropide.com/chs/characters/%E7%BD%97%E8%8E%8E%E8%8E%89%E4%BA%9A/theorycraft/": {
+  "fetch_date": "2026-08-25T10:55:17+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "083425168c88ee9b"
+ },
+ "https://meropide.com/chs/characters/%E8%83%A1%E6%A1%83/": {
+  "fetch_date": "2026-08-25T10:55:19+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "50d3a77aed58b424"
+ },
+ "https://meropide.com/chs/characters/%E8%83%A1%E6%A1%83/materials/": {
+  "fetch_date": "2026-08-25T10:55:20+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "3a72afb32f8f7986"
+ },
+ "https://meropide.com/chs/characters/%E8%83%A1%E6%A1%83/stats/": {
+  "fetch_date": "2026-08-25T10:55:23+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "ccf486fd6c13fdf0"
+ },
+ "https://meropide.com/chs/characters/%E8%83%A1%E6%A1%83/theorycraft/": {
+  "fetch_date": "2026-08-25T10:55:24+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "cee35592fd720d81"
+ },
+ "https://meropide.com/chs/characters/%E8%89%BE%E5%B0%94%E6%B5%B7%E6%A3%AE/": {
+  "fetch_date": "2026-08-25T10:55:26+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "96de9229868877b3"
+ },
+ "https://meropide.com/chs/characters/%E8%89%BE%E5%B0%94%E6%B5%B7%E6%A3%AE/materials/": {
+  "fetch_date": "2026-08-25T10:55:28+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "6522df042aa21d22"
+ },
+ "https://meropide.com/chs/characters/%E8%89%BE%E5%B0%94%E6%B5%B7%E6%A3%AE/stats/": {
+  "fetch_date": "2026-08-25T10:55:29+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "effa0faf45dfdfdc"
+ },
+ "https://meropide.com/chs/characters/%E8%89%BE%E5%B0%94%E6%B5%B7%E6%A3%AE/theorycraft/": {
+  "fetch_date": "2026-08-25T10:55:31+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "63ee5e767d9a7e2b"
+ },
+ "https://meropide.com/chs/characters/%E8%89%BE%E6%A2%85%E8%8E%89%E5%9F%83/": {
+  "fetch_date": "2026-08-25T10:55:33+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "197d91fa696c516d"
+ },
+ "https://meropide.com/chs/characters/%E8%89%BE%E6%A2%85%E8%8E%89%E5%9F%83/materials/": {
+  "fetch_date": "2026-08-25T10:55:35+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "6275400b33898aef"
+ },
+ "https://meropide.com/chs/characters/%E8%89%BE%E6%A2%85%E8%8E%89%E5%9F%83/stats/": {
+  "fetch_date": "2026-08-25T10:55:36+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "5c197045f1fa7a57"
+ },
+ "https://meropide.com/chs/characters/%E8%89%BE%E6%A2%85%E8%8E%89%E5%9F%83/theorycraft/": {
+  "fetch_date": "2026-08-25T10:55:38+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "a0898da2bca25fc8"
+ },
+ "https://meropide.com/chs/characters/%E8%8A%99%E5%AE%81%E5%A8%9C/": {
+  "fetch_date": "2026-08-25T10:55:40+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "c85c2bb19354207b"
+ },
+ "https://meropide.com/chs/characters/%E8%8A%99%E5%AE%81%E5%A8%9C/materials/": {
+  "fetch_date": "2026-08-25T10:55:42+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "6ed9c116f6bc66e9"
+ },
+ "https://meropide.com/chs/characters/%E8%8A%99%E5%AE%81%E5%A8%9C/stats/": {
+  "fetch_date": "2026-08-25T11:00:47+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "eeab7c91b24e1f03"
+ },
+ "https://meropide.com/chs/characters/%E8%8A%99%E5%AE%81%E5%A8%9C/theorycraft/": {
+  "fetch_date": "2026-08-25T11:00:49+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "2581658ff11a0a48"
+ },
+ "https://meropide.com/chs/characters/%E8%8A%AD%E8%8A%AD%E6%8B%89/": {
+  "fetch_date": "2026-08-25T11:00:50+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "04cf40efd402af4e"
+ },
+ "https://meropide.com/chs/characters/%E8%8A%AD%E8%8A%AD%E6%8B%89/materials/": {
+  "fetch_date": "2026-08-25T11:00:52+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "5b25464e0900a6e1"
+ },
+ "https://meropide.com/chs/characters/%E8%8A%AD%E8%8A%AD%E6%8B%89/stats/": {
+  "fetch_date": "2026-08-25T11:01:31+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "3fad02f44f16fb95"
+ },
+ "https://meropide.com/chs/characters/%E8%8A%AD%E8%8A%AD%E6%8B%89/theorycraft/": {
+  "fetch_date": "2026-08-25T11:01:32+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "254f2e2b4b29f966"
+ },
+ "https://meropide.com/chs/characters/%E8%8C%9C%E7%89%B9%E8%8F%88%E8%8E%89/": {
+  "fetch_date": "2026-08-25T11:01:33+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "3ec7aeed99bda32a"
+ },
+ "https://meropide.com/chs/characters/%E8%8C%9C%E7%89%B9%E8%8F%88%E8%8E%89/materials/": {
+  "fetch_date": "2026-08-25T11:01:34+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "c6d5438395bbf985"
+ },
+ "https://meropide.com/chs/characters/%E8%8C%9C%E7%89%B9%E8%8F%88%E8%8E%89/stats/": {
+  "fetch_date": "2026-08-25T11:01:36+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "82372b09b5c130db"
+ },
+ "https://meropide.com/chs/characters/%E8%8C%9C%E7%89%B9%E8%8F%88%E8%8E%89/theorycraft/": {
+  "fetch_date": "2026-08-25T11:01:37+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "f97a38f70c227a7c"
+ },
+ "https://meropide.com/chs/characters/%E8%8D%92%E6%B3%B7%E4%B8%80%E6%96%97/": {
+  "fetch_date": "2026-08-25T11:01:39+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "ae4bffd721ced8b2"
+ },
+ "https://meropide.com/chs/characters/%E8%8D%92%E6%B3%B7%E4%B8%80%E6%96%97/materials/": {
+  "fetch_date": "2026-08-25T11:01:41+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "43ba50343db747b7"
+ },
+ "https://meropide.com/chs/characters/%E8%8D%92%E6%B3%B7%E4%B8%80%E6%96%97/stats/": {
+  "fetch_date": "2026-08-25T11:01:42+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "483a2069b4569d4a"
+ },
+ "https://meropide.com/chs/characters/%E8%8D%92%E6%B3%B7%E4%B8%80%E6%96%97/theorycraft/": {
+  "fetch_date": "2026-08-25T11:01:44+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "7d2bc9192ac05298"
+ },
+ "https://meropide.com/chs/characters/%E8%8E%89%E5%A5%88%E5%A8%85/": {
+  "fetch_date": "2026-08-25T11:01:45+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "cb1e6693daacd33d"
+ },
+ "https://meropide.com/chs/characters/%E8%8E%89%E5%A5%88%E5%A8%85/materials/": {
+  "fetch_date": "2026-08-25T11:01:46+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "3a7ae9904e245824"
+ },
+ "https://meropide.com/chs/characters/%E8%8E%89%E5%A5%88%E5%A8%85/stats/": {
+  "fetch_date": "2026-08-25T11:01:48+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "fb5676b388bea462"
+ },
+ "https://meropide.com/chs/characters/%E8%8E%89%E5%A5%88%E5%A8%85/theorycraft/": {
+  "fetch_date": "2026-08-25T11:01:50+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "3742e0e78e43be2e"
+ },
+ "https://meropide.com/chs/characters/%E8%8E%AB%E5%A8%9C/": {
+  "fetch_date": "2026-08-25T11:01:51+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "25fe203189e00f21"
+ },
+ "https://meropide.com/chs/characters/%E8%8E%AB%E5%A8%9C/materials/": {
+  "fetch_date": "2026-08-25T11:01:53+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "46cebb4f8076cc2a"
+ },
+ "https://meropide.com/chs/characters/%E8%8E%AB%E5%A8%9C/stats/": {
+  "fetch_date": "2026-08-25T11:01:54+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "5ea8ea5bd5055c87"
+ },
+ "https://meropide.com/chs/characters/%E8%8E%AB%E5%A8%9C/theorycraft/": {
+  "fetch_date": "2026-08-25T11:01:55+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "2ca5680bb5c11812"
+ },
+ "https://meropide.com/chs/characters/%E8%8E%B1%E4%BE%9D%E6%8B%89/": {
+  "fetch_date": "2026-08-25T11:01:57+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "8216c476f3d9865e"
+ },
+ "https://meropide.com/chs/characters/%E8%8E%B1%E4%BE%9D%E6%8B%89/materials/": {
+  "fetch_date": "2026-08-25T11:01:58+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "dd4fbc573526b718"
+ },
+ "https://meropide.com/chs/characters/%E8%8E%B1%E4%BE%9D%E6%8B%89/stats/": {
+  "fetch_date": "2026-08-25T11:02:00+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "556d04cab2f344dd"
+ },
+ "https://meropide.com/chs/characters/%E8%8E%B1%E4%BE%9D%E6%8B%89/theorycraft/": {
+  "fetch_date": "2026-08-25T11:02:01+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "3ab424a796ed90b6"
+ },
+ "https://meropide.com/chs/characters/%E8%8E%B1%E6%AC%A7%E6%96%AF%E5%88%A9/": {
+  "fetch_date": "2026-08-25T11:02:03+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "46bda8d1bf7fbc99"
+ },
+ "https://meropide.com/chs/characters/%E8%8E%B1%E6%AC%A7%E6%96%AF%E5%88%A9/materials/": {
+  "fetch_date": "2026-08-25T11:02:05+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "252f3a310ddac794"
+ },
+ "https://meropide.com/chs/characters/%E8%8E%B1%E6%AC%A7%E6%96%AF%E5%88%A9/stats/": {
+  "fetch_date": "2026-08-25T11:02:07+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "e5546855a380a9de"
+ },
+ "https://meropide.com/chs/characters/%E8%8E%B1%E6%AC%A7%E6%96%AF%E5%88%A9/theorycraft/": {
+  "fetch_date": "2026-08-25T11:02:09+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "30a2408e44ee2f9b"
+ },
+ "https://meropide.com/chs/characters/%E8%8F%88%E4%B9%8C%E7%8E%9B/": {
+  "fetch_date": "2026-08-25T11:02:11+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "ddb42e8ef273b82b"
+ },
+ "https://meropide.com/chs/characters/%E8%8F%88%E4%B9%8C%E7%8E%9B/materials/": {
+  "fetch_date": "2026-08-25T11:02:13+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "5f0d6ab36b1f51b3"
+ },
+ "https://meropide.com/chs/characters/%E8%8F%88%E4%B9%8C%E7%8E%9B/stats/": {
+  "fetch_date": "2026-08-25T11:02:14+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "e6d815b7617aa148"
+ },
+ "https://meropide.com/chs/characters/%E8%8F%88%E4%B9%8C%E7%8E%9B/theorycraft/": {
+  "fetch_date": "2026-08-25T11:02:16+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "7c4ad558e70c8243"
+ },
+ "https://meropide.com/chs/characters/%E8%8F%B2%E6%9E%97%E6%96%AF/": {
+  "fetch_date": "2026-08-25T11:02:18+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "00776d22e95e6888"
+ },
+ "https://meropide.com/chs/characters/%E8%8F%B2%E6%9E%97%E6%96%AF/materials/": {
+  "fetch_date": "2026-08-25T11:02:19+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "08d90723c05f66f4"
+ },
+ "https://meropide.com/chs/characters/%E8%8F%B2%E6%9E%97%E6%96%AF/stats/": {
+  "fetch_date": "2026-08-25T11:02:21+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "747b33ad59e77a4d"
+ },
+ "https://meropide.com/chs/characters/%E8%8F%B2%E6%9E%97%E6%96%AF/theorycraft/": {
+  "fetch_date": "2026-08-25T11:02:23+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "35e822e525463367"
+ },
+ "https://meropide.com/chs/characters/%E8%8F%B2%E7%B1%B3%E5%B0%BC/": {
+  "fetch_date": "2026-08-25T11:02:25+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "6c717973acca82b5"
+ },
+ "https://meropide.com/chs/characters/%E8%8F%B2%E7%B1%B3%E5%B0%BC/materials/": {
+  "fetch_date": "2026-08-25T11:02:26+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "01e8e01d8abf7519"
+ },
+ "https://meropide.com/chs/characters/%E8%8F%B2%E7%B1%B3%E5%B0%BC/stats/": {
+  "fetch_date": "2026-08-25T11:02:28+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "88b66b5bcd997dc8"
+ },
+ "https://meropide.com/chs/characters/%E8%8F%B2%E7%B1%B3%E5%B0%BC/theorycraft/": {
+  "fetch_date": "2026-08-25T11:02:30+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "097185b5020dd2a1"
+ },
+ "https://meropide.com/chs/characters/%E8%8F%B2%E8%B0%A2%E5%B0%94/": {
+  "fetch_date": "2026-08-25T11:02:31+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "47b2eba24837777c"
+ },
+ "https://meropide.com/chs/characters/%E8%8F%B2%E8%B0%A2%E5%B0%94/materials/": {
+  "fetch_date": "2026-08-25T11:02:33+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "87be8d4a6e9007bf"
+ },
+ "https://meropide.com/chs/characters/%E8%8F%B2%E8%B0%A2%E5%B0%94/stats/": {
+  "fetch_date": "2026-08-25T11:02:35+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "5796a343e87d0efa"
+ },
+ "https://meropide.com/chs/characters/%E8%8F%B2%E8%B0%A2%E5%B0%94/theorycraft/": {
+  "fetch_date": "2026-08-25T11:02:37+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "6705d4a4773176dc"
+ },
+ "https://meropide.com/chs/characters/%E8%93%9D%E7%A0%9A/": {
+  "fetch_date": "2026-08-25T11:02:40+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "c498c66ea749cf4b"
+ },
+ "https://meropide.com/chs/characters/%E8%93%9D%E7%A0%9A/materials/": {
+  "fetch_date": "2026-08-25T11:02:41+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "d425569722279dcc"
+ },
+ "https://meropide.com/chs/characters/%E8%93%9D%E7%A0%9A/stats/": {
+  "fetch_date": "2026-08-25T11:02:43+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "f6fd98e6d238e380"
+ },
+ "https://meropide.com/chs/characters/%E8%93%9D%E7%A0%9A/theorycraft/": {
+  "fetch_date": "2026-08-25T11:02:45+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "6df8b7906a9594b9"
+ },
+ "https://meropide.com/chs/characters/%E8%A1%8C%E7%A7%8B/": {
+  "fetch_date": "2026-08-25T11:02:46+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "d910da2cc0f4201b"
+ },
+ "https://meropide.com/chs/characters/%E8%A1%8C%E7%A7%8B/materials/": {
+  "fetch_date": "2026-08-25T11:02:48+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "abd51d0f39f37b9a"
+ },
+ "https://meropide.com/chs/characters/%E8%A1%8C%E7%A7%8B/stats/": {
+  "fetch_date": "2026-08-25T11:02:50+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "9ed5c0261457cb27"
+ },
+ "https://meropide.com/chs/characters/%E8%A1%8C%E7%A7%8B/theorycraft/": {
+  "fetch_date": "2026-08-25T11:02:51+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "2af5c959ee9aee72"
+ },
+ "https://meropide.com/chs/characters/%E8%AF%BA%E8%89%BE%E5%B0%94/": {
+  "fetch_date": "2026-08-25T11:02:53+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "7a8288ad35d24cf7"
+ },
+ "https://meropide.com/chs/characters/%E8%AF%BA%E8%89%BE%E5%B0%94/materials/": {
+  "fetch_date": "2026-08-25T11:02:54+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "f37fca5e04c59158"
+ },
+ "https://meropide.com/chs/characters/%E8%AF%BA%E8%89%BE%E5%B0%94/stats/": {
+  "fetch_date": "2026-08-25T11:02:56+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "f88c738cbbd41a58"
+ },
+ "https://meropide.com/chs/characters/%E8%AF%BA%E8%89%BE%E5%B0%94/theorycraft/": {
+  "fetch_date": "2026-08-25T11:02:58+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "9d2a15a2f212a25e"
+ },
+ "https://meropide.com/chs/characters/%E8%B5%9B%E7%B4%A2%E6%96%AF/": {
+  "fetch_date": "2026-08-25T11:02:59+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "05ee9f8582de5482"
+ },
+ "https://meropide.com/chs/characters/%E8%B5%9B%E7%B4%A2%E6%96%AF/materials/": {
+  "fetch_date": "2026-08-25T11:03:01+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "3e69aaafc2f530f3"
+ },
+ "https://meropide.com/chs/characters/%E8%B5%9B%E7%B4%A2%E6%96%AF/stats/": {
+  "fetch_date": "2026-08-25T11:03:03+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "ece7bdad1bbd7fff"
+ },
+ "https://meropide.com/chs/characters/%E8%B5%9B%E7%B4%A2%E6%96%AF/theorycraft/": {
+  "fetch_date": "2026-08-25T11:03:04+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "6b71a5c5bfb7798a"
+ },
+ "https://meropide.com/chs/characters/%E8%B5%9B%E8%AF%BA/": {
+  "fetch_date": "2026-08-25T11:03:06+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "89f741c2b94bd316"
+ },
+ "https://meropide.com/chs/characters/%E8%B5%9B%E8%AF%BA/materials/": {
+  "fetch_date": "2026-08-25T11:03:09+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "222a756aca107649"
+ },
+ "https://meropide.com/chs/characters/%E8%B5%9B%E8%AF%BA/stats/": {
+  "fetch_date": "2026-08-25T11:03:10+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "fff55aadf357530c"
+ },
+ "https://meropide.com/chs/characters/%E8%B5%9B%E8%AF%BA/theorycraft/": {
+  "fetch_date": "2026-08-25T11:03:12+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "774afee80af711d2"
+ },
+ "https://meropide.com/chs/characters/%E8%BE%9B%E7%84%B1/": {
+  "fetch_date": "2026-08-25T11:03:14+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "fa2e40ed8cea86e0"
+ },
+ "https://meropide.com/chs/characters/%E8%BE%9B%E7%84%B1/materials/": {
+  "fetch_date": "2026-08-25T11:03:15+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "0f12cfb992372191"
+ },
+ "https://meropide.com/chs/characters/%E8%BE%9B%E7%84%B1/stats/": {
+  "fetch_date": "2026-08-25T11:03:17+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "80923375c0345a0d"
+ },
+ "https://meropide.com/chs/characters/%E8%BE%9B%E7%84%B1/theorycraft/": {
+  "fetch_date": "2026-08-25T11:03:19+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "0ede8cb0c57ae1c5"
+ },
+ "https://meropide.com/chs/characters/%E8%BE%BE%E8%BE%BE%E5%88%A9%E4%BA%9A/": {
+  "fetch_date": "2026-08-25T11:03:21+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "2d8d80e9b77a6c7b"
+ },
+ "https://meropide.com/chs/characters/%E8%BE%BE%E8%BE%BE%E5%88%A9%E4%BA%9A/materials/": {
+  "fetch_date": "2026-08-25T11:03:22+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "aea6f0e2f8d92be1"
+ },
+ "https://meropide.com/chs/characters/%E8%BE%BE%E8%BE%BE%E5%88%A9%E4%BA%9A/stats/": {
+  "fetch_date": "2026-08-25T11:03:24+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "42bab108adba4a6f"
+ },
+ "https://meropide.com/chs/characters/%E8%BE%BE%E8%BE%BE%E5%88%A9%E4%BA%9A/theorycraft/": {
+  "fetch_date": "2026-08-25T11:03:25+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "418b2b94dcdbeff5"
+ },
+ "https://meropide.com/chs/characters/%E8%BF%AA%E5%8D%A2%E5%85%8B/": {
+  "fetch_date": "2026-08-25T11:03:27+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "997cbb30f6be019f"
+ },
+ "https://meropide.com/chs/characters/%E8%BF%AA%E5%8D%A2%E5%85%8B/materials/": {
+  "fetch_date": "2026-08-25T11:03:29+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "93e318e3749be0d6"
+ },
+ "https://meropide.com/chs/characters/%E8%BF%AA%E5%8D%A2%E5%85%8B/stats/": {
+  "fetch_date": "2026-08-25T11:03:31+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "cf38148872a06a8a"
+ },
+ "https://meropide.com/chs/characters/%E8%BF%AA%E5%8D%A2%E5%85%8B/theorycraft/": {
+  "fetch_date": "2026-08-25T11:03:33+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "293783f94131288c"
+ },
+ "https://meropide.com/chs/characters/%E8%BF%AA%E5%A5%A5%E5%A8%9C/": {
+  "fetch_date": "2026-08-25T11:03:35+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "9e0372604b5dc574"
+ },
+ "https://meropide.com/chs/characters/%E8%BF%AA%E5%A5%A5%E5%A8%9C/materials/": {
+  "fetch_date": "2026-08-25T11:03:37+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "2aba841908fdb1f3"
+ },
+ "https://meropide.com/chs/characters/%E8%BF%AA%E5%A5%A5%E5%A8%9C/stats/": {
+  "fetch_date": "2026-08-25T11:03:39+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "c9acd85898dd97bb"
+ },
+ "https://meropide.com/chs/characters/%E8%BF%AA%E5%A5%A5%E5%A8%9C/theorycraft/": {
+  "fetch_date": "2026-08-25T11:03:41+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "2fd3ec22d4033615"
+ },
+ "https://meropide.com/chs/characters/%E8%BF%AA%E5%B8%8C%E9%9B%85/": {
+  "fetch_date": "2026-08-25T11:03:42+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "fd4e07871109d713"
+ },
+ "https://meropide.com/chs/characters/%E8%BF%AA%E5%B8%8C%E9%9B%85/materials/": {
+  "fetch_date": "2026-08-25T11:03:45+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "d13283a2f9d00369"
+ },
+ "https://meropide.com/chs/characters/%E8%BF%AA%E5%B8%8C%E9%9B%85/stats/": {
+  "fetch_date": "2026-08-25T11:03:47+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "ec71eda000dd1d99"
+ },
+ "https://meropide.com/chs/characters/%E8%BF%AA%E5%B8%8C%E9%9B%85/theorycraft/": {
+  "fetch_date": "2026-08-25T11:03:50+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "2ba11f1450f4389a"
+ },
+ "https://meropide.com/chs/characters/%E9%82%A3%E7%BB%B4%E8%8E%B1%E7%89%B9/": {
+  "fetch_date": "2026-08-25T11:03:51+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "0d5afb40bfbefb81"
+ },
+ "https://meropide.com/chs/characters/%E9%82%A3%E7%BB%B4%E8%8E%B1%E7%89%B9/materials/": {
+  "fetch_date": "2026-08-25T11:03:53+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "341875fd78aaeddc"
+ },
+ "https://meropide.com/chs/characters/%E9%82%A3%E7%BB%B4%E8%8E%B1%E7%89%B9/stats/": {
+  "fetch_date": "2026-08-25T11:03:55+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "b6d50aa5751040c3"
+ },
+ "https://meropide.com/chs/characters/%E9%82%A3%E7%BB%B4%E8%8E%B1%E7%89%B9/theorycraft/": {
+  "fetch_date": "2026-08-25T11:03:56+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "7031d6a537f84bac"
+ },
+ "https://meropide.com/chs/characters/%E9%87%8D%E4%BA%91/": {
+  "fetch_date": "2026-08-25T11:03:58+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "d10cc1af0ea18137"
+ },
+ "https://meropide.com/chs/characters/%E9%87%8D%E4%BA%91/materials/": {
+  "fetch_date": "2026-08-25T11:04:00+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "88e37f11c451af3b"
+ },
+ "https://meropide.com/chs/characters/%E9%87%8D%E4%BA%91/stats/": {
+  "fetch_date": "2026-08-25T11:04:02+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "1c5be5ba7e98b6a2"
+ },
+ "https://meropide.com/chs/characters/%E9%87%8D%E4%BA%91/theorycraft/": {
+  "fetch_date": "2026-08-25T11:04:04+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "42b56be9d284204e"
+ },
+ "https://meropide.com/chs/characters/%E9%92%9F%E7%A6%BB/": {
+  "fetch_date": "2026-08-25T11:04:06+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "91aad37c80424ba8"
+ },
+ "https://meropide.com/chs/characters/%E9%92%9F%E7%A6%BB/materials/": {
+  "fetch_date": "2026-08-25T11:04:08+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "38b09ac4acf8a283"
+ },
+ "https://meropide.com/chs/characters/%E9%92%9F%E7%A6%BB/stats/": {
+  "fetch_date": "2026-08-25T11:04:09+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "e22207b7a67a880e"
+ },
+ "https://meropide.com/chs/characters/%E9%92%9F%E7%A6%BB/theorycraft/": {
+  "fetch_date": "2026-08-25T11:04:12+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "7d7dd1c192f85999"
+ },
+ "https://meropide.com/chs/characters/%E9%97%B2%E4%BA%91/": {
+  "fetch_date": "2026-08-25T11:04:14+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "36c03804b8226eca"
+ },
+ "https://meropide.com/chs/characters/%E9%97%B2%E4%BA%91/materials/": {
+  "fetch_date": "2026-08-25T11:04:16+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "e7d1e7d658f83907"
+ },
+ "https://meropide.com/chs/characters/%E9%97%B2%E4%BA%91/stats/": {
+  "fetch_date": "2026-08-25T11:04:17+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "f9c52ea87cbf3df9"
+ },
+ "https://meropide.com/chs/characters/%E9%97%B2%E4%BA%91/theorycraft/": {
+  "fetch_date": "2026-08-25T11:04:19+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "7a350d01c2ac9f3e"
+ },
+ "https://meropide.com/chs/characters/%E9%98%BF%E7%BD%97%E5%A4%8F/": {
+  "fetch_date": "2026-08-25T11:04:21+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "cd4ee40115fdc16d"
+ },
+ "https://meropide.com/chs/characters/%E9%98%BF%E7%BD%97%E5%A4%8F/materials/": {
+  "fetch_date": "2026-08-25T11:04:23+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "f77beba818a6f245"
+ },
+ "https://meropide.com/chs/characters/%E9%98%BF%E7%BD%97%E5%A4%8F/stats/": {
+  "fetch_date": "2026-08-25T11:04:25+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "d83956ec45075291"
+ },
+ "https://meropide.com/chs/characters/%E9%98%BF%E7%BD%97%E5%A4%8F/theorycraft/": {
+  "fetch_date": "2026-08-25T11:04:27+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "313b4ebc44551608"
+ },
+ "https://meropide.com/chs/characters/%E9%98%BF%E8%95%BE%E5%A5%87%E8%AF%BA/": {
+  "fetch_date": "2026-08-25T11:04:29+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "3d8377c635a9ea21"
+ },
+ "https://meropide.com/chs/characters/%E9%98%BF%E8%95%BE%E5%A5%87%E8%AF%BA/materials/": {
+  "fetch_date": "2026-08-25T11:04:31+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "d88feff955a6d4cf"
+ },
+ "https://meropide.com/chs/characters/%E9%98%BF%E8%95%BE%E5%A5%87%E8%AF%BA/stats/": {
+  "fetch_date": "2026-08-25T11:04:33+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "327d62adac9768a9"
+ },
+ "https://meropide.com/chs/characters/%E9%98%BF%E8%95%BE%E5%A5%87%E8%AF%BA/theorycraft/": {
+  "fetch_date": "2026-08-25T11:04:35+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "2ddad054592bd670"
+ },
+ "https://meropide.com/chs/characters/%E9%98%BF%E8%B4%9D%E5%A4%9A/": {
+  "fetch_date": "2026-08-25T11:04:36+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "87736785dad39d8b"
+ },
+ "https://meropide.com/chs/characters/%E9%98%BF%E8%B4%9D%E5%A4%9A/materials/": {
+  "fetch_date": "2026-08-25T11:04:38+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "cfc4f7f7cf835f4a"
+ },
+ "https://meropide.com/chs/characters/%E9%98%BF%E8%B4%9D%E5%A4%9A/stats/": {
+  "fetch_date": "2026-08-25T11:04:40+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "f4f820f510b42c89"
+ },
+ "https://meropide.com/chs/characters/%E9%98%BF%E8%B4%9D%E5%A4%9A/theorycraft/": {
+  "fetch_date": "2026-08-25T11:04:42+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "484979da8d94f6ed"
+ },
+ "https://meropide.com/chs/characters/%E9%9B%85%E7%8F%82%E8%BE%BE/": {
+  "fetch_date": "2026-08-25T11:04:43+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "9e8a44a155b3bd9e"
+ },
+ "https://meropide.com/chs/characters/%E9%9B%85%E7%8F%82%E8%BE%BE/materials/": {
+  "fetch_date": "2026-08-25T11:04:45+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "3fa3b4d4d61c4193"
+ },
+ "https://meropide.com/chs/characters/%E9%9B%85%E7%8F%82%E8%BE%BE/stats/": {
+  "fetch_date": "2026-08-25T11:04:47+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "3a60e10401bb635f"
+ },
+ "https://meropide.com/chs/characters/%E9%9B%85%E7%8F%82%E8%BE%BE/theorycraft/": {
+  "fetch_date": "2026-08-25T11:04:49+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "9be194101af411ac"
+ },
+ "https://meropide.com/chs/characters/%E9%9B%B7%E6%B3%BD/": {
+  "fetch_date": "2026-08-25T11:04:51+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "d4a3d3634f8434a4"
+ },
+ "https://meropide.com/chs/characters/%E9%9B%B7%E6%B3%BD/materials/": {
+  "fetch_date": "2026-08-25T11:04:52+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "6fe4dfcd2fa026d6"
+ },
+ "https://meropide.com/chs/characters/%E9%9B%B7%E6%B3%BD/stats/": {
+  "fetch_date": "2026-08-25T11:04:54+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "1be37123b341229d"
+ },
+ "https://meropide.com/chs/characters/%E9%9B%B7%E6%B3%BD/theorycraft/": {
+  "fetch_date": "2026-08-25T11:04:56+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "e2cfd9b83186081e"
+ },
+ "https://meropide.com/chs/characters/%E9%9B%B7%E7%94%B5%E5%B0%86%E5%86%9B/": {
+  "fetch_date": "2026-08-25T11:04:57+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "e4acc83882100826"
+ },
+ "https://meropide.com/chs/characters/%E9%9B%B7%E7%94%B5%E5%B0%86%E5%86%9B/materials/": {
+  "fetch_date": "2026-08-25T11:04:59+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "d22ffa54187578ad"
+ },
+ "https://meropide.com/chs/characters/%E9%9B%B7%E7%94%B5%E5%B0%86%E5%86%9B/stats/": {
+  "fetch_date": "2026-08-25T11:05:01+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "1cada16958dc4d6a"
+ },
+ "https://meropide.com/chs/characters/%E9%9B%B7%E7%94%B5%E5%B0%86%E5%86%9B/theorycraft/": {
+  "fetch_date": "2026-08-25T11:05:03+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "2293b26221a1a459"
+ },
+ "https://meropide.com/chs/characters/%E9%A6%99%E8%8F%B1/": {
+  "fetch_date": "2026-08-25T11:05:04+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "4d15952fe539cb7c"
+ },
+ "https://meropide.com/chs/characters/%E9%A6%99%E8%8F%B1/materials/": {
+  "fetch_date": "2026-08-25T11:05:08+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "2e3665aed39d7ded"
+ },
+ "https://meropide.com/chs/characters/%E9%A6%99%E8%8F%B1/stats/": {
+  "fetch_date": "2026-08-25T11:05:09+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "4b2cb7c35a547c61"
+ },
+ "https://meropide.com/chs/characters/%E9%A6%99%E8%8F%B1/theorycraft/": {
+  "fetch_date": "2026-08-25T11:05:11+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "30c907eab06951da"
+ },
+ "https://meropide.com/chs/characters/%E9%AD%88/": {
+  "fetch_date": "2026-08-25T11:05:12+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "10c4594623bf4e20"
+ },
+ "https://meropide.com/chs/characters/%E9%AD%88/materials/": {
+  "fetch_date": "2026-08-25T11:05:14+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "b72f5df2be9f8068"
+ },
+ "https://meropide.com/chs/characters/%E9%AD%88/stats/": {
+  "fetch_date": "2026-08-25T11:05:16+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "d4409818fd26ae55"
+ },
+ "https://meropide.com/chs/characters/%E9%AD%88/theorycraft/": {
+  "fetch_date": "2026-08-25T11:05:18+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "e3ad9b414306573a"
+ },
+ "https://meropide.com/chs/characters/%E9%B9%BF%E9%87%8E%E9%99%A2%E5%B9%B3%E8%97%8F/": {
+  "fetch_date": "2026-08-25T11:05:19+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "a80cced39ca57d75"
+ },
+ "https://meropide.com/chs/characters/%E9%B9%BF%E9%87%8E%E9%99%A2%E5%B9%B3%E8%97%8F/materials/": {
+  "fetch_date": "2026-08-25T11:05:21+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "0b6c328bedc8d24b"
+ },
+ "https://meropide.com/chs/characters/%E9%B9%BF%E9%87%8E%E9%99%A2%E5%B9%B3%E8%97%8F/stats/": {
+  "fetch_date": "2026-08-25T11:05:23+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "928a870271cc4214"
+ },
+ "https://meropide.com/chs/characters/%E9%B9%BF%E9%87%8E%E9%99%A2%E5%B9%B3%E8%97%8F/theorycraft/": {
+  "fetch_date": "2026-08-25T11:05:24+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "73271355bcfd9be1"
+ },
+ "https://meropide.com/chs/weapons/%E4%B8%87%E5%9B%BD%E8%AF%B8%E6%B5%B7%E5%9B%BE%E8%B0%B1/": {
+  "fetch_date": "2026-08-25T11:07:33+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "387423e29878f0f3"
+ },
+ "https://meropide.com/chs/weapons/%E4%B8%87%E8%83%BD%E9%92%A5%E5%8C%99/": {
+  "fetch_date": "2026-08-25T11:07:35+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "7acc3b645ae2c820"
+ },
+ "https://meropide.com/chs/weapons/%E4%B8%8D%E7%81%AD%E6%9C%88%E5%8D%8E/": {
+  "fetch_date": "2026-08-25T11:07:36+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "490ca719c494cbe7"
+ },
+ "https://meropide.com/chs/weapons/%E4%B8%94%E4%BD%8F%E4%BA%AD%E5%BE%A1%E5%92%84/": {
+  "fetch_date": "2026-08-25T11:07:37+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "f75fcd24b3817f46"
+ },
+ "https://meropide.com/chs/weapons/%E4%B8%9C%E8%8A%B1%E5%9D%8A%E6%97%B6%E9%9B%A8/": {
+  "fetch_date": "2026-08-25T11:07:38+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "1beea591d8e34dda"
+ },
+ "https://meropide.com/chs/weapons/%E4%B9%8C%E9%AB%93%E5%AD%91%E7%81%AF/": {
+  "fetch_date": "2026-08-25T11:07:40+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "22a55ae140c1a3b4"
+ },
+ "https://meropide.com/chs/weapons/%E4%B9%98%E6%B5%AA%E7%9A%84%E5%9B%9E%E6%97%8B/": {
+  "fetch_date": "2026-08-25T11:07:42+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "cdbfbe1acfbdf652"
+ },
+ "https://meropide.com/chs/weapons/%E4%BB%A5%E7%90%86%E6%9C%8D%E4%BA%BA/": {
+  "fetch_date": "2026-08-25T11:07:43+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "54d56d5b73959f22"
+ },
+ "https://meropide.com/chs/weapons/%E4%BD%A3%E5%85%B5%E9%87%8D%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:07:45+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "3f0585fff2949cc8"
+ },
+ "https://meropide.com/chs/weapons/%E4%BE%BF%E6%90%BA%E5%8A%A8%E5%8A%9B%E9%94%AF/": {
+  "fetch_date": "2026-08-25T11:07:46+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "4d8f8524d89adc41"
+ },
+ "https://meropide.com/chs/weapons/%E4%BF%A1%E4%BD%BF/": {
+  "fetch_date": "2026-08-25T11:07:48+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "faaa398d6825bc7f"
+ },
+ "https://meropide.com/chs/weapons/%E5%85%AC%E4%B9%89%E7%9A%84%E9%85%AC%E6%8A%A5/": {
+  "fetch_date": "2026-08-25T11:07:49+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "bbb70c45f7455875"
+ },
+ "https://meropide.com/chs/weapons/%E5%86%AC%E6%9E%81%E7%99%BD%E6%98%9F/": {
+  "fetch_date": "2026-08-25T11:07:51+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "482707cf346e25be"
+ },
+ "https://meropide.com/chs/weapons/%E5%86%B2%E6%B5%AA%E6%97%B6%E5%85%89/": {
+  "fetch_date": "2026-08-25T11:07:54+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "f8c9958166869d64"
+ },
+ "https://meropide.com/chs/weapons/%E5%86%B3%E6%96%97%E4%B9%8B%E6%9E%AA/": {
+  "fetch_date": "2026-08-25T11:07:56+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "bdebaf0b83142c04"
+ },
+ "https://meropide.com/chs/weapons/%E5%86%B7%E5%88%83/": {
+  "fetch_date": "2026-08-25T11:07:59+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "2d0c26ce767f1c92"
+ },
+ "https://meropide.com/chs/weapons/%E5%86%B7%E5%AF%82%E8%BF%B8%E9%9F%B3/": {
+  "fetch_date": "2026-08-25T11:08:01+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "304c3f41cbfec933"
+ },
+ "https://meropide.com/chs/weapons/%E5%8B%98%E6%8E%A2%E9%92%BB%E6%9C%BA/": {
+  "fetch_date": "2026-08-25T11:08:03+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "e139529dcea9afaa"
+ },
+ "https://meropide.com/chs/weapons/%E5%8C%A3%E9%87%8C%E6%97%A5%E6%9C%88/": {
+  "fetch_date": "2026-08-25T11:08:04+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "d3fb804511ed9608"
+ },
+ "https://meropide.com/chs/weapons/%E5%8C%A3%E9%87%8C%E7%81%AD%E8%BE%B0/": {
+  "fetch_date": "2026-08-25T11:08:06+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "916d167c190b9385"
+ },
+ "https://meropide.com/chs/weapons/%E5%8C%A3%E9%87%8C%E9%BE%99%E5%90%9F/": {
+  "fetch_date": "2026-08-25T11:08:08+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "469309ebeb24c53f"
+ },
+ "https://meropide.com/chs/weapons/%E5%8D%83%E5%A4%9C%E6%B5%AE%E6%A2%A6/": {
+  "fetch_date": "2026-08-25T11:08:09+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "60df9d13b63107e3"
+ },
+ "https://meropide.com/chs/weapons/%E5%8D%83%E5%B2%A9%E5%8F%A4%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:08:11+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "b5616b8c4131361c"
+ },
+ "https://meropide.com/chs/weapons/%E5%8D%83%E5%B2%A9%E9%95%BF%E6%9E%AA/": {
+  "fetch_date": "2026-08-25T11:08:13+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "9dbdba283776819d"
+ },
+ "https://meropide.com/chs/weapons/%E5%8E%84%E6%B0%B4%E4%B9%8B%E7%A5%B8/": {
+  "fetch_date": "2026-08-25T11:08:14+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "6542e6a457e59910"
+ },
+ "https://meropide.com/chs/weapons/%E5%8E%86%E7%BB%83%E7%9A%84%E7%8C%8E%E5%BC%93/": {
+  "fetch_date": "2026-08-25T11:08:16+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "ea9ba43bdbfd2446"
+ },
+ "https://meropide.com/chs/weapons/%E5%8E%9F%E6%9C%A8%E5%88%80/": {
+  "fetch_date": "2026-08-25T11:08:17+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "fcb7d04246e5536e"
+ },
+ "https://meropide.com/chs/weapons/%E5%8F%8D%E6%9B%B2%E5%BC%93/": {
+  "fetch_date": "2026-08-25T11:08:19+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "eed9965facb3fd71"
+ },
+ "https://meropide.com/chs/weapons/%E5%8F%A3%E8%A2%8B%E9%AD%94%E5%AF%BC%E4%B9%A6/": {
+  "fetch_date": "2026-08-25T11:08:21+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "054e15d51bdfb436"
+ },
+ "https://meropide.com/chs/weapons/%E5%90%83%E8%99%8E%E9%B1%BC%E5%88%80/": {
+  "fetch_date": "2026-08-25T11:08:22+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "7a3b852d1bd6949c"
+ },
+ "https://meropide.com/chs/weapons/%E5%92%8C%E7%92%9E%E9%B8%A2/": {
+  "fetch_date": "2026-08-25T11:08:24+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "5e0dfd1337e0b680"
+ },
+ "https://meropide.com/chs/weapons/%E5%96%9C%E5%A4%9A%E9%99%A2%E5%8D%81%E6%96%87%E5%AD%97/": {
+  "fetch_date": "2026-08-25T11:08:25+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "1bdcc9382daf7718"
+ },
+ "https://meropide.com/chs/weapons/%E5%98%9F%E5%98%9F%E5%8F%AF%E6%95%85%E4%BA%8B%E9%9B%86/": {
+  "fetch_date": "2026-08-25T11:08:27+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "bf5b1983e23f6c34"
+ },
+ "https://meropide.com/chs/weapons/%E5%9B%9B%E9%A3%8E%E5%8E%9F%E5%85%B8/": {
+  "fetch_date": "2026-08-25T11:08:29+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "559d8658a7c5f5a6"
+ },
+ "https://meropide.com/chs/weapons/%E5%9B%BE%E8%8E%B1%E6%9D%9C%E6%8B%89%E7%9A%84%E5%9B%9E%E5%BF%86/": {
+  "fetch_date": "2026-08-25T11:08:30+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "1909a79b5375411b"
+ },
+ "https://meropide.com/chs/weapons/%E5%9C%A3%E6%98%BE%E4%B9%8B%E9%92%A5/": {
+  "fetch_date": "2026-08-25T11:08:32+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "6781fb0cadf6829a"
+ },
+ "https://meropide.com/chs/weapons/%E5%9C%A3%E7%A5%AD%E8%80%85%E7%9A%84%E8%BE%89%E6%9D%96/": {
+  "fetch_date": "2026-08-25T11:08:33+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "140e85c6465348df"
+ },
+ "https://meropide.com/chs/weapons/%E5%A4%A9%E5%85%89%E7%9A%84%E7%BA%BA%E7%90%B4/": {
+  "fetch_date": "2026-08-25T11:08:35+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "733579c1ecad5ab8"
+ },
+ "https://meropide.com/chs/weapons/%E5%A4%A9%E7%9B%AE%E5%BD%B1%E6%89%93%E5%88%80/": {
+  "fetch_date": "2026-08-25T11:08:37+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "297662a75e11cdd9"
+ },
+ "https://meropide.com/chs/weapons/%E5%A4%A9%E7%A9%BA%E4%B9%8B%E5%82%B2/": {
+  "fetch_date": "2026-08-25T11:08:38+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "45d69c1b01b41aea"
+ },
+ "https://meropide.com/chs/weapons/%E5%A4%A9%E7%A9%BA%E4%B9%8B%E5%88%83/": {
+  "fetch_date": "2026-08-25T11:08:40+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "1115baa3e4d5ce46"
+ },
+ "https://meropide.com/chs/weapons/%E5%A4%A9%E7%A9%BA%E4%B9%8B%E5%8D%B7/": {
+  "fetch_date": "2026-08-25T11:08:42+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "2a8dfb3c372ccb08"
+ },
+ "https://meropide.com/chs/weapons/%E5%A4%A9%E7%A9%BA%E4%B9%8B%E7%BF%BC/": {
+  "fetch_date": "2026-08-25T11:08:44+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "5ea3875a631551a5"
+ },
+ "https://meropide.com/chs/weapons/%E5%A4%A9%E7%A9%BA%E4%B9%8B%E8%84%8A/": {
+  "fetch_date": "2026-08-25T11:08:46+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "dfbd68a49f522646"
+ },
+ "https://meropide.com/chs/weapons/%E5%AD%A6%E5%BE%92%E7%AC%94%E8%AE%B0/": {
+  "fetch_date": "2026-08-25T11:08:47+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "33af5f2112d933ef"
+ },
+ "https://meropide.com/chs/weapons/%E5%AE%97%E5%AE%A4%E5%A4%A7%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:08:49+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "3c0a5fb9325c475e"
+ },
+ "https://meropide.com/chs/weapons/%E5%AE%97%E5%AE%A4%E7%8C%8E%E6%9E%AA/": {
+  "fetch_date": "2026-08-25T11:08:50+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "4fc58490eefcfcba"
+ },
+ "https://meropide.com/chs/weapons/%E5%AE%97%E5%AE%A4%E7%A7%98%E6%B3%95%E5%BD%95/": {
+  "fetch_date": "2026-08-25T11:08:52+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "50dfd06f70ffd029"
+ },
+ "https://meropide.com/chs/weapons/%E5%AE%97%E5%AE%A4%E9%95%BF%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:08:53+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "342a2c7d4c02e05f"
+ },
+ "https://meropide.com/chs/weapons/%E5%AE%97%E5%AE%A4%E9%95%BF%E5%BC%93/": {
+  "fetch_date": "2026-08-25T11:08:55+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "dd814e7acd2b9db0"
+ },
+ "https://meropide.com/chs/weapons/%E5%AF%92%E6%81%AF/": {
+  "fetch_date": "2026-08-25T11:08:57+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "da8a55a172670784"
+ },
+ "https://meropide.com/chs/weapons/%E5%AF%9D%E6%AD%A3%E6%9C%88%E5%88%9D%E6%99%B4/": {
+  "fetch_date": "2026-08-25T11:08:58+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "a068d8ae3f2cae7b"
+ },
+ "https://meropide.com/chs/weapons/%E5%AF%B8%E5%BF%83%E4%BD%99%E5%93%8D/": {
+  "fetch_date": "2026-08-25T11:09:00+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "c18cc504a276eb01"
+ },
+ "https://meropide.com/chs/weapons/%E5%B0%98%E4%B8%96%E4%B9%8B%E9%94%81/": {
+  "fetch_date": "2026-08-25T11:09:02+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "676b12c77ba9fec0"
+ },
+ "https://meropide.com/chs/weapons/%E5%B0%98%E5%85%89%E4%B8%83%E8%B0%95/": {
+  "fetch_date": "2026-08-25T11:09:04+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "08ea45968826d34d"
+ },
+ "https://meropide.com/chs/weapons/%E5%B1%B1%E7%8E%8B%E9%95%BF%E7%89%99/": {
+  "fetch_date": "2026-08-25T11:09:06+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "bb8e68d50b6e6334"
+ },
+ "https://meropide.com/chs/weapons/%E5%B2%A9%E5%B3%B0%E5%B7%A1%E6%AD%8C/": {
+  "fetch_date": "2026-08-25T11:09:07+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "dd1669e7d1eb53d4"
+ },
+ "https://meropide.com/chs/weapons/%E5%B3%A1%E6%B9%BE%E9%95%BF%E6%AD%8C/": {
+  "fetch_date": "2026-08-25T11:09:09+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "c3ed80f8aee74ec9"
+ },
+ "https://meropide.com/chs/weapons/%E5%B8%B7%E9%97%B4%E5%A4%9C%E6%9B%B2/": {
+  "fetch_date": "2026-08-25T11:09:11+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "40aa88ef12d45bd9"
+ },
+ "https://meropide.com/chs/weapons/%E5%B9%BD%E5%A4%9C%E5%8D%8E%E5%B0%94%E5%85%B9/": {
+  "fetch_date": "2026-08-25T11:09:12+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "bd913b323b732ca0"
+ },
+ "https://meropide.com/chs/weapons/%E5%BC%82%E4%B8%96%E7%95%8C%E8%A1%8C%E8%AE%B0/": {
+  "fetch_date": "2026-08-25T11:09:14+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "c0d0c1be216ebd37"
+ },
+ "https://meropide.com/chs/weapons/%E5%BC%93%E8%97%8F/": {
+  "fetch_date": "2026-08-25T11:09:16+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "6ac43e2e0005f80b"
+ },
+ "https://meropide.com/chs/weapons/%E5%BC%95%E7%81%AB%E4%B9%8B%E6%BA%90/": {
+  "fetch_date": "2026-08-25T11:09:18+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "62f4689f36c7ad6a"
+ },
+ "https://meropide.com/chs/weapons/%E5%BC%A5%E5%9D%9A%E9%AA%A8/": {
+  "fetch_date": "2026-08-25T11:09:20+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "6f87bd33d2680071"
+ },
+ "https://meropide.com/chs/weapons/%E5%BC%B9%E5%BC%93/": {
+  "fetch_date": "2026-08-25T11:09:22+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "cfd06163796c3c39"
+ },
+ "https://meropide.com/chs/weapons/%E5%BF%8D%E5%86%AC%E4%B9%8B%E6%9E%9C/": {
+  "fetch_date": "2026-08-25T11:09:24+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "8ce70955633394ad"
+ },
+ "https://meropide.com/chs/weapons/%E6%81%AF%E7%81%BE/": {
+  "fetch_date": "2026-08-25T11:09:25+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "087874993763b465"
+ },
+ "https://meropide.com/chs/weapons/%E6%81%AF%E7%87%A7%E4%B9%8B%E7%AC%9B/": {
+  "fetch_date": "2026-08-25T11:09:27+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "6b847d2d079b85b6"
+ },
+ "https://meropide.com/chs/weapons/%E6%81%B6%E7%8E%8B%E4%B8%B8/": {
+  "fetch_date": "2026-08-25T11:09:29+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "9f65d9411fc08e3c"
+ },
+ "https://meropide.com/chs/weapons/%E6%82%AC%E9%BB%8E%E5%8D%83%E9%92%A7/": {
+  "fetch_date": "2026-08-25T11:09:31+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "aebc85b66b3ee5e9"
+ },
+ "https://meropide.com/chs/weapons/%E6%88%8D%E6%9C%9B%E8%B0%A3%E6%AD%8C/": {
+  "fetch_date": "2026-08-25T11:09:33+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "724ac75b88db978b"
+ },
+ "https://meropide.com/chs/weapons/%E6%8A%A4%E6%91%A9%E4%B9%8B%E6%9D%96/": {
+  "fetch_date": "2026-08-25T11:09:35+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "fe4d965f5bdacac9"
+ },
+ "https://meropide.com/chs/weapons/%E6%8B%BE%E6%85%A7%E9%93%B8%E7%86%94/": {
+  "fetch_date": "2026-08-25T11:09:36+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "15bbac035ce5a9ba"
+ },
+ "https://meropide.com/chs/weapons/%E6%8E%98%E9%87%91%E4%B9%8B%E9%94%B9/": {
+  "fetch_date": "2026-08-25T11:09:38+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "4a8ca20621cf1c69"
+ },
+ "https://meropide.com/chs/weapons/%E6%8E%A0%E9%A3%9F%E8%80%85/": {
+  "fetch_date": "2026-08-25T11:09:40+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "fc00df3845951afd"
+ },
+ "https://meropide.com/chs/weapons/%E6%92%BC%E5%9C%B0%E8%80%85/": {
+  "fetch_date": "2026-08-25T11:09:41+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "47c39d5cb6568026"
+ },
+ "https://meropide.com/chs/weapons/%E6%94%AF%E7%A6%BB%E8%BD%AE%E5%85%89/": {
+  "fetch_date": "2026-08-25T11:09:43+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "35c0d2b11f32a095"
+ },
+ "https://meropide.com/chs/weapons/%E6%95%91%E8%B5%8E%E4%B9%8B%E6%96%A9/": {
+  "fetch_date": "2026-08-25T11:09:44+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "59d0e57c4871fc53"
+ },
+ "https://meropide.com/chs/weapons/%E6%96%AB%E5%B3%B0%E4%B9%8B%E5%88%83/": {
+  "fetch_date": "2026-08-25T11:09:47+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "d683fe00de107be2"
+ },
+ "https://meropide.com/chs/weapons/%E6%96%AD%E6%B5%AA%E9%95%BF%E9%B3%8D/": {
+  "fetch_date": "2026-08-25T11:09:48+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "222302955a306cb0"
+ },
+ "https://meropide.com/chs/weapons/%E6%96%B0%E6%89%8B%E9%95%BF%E6%9E%AA/": {
+  "fetch_date": "2026-08-25T11:09:50+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "326f325295574db0"
+ },
+ "https://meropide.com/chs/weapons/%E6%97%85%E8%A1%8C%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:09:52+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "ca7cb7910d760d24"
+ },
+ "https://meropide.com/chs/weapons/%E6%97%A0%E5%9E%A0%E8%94%9A%E8%93%9D%E4%B9%8B%E6%AD%8C/": {
+  "fetch_date": "2026-08-25T11:09:53+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "1216081fef4375fc"
+ },
+ "https://meropide.com/chs/weapons/%E6%97%A0%E5%B7%A5%E4%B9%8B%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:09:55+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "b24e93892900a034"
+ },
+ "https://meropide.com/chs/weapons/%E6%97%A0%E9%94%8B%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:09:56+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "1372cb9717d125ea"
+ },
+ "https://meropide.com/chs/weapons/%E6%98%9F%E9%94%8B%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:09:58+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "1643c6509c72e835"
+ },
+ "https://meropide.com/chs/weapons/%E6%98%9F%E9%B9%AB%E8%B5%A4%E7%BE%BD/": {
+  "fetch_date": "2026-08-25T11:10:00+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "0f76396be9cc407b"
+ },
+ "https://meropide.com/chs/weapons/%E6%98%AD%E5%BF%83/": {
+  "fetch_date": "2026-08-25T11:10:01+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "d26663c03fba8693"
+ },
+ "https://meropide.com/chs/weapons/%E6%9A%97%E5%B7%B7%E7%8C%8E%E6%89%8B/": {
+  "fetch_date": "2026-08-25T11:10:03+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "de5e2aa9ec0d33b6"
+ },
+ "https://meropide.com/chs/weapons/%E6%9A%97%E5%B7%B7%E7%9A%84%E9%85%92%E4%B8%8E%E8%AF%97/": {
+  "fetch_date": "2026-08-25T11:10:04+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "862ceae95d04130a"
+ },
+ "https://meropide.com/chs/weapons/%E6%9A%97%E5%B7%B7%E9%97%AA%E5%85%89/": {
+  "fetch_date": "2026-08-25T11:10:06+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "34d4bc66ea9a1c3d"
+ },
+ "https://meropide.com/chs/weapons/%E6%9A%97%E9%93%81%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:10:07+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "e4a373c29ecf58d5"
+ },
+ "https://meropide.com/chs/weapons/%E6%9B%9A%E4%BA%91%E4%B9%8B%E6%9C%88/": {
+  "fetch_date": "2026-08-25T11:10:09+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "3d090c8d516f4fba"
+ },
+ "https://meropide.com/chs/weapons/%E6%9C%80%E5%88%9D%E7%9A%84%E5%A4%A7%E9%AD%94%E6%9C%AF/": {
+  "fetch_date": "2026-08-25T11:10:11+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "d5adc6e0dfbe2dd7"
+ },
+ "https://meropide.com/chs/weapons/%E6%9C%89%E4%B9%90%E5%BE%A1%E7%B0%BE%E5%88%87/": {
+  "fetch_date": "2026-08-25T11:10:12+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "28b3055701d999e7"
+ },
+ "https://meropide.com/chs/weapons/%E6%9C%8F%E9%AD%84%E5%90%AB%E5%85%89/": {
+  "fetch_date": "2026-08-25T11:10:14+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "3fe741f253466b7a"
+ },
+ "https://meropide.com/chs/weapons/%E6%9C%A8%E6%A3%89%E4%B9%8B%E7%8E%AF/": {
+  "fetch_date": "2026-08-25T11:10:15+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "fe00551428342172"
+ },
+ "https://meropide.com/chs/weapons/%E6%9D%BE%E7%B1%81%E5%93%8D%E8%B5%B7%E4%B9%8B%E6%97%B6/": {
+  "fetch_date": "2026-08-25T11:10:17+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "d1970ebac951b191"
+ },
+ "https://meropide.com/chs/weapons/%E6%9F%94%E7%81%AF%E6%8C%BD%E6%AD%8C/": {
+  "fetch_date": "2026-08-25T11:10:18+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "df2402fad6cb1a80"
+ },
+ "https://meropide.com/chs/weapons/%E6%A1%82%E6%9C%A8%E6%96%A9%E9%95%BF%E6%AD%A3/": {
+  "fetch_date": "2026-08-25T11:10:20+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "f206b59ffc88baab"
+ },
+ "https://meropide.com/chs/weapons/%E6%A3%AE%E6%9E%97%E7%8E%8B%E5%99%A8/": {
+  "fetch_date": "2026-08-25T11:10:22+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "f2e01b120de4639f"
+ },
+ "https://meropide.com/chs/weapons/%E6%B0%B4%E4%BB%99%E5%8D%81%E5%AD%97%E4%B9%8B%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:10:23+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "c05ac2e324cec996"
+ },
+ "https://meropide.com/chs/weapons/%E6%B2%90%E6%B5%B4%E9%BE%99%E8%A1%80%E7%9A%84%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:10:25+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "52c77c23cca67d70"
+ },
+ "https://meropide.com/chs/weapons/%E6%B2%99%E4%B8%AD%E4%BC%9F%E8%B4%A4%E7%9A%84%E5%AF%B9%E7%AD%94/": {
+  "fetch_date": "2026-08-25T11:10:26+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "4795606d1ba33ff9"
+ },
+ "https://meropide.com/chs/weapons/%E6%B3%A2%E4%B9%B1%E6%9C%88%E7%99%BD%E7%BB%8F%E6%B4%A5/": {
+  "fetch_date": "2026-08-25T11:10:28+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "f17cad92fe384f54"
+ },
+ "https://meropide.com/chs/weapons/%E6%B5%81%E6%9C%88%E9%92%88/": {
+  "fetch_date": "2026-08-25T11:10:30+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "e2d4c0d38116476b"
+ },
+ "https://meropide.com/chs/weapons/%E6%B5%81%E6%B5%AA%E4%B9%90%E7%AB%A0/": {
+  "fetch_date": "2026-08-25T11:10:31+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "a9c894fe117ac725"
+ },
+ "https://meropide.com/chs/weapons/%E6%B5%81%E6%B5%AA%E7%9A%84%E6%99%9A%E6%98%9F/": {
+  "fetch_date": "2026-08-25T11:10:33+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "b4bddbea6ec0fb39"
+ },
+ "https://meropide.com/chs/weapons/%E6%B5%8B%E8%B7%9D%E8%A7%84/": {
+  "fetch_date": "2026-08-25T11:10:35+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "1e6812925b97ae72"
+ },
+ "https://meropide.com/chs/weapons/%E6%B5%AA%E5%BD%B1%E9%98%94%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:10:36+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "28f6a33f6cac6ad4"
+ },
+ "https://meropide.com/chs/weapons/%E6%B5%B7%E6%B8%8A%E7%BB%88%E6%9B%B2/": {
+  "fetch_date": "2026-08-25T11:10:38+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "548b399bf93191e7"
+ },
+ "https://meropide.com/chs/weapons/%E6%BA%A2%E5%BD%A9%E5%BF%83%E5%BF%B5/": {
+  "fetch_date": "2026-08-25T11:10:40+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "a4abd961e4c34ad8"
+ },
+ "https://meropide.com/chs/weapons/%E7%81%B0%E6%B2%B3%E6%B8%A1%E6%89%8B/": {
+  "fetch_date": "2026-08-25T11:10:41+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "8cb2f9fa22a02f55"
+ },
+ "https://meropide.com/chs/weapons/%E7%81%BE%E6%82%94/": {
+  "fetch_date": "2026-08-25T11:10:43+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "58c10b42b54c8dc1"
+ },
+ "https://meropide.com/chs/weapons/%E7%83%88%E9%98%B3%E4%B9%8B%E5%97%A3/": {
+  "fetch_date": "2026-08-25T11:10:44+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "69581385837156c6"
+ },
+ "https://meropide.com/chs/weapons/%E7%84%9A%E6%9B%9C%E5%8D%83%E9%98%B3/": {
+  "fetch_date": "2026-08-25T11:10:46+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "274e4fa56da8f80e"
+ },
+ "https://meropide.com/chs/weapons/%E7%86%94%E7%8C%8E%E5%BC%82%E7%AB%AF%E4%B9%8B%E5%88%83/": {
+  "fetch_date": "2026-08-25T11:10:48+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "e366a21d2be69d50"
+ },
+ "https://meropide.com/chs/weapons/%E7%8B%BC%E7%89%99/": {
+  "fetch_date": "2026-08-25T11:10:49+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "2236c3ae7f026cad"
+ },
+ "https://meropide.com/chs/weapons/%E7%8B%BC%E7%9A%84%E6%9C%AB%E8%B7%AF/": {
+  "fetch_date": "2026-08-25T11:10:51+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "92affeece41f9a10"
+ },
+ "https://meropide.com/chs/weapons/%E7%8B%BC%E7%9A%84%E6%AD%A6%E5%8A%9F%E6%AD%8C/": {
+  "fetch_date": "2026-08-25T11:10:53+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "ae0f91825a178900"
+ },
+ "https://meropide.com/chs/weapons/%E7%8C%8E%E4%BA%BA%E4%B9%8B%E5%BE%84/": {
+  "fetch_date": "2026-08-25T11:10:54+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "0fb8e7dddda578e2"
+ },
+ "https://meropide.com/chs/weapons/%E7%8C%8E%E5%BC%93/": {
+  "fetch_date": "2026-08-25T11:10:56+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "b99be1271c62906d"
+ },
+ "https://meropide.com/chs/weapons/%E7%8E%8B%E4%B8%8B%E8%BF%91%E4%BE%8D/": {
+  "fetch_date": "2026-08-25T11:10:57+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "68ec5e8110261d15"
+ },
+ "https://meropide.com/chs/weapons/%E7%8E%9B%E6%B5%B7%E8%8F%88%E7%9A%84%E6%B0%B4%E8%89%B2/": {
+  "fetch_date": "2026-08-25T11:10:59+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "084eb6e6f61e6742"
+ },
+ "https://meropide.com/chs/weapons/%E7%94%B2%E7%BA%A7%E5%AE%9D%E7%8F%8F/": {
+  "fetch_date": "2026-08-25T11:11:01+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "fba4b216d0207a76"
+ },
+ "https://meropide.com/chs/weapons/%E7%99%BD%E5%BD%B1%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:11:03+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "63b9e98ca8c3bde2"
+ },
+ "https://meropide.com/chs/weapons/%E7%99%BD%E6%B9%96%E5%86%AC%E7%BE%BD/": {
+  "fetch_date": "2026-08-25T11:11:06+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "572b186e1f444ea1"
+ },
+ "https://meropide.com/chs/weapons/%E7%99%BD%E7%BC%A8%E6%9E%AA/": {
+  "fetch_date": "2026-08-25T11:11:08+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "3a06ef9704fa6cbc"
+ },
+ "https://meropide.com/chs/weapons/%E7%99%BD%E8%BE%B0%E4%B9%8B%E7%8E%AF/": {
+  "fetch_date": "2026-08-25T11:11:10+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "22af0ca3d3124352"
+ },
+ "https://meropide.com/chs/weapons/%E7%99%BD%E9%93%81%E5%A4%A7%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:11:12+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "4f393e60fdf89ef3"
+ },
+ "https://meropide.com/chs/weapons/%E7%99%BD%E9%9B%A8%E5%BF%83%E5%BC%A6/": {
+  "fetch_date": "2026-08-25T11:11:13+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "b2dfb21b02d46f8e"
+ },
+ "https://meropide.com/chs/weapons/%E7%9B%88%E6%BB%A1%E4%B9%8B%E5%AE%9E/": {
+  "fetch_date": "2026-08-25T11:11:15+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "2965d51dd4f4211f"
+ },
+ "https://meropide.com/chs/weapons/%E7%9C%9F%E8%AF%AD%E7%A7%98%E5%8C%A3/": {
+  "fetch_date": "2026-08-25T11:11:17+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "1cdf81bb94d6f0d4"
+ },
+ "https://meropide.com/chs/weapons/%E7%A0%B4%E9%AD%94%E4%B9%8B%E5%BC%93/": {
+  "fetch_date": "2026-08-25T11:11:19+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "23ea1118396d4258"
+ },
+ "https://meropide.com/chs/weapons/%E7%A1%95%E6%9E%9C%E9%92%A9/": {
+  "fetch_date": "2026-08-25T11:11:21+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "762346c79e248b6b"
+ },
+ "https://meropide.com/chs/weapons/%E7%A2%8E%E9%93%BE/": {
+  "fetch_date": "2026-08-25T11:11:23+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "7842779423d5f1c5"
+ },
+ "https://meropide.com/chs/weapons/%E7%A2%A7%E8%90%BD%E4%B9%8B%E7%8F%91/": {
+  "fetch_date": "2026-08-25T11:11:26+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "70b5661fd9a6399c"
+ },
+ "https://meropide.com/chs/weapons/%E7%A3%90%E5%B2%A9%E7%BB%93%E7%BB%BF/": {
+  "fetch_date": "2026-08-25T11:11:28+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "febb68883ce12c71"
+ },
+ "https://meropide.com/chs/weapons/%E7%A5%9E%E4%B9%90%E4%B9%8B%E7%9C%9F%E6%84%8F/": {
+  "fetch_date": "2026-08-25T11:11:30+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "65cb40dbf943103c"
+ },
+ "https://meropide.com/chs/weapons/%E7%A5%9E%E5%B0%84%E6%89%8B%E4%B9%8B%E8%AA%93/": {
+  "fetch_date": "2026-08-25T11:11:32+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "97de2d277f30363b"
+ },
+ "https://meropide.com/chs/weapons/%E7%A5%AD%E6%98%9F%E8%80%85%E4%B9%8B%E6%9C%9B/": {
+  "fetch_date": "2026-08-25T11:11:34+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "11cb7c600048ba29"
+ },
+ "https://meropide.com/chs/weapons/%E7%A5%AD%E7%A4%BC%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:11:36+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "2e40b3e17cd10bb4"
+ },
+ "https://meropide.com/chs/weapons/%E7%A5%AD%E7%A4%BC%E5%A4%A7%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:11:37+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "fd029935eea1968f"
+ },
+ "https://meropide.com/chs/weapons/%E7%A5%AD%E7%A4%BC%E5%BC%93/": {
+  "fetch_date": "2026-08-25T11:11:39+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "1fd844f96f754dcf"
+ },
+ "https://meropide.com/chs/weapons/%E7%A5%AD%E7%A4%BC%E6%AE%8B%E7%AB%A0/": {
+  "fetch_date": "2026-08-25T11:11:41+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "3fb15d502671179d"
+ },
+ "https://meropide.com/chs/weapons/%E7%AB%AD%E6%B3%BD/": {
+  "fetch_date": "2026-08-25T11:11:43+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "cebcb1acedb492f2"
+ },
+ "https://meropide.com/chs/weapons/%E7%AC%9B%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:11:45+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "5c2a919e57865724"
+ },
+ "https://meropide.com/chs/weapons/%E7%AC%BC%E9%92%93%E7%93%B6%E4%B8%80%E5%BF%83/": {
+  "fetch_date": "2026-08-25T11:11:47+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "e613d8f0e84fb436"
+ },
+ "https://meropide.com/chs/weapons/%E7%AD%91%E4%BA%91/": {
+  "fetch_date": "2026-08-25T11:11:49+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "715d270d25ac8ee2"
+ },
+ "https://meropide.com/chs/weapons/%E7%BA%AF%E6%B0%B4%E6%B5%81%E5%8D%8E/": {
+  "fetch_date": "2026-08-25T11:11:51+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "a400ff1780ee1fbe"
+ },
+ "https://meropide.com/chs/weapons/%E7%BA%BA%E5%A4%9C%E5%A4%A9%E9%95%9C/": {
+  "fetch_date": "2026-08-25T11:11:53+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "f0411a634c1a2646"
+ },
+ "https://meropide.com/chs/weapons/%E7%BB%87%E6%9C%88%E8%80%85%E7%9A%84%E6%9B%99%E8%89%B2/": {
+  "fetch_date": "2026-08-25T11:11:55+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "8f27ed7754692aa0"
+ },
+ "https://meropide.com/chs/weapons/%E7%BB%88%E6%9C%AB%E5%97%9F%E5%8F%B9%E4%B9%8B%E8%AF%97/": {
+  "fetch_date": "2026-08-25T11:11:57+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "31d841f5f7b9faa6"
+ },
+ "https://meropide.com/chs/weapons/%E7%BB%9D%E5%BC%A6/": {
+  "fetch_date": "2026-08-25T11:11:59+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "683571e59df09644"
+ },
+ "https://meropide.com/chs/weapons/%E7%BC%80%E8%8A%B1%E4%B9%8B%E7%BF%8E/": {
+  "fetch_date": "2026-08-25T11:12:01+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "6b977114ff1afb98"
+ },
+ "https://meropide.com/chs/weapons/%E7%BD%97%E7%BD%91%E5%8B%BE%E9%92%88/": {
+  "fetch_date": "2026-08-25T11:12:03+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "8cc48794700cd228"
+ },
+ "https://meropide.com/chs/weapons/%E7%BE%A4%E7%8E%8B%E5%B1%80%E6%88%8F/": {
+  "fetch_date": "2026-08-25T11:12:05+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "8e5fcff427486143"
+ },
+ "https://meropide.com/chs/weapons/%E7%BF%A1%E7%8E%89%E6%B3%95%E7%90%83/": {
+  "fetch_date": "2026-08-25T11:12:06+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "1e3a6799a798f34a"
+ },
+ "https://meropide.com/chs/weapons/%E8%81%8A%E8%81%8A%E6%A3%92/": {
+  "fetch_date": "2026-08-25T11:12:08+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "cee4b6557fe5414e"
+ },
+ "https://meropide.com/chs/weapons/%E8%85%90%E6%AE%96%E4%B9%8B%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:12:10+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "4208b8b9666373a1"
+ },
+ "https://meropide.com/chs/weapons/%E8%88%B9%E5%9D%9E%E9%95%BF%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:12:12+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "1ce107a4285db81f"
+ },
+ "https://meropide.com/chs/weapons/%E8%8B%87%E6%B5%B7%E4%BF%A1%E6%A0%87/": {
+  "fetch_date": "2026-08-25T11:12:14+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "ebee4979c6b3ce4c"
+ },
+ "https://meropide.com/chs/weapons/%E8%8B%8D%E5%8F%A4%E8%87%AA%E7%94%B1%E4%B9%8B%E8%AA%93/": {
+  "fetch_date": "2026-08-25T11:12:16+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "9696f018b905e201"
+ },
+ "https://meropide.com/chs/weapons/%E8%8B%8D%E7%BA%B9%E8%A7%92%E6%9D%AF/": {
+  "fetch_date": "2026-08-25T11:12:18+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "13bb3a1fbf6aff6c"
+ },
+ "https://meropide.com/chs/weapons/%E8%8B%8D%E7%BF%A0%E7%8C%8E%E5%BC%93/": {
+  "fetch_date": "2026-08-25T11:12:20+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "702f5c0c1f5012eb"
+ },
+ "https://meropide.com/chs/weapons/%E8%8B%8D%E8%80%80/": {
+  "fetch_date": "2026-08-25T11:12:22+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "04c79f39c5281396"
+ },
+ "https://meropide.com/chs/weapons/%E8%8B%A5%E6%B0%B4/": {
+  "fetch_date": "2026-08-25T11:12:50+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "8f83789a0decbf8a"
+ },
+ "https://meropide.com/chs/weapons/%E8%90%BD%E9%9C%9E/": {
+  "fetch_date": "2026-08-25T11:12:51+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "87026ea768f7bb12"
+ },
+ "https://meropide.com/chs/weapons/%E8%96%99%E8%8D%89%E4%B9%8B%E7%A8%BB%E5%85%89/": {
+  "fetch_date": "2026-08-25T11:12:53+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "ddc3c82a6e265484"
+ },
+ "https://meropide.com/chs/weapons/%E8%99%B9%E7%9A%84%E8%A1%8C%E8%BF%B9/": {
+  "fetch_date": "2026-08-25T11:12:54+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "1ee6c5bb590eaec5"
+ },
+ "https://meropide.com/chs/weapons/%E8%99%B9%E8%9B%87%E7%9A%84%E9%9B%A8%E5%BC%A6/": {
+  "fetch_date": "2026-08-25T11:12:55+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "33606cce2e8b0a24"
+ },
+ "https://meropide.com/chs/weapons/%E8%9E%AD%E9%AA%A8%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:12:57+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "ca4e3ac2c7403f24"
+ },
+ "https://meropide.com/chs/weapons/%E8%A1%80%E6%9F%93%E8%8D%92%E5%9F%8E/": {
+  "fetch_date": "2026-08-25T11:12:58+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "8115a2814be701c0"
+ },
+ "https://meropide.com/chs/weapons/%E8%A1%94%E7%8F%A0%E6%B5%B7%E7%9A%87/": {
+  "fetch_date": "2026-08-25T11:12:59+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "f2d3745b8bd0e88a"
+ },
+ "https://meropide.com/chs/weapons/%E8%A3%81%E5%8F%B6%E8%90%83%E5%85%89/": {
+  "fetch_date": "2026-08-25T11:13:01+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "ac68719d423403d4"
+ },
+ "https://meropide.com/chs/weapons/%E8%A3%81%E6%96%AD/": {
+  "fetch_date": "2026-08-25T11:13:03+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "28d7680561d74833"
+ },
+ "https://meropide.com/chs/weapons/%E8%A5%BF%E7%A6%8F%E6%96%AF%E7%9A%84%E6%9C%88%E5%85%89/": {
+  "fetch_date": "2026-08-25T11:13:05+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "994ae1da78c0da17"
+ },
+ "https://meropide.com/chs/weapons/%E8%A5%BF%E9%A3%8E%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:13:07+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "a2ec64d5b9cbfc19"
+ },
+ "https://meropide.com/chs/weapons/%E8%A5%BF%E9%A3%8E%E5%A4%A7%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:13:10+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "27ce93df7dea2a08"
+ },
+ "https://meropide.com/chs/weapons/%E8%A5%BF%E9%A3%8E%E7%8C%8E%E5%BC%93/": {
+  "fetch_date": "2026-08-25T11:13:11+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "b450adcf2a89a27b"
+ },
+ "https://meropide.com/chs/weapons/%E8%A5%BF%E9%A3%8E%E7%A7%98%E5%85%B8/": {
+  "fetch_date": "2026-08-25T11:13:13+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "5c57a9a5af8d4d76"
+ },
+ "https://meropide.com/chs/weapons/%E8%A5%BF%E9%A3%8E%E9%95%BF%E6%9E%AA/": {
+  "fetch_date": "2026-08-25T11:13:15+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "4c5057318ffa2198"
+ },
+ "https://meropide.com/chs/weapons/%E8%AE%A8%E9%BE%99%E8%8B%B1%E6%9D%B0%E8%B0%AD/": {
+  "fetch_date": "2026-08-25T11:13:16+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "663474a629430971"
+ },
+ "https://meropide.com/chs/weapons/%E8%AE%AD%E7%BB%83%E5%A4%A7%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:13:18+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "0bc754a7bd07053c"
+ },
+ "https://meropide.com/chs/weapons/%E8%AF%81%E8%AA%93%E4%B9%8B%E6%98%8E%E7%9E%B3/": {
+  "fetch_date": "2026-08-25T11:13:20+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "d26713bd2a1e45e4"
+ },
+ "https://meropide.com/chs/weapons/%E8%AF%95%E4%BD%9C%E5%8F%A4%E5%8D%8E/": {
+  "fetch_date": "2026-08-25T11:13:21+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "93e2f7ab182ff2c2"
+ },
+ "https://meropide.com/chs/weapons/%E8%AF%95%E4%BD%9C%E6%96%A9%E5%B2%A9/": {
+  "fetch_date": "2026-08-25T11:13:23+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "28fb21c73d346c5d"
+ },
+ "https://meropide.com/chs/weapons/%E8%AF%95%E4%BD%9C%E6%98%9F%E9%95%B0/": {
+  "fetch_date": "2026-08-25T11:13:24+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "64fe81a7b73d63e6"
+ },
+ "https://meropide.com/chs/weapons/%E8%AF%95%E4%BD%9C%E6%BE%B9%E6%9C%88/": {
+  "fetch_date": "2026-08-25T11:13:26+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "76176c622870e86c"
+ },
+ "https://meropide.com/chs/weapons/%E8%AF%95%E4%BD%9C%E9%87%91%E7%8F%80/": {
+  "fetch_date": "2026-08-25T11:13:28+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "07fdbb473dbae700"
+ },
+ "https://meropide.com/chs/weapons/%E8%B0%A7%E9%9F%B3%E5%90%B9%E5%93%A8/": {
+  "fetch_date": "2026-08-25T11:13:30+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "dd43b69caa1dbfe4"
+ },
+ "https://meropide.com/chs/weapons/%E8%B4%AF%E6%9C%88%E7%9F%A2/": {
+  "fetch_date": "2026-08-25T11:13:31+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "f7d0e98c3260daba"
+ },
+ "https://meropide.com/chs/weapons/%E8%B4%AF%E8%99%B9%E4%B9%8B%E6%A7%8A/": {
+  "fetch_date": "2026-08-25T11:13:33+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "c9595166f680c64d"
+ },
+ "https://meropide.com/chs/weapons/%E8%B5%A4%E6%9C%88%E4%B9%8B%E5%BD%A2/": {
+  "fetch_date": "2026-08-25T11:13:34+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "49849f7530cd47fc"
+ },
+ "https://meropide.com/chs/weapons/%E8%B5%A4%E6%B2%99%E4%B9%8B%E6%9D%96/": {
+  "fetch_date": "2026-08-25T11:13:36+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "ebc2e44ba8eeaabc"
+ },
+ "https://meropide.com/chs/weapons/%E8%B5%A4%E8%A7%92%E7%9F%B3%E6%BA%83%E6%9D%B5/": {
+  "fetch_date": "2026-08-25T11:13:38+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "1d7d20a20f54c6da"
+ },
+ "https://meropide.com/chs/weapons/%E8%B5%A6%E7%BD%AA/": {
+  "fetch_date": "2026-08-25T11:13:39+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "ae01a42b50bf465f"
+ },
+ "https://meropide.com/chs/weapons/%E8%B6%85%E8%B6%8A%E4%B9%8B%E5%8C%99/": {
+  "fetch_date": "2026-08-25T11:13:41+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "a2d3555de9c2aba4"
+ },
+ "https://meropide.com/chs/weapons/%E8%BE%B0%E7%A0%82%E4%B9%8B%E7%BA%BA%E9%94%A4/": {
+  "fetch_date": "2026-08-25T11:13:43+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "23fd14a2b2acc0e1"
+ },
+ "https://meropide.com/chs/weapons/%E9%81%97%E7%A5%80%E7%8E%89%E7%8F%91/": {
+  "fetch_date": "2026-08-25T11:13:45+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "ab06755333f6b556"
+ },
+ "https://meropide.com/chs/weapons/%E9%87%91%E5%BE%8B%E9%93%B8%E5%BD%B1/": {
+  "fetch_date": "2026-08-25T11:13:46+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "9ec4be195f98b979"
+ },
+ "https://meropide.com/chs/weapons/%E9%87%91%E6%B5%81%E7%9B%91%E7%9D%A3/": {
+  "fetch_date": "2026-08-25T11:13:48+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "a3b440ba6e438483"
+ },
+ "https://meropide.com/chs/weapons/%E9%92%9F%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:13:49+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "c7ce640b014b7547"
+ },
+ "https://meropide.com/chs/weapons/%E9%92%A2%E8%BD%AE%E5%BC%93/": {
+  "fetch_date": "2026-08-25T11:13:51+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "1364417580e4da4f"
+ },
+ "https://meropide.com/chs/weapons/%E9%92%BA%E7%9F%9B/": {
+  "fetch_date": "2026-08-25T11:13:53+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "19a13100297864de"
+ },
+ "https://meropide.com/chs/weapons/%E9%93%81%E5%B0%96%E6%9E%AA/": {
+  "fetch_date": "2026-08-25T11:13:54+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "b2023125b887147e"
+ },
+ "https://meropide.com/chs/weapons/%E9%93%81%E5%BD%B1%E9%98%94%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:13:57+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "1603e4a3404c2b36"
+ },
+ "https://meropide.com/chs/weapons/%E9%93%81%E8%9C%82%E5%88%BA/": {
+  "fetch_date": "2026-08-25T11:13:58+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "f96b11e363c8312e"
+ },
+ "https://meropide.com/chs/weapons/%E9%93%B6%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:14:00+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "591f1ddecc87bdbf"
+ },
+ "https://meropide.com/chs/weapons/%E9%95%87%E5%B1%B1%E4%B9%8B%E9%92%89/": {
+  "fetch_date": "2026-08-25T11:14:03+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "698cdd0c9cba9a1f"
+ },
+ "https://meropide.com/chs/weapons/%E9%98%BF%E8%8E%AB%E6%96%AF%E4%B9%8B%E5%BC%93/": {
+  "fetch_date": "2026-08-25T11:14:04+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "b942f060edb963e6"
+ },
+ "https://meropide.com/chs/weapons/%E9%99%8D%E4%B8%B4%E4%B9%8B%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:14:06+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "5ca64b4b7e2f4eb6"
+ },
+ "https://meropide.com/chs/weapons/%E9%9B%A8%E8%A3%81/": {
+  "fetch_date": "2026-08-25T11:14:08+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "e5979cd1a2d22e0a"
+ },
+ "https://meropide.com/chs/weapons/%E9%9B%AA%E8%91%AC%E7%9A%84%E6%98%9F%E9%93%B6/": {
+  "fetch_date": "2026-08-25T11:14:09+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "254c7676b9fb8f1d"
+ },
+ "https://meropide.com/chs/weapons/%E9%9B%BE%E5%88%87%E4%B9%8B%E5%9B%9E%E5%85%89/": {
+  "fetch_date": "2026-08-25T11:14:11+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "b218fade24792124"
+ },
+ "https://meropide.com/chs/weapons/%E9%9C%9C%E7%BB%93%E7%9A%84%E8%AA%93%E9%87%91%E6%9E%9D/": {
+  "fetch_date": "2026-08-25T11:14:13+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "72092c4f6db136ee"
+ },
+ "https://meropide.com/chs/weapons/%E9%9C%9C%E8%BE%B0/": {
+  "fetch_date": "2026-08-25T11:14:16+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "b2ab1a1412d24cf3"
+ },
+ "https://meropide.com/chs/weapons/%E9%9C%9C%E9%9B%AA%E8%AA%93%E7%BA%A6/": {
+  "fetch_date": "2026-08-25T11:14:18+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "16af168beb3a962c"
+ },
+ "https://meropide.com/chs/weapons/%E9%9D%99%E6%B0%B4%E6%B5%81%E6%B6%8C%E4%B9%8B%E8%BE%89/": {
+  "fetch_date": "2026-08-25T11:14:20+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "3c665eaeae7bfd30"
+ },
+ "https://meropide.com/chs/weapons/%E9%9D%99%E8%B0%A7%E4%B9%8B%E6%9B%B2/": {
+  "fetch_date": "2026-08-25T11:14:22+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "4667315da15d5486"
+ },
+ "https://meropide.com/chs/weapons/%E9%A3%8E%E4%BF%A1%E4%B9%8B%E9%94%8B/": {
+  "fetch_date": "2026-08-25T11:14:24+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "86ba264ad3d9443e"
+ },
+ "https://meropide.com/chs/weapons/%E9%A3%8E%E8%8A%B1%E4%B9%8B%E9%A2%82/": {
+  "fetch_date": "2026-08-25T11:14:26+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "308d7d8b21ffc118"
+ },
+ "https://meropide.com/chs/weapons/%E9%A3%8E%E9%B9%B0%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:14:28+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "b3f912e5573e3dff"
+ },
+ "https://meropide.com/chs/weapons/%E9%A3%9E%E5%A4%A9%E5%A4%A7%E5%BE%A1%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:14:30+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "995554963eac49bc"
+ },
+ "https://meropide.com/chs/weapons/%E9%A3%9E%E5%A4%A9%E5%BE%A1%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:14:31+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "e8d93b47b9b653cf"
+ },
+ "https://meropide.com/chs/weapons/%E9%A3%9E%E9%9B%B7%E4%B9%8B%E5%BC%A6%E6%8C%AF/": {
+  "fetch_date": "2026-08-25T11:14:33+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "e9d2272514f94276"
+ },
+ "https://meropide.com/chs/weapons/%E9%A5%B0%E9%93%81%E4%B9%8B%E8%8A%B1/": {
+  "fetch_date": "2026-08-25T11:14:35+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "e97767f119ac6b67"
+ },
+ "https://meropide.com/chs/weapons/%E9%A6%99%E9%9F%B5%E5%A5%8F%E8%80%85/": {
+  "fetch_date": "2026-08-25T11:14:36+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "f8cf00a5cd8261f2"
+ },
+ "https://meropide.com/chs/weapons/%E9%AD%94%E5%AF%BC%E7%BB%AA%E8%AE%BA/": {
+  "fetch_date": "2026-08-25T11:14:38+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "994357ab0583722d"
+ },
+ "https://meropide.com/chs/weapons/%E9%B8%A6%E7%BE%BD%E5%BC%93/": {
+  "fetch_date": "2026-08-25T11:14:39+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "58c6b1d39e682437"
+ },
+ "https://meropide.com/chs/weapons/%E9%B9%A4%E9%B8%A3%E4%BD%99%E9%9F%B3/": {
+  "fetch_date": "2026-08-25T11:14:41+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "75bba137510e11d8"
+ },
+ "https://meropide.com/chs/weapons/%E9%B9%AE%E7%A9%BF%E4%B9%8B%E5%96%99/": {
+  "fetch_date": "2026-08-25T11:14:42+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "c1a817e4820c8bfb"
+ },
+ "https://meropide.com/chs/weapons/%E9%BB%8E%E6%98%8E%E7%A0%B4%E6%99%93%E4%B9%8B%E5%8F%B2/": {
+  "fetch_date": "2026-08-25T11:14:44+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "585136976bd3623f"
+ },
+ "https://meropide.com/chs/weapons/%E9%BB%8E%E6%98%8E%E7%A5%9E%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:14:45+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "5474c6b056e3c760"
+ },
+ "https://meropide.com/chs/weapons/%E9%BB%91%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:14:47+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "dc3ce9f71bf10ab1"
+ },
+ "https://meropide.com/chs/weapons/%E9%BB%91%E5%B2%A9%E5%88%BA%E6%9E%AA/": {
+  "fetch_date": "2026-08-25T11:14:49+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "30492ebc46b7264c"
+ },
+ "https://meropide.com/chs/weapons/%E9%BB%91%E5%B2%A9%E6%88%98%E5%BC%93/": {
+  "fetch_date": "2026-08-25T11:14:50+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "406f558da96201ff"
+ },
+ "https://meropide.com/chs/weapons/%E9%BB%91%E5%B2%A9%E6%96%A9%E5%88%80/": {
+  "fetch_date": "2026-08-25T11:14:52+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "05f9705066ee43db"
+ },
+ "https://meropide.com/chs/weapons/%E9%BB%91%E5%B2%A9%E7%BB%AF%E7%8E%89/": {
+  "fetch_date": "2026-08-25T11:14:53+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "533e96c45cccc018"
+ },
+ "https://meropide.com/chs/weapons/%E9%BB%91%E5%B2%A9%E9%95%BF%E5%89%91/": {
+  "fetch_date": "2026-08-25T11:14:56+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "f61801d3f717e17f"
+ },
+ "https://meropide.com/chs/weapons/%E9%BB%91%E7%BC%A8%E6%9E%AA/": {
+  "fetch_date": "2026-08-25T11:14:57+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "f6096ff96ca41c2b"
+ },
+ "https://meropide.com/chs/weapons/%E9%BB%91%E8%9A%80/": {
+  "fetch_date": "2026-08-25T11:14:59+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "430303571f0d843d"
+ },
+ "https://meropide.com/chs/weapons/%E9%BE%99%E8%84%8A%E9%95%BF%E6%9E%AA/": {
+  "fetch_date": "2026-08-25T11:15:01+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "4f7ebb52bbdaaa73"
+ },
+ "https://meropide.com/chs/artifacts/%E5%8B%87%E5%A3%AB%E4%B9%8B%E5%BF%83/": {
+  "fetch_date": "2026-08-25T11:18:25+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "56b58081680b9b6a"
+ },
+ "https://meropide.com/chs/artifacts/%E5%8D%83%E5%B2%A9%E7%89%A2%E5%9B%BA/": {
+  "fetch_date": "2026-08-25T11:18:27+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "cf763b84e9560657"
+ },
+ "https://meropide.com/chs/artifacts/%E5%8D%8E%E9%A6%86%E6%A2%A6%E9%86%92%E5%BD%A2%E9%AA%B8%E8%AE%B0/": {
+  "fetch_date": "2026-08-25T11:18:29+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "27b7d5943b38ebce"
+ },
+ "https://meropide.com/chs/artifacts/%E5%9B%9E%E5%A3%B0%E4%B9%8B%E6%9E%97%E5%A4%9C%E8%AF%9D/": {
+  "fetch_date": "2026-08-25T11:18:31+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "eb9032a411514e60"
+ },
+ "https://meropide.com/chs/artifacts/%E5%A4%A9%E4%B9%8B%E7%BE%8E%E8%B5%90/": {
+  "fetch_date": "2026-08-25T11:18:32+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "6d9063519b2d77eb"
+ },
+ "https://meropide.com/chs/artifacts/%E5%A5%87%E8%BF%B9/": {
+  "fetch_date": "2026-08-25T11:18:33+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "3995f462fdfb4015"
+ },
+ "https://meropide.com/chs/artifacts/%E5%A6%82%E9%9B%B7%E7%9A%84%E7%9B%9B%E6%80%92/": {
+  "fetch_date": "2026-08-25T11:18:35+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "57d7240cb52159a4"
+ },
+ "https://meropide.com/chs/artifacts/%E5%AD%A6%E5%A3%AB/": {
+  "fetch_date": "2026-08-25T11:18:36+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "829407ff82512c48"
+ },
+ "https://meropide.com/chs/artifacts/%E5%AE%88%E6%8A%A4%E4%B9%8B%E5%BF%83/": {
+  "fetch_date": "2026-08-25T11:18:38+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "ed83deffa9e7cf18"
+ },
+ "https://meropide.com/chs/artifacts/%E5%B9%B3%E6%81%AF%E9%B8%A3%E9%9B%B7%E7%9A%84%E5%B0%8A%E8%80%85/": {
+  "fetch_date": "2026-08-25T11:18:39+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "da9fe71e94e9fdbc"
+ },
+ "https://meropide.com/chs/artifacts/%E5%B9%B8%E8%BF%90%E5%84%BF/": {
+  "fetch_date": "2026-08-25T11:18:40+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "ae9170254304a55d"
+ },
+ "https://meropide.com/chs/artifacts/%E5%BD%B1%E4%B8%AD%E6%B2%89%E5%87%9D%E7%9A%84%E5%B9%BB%E7%81%AD/": {
+  "fetch_date": "2026-08-25T11:18:42+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "0b4475e1988fe2db"
+ },
+ "https://meropide.com/chs/artifacts/%E6%82%A0%E5%8F%A4%E7%9A%84%E7%A3%90%E5%B2%A9/": {
+  "fetch_date": "2026-08-25T11:18:43+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "4c077a7249e09bd7"
+ },
+ "https://meropide.com/chs/artifacts/%E6%88%98%E7%8B%82/": {
+  "fetch_date": "2026-08-25T11:18:44+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "3af41fe01e588ed9"
+ },
+ "https://meropide.com/chs/artifacts/%E6%95%99%E5%AE%98/": {
+  "fetch_date": "2026-08-25T11:18:45+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "ddd077604797a635"
+ },
+ "https://meropide.com/chs/artifacts/%E6%98%94%E6%97%A5%E5%AE%97%E5%AE%A4%E4%B9%8B%E4%BB%AA/": {
+  "fetch_date": "2026-08-25T11:18:47+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "304c1b6f8a90c8cd"
+ },
+ "https://meropide.com/chs/artifacts/%E6%98%94%E6%97%B6%E4%B9%8B%E6%AD%8C/": {
+  "fetch_date": "2026-08-25T11:18:48+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "fb9a8a402806f21d"
+ },
+ "https://meropide.com/chs/artifacts/%E6%99%A8%E6%98%9F%E4%B8%8E%E6%9C%88%E7%9A%84%E6%99%93%E6%AD%8C/": {
+  "fetch_date": "2026-08-25T11:18:49+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "45220fdd43c8a920"
+ },
+ "https://meropide.com/chs/artifacts/%E6%9C%AA%E7%AB%9F%E7%9A%84%E9%81%90%E6%80%9D/": {
+  "fetch_date": "2026-08-25T11:18:51+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "563a88909d19a168"
+ },
+ "https://meropide.com/chs/artifacts/%E6%9D%A5%E6%AD%86%E4%BD%99%E5%93%8D/": {
+  "fetch_date": "2026-08-25T11:18:52+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "faaab53cb7c059c2"
+ },
+ "https://meropide.com/chs/artifacts/%E6%9F%93%E8%A1%80%E7%9A%84%E9%AA%91%E5%A3%AB%E9%81%93/": {
+  "fetch_date": "2026-08-25T11:18:54+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "c38e357481b67dc2"
+ },
+ "https://meropide.com/chs/artifacts/%E6%AD%A6%E4%BA%BA/": {
+  "fetch_date": "2026-08-25T11:18:55+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "5dd949c62d92ef29"
+ },
+ "https://meropide.com/chs/artifacts/%E6%B0%B4%E4%BB%99%E4%B9%8B%E6%A2%A6/": {
+  "fetch_date": "2026-08-25T11:18:56+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "bb8d5cd1fd9da0af"
+ },
+ "https://meropide.com/chs/artifacts/%E6%B2%89%E6%B2%A6%E4%B9%8B%E5%BF%83/": {
+  "fetch_date": "2026-08-25T11:18:58+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "519b5a195d3657a2"
+ },
+ "https://meropide.com/chs/artifacts/%E6%B2%99%E4%B8%8A%E6%A5%BC%E9%98%81%E5%8F%B2%E8%AF%9D/": {
+  "fetch_date": "2026-08-25T11:18:59+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "f6fa82d447ea895e"
+ },
+ "https://meropide.com/chs/artifacts/%E6%B5%81%E6%94%BE%E8%80%85/": {
+  "fetch_date": "2026-08-25T11:19:01+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "3633c611474bc961"
+ },
+ "https://meropide.com/chs/artifacts/%E6%B5%81%E6%B5%AA%E5%A4%A7%E5%9C%B0%E7%9A%84%E4%B9%90%E5%9B%A2/": {
+  "fetch_date": "2026-08-25T11:19:03+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "416f2b1df7126233"
+ },
+ "https://meropide.com/chs/artifacts/%E6%B5%B7%E6%9F%93%E7%A0%97%E7%A3%B2/": {
+  "fetch_date": "2026-08-25T11:19:04+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "30eeb039197f0a9d"
+ },
+ "https://meropide.com/chs/artifacts/%E6%B7%B1%E5%BB%8A%E7%BB%88%E6%9B%B2/": {
+  "fetch_date": "2026-08-25T11:19:06+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "f24ba56b7fe0bf69"
+ },
+ "https://meropide.com/chs/artifacts/%E6%B7%B1%E6%9E%97%E7%9A%84%E8%AE%B0%E5%BF%86/": {
+  "fetch_date": "2026-08-25T11:19:07+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "1063dce6a541a91e"
+ },
+ "https://meropide.com/chs/artifacts/%E6%B8%A1%E8%BF%87%E7%83%88%E7%81%AB%E7%9A%84%E8%B4%A4%E4%BA%BA/": {
+  "fetch_date": "2026-08-25T11:19:09+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "0b8698629c29953b"
+ },
+ "https://meropide.com/chs/artifacts/%E6%B8%B8%E5%8C%BB/": {
+  "fetch_date": "2026-08-25T11:19:10+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "7e40cd6b61e31bde"
+ },
+ "https://meropide.com/chs/artifacts/%E7%82%89%E7%81%AB%E8%9E%8D%E7%82%BC%E4%B9%8B%E5%BF%83/": {
+  "fetch_date": "2026-08-25T11:19:12+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "02ad9187febe930b"
+ },
+ "https://meropide.com/chs/artifacts/%E7%82%BD%E7%83%88%E7%9A%84%E7%82%8E%E4%B9%8B%E9%AD%94%E5%A5%B3/": {
+  "fetch_date": "2026-08-25T11:19:14+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "5a00380e17627b58"
+ },
+ "https://meropide.com/chs/artifacts/%E7%83%AC%E5%9F%8E%E5%8B%87%E8%80%85%E7%BB%98%E5%8D%B7/": {
+  "fetch_date": "2026-08-25T11:19:16+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "104559da049015c6"
+ },
+ "https://meropide.com/chs/artifacts/%E7%A5%AD%E5%86%B0%E4%B9%8B%E4%BA%BA/": {
+  "fetch_date": "2026-08-25T11:19:17+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "53d89d6762660500"
+ },
+ "https://meropide.com/chs/artifacts/%E7%A5%AD%E6%B0%B4%E4%B9%8B%E4%BA%BA/": {
+  "fetch_date": "2026-08-25T11:19:19+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "4f62091fd9b5147f"
+ },
+ "https://meropide.com/chs/artifacts/%E7%A5%AD%E7%81%AB%E4%B9%8B%E4%BA%BA/": {
+  "fetch_date": "2026-08-25T11:19:21+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "fb3a3e9328de61a4"
+ },
+ "https://meropide.com/chs/artifacts/%E7%A5%AD%E9%9B%B7%E4%B9%8B%E4%BA%BA/": {
+  "fetch_date": "2026-08-25T11:19:22+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "62ac34518de76b2a"
+ },
+ "https://meropide.com/chs/artifacts/%E7%A9%B9%E5%A2%83%E7%A4%BA%E7%8E%B0%E4%B9%8B%E5%A4%9C/": {
+  "fetch_date": "2026-08-25T11:19:24+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "38bdc2d2bf401e94"
+ },
+ "https://meropide.com/chs/artifacts/%E7%BA%BA%E6%9C%88%E7%9A%84%E5%A4%9C%E6%AD%8C/": {
+  "fetch_date": "2026-08-25T11:19:26+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "4e522bf3ec21c1ee"
+ },
+ "https://meropide.com/chs/artifacts/%E7%BB%9D%E7%BC%98%E4%B9%8B%E6%97%97%E5%8D%B0/": {
+  "fetch_date": "2026-08-25T11:19:27+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "700a544efe27831e"
+ },
+ "https://meropide.com/chs/artifacts/%E7%BF%A0%E7%BB%BF%E4%B9%8B%E5%BD%B1/": {
+  "fetch_date": "2026-08-25T11:19:29+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "1311f81651bc1d1b"
+ },
+ "https://meropide.com/chs/artifacts/%E8%8A%B1%E6%B5%B7%E7%94%98%E9%9C%B2%E4%B9%8B%E5%85%89/": {
+  "fetch_date": "2026-08-25T11:19:31+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "c5d2eda72a0ebbc1"
+ },
+ "https://meropide.com/chs/artifacts/%E8%8B%8D%E7%99%BD%E4%B9%8B%E7%81%AB/": {
+  "fetch_date": "2026-08-25T11:19:32+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "d9a8c7fa8d939c4b"
+ },
+ "https://meropide.com/chs/artifacts/%E8%A1%80%E7%BA%A2%E4%B9%8B%E8%AF%81/": {
+  "fetch_date": "2026-08-25T11:19:34+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "01ce75ced2f484fb"
+ },
+ "https://meropide.com/chs/artifacts/%E8%A1%8C%E8%80%85%E4%B9%8B%E5%BF%83/": {
+  "fetch_date": "2026-08-25T11:19:36+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "99462f5bdc0dcc22"
+ },
+ "https://meropide.com/chs/artifacts/%E8%A2%AB%E6%80%9C%E7%88%B1%E7%9A%84%E5%B0%91%E5%A5%B3/": {
+  "fetch_date": "2026-08-25T11:19:37+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "49a36c85ce83d18c"
+ },
+ "https://meropide.com/chs/artifacts/%E8%A7%92%E6%96%97%E5%A3%AB%E7%9A%84%E7%BB%88%E5%B9%95%E7%A4%BC/": {
+  "fetch_date": "2026-08-25T11:19:39+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "5cff89860a7ebf34"
+ },
+ "https://meropide.com/chs/artifacts/%E8%B0%90%E5%BE%8B%E5%BC%82%E6%83%B3%E6%96%AD%E7%AB%A0/": {
+  "fetch_date": "2026-08-25T11:19:40+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "778b9299decd4e1b"
+ },
+ "https://meropide.com/chs/artifacts/%E8%B5%8C%E5%BE%92/": {
+  "fetch_date": "2026-08-25T11:19:42+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "59973229e57ff9f2"
+ },
+ "https://meropide.com/chs/artifacts/%E8%BE%B0%E7%A0%82%E5%BE%80%E7%94%9F%E5%BD%95/": {
+  "fetch_date": "2026-08-25T11:19:47+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "ecc5a2a4e85fc690"
+ },
+ "https://meropide.com/chs/artifacts/%E8%BF%BD%E5%BF%86%E4%B9%8B%E6%B3%A8%E8%BF%9E/": {
+  "fetch_date": "2026-08-25T11:19:51+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "fa81816b75525962"
+ },
+ "https://meropide.com/chs/artifacts/%E9%80%86%E9%A3%9E%E7%9A%84%E6%B5%81%E6%98%9F/": {
+  "fetch_date": "2026-08-25T11:19:54+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "047de390cfb68d5c"
+ },
+ "https://meropide.com/chs/artifacts/%E9%80%90%E5%BD%B1%E7%8C%8E%E4%BA%BA/": {
+  "fetch_date": "2026-08-25T11:19:55+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "40835598fa0a05b2"
+ },
+ "https://meropide.com/chs/artifacts/%E9%95%BF%E5%A4%9C%E4%B9%8B%E8%AA%93/": {
+  "fetch_date": "2026-08-25T11:19:57+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "46f17d3af9259c8a"
+ },
+ "https://meropide.com/chs/artifacts/%E9%A3%8E%E8%B5%B7%E4%B9%8B%E6%97%A5/": {
+  "fetch_date": "2026-08-25T11:19:59+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "e7cf8001f0ca55c8"
+ },
+ "https://meropide.com/chs/artifacts/%E9%A5%B0%E9%87%91%E4%B9%8B%E6%A2%A6/": {
+  "fetch_date": "2026-08-25T11:20:01+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "3bd96299672218c1"
+ },
+ "https://meropide.com/chs/artifacts/%E9%BB%84%E9%87%91%E5%89%A7%E5%9B%A2/": {
+  "fetch_date": "2026-08-25T11:20:03+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "7c5f87e78934bb18"
+ },
+ "https://meropide.com/chs/artifacts/%E9%BB%91%E6%9B%9C%E7%A7%98%E5%85%B8/": {
+  "fetch_date": "2026-08-25T11:20:05+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "7c2ce551d094ad51"
+ },
+ "https://meropide.com/chs/stygian/%E5%8E%86%E7%BB%8F%E7%99%BE%E6%88%98%E7%9A%84%E5%85%88%E9%A9%B1%E7%A7%98%E6%BA%90%E7%BB%9F%E8%BE%96%E9%98%B5%E5%88%97%C2%B7%E8%9C%82%E5%B7%A2%E6%84%8F%E5%BF%97/theorycraft/": {
+  "fetch_date": "2026-08-25T11:20:10+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "af3787dc80b877f8"
+ },
+ "https://meropide.com/chs/stygian/%E5%8E%86%E7%BB%8F%E7%99%BE%E6%88%98%E7%9A%84%E5%87%9B%E7%8B%BC%C2%B7%E6%9E%81%E5%AF%92%E5%86%B0%E9%AD%84/": {
+  "fetch_date": "2026-08-25T11:20:12+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "c363a0c295ff8144"
+ },
+ "https://meropide.com/chs/stygian/%E5%8E%86%E7%BB%8F%E7%99%BE%E6%88%98%E7%9A%84%E5%87%9B%E7%8B%BC%C2%B7%E6%9E%81%E5%AF%92%E5%86%B0%E9%AD%84/theorycraft/": {
+  "fetch_date": "2026-08-25T11:20:14+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "1dff37641db26e73"
+ },
+ "https://meropide.com/chs/stygian/%E5%8E%86%E7%BB%8F%E7%99%BE%E6%88%98%E7%9A%84%E5%8D%81%E5%85%AD%E5%80%8D%E6%9B%BC%E9%99%80%E8%8D%89%C2%B7%E9%A3%8E%E6%BB%9A%E7%8B%82%E8%94%93/": {
+  "fetch_date": "2026-08-25T11:20:16+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "318ba3539741117d"
+ },
+ "https://meropide.com/chs/stygian/%E5%8E%86%E7%BB%8F%E7%99%BE%E6%88%98%E7%9A%84%E5%8D%81%E5%85%AD%E5%80%8D%E6%9B%BC%E9%99%80%E8%8D%89%C2%B7%E9%A3%8E%E6%BB%9A%E7%8B%82%E8%94%93/theorycraft/": {
+  "fetch_date": "2026-08-25T11:20:18+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "a2588c44e26ef4e7"
+ },
+ "https://meropide.com/chs/stygian/%E5%8E%86%E7%BB%8F%E7%99%BE%E6%88%98%E7%9A%84%E5%B2%A9%E5%B1%85%E8%9F%B9%C2%B7%E7%99%BE%E4%B8%87%E7%88%86%E8%BD%B0/": {
+  "fetch_date": "2026-08-25T11:20:19+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "ed319f09c3b7c881"
+ },
+ "https://meropide.com/chs/stygian/%E5%8E%86%E7%BB%8F%E7%99%BE%E6%88%98%E7%9A%84%E5%B2%A9%E5%B1%85%E8%9F%B9%C2%B7%E7%99%BE%E4%B8%87%E7%88%86%E8%BD%B0/theorycraft/": {
+  "fetch_date": "2026-08-25T11:20:21+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "2737803d57554f73"
+ },
+ "https://meropide.com/chs/stygian/%E5%8E%86%E7%BB%8F%E7%99%BE%E6%88%98%E7%9A%84%E6%89%A7%E7%81%AF%E4%BA%BA%C2%B7%E5%93%80%E6%81%B8%E5%9B%9E%E5%93%8D/": {
+  "fetch_date": "2026-08-25T11:20:23+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "9221cdb928c01e9b"
+ },
+ "https://meropide.com/chs/stygian/%E5%8E%86%E7%BB%8F%E7%99%BE%E6%88%98%E7%9A%84%E6%89%A7%E7%81%AF%E4%BA%BA%C2%B7%E5%93%80%E6%81%B8%E5%9B%9E%E5%93%8D/theorycraft/": {
+  "fetch_date": "2026-08-25T11:20:24+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "3b924d03f509ac61"
+ },
+ "https://meropide.com/chs/stygian/%E5%8E%86%E7%BB%8F%E7%99%BE%E6%88%98%E7%9A%84%E6%9A%9D%E8%A7%86%E9%BE%99%C2%B7%E9%9C%9C%E9%9B%AA%E8%8B%9B%E5%BF%B5/": {
+  "fetch_date": "2026-08-25T11:20:26+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "952f3a129e0d4565"
+ },
+ "https://meropide.com/chs/stygian/%E5%8E%86%E7%BB%8F%E7%99%BE%E6%88%98%E7%9A%84%E6%9A%9D%E8%A7%86%E9%BE%99%C2%B7%E9%9C%9C%E9%9B%AA%E8%8B%9B%E5%BF%B5/theorycraft/": {
+  "fetch_date": "2026-08-25T11:20:28+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "df8314be50dfb96c"
+ },
+ "https://meropide.com/chs/stygian/%E5%8E%86%E7%BB%8F%E7%99%BE%E6%88%98%E7%9A%84%E7%81%AB%E5%88%83%E7%AA%81%E5%87%BB%E9%98%9F%E5%91%98%C2%B7%E5%86%B3%E6%AD%BB%E6%AD%A6%E8%A3%85/": {
+  "fetch_date": "2026-08-25T11:20:29+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "1168c1932d8ace43"
+ },
+ "https://meropide.com/chs/stygian/%E5%8E%86%E7%BB%8F%E7%99%BE%E6%88%98%E7%9A%84%E7%81%AB%E5%88%83%E7%AA%81%E5%87%BB%E9%98%9F%E5%91%98%C2%B7%E5%86%B3%E6%AD%BB%E6%AD%A6%E8%A3%85/theorycraft/": {
+  "fetch_date": "2026-08-25T11:20:31+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "7b6c6a3ddab1f4c2"
+ },
+ "https://meropide.com/chs/stygian/%E5%8E%86%E7%BB%8F%E7%99%BE%E6%88%98%E7%9A%84%E7%8E%B3%E9%BE%9F%C2%B7%E5%9D%9A%E7%9B%BE%E8%BD%B0%E9%9C%86/": {
+  "fetch_date": "2026-08-25T11:20:33+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "2854ae36c631ed73"
+ },
+ "https://meropide.com/chs/stygian/%E5%8E%86%E7%BB%8F%E7%99%BE%E6%88%98%E7%9A%84%E7%8E%B3%E9%BE%9F%C2%B7%E5%9D%9A%E7%9B%BE%E8%BD%B0%E9%9C%86/theorycraft/": {
+  "fetch_date": "2026-08-25T11:20:34+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "449e5b6d9b5c166d"
+ },
+ "https://meropide.com/chs/stygian/%E5%8E%86%E7%BB%8F%E7%99%BE%E6%88%98%E7%9A%84%E7%9A%AE%E7%9A%AE%E6%BD%98%E5%81%B6%E5%83%8F%C2%B7%E7%99%BE%E8%AF%88%E7%9E%AC%E5%8F%98/": {
+  "fetch_date": "2026-08-25T11:20:36+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "95b4612d3fa485c6"
+ },
+ "https://meropide.com/chs/stygian/%E5%8E%86%E7%BB%8F%E7%99%BE%E6%88%98%E7%9A%84%E7%9A%AE%E7%9A%AE%E6%BD%98%E5%81%B6%E5%83%8F%C2%B7%E7%99%BE%E8%AF%88%E7%9E%AC%E5%8F%98/theorycraft/": {
+  "fetch_date": "2026-08-25T11:20:37+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "e2b3bd291117303e"
+ },
+ "https://meropide.com/chs/stygian/%E5%8E%86%E7%BB%8F%E7%99%BE%E6%88%98%E7%9A%84%E9%9C%9C%E5%BD%B9%E4%BA%BA%C2%B7%E6%B6%89%E8%A1%80%E8%8A%92%E9%94%8B/": {
+  "fetch_date": "2026-08-25T11:20:39+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "04b1962aa26c5d0b"
+ },
+ "https://meropide.com/chs/stygian/%E5%8E%86%E7%BB%8F%E7%99%BE%E6%88%98%E7%9A%84%E9%9C%9C%E5%BD%B9%E4%BA%BA%C2%B7%E6%B6%89%E8%A1%80%E8%8A%92%E9%94%8B/theorycraft/": {
+  "fetch_date": "2026-08-25T11:20:40+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "39c12e8a1c74f8fe"
+ },
+ "https://meropide.com/chs/stygian/%E5%8E%86%E7%BB%8F%E7%99%BE%E6%88%98%E7%9A%84%E9%A3%8E%E5%BD%B9%E4%BA%BA%C2%B7%E8%AF%A1%E8%B0%B2%E8%8A%92%E9%94%8B/": {
+  "fetch_date": "2026-08-25T11:20:43+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "3968badea0bfd4ed"
+ },
+ "https://meropide.com/chs/stygian/%E5%8E%86%E7%BB%8F%E7%99%BE%E6%88%98%E7%9A%84%E9%A3%8E%E5%BD%B9%E4%BA%BA%C2%B7%E8%AF%A1%E8%B0%B2%E8%8A%92%E9%94%8B/theorycraft/": {
+  "fetch_date": "2026-08-25T11:20:44+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "c4c7a6856969c61c"
+ },
+ "https://meropide.com/chs/stygian/%E5%AE%9E%E9%AA%8C%E6%80%A7%E5%9C%BA%E5%8A%9B%E5%8F%91%E7%94%9F%E8%A3%85%E7%BD%AE%C2%B7%E6%9E%81%E7%AB%AF%E5%8A%BF%E8%83%BD/": {
+  "fetch_date": "2026-08-25T11:20:46+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "c0178591a3486c5e"
+ },
+ "https://meropide.com/chs/stygian/%E5%AE%9E%E9%AA%8C%E6%80%A7%E5%9C%BA%E5%8A%9B%E5%8F%91%E7%94%9F%E8%A3%85%E7%BD%AE%C2%B7%E6%9E%81%E7%AB%AF%E5%8A%BF%E8%83%BD/theorycraft/": {
+  "fetch_date": "2026-08-25T11:20:47+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "efaecd320318dfff"
+ },
+ "https://meropide.com/chs/stygian/%E5%B5%8C%E5%90%88%E7%BF%BC%E9%AA%8F%E7%8B%AE%C2%B7%E6%91%A7%E6%9E%AF%E4%BC%9F%E5%8A%9B/": {
+  "fetch_date": "2026-08-25T11:20:49+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "40ec4d38735af3d9"
+ },
+ "https://meropide.com/chs/stygian/%E5%B5%8C%E5%90%88%E7%BF%BC%E9%AA%8F%E7%8B%AE%C2%B7%E6%91%A7%E6%9E%AF%E4%BC%9F%E5%8A%9B/theorycraft/": {
+  "fetch_date": "2026-08-25T11:20:51+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "ffb359d2597f1a58"
+ },
+ "https://meropide.com/chs/stygian/%E5%BC%80%E7%9C%BC%E8%80%85%C2%B7%E5%82%B2%E7%84%B6%E7%9D%A5%E7%9D%A8/": {
+  "fetch_date": "2026-08-25T11:20:52+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "318481904f62d31d"
+ },
+ "https://meropide.com/chs/stygian/%E5%BC%80%E7%9C%BC%E8%80%85%C2%B7%E5%82%B2%E7%84%B6%E7%9D%A5%E7%9D%A8/theorycraft/": {
+  "fetch_date": "2026-08-25T11:20:54+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "0fa864d0b3d4b18c"
+ },
+ "https://meropide.com/chs/stygian/%E6%B0%B4%E5%BD%A2%E5%B9%BB%E4%BA%BA%C2%B7%E6%9E%81%E6%97%8B%E6%B9%8D%E6%B5%81/": {
+  "fetch_date": "2026-08-25T11:20:55+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "21713581b5034062"
+ },
+ "https://meropide.com/chs/stygian/%E6%B0%B4%E5%BD%A2%E5%B9%BB%E4%BA%BA%C2%B7%E6%9E%81%E6%97%8B%E6%B9%8D%E6%B5%81/theorycraft/": {
+  "fetch_date": "2026-08-25T11:20:57+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "a25d7e6d67e28fce"
+ },
+ "https://meropide.com/chs/stygian/%E6%B7%B1%E7%BD%AA%E6%B5%B8%E7%A4%BC%E8%80%85%C2%B7%E8%82%83%E7%83%88%E7%8B%82%E9%9F%B3/": {
+  "fetch_date": "2026-08-25T11:20:58+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "3e7895ef80f75af0"
+ },
+ "https://meropide.com/chs/stygian/%E6%B7%B1%E7%BD%AA%E6%B5%B8%E7%A4%BC%E8%80%85%C2%B7%E8%82%83%E7%83%88%E7%8B%82%E9%9F%B3/theorycraft/": {
+  "fetch_date": "2026-08-25T11:21:00+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "ecac999a7f590af6"
+ },
+ "https://meropide.com/chs/stygian/%E6%B7%B1%E9%82%83%E6%91%B9%E7%BB%93%E6%A0%AA%C2%B7%E8%99%9A%E6%9A%97%E5%B9%BB%E5%8F%98/": {
+  "fetch_date": "2026-08-25T11:21:02+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "a4264e3817e4a8c6"
+ },
+ "https://meropide.com/chs/stygian/%E6%B7%B1%E9%82%83%E6%91%B9%E7%BB%93%E6%A0%AA%C2%B7%E8%99%9A%E6%9A%97%E5%B9%BB%E5%8F%98/theorycraft/": {
+  "fetch_date": "2026-08-25T11:21:03+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "ab894d59a295892b"
+ },
+ "https://meropide.com/chs/stygian/%E6%B7%B1%E9%BB%AF%E9%AD%87%E8%AF%AD%E4%B9%8B%E4%B8%BB%C2%B7%E8%A2%AD%E6%8E%A0%E9%94%8B%E5%88%83/": {
+  "fetch_date": "2026-08-25T11:21:05+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "f1faf715ec20d6d0"
+ },
+ "https://meropide.com/chs/stygian/%E6%B7%B1%E9%BB%AF%E9%AD%87%E8%AF%AD%E4%B9%8B%E4%B8%BB%C2%B7%E8%A2%AD%E6%8E%A0%E9%94%8B%E5%88%83/theorycraft/": {
+  "fetch_date": "2026-08-25T11:21:06+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "5e9dea6eeaee2c26"
+ },
+ "https://meropide.com/chs/stygian/%E7%86%94%E5%B2%A9%E8%BE%89%E9%BE%99%E5%83%8F%C2%B7%E7%82%BD%E7%83%88%E6%B5%81%E7%84%B0/": {
+  "fetch_date": "2026-08-25T11:21:08+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "3efca6643cde4a83"
+ },
+ "https://meropide.com/chs/stygian/%E7%86%94%E5%B2%A9%E8%BE%89%E9%BE%99%E5%83%8F%C2%B7%E7%82%BD%E7%83%88%E6%B5%81%E7%84%B0/theorycraft/": {
+  "fetch_date": "2026-08-25T11:21:10+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "74a052a6c8bbd480"
+ },
+ "https://meropide.com/chs/stygian/%E7%A7%98%E6%BA%90%E6%9C%BA%E5%85%B5%E6%9E%84%E5%9E%8B%E6%A2%B0%C2%B7%E8%A3%82%E8%A7%A3%E5%89%AA%E9%92%B3/": {
+  "fetch_date": "2026-08-25T11:21:11+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "e70f58173f1d0aae"
+ },
+ "https://meropide.com/chs/stygian/%E7%A7%98%E6%BA%90%E6%9C%BA%E5%85%B5%E6%9E%84%E5%9E%8B%E6%A2%B0%C2%B7%E8%A3%82%E8%A7%A3%E5%89%AA%E9%92%B3/theorycraft/": {
+  "fetch_date": "2026-08-25T11:21:13+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "1ee286e1d10769d6"
+ },
+ "https://meropide.com/chs/stygian/%E7%A7%98%E6%BA%90%E6%9C%BA%E5%85%B5%E7%BB%9F%E5%BE%A1%E6%A2%B0%C2%B7%E6%AF%81%E7%81%AD%E6%AD%A6%E8%A3%85/": {
+  "fetch_date": "2026-08-25T11:21:14+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "710ca226eced52a9"
+ },
+ "https://meropide.com/chs/stygian/%E7%A7%98%E6%BA%90%E6%9C%BA%E5%85%B5%E7%BB%9F%E5%BE%A1%E6%A2%B0%C2%B7%E6%AF%81%E7%81%AD%E6%AD%A6%E8%A3%85/theorycraft/": {
+  "fetch_date": "2026-08-25T11:21:16+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "40cbc5cd015a432d"
+ },
+ "https://meropide.com/chs/stygian/%E8%95%B4%E5%85%89%E6%9C%88%E5%AE%88%E5%AE%AB%C2%B7%E6%A0%B9%E7%89%99%E7%A3%90%E9%94%99/": {
+  "fetch_date": "2026-08-25T11:21:17+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "ad552ed016d8aa19"
+ },
+ "https://meropide.com/chs/stygian/%E8%95%B4%E5%85%89%E6%9C%88%E5%AE%88%E5%AE%AB%C2%B7%E6%A0%B9%E7%89%99%E7%A3%90%E9%94%99/theorycraft/": {
+  "fetch_date": "2026-08-25T11:21:19+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "795236d77b4dfe4d"
+ },
+ "https://meropide.com/chs/stygian/%E9%87%8D%E6%8B%B3%E5%87%BA%E5%87%BB%E9%B8%AD%C2%B7%E9%87%8D%E7%94%B2%E6%AD%A6%E5%BA%93/": {
+  "fetch_date": "2026-08-25T11:21:20+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "c740a598faa5ee9e"
+ },
+ "https://meropide.com/chs/stygian/%E9%87%8D%E6%8B%B3%E5%87%BA%E5%87%BB%E9%B8%AD%C2%B7%E9%87%8D%E7%94%B2%E6%AD%A6%E5%BA%93/theorycraft/": {
+  "fetch_date": "2026-08-25T11:21:22+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "a7f5f3cbd29c8831"
+ },
+ "https://meropide.com/chs/stygian/%E9%93%81%E7%94%B2%E7%86%94%E7%81%AB%E5%B8%9D%E7%9A%87%C2%B7%E6%95%95%E5%91%BD%E8%BF%9C%E5%BE%81/": {
+  "fetch_date": "2026-08-25T11:21:24+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "8a16ed5da6389d26"
+ },
+ "https://meropide.com/chs/stygian/%E9%93%81%E7%94%B2%E7%86%94%E7%81%AB%E5%B8%9D%E7%9A%87%C2%B7%E6%95%95%E5%91%BD%E8%BF%9C%E5%BE%81/theorycraft/": {
+  "fetch_date": "2026-08-25T11:21:25+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "5761541efccb002c"
+ },
+ "https://meropide.com/chs/stygian/%E9%9C%9C%E5%A4%9C%E5%B7%A1%E5%A4%A9%E7%81%B5%E4%B8%BB%C2%B7%E6%83%8A%E6%81%A8%E6%86%8E%E6%84%A4/": {
+  "fetch_date": "2026-08-25T11:21:26+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "9e20bc6bb6617f63"
+ },
+ "https://meropide.com/chs/stygian/%E9%9C%9C%E5%A4%9C%E5%B7%A1%E5%A4%A9%E7%81%B5%E4%B8%BB%C2%B7%E6%83%8A%E6%81%A8%E6%86%8E%E6%84%A4/theorycraft/": {
+  "fetch_date": "2026-08-25T11:21:28+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "dce503fddd55aac1"
+ },
+ "https://meropide.com/chs/reference/%E5%85%83%E7%B4%A0%E5%85%85%E8%83%BD/": {
+  "fetch_date": "2026-08-25T11:21:33+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "5dd382ba0512dd1d"
+ },
+ "https://meropide.com/chs/reference/%E5%9C%A3%E9%81%97%E7%89%A9%E8%AF%8D%E6%9D%A1%E6%95%B0%E5%80%BC/": {
+  "fetch_date": "2026-08-25T11:21:34+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "4b66b84ae9e7cce6"
+ },
+ "https://meropide.com/chs/reference/%E5%AE%89%E8%A3%85%E5%88%B0%E4%B8%BB%E5%B1%8F%E5%B9%95/": {
+  "fetch_date": "2026-08-25T11:21:36+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "9bf56e3eaccdb305"
+ },
+ "https://meropide.com/chs/reference/%E6%98%9F%E7%83%81%E5%8F%8D%E5%BA%94/": {
+  "fetch_date": "2026-08-25T11:21:38+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "ad6410402f569d80"
+ },
+ "https://meropide.com/chs/reference/%E6%9C%AC%E7%AB%99%E6%8A%95%E7%A8%BF%E8%AF%B4%E6%98%8E/": {
+  "fetch_date": "2026-08-25T11:21:39+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "da77c719d6ea71d6"
+ },
+ "https://meropide.com/chs/reference/%E6%9C%AC%E7%AB%99%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E/": {
+  "fetch_date": "2026-08-25T11:21:41+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "419efbd162d8066a"
+ },
+ "https://meropide.com/chs/reference/%E6%AD%A6%E5%99%A8%E5%8D%87%E7%BA%A7%E6%B6%88%E8%80%97/": {
+  "fetch_date": "2026-08-25T11:21:43+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "f031e076ba6dc90a"
+ },
+ "https://meropide.com/chs/reference/%E7%A0%B4%E7%9B%BE/": {
+  "fetch_date": "2026-08-25T11:21:46+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "31b67ef50ce878cc"
+ },
+ "https://meropide.com/chs/reference/%E7%BB%8F%E5%85%B8%E5%A4%8D%E5%90%88%E5%8F%8D%E5%BA%94/": {
+  "fetch_date": "2026-08-25T11:21:47+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "3425fce5f9214dc4"
+ },
+ "https://meropide.com/chs/reference/%E9%98%9F%E4%BC%8D%E5%8A%A0%E6%88%90/": {
+  "fetch_date": "2026-08-25T11:21:49+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "c82aea7bec765d19"
+ },
+ "https://meropide.com/chs/characters/%E5%A6%AE%E9%9C%B2/theorycraft/": {
+  "fetch_date": "2026-08-25T11:25:56+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "b18ca2cc1994afe0"
+ },
+ "https://meropide.com/chs/characters/%E5%A8%9C%E7%BB%B4%E5%A8%85/": {
+  "fetch_date": "2026-08-25T11:25:57+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "995c0ac1ebf36db5"
+ },
+ "https://meropide.com/chs/characters/%E5%A8%9C%E7%BB%B4%E5%A8%85/materials/": {
+  "fetch_date": "2026-08-25T11:25:59+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "95971b46344eae63"
+ },
+ "https://meropide.com/chs/characters/%E5%A8%9C%E7%BB%B4%E5%A8%85/stats/": {
+  "fetch_date": "2026-08-25T11:26:00+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "f5acab417fd20ee1"
+ },
+ "https://meropide.com/chs/characters/%E5%A8%9C%E7%BB%B4%E5%A8%85/theorycraft/": {
+  "fetch_date": "2026-08-25T11:26:01+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "f493bdf97e3e8174"
+ },
+ "https://meropide.com/chs/characters/%E5%AE%89%E6%9F%8F/": {
+  "fetch_date": "2026-08-25T11:26:03+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "b079a5566164eb1a"
+ },
+ "https://meropide.com/chs/characters/%E5%AE%89%E6%9F%8F/materials/": {
+  "fetch_date": "2026-08-25T11:26:04+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "c8ddb683c22e6ddc"
+ },
+ "https://meropide.com/chs/characters/%E5%AE%89%E6%9F%8F/stats/": {
+  "fetch_date": "2026-08-25T11:26:05+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "ff1f3361129e6b23"
+ },
+ "https://meropide.com/chs/characters/%E5%AE%89%E6%9F%8F/theorycraft/": {
+  "fetch_date": "2026-08-25T11:26:07+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "9a9a0984b7ab0ff3"
+ },
+ "https://meropide.com/chs/characters/%E5%AE%B5%E5%AE%AB/": {
+  "fetch_date": "2026-08-25T11:26:08+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "a0443cb2bbd4fde3"
+ },
+ "https://meropide.com/chs/characters/%E5%AE%B5%E5%AE%AB/materials/": {
+  "fetch_date": "2026-08-25T11:26:09+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "2f53f5d082b35698"
+ },
+ "https://meropide.com/chs/characters/%E5%AE%B5%E5%AE%AB/stats/": {
+  "fetch_date": "2026-08-25T11:26:11+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "4018c2077a021068"
+ },
+ "https://meropide.com/chs/characters/%E5%AE%B5%E5%AE%AB/theorycraft/": {
+  "fetch_date": "2026-08-25T11:26:12+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "52b70991fb245cd5"
+ },
+ "https://meropide.com/chs/characters/%E5%B0%BC%E5%8F%AF/": {
+  "fetch_date": "2026-08-25T11:26:13+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "7809d6002a6242bd"
+ },
+ "https://meropide.com/chs/characters/%E5%B0%BC%E5%8F%AF/materials/": {
+  "fetch_date": "2026-08-25T11:26:15+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "be863c83a55b02ca"
+ },
+ "https://meropide.com/chs/characters/%E5%B0%BC%E5%8F%AF/stats/": {
+  "fetch_date": "2026-08-25T11:26:16+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "f3ba014a917a565f"
+ },
+ "https://meropide.com/chs/characters/%E5%B0%BC%E5%8F%AF/theorycraft/": {
+  "fetch_date": "2026-08-25T11:26:18+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "43fed980fc1ab3f9"
+ },
+ "https://meropide.com/chs/characters/%E5%B8%83%E4%BC%A6%E5%A6%AE/": {
+  "fetch_date": "2026-08-25T11:26:19+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "b9ff26137c519760"
+ },
+ "https://meropide.com/chs/characters/%E5%B8%83%E4%BC%A6%E5%A6%AE/materials/": {
+  "fetch_date": "2026-08-25T11:26:20+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "3143e211cf2ba4b6"
+ },
+ "https://meropide.com/chs/characters/%E5%B8%83%E4%BC%A6%E5%A6%AE/stats/": {
+  "fetch_date": "2026-08-25T11:26:22+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "c9f1210076b48fc8"
+ },
+ "https://meropide.com/chs/characters/%E5%B8%83%E4%BC%A6%E5%A6%AE/theorycraft/": {
+  "fetch_date": "2026-08-25T11:26:23+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "4ea3b7f8e0696e57"
+ },
+ "https://meropide.com/chs/characters/%E5%B8%8C%E6%A0%BC%E9%9B%AF/": {
+  "fetch_date": "2026-08-25T11:26:26+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "14dc22cb806f07b0"
+ },
+ "https://meropide.com/chs/characters/%E5%B8%8C%E6%A0%BC%E9%9B%AF/materials/": {
+  "fetch_date": "2026-08-25T11:26:28+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "6ab59c522fa0b74b"
+ },
+ "https://meropide.com/chs/characters/%E5%B8%8C%E6%A0%BC%E9%9B%AF/stats/": {
+  "fetch_date": "2026-08-25T11:26:30+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "85c2a5e4545a4867"
+ },
+ "https://meropide.com/chs/characters/%E5%B8%8C%E6%A0%BC%E9%9B%AF/theorycraft/": {
+  "fetch_date": "2026-08-25T11:26:32+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "4df9a8ffc6be0207"
+ },
+ "https://meropide.com/chs/characters/%E5%B8%8C%E8%AF%BA%E5%AE%81/": {
+  "fetch_date": "2026-08-25T11:26:34+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "8ee227c72503f7b9"
+ },
+ "https://meropide.com/chs/characters/%E5%B8%8C%E8%AF%BA%E5%AE%81/materials/": {
+  "fetch_date": "2026-08-25T11:26:36+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "279bc2b8a21f57ba"
+ },
+ "https://meropide.com/chs/characters/%E5%B8%8C%E8%AF%BA%E5%AE%81/stats/": {
+  "fetch_date": "2026-08-25T11:26:38+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "21a63caf847614b4"
+ },
+ "https://meropide.com/chs/characters/%E5%B8%8C%E8%AF%BA%E5%AE%81/theorycraft/": {
+  "fetch_date": "2026-08-25T11:26:39+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "36f0b92e21e8b706"
+ },
+ "https://meropide.com/chs/characters/%E6%81%B0%E6%96%AF%E5%8D%A1/": {
+  "fetch_date": "2026-08-25T11:26:41+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "4e66ea9980f1f40d"
+ },
+ "https://meropide.com/chs/characters/%E6%81%B0%E6%96%AF%E5%8D%A1/materials/": {
+  "fetch_date": "2026-08-25T11:26:43+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "c2b6cc2dd911cd1b"
+ },
+ "https://meropide.com/chs/characters/%E6%81%B0%E6%96%AF%E5%8D%A1/stats/": {
+  "fetch_date": "2026-08-25T11:26:45+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "5af7f4f1c59b0bb3"
+ },
+ "https://meropide.com/chs/characters/%E6%81%B0%E6%96%AF%E5%8D%A1/theorycraft/": {
+  "fetch_date": "2026-08-25T11:26:47+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "9e90362fd10090d9"
+ },
+ "https://meropide.com/chs/characters/%E6%89%98%E9%A9%AC/": {
+  "fetch_date": "2026-08-25T11:26:48+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "1a21dc9de3024d31"
+ },
+ "https://meropide.com/chs/characters/%E6%89%98%E9%A9%AC/materials/": {
+  "fetch_date": "2026-08-25T11:26:50+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "b662f4e61ed0952f"
+ },
+ "https://meropide.com/chs/characters/%E6%89%98%E9%A9%AC/stats/": {
+  "fetch_date": "2026-08-25T11:26:52+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "e0405f66bd1142c8"
+ },
+ "https://meropide.com/chs/characters/%E6%89%98%E9%A9%AC/theorycraft/": {
+  "fetch_date": "2026-08-25T11:26:54+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "d8096e58e62a71ff"
+ },
+ "https://meropide.com/chs/characters/%E6%8F%90%E7%BA%B3%E9%87%8C/": {
+  "fetch_date": "2026-08-25T11:26:55+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "97f1a67b16e93321"
+ },
+ "https://meropide.com/chs/characters/%E6%8F%90%E7%BA%B3%E9%87%8C/materials/": {
+  "fetch_date": "2026-08-25T11:26:57+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "1bf665f7c0a94466"
+ },
+ "https://meropide.com/chs/characters/%E6%8F%90%E7%BA%B3%E9%87%8C/stats/": {
+  "fetch_date": "2026-08-25T11:26:59+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "56e54c398ea5ba84"
+ },
+ "https://meropide.com/chs/characters/%E6%8F%90%E7%BA%B3%E9%87%8C/theorycraft/": {
+  "fetch_date": "2026-08-25T11:27:00+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "190bf08ec07c903e"
+ },
+ "https://meropide.com/chs/characters/%E6%97%85%E8%A1%8C%E8%80%85%EF%BC%88%E5%86%B0%EF%BC%89/": {
+  "fetch_date": "2026-08-25T11:27:02+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "0fd4f0992f12be9c"
+ },
+ "https://meropide.com/chs/characters/%E6%97%85%E8%A1%8C%E8%80%85%EF%BC%88%E5%86%B0%EF%BC%89/materials/": {
+  "fetch_date": "2026-08-25T11:27:04+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "eaa96c56b4ec51eb"
+ },
+ "https://meropide.com/chs/characters/%E6%97%85%E8%A1%8C%E8%80%85%EF%BC%88%E5%86%B0%EF%BC%89/stats/": {
+  "fetch_date": "2026-08-25T11:27:06+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "94ce0fe91ff1e7a4"
+ },
+ "https://meropide.com/chs/characters/%E6%97%85%E8%A1%8C%E8%80%85%EF%BC%88%E5%86%B0%EF%BC%89/theorycraft/": {
+  "fetch_date": "2026-08-25T11:27:08+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "8f58a1bb91694efc"
+ },
+ "https://meropide.com/chs/characters/%E6%97%85%E8%A1%8C%E8%80%85%EF%BC%88%E5%B2%A9%EF%BC%89/": {
+  "fetch_date": "2026-08-25T11:27:10+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "c322e450390fc561"
+ },
+ "https://meropide.com/chs/characters/%E6%97%85%E8%A1%8C%E8%80%85%EF%BC%88%E5%B2%A9%EF%BC%89/materials/": {
+  "fetch_date": "2026-08-25T11:27:12+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "d23cd9041157ceba"
+ },
+ "https://meropide.com/chs/characters/%E6%97%85%E8%A1%8C%E8%80%85%EF%BC%88%E5%B2%A9%EF%BC%89/stats/": {
+  "fetch_date": "2026-08-25T11:27:14+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "28044bef1c9b4db0"
+ },
+ "https://meropide.com/chs/characters/%E6%97%85%E8%A1%8C%E8%80%85%EF%BC%88%E5%B2%A9%EF%BC%89/theorycraft/": {
+  "fetch_date": "2026-08-25T11:27:15+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "a6dae778b02e829d"
+ },
+ "https://meropide.com/chs/characters/%E6%97%85%E8%A1%8C%E8%80%85%EF%BC%88%E6%B0%B4%EF%BC%89/": {
+  "fetch_date": "2026-08-25T11:27:17+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "1dcc7238472dcb12"
+ },
+ "https://meropide.com/chs/characters/%E6%97%85%E8%A1%8C%E8%80%85%EF%BC%88%E6%B0%B4%EF%BC%89/materials/": {
+  "fetch_date": "2026-08-25T11:27:19+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "d454931e4d7e53f9"
+ },
+ "https://meropide.com/chs/characters/%E6%97%85%E8%A1%8C%E8%80%85%EF%BC%88%E6%B0%B4%EF%BC%89/stats/": {
+  "fetch_date": "2026-08-25T11:27:21+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "ee4daab6eff5bc5e"
+ },
+ "https://meropide.com/chs/characters/%E6%97%85%E8%A1%8C%E8%80%85%EF%BC%88%E6%B0%B4%EF%BC%89/theorycraft/": {
+  "fetch_date": "2026-08-25T11:27:22+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "147de0202baaa3af"
+ },
+ "https://meropide.com/chs/characters/%E6%97%85%E8%A1%8C%E8%80%85%EF%BC%88%E7%81%AB%EF%BC%89/": {
+  "fetch_date": "2026-08-25T11:27:24+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "41fc8d841ee983db"
+ },
+ "https://meropide.com/chs/characters/%E6%97%85%E8%A1%8C%E8%80%85%EF%BC%88%E7%81%AB%EF%BC%89/materials/": {
+  "fetch_date": "2026-08-25T11:27:26+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "b1b0c0ed4e0568d1"
+ },
+ "https://meropide.com/chs/characters/%E6%97%85%E8%A1%8C%E8%80%85%EF%BC%88%E7%81%AB%EF%BC%89/stats/": {
+  "fetch_date": "2026-08-25T11:27:28+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "d2c62e15b8290ab9"
+ },
+ "https://meropide.com/chs/characters/%E6%97%85%E8%A1%8C%E8%80%85%EF%BC%88%E7%81%AB%EF%BC%89/theorycraft/": {
+  "fetch_date": "2026-08-25T11:27:29+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "310699f97b99576b"
+ },
+ "https://meropide.com/chs/characters/%E6%97%85%E8%A1%8C%E8%80%85%EF%BC%88%E8%8D%89%EF%BC%89/": {
+  "fetch_date": "2026-08-25T11:27:31+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "d859a9b4d77ab65f"
+ },
+ "https://meropide.com/chs/characters/%E6%97%85%E8%A1%8C%E8%80%85%EF%BC%88%E8%8D%89%EF%BC%89/materials/": {
+  "fetch_date": "2026-08-25T11:27:33+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "dbaac28b7aae6824"
+ },
+ "https://meropide.com/chs/characters/%E6%97%85%E8%A1%8C%E8%80%85%EF%BC%88%E8%8D%89%EF%BC%89/stats/": {
+  "fetch_date": "2026-08-25T11:27:34+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "b04616ec3ced3cc2"
+ },
+ "https://meropide.com/chs/characters/%E6%97%85%E8%A1%8C%E8%80%85%EF%BC%88%E8%8D%89%EF%BC%89/theorycraft/": {
+  "fetch_date": "2026-08-25T11:27:36+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "72512e3087844f50"
+ },
+ "https://meropide.com/chs/characters/%E6%97%85%E8%A1%8C%E8%80%85%EF%BC%88%E9%9B%B7%EF%BC%89/": {
+  "fetch_date": "2026-08-25T11:27:38+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "f8541ed28529ecf1"
+ },
+ "https://meropide.com/chs/characters/%E6%97%85%E8%A1%8C%E8%80%85%EF%BC%88%E9%9B%B7%EF%BC%89/materials/": {
+  "fetch_date": "2026-08-25T11:27:40+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "f4ec0fa9fbff9782"
+ },
+ "https://meropide.com/chs/characters/%E6%97%85%E8%A1%8C%E8%80%85%EF%BC%88%E9%9B%B7%EF%BC%89/stats/": {
+  "fetch_date": "2026-08-25T11:27:41+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "aa55b86420b6fb93"
+ },
+ "https://meropide.com/chs/characters/%E6%97%85%E8%A1%8C%E8%80%85%EF%BC%88%E9%9B%B7%EF%BC%89/theorycraft/": {
+  "fetch_date": "2026-08-25T11:27:44+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "151dbe28797279b9"
+ },
+ "https://meropide.com/chs/characters/%E6%97%85%E8%A1%8C%E8%80%85%EF%BC%88%E9%A3%8E%EF%BC%89/": {
+  "fetch_date": "2026-08-25T11:27:45+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "83f71d16e254bb78"
+ },
+ "https://meropide.com/chs/characters/%E6%97%85%E8%A1%8C%E8%80%85%EF%BC%88%E9%A3%8E%EF%BC%89/materials/": {
+  "fetch_date": "2026-08-25T11:27:47+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "3d251d0f8a7cee0f"
+ },
+ "https://meropide.com/chs/characters/%E6%97%85%E8%A1%8C%E8%80%85%EF%BC%88%E9%A3%8E%EF%BC%89/stats/": {
+  "fetch_date": "2026-08-25T11:27:50+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "558bbc0eda629891"
+ },
+ "https://meropide.com/chs/characters/%E6%97%85%E8%A1%8C%E8%80%85%EF%BC%88%E9%A3%8E%EF%BC%89/theorycraft/": {
+  "fetch_date": "2026-08-25T11:27:51+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "113ac7130aa16023"
+ },
+ "https://meropide.com/chs/characters/%E6%97%A9%E6%9F%9A/": {
+  "fetch_date": "2026-08-25T11:27:53+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "e2cf111b48e84314"
+ },
+ "https://meropide.com/chs/characters/%E6%97%A9%E6%9F%9A/materials/": {
+  "fetch_date": "2026-08-25T11:27:54+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "ddf80de4579fe4ae"
+ },
+ "https://meropide.com/chs/characters/%E6%97%A9%E6%9F%9A/stats/": {
+  "fetch_date": "2026-08-25T11:27:57+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "3644b6a0ea881255"
+ },
+ "https://meropide.com/chs/characters/%E6%97%A9%E6%9F%9A/theorycraft/": {
+  "fetch_date": "2026-08-25T11:27:59+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "d11d61c141c4b17f"
+ },
+ "https://meropide.com/chs/characters/%E6%9D%9C%E6%9E%97/": {
+  "fetch_date": "2026-08-25T11:28:01+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "8b2ef9c094c64025"
+ },
+ "https://meropide.com/chs/characters/%E6%9D%9C%E6%9E%97/materials/": {
+  "fetch_date": "2026-08-25T11:28:03+00:00",
+  "last_modified": "",
+  "etag": "",
+  "fingerprint": "24398fd6dae94c42"
+ }
+}

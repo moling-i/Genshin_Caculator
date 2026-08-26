@@ -16,6 +16,29 @@ def _load(filename: str):
             _cache[filename] = json.load(f)
     return _cache[filename]
 
+# Meropide 数据文件：整合版(旧 schema) -> 全量原始版 兜底
+_MEROPIDE_FALLBACK = {
+    "characters_meropide.json": "characters_meropide_full.json",
+    "weapons_meropide.json": "weapons_meropide_full.json",
+    "artifacts_meropide.json": "artifacts_meropide_full.json",
+}
+
+def _load_meropide(filename: str):
+    """加载 Meropide 数据；整合文件缺失时回退到全量抓取文件。"""
+    if filename not in _cache:
+        try:
+            _cache[filename] = _load(filename)
+        except (FileNotFoundError, json.JSONDecodeError):
+            fallback = _MEROPIDE_FALLBACK.get(filename)
+            if fallback:
+                try:
+                    _cache[filename] = _load(os.path.join("meropide", fallback))
+                except (FileNotFoundError, json.JSONDecodeError):
+                    _cache[filename] = {"items": [], "records": []}
+            else:
+                raise
+    return _cache[filename]
+
 def get_characters() -> list:
     return _load("characters.json")
 
@@ -192,7 +215,7 @@ def get_weapons_by_type(weapon_type: str) -> list:
 def _find_meropide_weapon(name_cn: str) -> dict:
     """按中文名在 meropide 武器数据中查找（权威被动文案）。"""
     try:
-        items = _load(os.path.join("meropide", "weapons_meropide.json"))
+        items = _load_meropide("meropide/weapons_meropide.json")
     except (FileNotFoundError, json.JSONDecodeError):
         return None
     if isinstance(items, dict):
@@ -254,7 +277,7 @@ def find_artifact_set(set_id) -> dict:
 def find_meropide_artifact(name_cn: str) -> dict:
     """按中文名在 meropide 圣遗物数据中查找（权威套装文案：set_2_effect/set_4_effect）"""
     try:
-        items = _load(os.path.join("meropide", "artifacts_meropide.json"))
+        items = _load_meropide("meropide/artifacts_meropide.json")
     except (FileNotFoundError, json.JSONDecodeError):
         return None
     if isinstance(items, dict):
@@ -306,7 +329,7 @@ def get_icon_url(kind: str, obj_id, default_suffix: str = "") -> str:
 def _find_meropide_character(name_cn: str) -> dict:
     """按中文名在 meropide 角色数据中查找"""
     try:
-        items = _load(os.path.join("meropide", "characters_meropide.json"))
+        items = _load_meropide("meropide/characters_meropide.json")
     except (FileNotFoundError, json.JSONDecodeError):
         return None
     if isinstance(items, dict):
