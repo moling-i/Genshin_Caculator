@@ -235,14 +235,18 @@ class DamageOptimizer:
         """按队伍成员独立配置构建队友角色（武器/圣遗物/面板/固有天赋）"""
         char = Character(cfg.get("character_id"), cfg.get("constellation_level", 0))
         panel = cfg.get("panel") or {}
+        # 面板锚定：用户输入的是观察到的总面板值（已含突破/基础成长），
+        # 与主力角色 _build_character 保持一致——以角色总基础值为锚点，
+        # 增减部分允许为负，保证最终面板精确等于用户输入，避免双重计入突破属性。
         if panel.get("atk"):
             char.flat_atk += max(0.0, float(panel["atk"]) - char.base_atk)
         if panel.get("crit_rate_pct"):
-            char.crit_rate += float(panel["crit_rate_pct"]) / 100.0
+            cr_in = min(float(panel["crit_rate_pct"]) / 100.0, 1.0)
+            char.crit_rate = cr_in - char.base_crit_rate
         if panel.get("crit_dmg_pct"):
-            char.crit_dmg += float(panel["crit_dmg_pct"]) / 100.0
+            char.crit_dmg = float(panel["crit_dmg_pct"]) / 100.0 - char.base_crit_dmg
         if panel.get("em"):
-            char.elemental_mastery += float(panel["em"])
+            char.elemental_mastery = float(panel["em"])
         if panel.get("lunar_bonus_pct"):
             char.lunar_dmg_bonus += float(panel["lunar_bonus_pct"]) / 100.0
         char.apply_passive(cfg.get("passive_modifiers"))

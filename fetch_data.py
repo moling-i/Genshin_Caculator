@@ -577,12 +577,16 @@ def normalize_characters(
         if not element and av.get("_element"):
             element = av["_element"]
 
-        # 突破加成：从 AvatarPromote 按 avatarPromoteId 匹配
+        # 突破加成：从 AvatarPromote 按 avatarPromoteId 匹配。
+        # 注意：AvatarPromote 各阶段的 addProps 是“累计至该阶段”的数值，
+        # 应取最终阶段值而非累加（否则暴击/暴伤等会被放大数倍）。
         promote_id = av.get("avatarPromoteId", 0)
         ascension_bonus = {}
-        for p in promote_map.get(promote_id, []):
+        for p in sorted(promote_map.get(promote_id, []),
+                        key=lambda x: x.get("level", 0)):
             for ptype, val in p.get("bonus", {}).items():
-                ascension_bonus[ptype] = ascension_bonus.get(ptype, 0) + val
+                if float(val) > float(ascension_bonus.get(ptype, 0) or 0):
+                    ascension_bonus[ptype] = val
 
         # 90级属性（基础值 × 成长曲线）
         hp_base = av.get("hpBase", 0)

@@ -20,7 +20,9 @@
     "base_crit_rate": 0.05,
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1.0,
-    "ascension_bonus": {},
+    "ascension_bonus": {
+      "FIGHT_PROP_CRITICAL_HURT": 0.384
+    },
     "skill_depot_id": 0,
     "talent_ids": [],
     "grow_curves": {
@@ -51,7 +53,9 @@
     "base_crit_rate": 0.05,
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1.0,
-    "ascension_bonus": {},
+    "ascension_bonus": {
+      "FIGHT_PROP_CHARGE_EFFICIENCY": 0.267
+    },
     "skill_depot_id": 0,
     "talent_ids": [],
     "grow_curves": {
@@ -83,10 +87,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 15109.805,
-      "FIGHT_PROP_BASE_DEFENSE": 921.213,
-      "FIGHT_PROP_BASE_ATTACK": 401.897064,
-      "FIGHT_PROP_CRITICAL_HURT": 1.1520000000000001
+      "FIGHT_PROP_CRITICAL_HURT": 0.384
     },
     "skill_depot_id": 201,
     "talent_ids": [
@@ -126,10 +127,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 17268.34885,
-      "FIGHT_PROP_BASE_DEFENSE": 903.1500000000001,
-      "FIGHT_PROP_BASE_ATTACK": 281.0469,
-      "FIGHT_PROP_HEAL_ADD": 0.6647
+      "FIGHT_PROP_HEAL_ADD": 0.221
     },
     "skill_depot_id": 301,
     "talent_ids": [
@@ -204,10 +202,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 10552.8767,
-      "FIGHT_PROP_BASE_DEFENSE": 632.2049999999999,
-      "FIGHT_PROP_BASE_ATTACK": 255.29641399999997,
-      "FIGHT_PROP_ELEMENT_MASTERY": 288
+      "FIGHT_PROP_ELEMENT_MASTERY": 96.0
     },
     "skill_depot_id": 601,
     "talent_ids": [
@@ -282,10 +277,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 10792.714899999999,
-      "FIGHT_PROP_BASE_DEFENSE": 737.5725,
-      "FIGHT_PROP_BASE_ATTACK": 175.66267299999998,
-      "FIGHT_PROP_HP_PERCENT": 0.72
+      "FIGHT_PROP_MAX_HP": 0.24
     },
     "skill_depot_id": 1401,
     "talent_ids": [
@@ -325,10 +317,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 12831.3384,
-      "FIGHT_PROP_BASE_DEFENSE": 873.045,
-      "FIGHT_PROP_BASE_ATTACK": 245.92774500000002,
-      "FIGHT_PROP_CHARGE_EFFICIENCY": 0.8
+      "FIGHT_PROP_CHARGE_EFFICIENCY": 0.267
     },
     "skill_depot_id": 1501,
     "talent_ids": [
@@ -368,10 +357,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 15253.70783,
-      "FIGHT_PROP_BASE_DEFENSE": 921.213,
-      "FIGHT_PROP_BASE_ATTACK": 393.46565999999996,
-      "FIGHT_PROP_CRITICAL": 0.5760000000000001
+      "FIGHT_PROP_CRITICAL": 0.192
     },
     "skill_depot_id": 1601,
     "talent_ids": [
@@ -411,10 +397,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 13191.096,
-      "FIGHT_PROP_BASE_DEFENSE": 827.8875,
-      "FIGHT_PROP_BASE_ATTACK": 257.63859,
-      "FIGHT_PROP_PHYSICAL_ADD_HURT": 0.8999999999999999
+      "FIGHT_PROP_PHYSICAL_ADD_HURT": 0.3
     },
     "skill_depot_id": 2001,
     "talent_ids": [
@@ -454,10 +437,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 10432.9575,
-      "FIGHT_PROP_BASE_DEFENSE": 662.31,
-      "FIGHT_PROP_BASE_ATTACK": 245.92774500000002,
-      "FIGHT_PROP_ATTACK_PERCENT": 0.72
+      "FIGHT_PROP_ATTACK": 0.24
     },
     "skill_depot_id": 2101,
     "talent_ids": [
@@ -497,10 +477,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 12375.649899999999,
-      "FIGHT_PROP_BASE_DEFENSE": 785.7405000000001,
-      "FIGHT_PROP_BASE_ATTACK": 309.15159,
-      "FIGHT_PROP_CHARGE_EFFICIENCY": 0.96
+      "FIGHT_PROP_CHARGE_EFFICIENCY": 0.32
     },
     "skill_depot_id": 2201,
     "talent_ids": [
@@ -540,10 +517,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 11991.905139999999,
-      "FIGHT_PROP_BASE_DEFENSE": 737.5725,
-      "FIGHT_PROP_BASE_ATTACK": 248.269911,
-      "FIGHT_PROP_ELEMENT_MASTERY": 288
+      "FIGHT_PROP_ELEMENT_MASTERY": 96.0
     },
     "skill_depot_id": 2301,
     "talent_ids": [
@@ -583,10 +557,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 14390.2863,
-      "FIGHT_PROP_BASE_DEFENSE": 714.9937500000001,
-      "FIGHT_PROP_BASE_ATTACK": 248.269911,
-      "FIGHT_PROP_ELEC_ADD_HURT": 0.72
+      "FIGHT_PROP_ELEC_ADD_HURT": 0.24
     },
     "skill_depot_id": 2401,
     "talent_ids": [
@@ -626,10 +597,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 11272.3912,
-      "FIGHT_PROP_BASE_DEFENSE": 835.4137400000001,
-      "FIGHT_PROP_BASE_ATTACK": 222.506052,
-      "FIGHT_PROP_ATTACK_PERCENT": 0.72
+      "FIGHT_PROP_ATTACK": 0.24
     },
     "skill_depot_id": 2501,
     "talent_ids": [
@@ -669,10 +637,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 14965.902300000002,
-      "FIGHT_PROP_BASE_DEFENSE": 939.2760000000001,
-      "FIGHT_PROP_BASE_ATTACK": 410.328474,
-      "FIGHT_PROP_CRITICAL": 0.5760000000000001
+      "FIGHT_PROP_CRITICAL": 0.192
     },
     "skill_depot_id": 2601,
     "talent_ids": [
@@ -712,10 +677,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 10792.714899999999,
-      "FIGHT_PROP_BASE_DEFENSE": 632.2049999999999,
-      "FIGHT_PROP_BASE_ATTACK": 234.2169,
-      "FIGHT_PROP_ROCK_ADD_HURT": 0.72
+      "FIGHT_PROP_ROCK_ADD_HURT": 0.24
     },
     "skill_depot_id": 2701,
     "talent_ids": [
@@ -755,10 +717,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 12087.8438,
-      "FIGHT_PROP_BASE_DEFENSE": 722.52,
-      "FIGHT_PROP_BASE_ATTACK": 365.36097,
-      "FIGHT_PROP_FIRE_ADD_HURT": 0.8639999999999999
+      "FIGHT_PROP_FIRE_ADD_HURT": 0.288
     },
     "skill_depot_id": 2901,
     "talent_ids": [
@@ -798,10 +757,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 17268.3488,
-      "FIGHT_PROP_BASE_DEFENSE": 867.0240000000001,
-      "FIGHT_PROP_BASE_ATTACK": 295.0992,
-      "FIGHT_PROP_ROCK_ADD_HURT": 0.8639999999999999
+      "FIGHT_PROP_ROCK_ADD_HURT": 0.288
     },
     "skill_depot_id": 3001,
     "talent_ids": [
@@ -841,10 +797,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 10133.15983,
-      "FIGHT_PROP_BASE_DEFENSE": 654.78375,
-      "FIGHT_PROP_BASE_ATTACK": 269.349438,
-      "FIGHT_PROP_ATTACK_PERCENT": 0.72
+      "FIGHT_PROP_ATTACK": 0.24
     },
     "skill_depot_id": 3101,
     "talent_ids": [
@@ -884,10 +837,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 13670.772099999998,
-      "FIGHT_PROP_BASE_DEFENSE": 850.4662600000001,
-      "FIGHT_PROP_BASE_ATTACK": 210.79521,
-      "FIGHT_PROP_CHARGE_EFFICIENCY": 0.8
+      "FIGHT_PROP_CHARGE_EFFICIENCY": 0.267
     },
     "skill_depot_id": 3201,
     "talent_ids": [
@@ -927,10 +877,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 15397.6106,
-      "FIGHT_PROP_BASE_DEFENSE": 957.3389999999999,
-      "FIGHT_PROP_BASE_ATTACK": 354.119094,
-      "FIGHT_PROP_WATER_ADD_HURT": 0.8639999999999999
+      "FIGHT_PROP_WATER_ADD_HURT": 0.288
     },
     "skill_depot_id": 3301,
     "talent_ids": [
@@ -970,10 +917,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 13311.01464,
-      "FIGHT_PROP_BASE_DEFENSE": 880.5712500000001,
-      "FIGHT_PROP_BASE_ATTACK": 210.79521,
-      "FIGHT_PROP_DEFENSE_PERCENT": 0.8999999999999999
+      "FIGHT_PROP_DEFENSE": 0.3
     },
     "skill_depot_id": 3401,
     "talent_ids": [
@@ -1013,10 +957,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 14534.1936,
-      "FIGHT_PROP_BASE_DEFENSE": 1083.78,
-      "FIGHT_PROP_BASE_ATTACK": 337.25628,
-      "FIGHT_PROP_HEAL_ADD": 0.6647
+      "FIGHT_PROP_HEAL_ADD": 0.221
     },
     "skill_depot_id": 3501,
     "talent_ids": [
@@ -1056,10 +997,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 12111.8245,
-      "FIGHT_PROP_BASE_DEFENSE": 714.9937500000001,
-      "FIGHT_PROP_BASE_ATTACK": 245.92774500000002,
-      "FIGHT_PROP_ATTACK_PERCENT": 0.72
+      "FIGHT_PROP_ATTACK": 0.24
     },
     "skill_depot_id": 3601,
     "talent_ids": [
@@ -1099,10 +1037,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 11512.232370000002,
-      "FIGHT_PROP_BASE_DEFENSE": 740.5830000000001,
-      "FIGHT_PROP_BASE_ATTACK": 393.46565999999996,
-      "FIGHT_PROP_CRITICAL_HURT": 1.1520000000000001
+      "FIGHT_PROP_CRITICAL_HURT": 0.384
     },
     "skill_depot_id": 3701,
     "talent_ids": [
@@ -1142,10 +1077,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 15541.513449999999,
-      "FIGHT_PROP_BASE_DEFENSE": 1029.591,
-      "FIGHT_PROP_BASE_ATTACK": 295.09925000000004,
-      "FIGHT_PROP_ROCK_ADD_HURT": 0.8639999999999999
+      "FIGHT_PROP_ROCK_ADD_HURT": 0.288
     },
     "skill_depot_id": 3801,
     "talent_ids": [
@@ -1185,10 +1117,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 10552.876499999998,
-      "FIGHT_PROP_BASE_DEFENSE": 662.31,
-      "FIGHT_PROP_BASE_ATTACK": 234.2169,
-      "FIGHT_PROP_ICE_ADD_HURT": 0.72
+      "FIGHT_PROP_ICE_ADD_HURT": 0.24
     },
     "skill_depot_id": 3901,
     "talent_ids": [
@@ -1228,10 +1157,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 12231.74643,
-      "FIGHT_PROP_BASE_DEFENSE": 767.6775,
-      "FIGHT_PROP_BASE_ATTACK": 337.25628,
-      "FIGHT_PROP_CHARGE_EFFICIENCY": 0.96
+      "FIGHT_PROP_CHARGE_EFFICIENCY": 0.32
     },
     "skill_depot_id": 4101,
     "talent_ids": [
@@ -1271,10 +1197,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 15397.6106,
-      "FIGHT_PROP_BASE_DEFENSE": 939.2760000000001,
-      "FIGHT_PROP_BASE_ATTACK": 379.41330899999997,
-      "FIGHT_PROP_CRITICAL_HURT": 1.1520000000000001
+      "FIGHT_PROP_CRITICAL_HURT": 0.384
     },
     "skill_depot_id": 4201,
     "talent_ids": [
@@ -1314,10 +1237,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 10193.11935,
-      "FIGHT_PROP_BASE_DEFENSE": 775.20375,
-      "FIGHT_PROP_BASE_ATTACK": 187.37351999999998,
-      "FIGHT_PROP_WIND_ADD_HURT": 0.72
+      "FIGHT_PROP_WIND_ADD_HURT": 0.24
     },
     "skill_depot_id": 4301,
     "talent_ids": [
@@ -1357,10 +1277,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 12351.6624,
-      "FIGHT_PROP_BASE_DEFENSE": 880.5712500000001,
-      "FIGHT_PROP_BASE_ATTACK": 274.033773,
-      "FIGHT_PROP_ATTACK_PERCENT": 0.72
+      "FIGHT_PROP_ATTACK": 0.24
     },
     "skill_depot_id": 4401,
     "talent_ids": [
@@ -1400,10 +1317,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 13550.853149999999,
-      "FIGHT_PROP_BASE_DEFENSE": 782.73,
-      "FIGHT_PROP_BASE_ATTACK": 264.66509799999994,
-      "FIGHT_PROP_ATTACK_PERCENT": 0.72
+      "FIGHT_PROP_ATTACK": 0.24
     },
     "skill_depot_id": 4501,
     "talent_ids": [
@@ -1443,10 +1357,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 18275.6686,
-      "FIGHT_PROP_BASE_DEFENSE": 1029.591,
-      "FIGHT_PROP_BASE_ATTACK": 125.065871,
-      "FIGHT_PROP_CRITICAL_HURT": 1.1520000000000001
+      "FIGHT_PROP_CRITICAL_HURT": 0.384
     },
     "skill_depot_id": 4601,
     "talent_ids": [
@@ -1486,10 +1397,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 15685.41684,
-      "FIGHT_PROP_BASE_DEFENSE": 948.3075,
-      "FIGHT_PROP_BASE_ATTACK": 348.498156,
-      "FIGHT_PROP_ELEMENT_MASTERY": 345.6
+      "FIGHT_PROP_ELEMENT_MASTERY": 115.0
     },
     "skill_depot_id": 4701,
     "talent_ids": [
@@ -1529,10 +1437,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 10313.0389,
-      "FIGHT_PROP_BASE_DEFENSE": 647.2575,
-      "FIGHT_PROP_BASE_ATTACK": 264.66509799999994,
-      "FIGHT_PROP_FIRE_ADD_HURT": 0.72
+      "FIGHT_PROP_FIRE_ADD_HURT": 0.24
     },
     "skill_depot_id": 4801,
     "talent_ids": [
@@ -1572,10 +1477,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 11943.9408,
-      "FIGHT_PROP_BASE_DEFENSE": 722.52,
-      "FIGHT_PROP_BASE_ATTACK": 379.41330899999997,
-      "FIGHT_PROP_CRITICAL": 0.5760000000000001
+      "FIGHT_PROP_CRITICAL": 0.192
     },
     "skill_depot_id": 4901,
     "talent_ids": [
@@ -1615,10 +1517,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 11392.309999999998,
-      "FIGHT_PROP_BASE_DEFENSE": 827.8875,
-      "FIGHT_PROP_BASE_ATTACK": 222.506052,
-      "FIGHT_PROP_ATTACK_PERCENT": 0.72
+      "FIGHT_PROP_ATTACK": 0.24
     },
     "skill_depot_id": 5001,
     "talent_ids": [
@@ -1658,10 +1557,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 15541.513449999999,
-      "FIGHT_PROP_BASE_DEFENSE": 882.37755,
-      "FIGHT_PROP_BASE_ATTACK": 401.897064,
-      "FIGHT_PROP_CRITICAL_HURT": 1.1520000000000001
+      "FIGHT_PROP_CRITICAL_HURT": 0.384
     },
     "skill_depot_id": 5101,
     "talent_ids": [
@@ -1701,10 +1597,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 15167.366140000002,
-      "FIGHT_PROP_BASE_DEFENSE": 927.53505,
-      "FIGHT_PROP_BASE_ATTACK": 396.276139,
-      "FIGHT_PROP_CHARGE_EFFICIENCY": 0.96
+      "FIGHT_PROP_CHARGE_EFFICIENCY": 0.32
     },
     "skill_depot_id": 5201,
     "talent_ids": [
@@ -1744,10 +1637,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 13071.177,
-      "FIGHT_PROP_BASE_DEFENSE": 821.113864,
-      "FIGHT_PROP_BASE_ATTACK": 269.349438,
-      "FIGHT_PROP_ELEMENT_MASTERY": 288
+      "FIGHT_PROP_ELEMENT_MASTERY": 96.0
     },
     "skill_depot_id": 5301,
     "talent_ids": [
@@ -1787,10 +1677,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 15829.31927,
-      "FIGHT_PROP_BASE_DEFENSE": 772.19325,
-      "FIGHT_PROP_BASE_ATTACK": 275.425967,
-      "FIGHT_PROP_WATER_ADD_HURT": 0.8639999999999999
+      "FIGHT_PROP_WATER_ADD_HURT": 0.288
     },
     "skill_depot_id": 5401,
     "talent_ids": [
@@ -1830,10 +1717,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 10552.8767,
-      "FIGHT_PROP_BASE_DEFENSE": 714.9937500000001,
-      "FIGHT_PROP_BASE_ATTACK": 201.426536,
-      "FIGHT_PROP_ROCK_ADD_HURT": 0.72
+      "FIGHT_PROP_ROCK_ADD_HURT": 0.24
     },
     "skill_depot_id": 5501,
     "talent_ids": [
@@ -1873,10 +1757,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 10552.8767,
-      "FIGHT_PROP_BASE_DEFENSE": 692.415,
-      "FIGHT_PROP_BASE_ATTACK": 215.47954700000003,
-      "FIGHT_PROP_ATTACK_PERCENT": 0.72
+      "FIGHT_PROP_ATTACK": 0.24
     },
     "skill_depot_id": 5601,
     "talent_ids": [
@@ -1916,10 +1797,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 15109.805,
-      "FIGHT_PROP_BASE_DEFENSE": 1127.1312,
-      "FIGHT_PROP_BASE_ATTACK": 266.994555,
-      "FIGHT_PROP_CRITICAL": 0.5760000000000001
+      "FIGHT_PROP_CRITICAL": 0.192
     },
     "skill_depot_id": 5701,
     "talent_ids": [
@@ -1959,10 +1837,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 12188.5759,
-      "FIGHT_PROP_BASE_DEFENSE": 668.331,
-      "FIGHT_PROP_BASE_ATTACK": 399.086596,
-      "FIGHT_PROP_CRITICAL": 0.5760000000000001
+      "FIGHT_PROP_CRITICAL": 0.192
     },
     "skill_depot_id": 5801,
     "talent_ids": [
@@ -2002,10 +1877,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 11752.0673,
-      "FIGHT_PROP_BASE_DEFENSE": 754.1302499999999,
-      "FIGHT_PROP_BASE_ATTACK": 248.269911,
-      "FIGHT_PROP_WIND_ADD_HURT": 0.72
+      "FIGHT_PROP_WIND_ADD_HURT": 0.24
     },
     "skill_depot_id": 5901,
     "talent_ids": [
@@ -2045,10 +1917,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 16980.54274,
-      "FIGHT_PROP_BASE_DEFENSE": 643.94595,
-      "FIGHT_PROP_BASE_ATTACK": 286.667836,
-      "FIGHT_PROP_CRITICAL": 0.5760000000000001
+      "FIGHT_PROP_CRITICAL": 0.192
     },
     "skill_depot_id": 6001,
     "talent_ids": [
@@ -2088,10 +1957,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 13430.9336,
-      "FIGHT_PROP_BASE_DEFENSE": 602.1,
-      "FIGHT_PROP_BASE_ATTACK": 245.92774500000002,
-      "FIGHT_PROP_HP_PERCENT": 0.72
+      "FIGHT_PROP_MAX_HP": 0.24
     },
     "skill_depot_id": 6101,
     "talent_ids": [
@@ -2131,10 +1997,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 12807.35837,
-      "FIGHT_PROP_BASE_DEFENSE": 794.772,
-      "FIGHT_PROP_BASE_ATTACK": 274.863871,
-      "FIGHT_PROP_ICE_ADD_HURT": 0.8639999999999999
+      "FIGHT_PROP_ICE_ADD_HURT": 0.288
     },
     "skill_depot_id": 6201,
     "talent_ids": [
@@ -2173,10 +2036,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 15268.0979,
-      "FIGHT_PROP_BASE_DEFENSE": 975.402,
-      "FIGHT_PROP_BASE_ATTACK": 356.929566,
-      "FIGHT_PROP_ATTACK_PERCENT": 0.8639999999999999
+      "FIGHT_PROP_ATTACK": 0.288
     },
     "skill_depot_id": 6301,
     "talent_ids": [
@@ -2216,10 +2076,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 11752.0673,
-      "FIGHT_PROP_BASE_DEFENSE": 809.8245000000001,
-      "FIGHT_PROP_BASE_ATTACK": 210.79521,
-      "FIGHT_PROP_CHARGE_EFFICIENCY": 0.8
+      "FIGHT_PROP_CHARGE_EFFICIENCY": 0.267
     },
     "skill_depot_id": 6401,
     "talent_ids": [
@@ -2259,10 +2116,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 13550.853149999999,
-      "FIGHT_PROP_BASE_DEFENSE": 827.8875,
-      "FIGHT_PROP_BASE_ATTACK": 234.2169,
-      "FIGHT_PROP_HP_PERCENT": 0.72
+      "FIGHT_PROP_MAX_HP": 0.24
     },
     "skill_depot_id": 6501,
     "talent_ids": [
@@ -2302,10 +2156,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 16117.1253,
-      "FIGHT_PROP_BASE_DEFENSE": 903.1500000000001,
-      "FIGHT_PROP_BASE_ATTACK": 351.308629,
-      "FIGHT_PROP_CRITICAL_HURT": 1.1520000000000001
+      "FIGHT_PROP_CRITICAL_HURT": 0.384
     },
     "skill_depot_id": 6601,
     "talent_ids": [
@@ -2345,10 +2196,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 10792.714899999999,
-      "FIGHT_PROP_BASE_DEFENSE": 662.31,
-      "FIGHT_PROP_BASE_ATTACK": 220.163884,
-      "FIGHT_PROP_ATTACK_PERCENT": 0.72
+      "FIGHT_PROP_ATTACK": 0.24
     },
     "skill_depot_id": 6701,
     "talent_ids": [
@@ -2388,10 +2236,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 13670.772099999998,
-      "FIGHT_PROP_BASE_DEFENSE": 797.7824999999999,
-      "FIGHT_PROP_BASE_ATTACK": 245.92774500000002,
-      "FIGHT_PROP_HP_PERCENT": 0.72
+      "FIGHT_PROP_MAX_HP": 0.24
     },
     "skill_depot_id": 6801,
     "talent_ids": [
@@ -2431,10 +2276,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 12749.79724,
-      "FIGHT_PROP_BASE_DEFENSE": 740.5830000000001,
-      "FIGHT_PROP_BASE_ATTACK": 314.772535,
-      "FIGHT_PROP_GRASS_ADD_HURT": 0.8639999999999999
+      "FIGHT_PROP_GRASS_ADD_HURT": 0.288
     },
     "skill_depot_id": 6901,
     "talent_ids": [
@@ -2474,10 +2316,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 17843.9602,
-      "FIGHT_PROP_BASE_DEFENSE": 856.1862,
-      "FIGHT_PROP_BASE_ATTACK": 269.80502,
-      "FIGHT_PROP_HP_PERCENT": 0.8639999999999999
+      "FIGHT_PROP_MAX_HP": 0.288
     },
     "skill_depot_id": 7001,
     "talent_ids": [
@@ -2517,10 +2356,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 14678.096000000001,
-      "FIGHT_PROP_BASE_DEFENSE": 1009.7217,
-      "FIGHT_PROP_BASE_ATTACK": 373.79237800000004,
-      "FIGHT_PROP_CRITICAL_HURT": 1.1520000000000001
+      "FIGHT_PROP_CRITICAL_HURT": 0.384
     },
     "skill_depot_id": 7101,
     "talent_ids": [
@@ -2560,10 +2396,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 11991.905139999999,
-      "FIGHT_PROP_BASE_DEFENSE": 752.625,
-      "FIGHT_PROP_BASE_ATTACK": 234.2169,
-      "FIGHT_PROP_HP_PERCENT": 0.72
+      "FIGHT_PROP_MAX_HP": 0.24
     },
     "skill_depot_id": 7201,
     "talent_ids": [
@@ -2603,10 +2436,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 12174.1857,
-      "FIGHT_PROP_BASE_DEFENSE": 740.5830000000001,
-      "FIGHT_PROP_BASE_ATTACK": 351.308629,
-      "FIGHT_PROP_ELEMENT_MASTERY": 345.6
+      "FIGHT_PROP_ELEMENT_MASTERY": 115.0
     },
     "skill_depot_id": 7301,
     "talent_ids": [
@@ -2646,10 +2476,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 12231.74345,
-      "FIGHT_PROP_BASE_DEFENSE": 722.52,
-      "FIGHT_PROP_BASE_ATTACK": 238.901236,
-      "FIGHT_PROP_HP_PERCENT": 0.72
+      "FIGHT_PROP_MAX_HP": 0.24
     },
     "skill_depot_id": 7401,
     "talent_ids": [
@@ -2689,10 +2516,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 11943.9408,
-      "FIGHT_PROP_BASE_DEFENSE": 713.4884999999999,
-      "FIGHT_PROP_BASE_ATTACK": 385.03426299999995,
-      "FIGHT_PROP_CRITICAL": 0.5760000000000001
+      "FIGHT_PROP_CRITICAL": 0.192
     },
     "skill_depot_id": 7501,
     "talent_ids": [
@@ -2732,10 +2556,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 10552.8767,
-      "FIGHT_PROP_BASE_DEFENSE": 692.415,
-      "FIGHT_PROP_BASE_ATTACK": 216.65063,
-      "FIGHT_PROP_ATTACK_PERCENT": 0.72
+      "FIGHT_PROP_ATTACK": 0.24
     },
     "skill_depot_id": 7601,
     "talent_ids": [
@@ -2775,10 +2596,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 13550.853149999999,
-      "FIGHT_PROP_BASE_DEFENSE": 827.8875,
-      "FIGHT_PROP_BASE_ATTACK": 234.2169,
-      "FIGHT_PROP_HP_PERCENT": 0.72
+      "FIGHT_PROP_MAX_HP": 0.24
     },
     "skill_depot_id": 7701,
     "talent_ids": [
@@ -2818,10 +2636,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 15685.41684,
-      "FIGHT_PROP_BASE_DEFENSE": 918.5035499999999,
-      "FIGHT_PROP_BASE_ATTACK": 368.171444,
-      "FIGHT_PROP_GRASS_ADD_HURT": 0.8639999999999999
+      "FIGHT_PROP_GRASS_ADD_HURT": 0.288
     },
     "skill_depot_id": 7801,
     "talent_ids": [
@@ -2861,10 +2676,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 18419.5719,
-      "FIGHT_PROP_BASE_DEFENSE": 737.8735399999999,
-      "FIGHT_PROP_BASE_ATTACK": 311.962061,
-      "FIGHT_PROP_HP_PERCENT": 0.8639999999999999
+      "FIGHT_PROP_MAX_HP": 0.288
     },
     "skill_depot_id": 7901,
     "talent_ids": [
@@ -2904,10 +2716,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 13790.690859999999,
-      "FIGHT_PROP_BASE_DEFENSE": 786.4931399999999,
-      "FIGHT_PROP_BASE_ATTACK": 245.92774500000002,
-      "FIGHT_PROP_HP_PERCENT": 0.72
+      "FIGHT_PROP_MAX_HP": 0.24
     },
     "skill_depot_id": 8001,
     "talent_ids": [
@@ -2947,10 +2756,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 13191.096,
-      "FIGHT_PROP_BASE_DEFENSE": 827.8875,
-      "FIGHT_PROP_BASE_ATTACK": 257.63859,
-      "FIGHT_PROP_ELEMENT_MASTERY": 288
+      "FIGHT_PROP_ELEMENT_MASTERY": 96.0
     },
     "skill_depot_id": 8101,
     "talent_ids": [
@@ -2990,10 +2796,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 15685.41684,
-      "FIGHT_PROP_BASE_DEFENSE": 587.0475,
-      "FIGHT_PROP_BASE_ATTACK": 226.242752,
-      "FIGHT_PROP_HP_PERCENT": 0.8639999999999999
+      "FIGHT_PROP_MAX_HP": 0.288
     },
     "skill_depot_id": 8201,
     "talent_ids": [
@@ -3033,10 +2836,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 13670.772099999998,
-      "FIGHT_PROP_BASE_DEFENSE": 784.98786,
-      "FIGHT_PROP_BASE_ATTACK": 255.29641399999997,
-      "FIGHT_PROP_WIND_ADD_HURT": 0.72
+      "FIGHT_PROP_WIND_ADD_HURT": 0.24
     },
     "skill_depot_id": 8301,
     "talent_ids": [
@@ -3076,10 +2876,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 12951.26126,
-      "FIGHT_PROP_BASE_DEFENSE": 632.2049999999999,
-      "FIGHT_PROP_BASE_ATTACK": 373.79237800000004,
-      "FIGHT_PROP_CRITICAL": 0.5760000000000001
+      "FIGHT_PROP_CRITICAL": 0.192
     },
     "skill_depot_id": 8401,
     "talent_ids": [
@@ -3119,10 +2916,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 13311.01464,
-      "FIGHT_PROP_BASE_DEFENSE": 781.22475,
-      "FIGHT_PROP_BASE_ATTACK": 281.06028,
-      "FIGHT_PROP_ATTACK_PERCENT": 0.72
+      "FIGHT_PROP_ATTACK": 0.24
     },
     "skill_depot_id": 8501,
     "talent_ids": [
@@ -3162,10 +2956,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 15973.22226,
-      "FIGHT_PROP_BASE_DEFENSE": 896.82795,
-      "FIGHT_PROP_BASE_ATTACK": 365.36097,
-      "FIGHT_PROP_CRITICAL_HURT": 1.1520000000000001
+      "FIGHT_PROP_CRITICAL_HURT": 0.384
     },
     "skill_depot_id": 8601,
     "talent_ids": [
@@ -3205,10 +2996,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 17268.34885,
-      "FIGHT_PROP_BASE_DEFENSE": 677.3625,
-      "FIGHT_PROP_BASE_ATTACK": 244.79184999999998,
-      "FIGHT_PROP_CRITICAL_HURT": 1.1520000000000001
+      "FIGHT_PROP_CRITICAL_HURT": 0.384
     },
     "skill_depot_id": 8701,
     "talent_ids": [
@@ -3248,10 +3036,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 11871.985999999999,
-      "FIGHT_PROP_BASE_DEFENSE": 602.1,
-      "FIGHT_PROP_BASE_ATTACK": 190.88676999999998,
-      "FIGHT_PROP_ATTACK_PERCENT": 0.72
+      "FIGHT_PROP_ATTACK": 0.24
     },
     "skill_depot_id": 8801,
     "talent_ids": [
@@ -3291,10 +3076,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 17987.8633,
-      "FIGHT_PROP_BASE_DEFENSE": 817.3507500000001,
-      "FIGHT_PROP_BASE_ATTACK": 286.667836,
-      "FIGHT_PROP_CRITICAL": 0.5760000000000001
+      "FIGHT_PROP_CRITICAL": 0.192
     },
     "skill_depot_id": 8901,
     "talent_ids": [
@@ -3334,10 +3116,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 13191.096,
-      "FIGHT_PROP_BASE_DEFENSE": 666.82575,
-      "FIGHT_PROP_BASE_ATTACK": 213.13737700000001,
-      "FIGHT_PROP_HP_PERCENT": 0.72
+      "FIGHT_PROP_MAX_HP": 0.24
     },
     "skill_depot_id": 9001,
     "talent_ids": [
@@ -3377,10 +3156,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 14865.170139999998,
-      "FIGHT_PROP_BASE_DEFENSE": 932.0508000000001,
-      "FIGHT_PROP_BASE_ATTACK": 413.138942,
-      "FIGHT_PROP_CRITICAL_HURT": 1.1520000000000001
+      "FIGHT_PROP_CRITICAL_HURT": 0.384
     },
     "skill_depot_id": 9101,
     "talent_ids": [
@@ -3420,10 +3196,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 12591.5006,
-      "FIGHT_PROP_BASE_DEFENSE": 775.20375,
-      "FIGHT_PROP_BASE_ATTACK": 332.58799,
-      "FIGHT_PROP_ATTACK_PERCENT": 0.72
+      "FIGHT_PROP_ATTACK": 0.24
     },
     "skill_depot_id": 9201,
     "talent_ids": [
@@ -3463,10 +3236,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 12231.74643,
-      "FIGHT_PROP_BASE_DEFENSE": 672.84675,
-      "FIGHT_PROP_BASE_ATTACK": 393.46565999999996,
-      "FIGHT_PROP_ATTACK_PERCENT": 0.8639999999999999
+      "FIGHT_PROP_ATTACK": 0.288
     },
     "skill_depot_id": 9301,
     "talent_ids": [
@@ -3506,10 +3276,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 13440.531130000001,
-      "FIGHT_PROP_BASE_DEFENSE": 1119.906,
-      "FIGHT_PROP_BASE_ATTACK": 379.41330899999997,
-      "FIGHT_PROP_CRITICAL": 0.5760000000000001
+      "FIGHT_PROP_CRITICAL": 0.192
     },
     "skill_depot_id": 9401,
     "talent_ids": [
@@ -3549,10 +3316,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 15685.41684,
-      "FIGHT_PROP_BASE_DEFENSE": 587.0475,
-      "FIGHT_PROP_BASE_ATTACK": 226.242752,
-      "FIGHT_PROP_HP_PERCENT": 0.8639999999999999
+      "FIGHT_PROP_MAX_HP": 0.288
     },
     "skill_depot_id": 9501,
     "talent_ids": [
@@ -3592,10 +3356,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 15397.6106,
-      "FIGHT_PROP_BASE_DEFENSE": 898.63424,
-      "FIGHT_PROP_BASE_ATTACK": 401.897064,
-      "FIGHT_PROP_CRITICAL_HURT": 1.1520000000000001
+      "FIGHT_PROP_CRITICAL_HURT": 0.384
     },
     "skill_depot_id": 9601,
     "talent_ids": [
@@ -3635,10 +3396,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 10792.714899999999,
-      "FIGHT_PROP_BASE_DEFENSE": 617.1525,
-      "FIGHT_PROP_BASE_ATTACK": 250.612082,
-      "FIGHT_PROP_ELEMENT_MASTERY": 288
+      "FIGHT_PROP_ELEMENT_MASTERY": 96.0
     },
     "skill_depot_id": 9701,
     "talent_ids": [
@@ -3678,10 +3436,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 15224.92657,
-      "FIGHT_PROP_BASE_DEFENSE": 921.213,
-      "FIGHT_PROP_BASE_ATTACK": 396.276139,
-      "FIGHT_PROP_CRITICAL": 0.5760000000000001
+      "FIGHT_PROP_CRITICAL": 0.192
     },
     "skill_depot_id": 9801,
     "talent_ids": [
@@ -3721,10 +3476,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 15944.441799999999,
-      "FIGHT_PROP_BASE_DEFENSE": 857.9925,
-      "FIGHT_PROP_BASE_ATTACK": 393.46565999999996,
-      "FIGHT_PROP_CRITICAL_HURT": 1.1520000000000001
+      "FIGHT_PROP_CRITICAL_HURT": 0.384
     },
     "skill_depot_id": 9901,
     "talent_ids": [
@@ -3764,10 +3516,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 13011.2171,
-      "FIGHT_PROP_BASE_DEFENSE": 873.7976149999998,
-      "FIGHT_PROP_BASE_ATTACK": 238.901236,
-      "FIGHT_PROP_ROCK_ADD_HURT": 0.72
+      "FIGHT_PROP_ROCK_ADD_HURT": 0.24
     },
     "skill_depot_id": 10001,
     "talent_ids": [
@@ -3807,10 +3556,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 15109.805,
-      "FIGHT_PROP_BASE_DEFENSE": 941.9854500000001,
-      "FIGHT_PROP_BASE_ATTACK": 390.655196,
-      "FIGHT_PROP_CRITICAL_HURT": 1.1520000000000001
+      "FIGHT_PROP_CRITICAL_HURT": 0.384
     },
     "skill_depot_id": 10101,
     "talent_ids": [
@@ -3850,10 +3596,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 17843.9602,
-      "FIGHT_PROP_BASE_DEFENSE": 670.1373,
-      "FIGHT_PROP_BASE_ATTACK": 213.595644,
-      "FIGHT_PROP_CRITICAL": 0.5760000000000001
+      "FIGHT_PROP_CRITICAL": 0.192
     },
     "skill_depot_id": 10201,
     "talent_ids": [
@@ -3893,10 +3636,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 14577.364000000001,
-      "FIGHT_PROP_BASE_DEFENSE": 1092.8115,
-      "FIGHT_PROP_BASE_ATTACK": 323.203942,
-      "FIGHT_PROP_DEFENSE_PERCENT": 1.08
+      "FIGHT_PROP_DEFENSE": 0.36
     },
     "skill_depot_id": 10301,
     "talent_ids": [
@@ -3936,10 +3676,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 11512.232370000002,
-      "FIGHT_PROP_BASE_DEFENSE": 722.52,
-      "FIGHT_PROP_BASE_ATTACK": 407.51799800000003,
-      "FIGHT_PROP_CRITICAL": 0.5760000000000001
+      "FIGHT_PROP_CRITICAL": 0.192
     },
     "skill_depot_id": 10401,
     "talent_ids": [
@@ -3979,10 +3716,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 10193.11935,
-      "FIGHT_PROP_BASE_DEFENSE": 647.2575,
-      "FIGHT_PROP_BASE_ATTACK": 269.349438,
-      "FIGHT_PROP_ATTACK_PERCENT": 0.72
+      "FIGHT_PROP_ATTACK": 0.24
     },
     "skill_depot_id": 10501,
     "talent_ids": [
@@ -4022,10 +3756,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 14750.047599999998,
-      "FIGHT_PROP_BASE_DEFENSE": 930.2445,
-      "FIGHT_PROP_BASE_ATTACK": 421.57035,
-      "FIGHT_PROP_CRITICAL_HURT": 1.1520000000000001
+      "FIGHT_PROP_CRITICAL_HURT": 0.384
     },
     "skill_depot_id": 10601,
     "talent_ids": [
@@ -4065,10 +3796,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 13670.776,
-      "FIGHT_PROP_BASE_DEFENSE": 896.82795,
-      "FIGHT_PROP_BASE_ATTACK": 148.954857,
-      "FIGHT_PROP_ELEMENT_MASTERY": 345.6
+      "FIGHT_PROP_ELEMENT_MASTERY": 115.0
     },
     "skill_depot_id": 10701,
     "talent_ids": [
@@ -4108,10 +3836,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 10193.11935,
-      "FIGHT_PROP_BASE_DEFENSE": 639.73125,
-      "FIGHT_PROP_BASE_ATTACK": 276.375949,
-      "FIGHT_PROP_ATTACK_PERCENT": 0.72
+      "FIGHT_PROP_ATTACK": 0.24
     },
     "skill_depot_id": 10801,
     "talent_ids": [
@@ -4151,10 +3876,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 14965.902300000002,
-      "FIGHT_PROP_BASE_DEFENSE": 889.60275,
-      "FIGHT_PROP_BASE_ATTACK": 252.94221,
-      "FIGHT_PROP_ELEMENT_MASTERY": 345.6
+      "FIGHT_PROP_ELEMENT_MASTERY": 115.0
     },
     "skill_depot_id": 10901,
     "talent_ids": [
@@ -4194,10 +3916,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 11752.0673,
-      "FIGHT_PROP_BASE_DEFENSE": 703.70436,
-      "FIGHT_PROP_BASE_ATTACK": 283.402444,
-      "FIGHT_PROP_ATTACK_PERCENT": 0.72
+      "FIGHT_PROP_ATTACK": 0.24
     },
     "skill_depot_id": 11001,
     "talent_ids": [
@@ -4237,10 +3956,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 14922.731170000001,
-      "FIGHT_PROP_BASE_DEFENSE": 918.5035499999999,
-      "FIGHT_PROP_BASE_ATTACK": 418.75987799999996,
-      "FIGHT_PROP_CRITICAL": 0.5760000000000001
+      "FIGHT_PROP_CRITICAL": 0.192
     },
     "skill_depot_id": 11101,
     "talent_ids": [
@@ -4279,10 +3995,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 15685.41684,
-      "FIGHT_PROP_BASE_DEFENSE": 859.7987999999999,
-      "FIGHT_PROP_BASE_ATTACK": 407.51799800000003,
-      "FIGHT_PROP_CRITICAL": 0.5760000000000001
+      "FIGHT_PROP_CRITICAL": 0.192
     },
     "skill_depot_id": 11201,
     "talent_ids": [
@@ -4322,10 +4035,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 11116.4963,
-      "FIGHT_PROP_BASE_DEFENSE": 667.57838,
-      "FIGHT_PROP_BASE_ATTACK": 196.7422,
-      "FIGHT_PROP_ELEMENT_MASTERY": 288
+      "FIGHT_PROP_ELEMENT_MASTERY": 96.0
     },
     "skill_depot_id": 11301,
     "talent_ids": [
@@ -4365,10 +4075,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 14591.754500000001,
-      "FIGHT_PROP_BASE_DEFENSE": 947.40434,
-      "FIGHT_PROP_BASE_ATTACK": 421.57035,
-      "FIGHT_PROP_CRITICAL_HURT": 1.1520000000000001
+      "FIGHT_PROP_CRITICAL_HURT": 0.384
     },
     "skill_depot_id": 11401,
     "talent_ids": [
@@ -4408,10 +4115,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 13790.690859999999,
-      "FIGHT_PROP_BASE_DEFENSE": 617.1525,
-      "FIGHT_PROP_BASE_ATTACK": 208.45304099999998,
-      "FIGHT_PROP_HP_PERCENT": 0.72
+      "FIGHT_PROP_MAX_HP": 0.24
     },
     "skill_depot_id": 11501,
     "talent_ids": [
@@ -4450,10 +4154,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 14821.999199999998,
-      "FIGHT_PROP_BASE_DEFENSE": 972.69254,
-      "FIGHT_PROP_BASE_ATTACK": 387.84472900000003,
-      "FIGHT_PROP_CRITICAL": 0.5760000000000001
+      "FIGHT_PROP_CRITICAL": 0.192
     },
     "skill_depot_id": 11601,
     "talent_ids": [
@@ -4492,10 +4193,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 12519.552749999999,
-      "FIGHT_PROP_BASE_DEFENSE": 785.7405000000001,
-      "FIGHT_PROP_BASE_ATTACK": 299.59599399999996,
-      "FIGHT_PROP_ELEMENT_MASTERY": 345.6
+      "FIGHT_PROP_ELEMENT_MASTERY": 115.0
     },
     "skill_depot_id": 11901,
     "talent_ids": [
@@ -4534,10 +4232,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 14678.096000000001,
-      "FIGHT_PROP_BASE_DEFENSE": 950.1138,
-      "FIGHT_PROP_BASE_ATTACK": 413.138942,
-      "FIGHT_PROP_CRITICAL_HURT": 1.1520000000000001
+      "FIGHT_PROP_CRITICAL_HURT": 0.384
     },
     "skill_depot_id": 12001,
     "talent_ids": [
@@ -4576,10 +4271,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 12351.6624,
-      "FIGHT_PROP_BASE_DEFENSE": 669.8362599999999,
-      "FIGHT_PROP_BASE_ATTACK": 267.007269,
-      "FIGHT_PROP_ELEMENT_MASTERY": 288
+      "FIGHT_PROP_ELEMENT_MASTERY": 96.0
     },
     "skill_depot_id": 12101,
     "talent_ids": [
@@ -4618,10 +4310,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 14928.487429999997,
-      "FIGHT_PROP_BASE_DEFENSE": 939.2760000000001,
-      "FIGHT_PROP_BASE_ATTACK": 404.70753299999996,
-      "FIGHT_PROP_CRITICAL_HURT": 1.1520000000000001
+      "FIGHT_PROP_CRITICAL_HURT": 0.384
     },
     "skill_depot_id": 12201,
     "talent_ids": [
@@ -4660,10 +4349,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 14606.144499999999,
-      "FIGHT_PROP_BASE_DEFENSE": 966.3705,
-      "FIGHT_PROP_BASE_ATTACK": 407.51799800000003,
-      "FIGHT_PROP_CRITICAL_HURT": 1.1520000000000001
+      "FIGHT_PROP_CRITICAL_HURT": 0.384
     },
     "skill_depot_id": 12301,
     "talent_ids": [
@@ -4703,10 +4389,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 10636.82,
-      "FIGHT_PROP_BASE_DEFENSE": 639.73125,
-      "FIGHT_PROP_BASE_ATTACK": 245.92774500000002,
-      "FIGHT_PROP_HEAL_ADD": 0.5539
+      "FIGHT_PROP_HEAL_ADD": 0.185
     },
     "skill_depot_id": 12401,
     "talent_ids": [
@@ -4745,10 +4428,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 17268.34885,
-      "FIGHT_PROP_BASE_DEFENSE": 605.1105,
-      "FIGHT_PROP_BASE_ATTACK": 112.41875999999999,
-      "FIGHT_PROP_CRITICAL": 0.5760000000000001
+      "FIGHT_PROP_CRITICAL": 0.192
     },
     "skill_depot_id": 12501,
     "talent_ids": [
@@ -4787,10 +4467,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 15181.756399999998,
-      "FIGHT_PROP_BASE_DEFENSE": 1124.4219,
-      "FIGHT_PROP_BASE_ATTACK": 264.1841,
-      "FIGHT_PROP_CRITICAL_HURT": 1.1520000000000001
+      "FIGHT_PROP_CRITICAL_HURT": 0.384
     },
     "skill_depot_id": 12601,
     "talent_ids": [
@@ -4829,10 +4506,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 13191.096,
-      "FIGHT_PROP_BASE_DEFENSE": 897.129,
-      "FIGHT_PROP_BASE_ATTACK": 210.79521,
-      "FIGHT_PROP_ELEMENT_MASTERY": 288
+      "FIGHT_PROP_ELEMENT_MASTERY": 96.0
     },
     "skill_depot_id": 12701,
     "talent_ids": [
@@ -4871,10 +4545,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 14821.999199999998,
-      "FIGHT_PROP_BASE_DEFENSE": 934.7602499999999,
-      "FIGHT_PROP_BASE_ATTACK": 414.544184,
-      "FIGHT_PROP_CRITICAL_HURT": 1.1520000000000001
+      "FIGHT_PROP_CRITICAL_HURT": 0.384
     },
     "skill_depot_id": 12801,
     "talent_ids": [
@@ -4913,10 +4584,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 15109.805,
-      "FIGHT_PROP_BASE_DEFENSE": 921.213,
-      "FIGHT_PROP_BASE_ATTACK": 404.70753299999996,
-      "FIGHT_PROP_CRITICAL_HURT": 1.1520000000000001
+      "FIGHT_PROP_CRITICAL_HURT": 0.384
     },
     "skill_depot_id": 12901,
     "talent_ids": [
@@ -4955,10 +4623,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 11627.354529999999,
-      "FIGHT_PROP_BASE_DEFENSE": 1065.7169999999999,
-      "FIGHT_PROP_BASE_ATTACK": 168.62814,
-      "FIGHT_PROP_CRITICAL": 0.5760000000000001
+      "FIGHT_PROP_CRITICAL": 0.192
     },
     "skill_depot_id": 13001,
     "talent_ids": [
@@ -4997,10 +4662,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 12231.74643,
-      "FIGHT_PROP_BASE_DEFENSE": 661.1058,
-      "FIGHT_PROP_BASE_ATTACK": 401.897064,
-      "FIGHT_PROP_ATTACK_PERCENT": 0.8639999999999999
+      "FIGHT_PROP_ATTACK": 0.288
     },
     "skill_depot_id": 13101,
     "talent_ids": [
@@ -5039,10 +4701,7 @@
     "base_crit_dmg": 0.5,
     "charge_efficiency": 1,
     "ascension_bonus": {
-      "FIGHT_PROP_BASE_HP": 10672.79574,
-      "FIGHT_PROP_BASE_DEFENSE": 639.73125,
-      "FIGHT_PROP_BASE_ATTACK": 243.58558,
-      "FIGHT_PROP_ATTACK_PERCENT": 0.72
+      "FIGHT_PROP_ATTACK": 0.24
     },
     "skill_depot_id": 13201,
     "talent_ids": [
