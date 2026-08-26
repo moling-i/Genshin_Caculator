@@ -4,6 +4,7 @@
 """
 import os
 import sys
+import base64
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
@@ -36,12 +37,55 @@ st.markdown(
         border-bottom: 1px solid var(--border);
     }
     h1, h2, h3 { color: var(--text) !important; font-weight: 600 !important; }
-    /* 卡片：细边框、无阴影 */
+    /* 卡片：半透明毛玻璃（透出海报背景） */
     .stExpander, [data-testid="stExpander"] {
-        border: 1px solid var(--border) !important;
+        border: 1px solid rgba(255, 255, 255, 0.4) !important;
         border-radius: 6px !important;
         box-shadow: none !important;
-        background: var(--card);
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+    /* 带边框容器（参数面板等）同样做毛玻璃 */
+    [data-testid="stVerticalBlockBorderWrapper"] {
+        background: rgba(255, 255, 255, 0.85) !important;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.4) !important;
+        border-radius: 8px !important;
+    }
+    /* 全屏海报背景：上层压暗渐变保证文字对比度，图片加载失败时兜底为深色底 */
+    .stApp {
+        background-color: #16213e;
+        background-image:
+            linear-gradient(180deg, rgba(26, 26, 46, 0.30), rgba(15, 52, 96, 0.42)),
+            url("https://enka.network/ui/UI_NameCardPic_Furina_P.png");
+        background-size: cover;
+        background-position: center top;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+    }
+    /* 顶栏与主容器透明，让背景完整露出 */
+    [data-testid="stHeader"] {
+        background: transparent !important;
+    }
+    [data-testid="stAppViewContainer"],
+    [data-testid="stAppViewContainer"] > div,
+    section.main > div.block-container {
+        background: transparent !important;
+        box-shadow: none !important;
+    }
+    /* 侧边栏：半透明白色毛玻璃 */
+    [data-testid="stSidebar"] {
+        background: rgba(255, 255, 255, 0.86) !important;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-right: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    /* 文字在背景上保持清晰 */
+    h1, h2, h3, .stMarkdown p, label, span, div {
+        color: var(--text);
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.55);
     }
     /* 图片：无边框、轻圆角 */
     .stImage img, [data-testid="stImage"] img {
@@ -615,6 +659,20 @@ with side_col:
         circlet = st.selectbox("理之冠主词条", list(MAIN_CIRCLET.keys()))
         optimize_btn = st.button("开始优化", type="primary")
 
+        st.divider()
+        with st.expander("背景设置", expanded=False):
+            bg_mode = st.radio(
+                "选择背景",
+                ["默认海报", "渐变纯色", "自定义图片"],
+                horizontal=True,
+            )
+            uploaded_bg = None
+            if bg_mode == "自定义图片":
+                uploaded_bg = st.file_uploader(
+                    "上传背景图", type=["jpg", "jpeg", "png", "webp"]
+                )
+            st.caption("海报来源：原神官方名称牌原画（enka 资产库）")
+
 # ---------- 主界面 ----------
 if optimize_btn:
     active_members = [c for c in team_configs if c and c.get("character_id")]
@@ -766,3 +824,28 @@ else:
         **月反应**需配置至少1名队伍成员；队伍成员独立配置，互不影响。
         """
     )
+
+# ---------- 动态背景（跟随侧边栏「背景设置」，置于文件尾以覆盖静态默认样式） ----------
+if bg_mode == "自定义图片" and uploaded_bg is not None:
+    _bg_data_url = (
+        f"data:{uploaded_bg.type or 'image/png'};base64,"
+        + base64.b64encode(uploaded_bg.getvalue()).decode()
+    )
+    _bg_css = (
+        ".stApp {"
+        "background-color: #16213e;"
+        "background-image: linear-gradient(180deg, rgba(26,26,46,0.25), rgba(15,52,96,0.35)),"
+        f"url(\"{_bg_data_url}\");"
+        "background-size: cover; background-position: center;"
+        "background-attachment: fixed; background-repeat: no-repeat;}"
+    )
+elif bg_mode == "渐变纯色":
+    _bg_css = (
+        ".stApp {"
+        "background-image: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);}"
+    )
+else:
+    _bg_css = ""  # 默认海报已在顶部样式中定义
+
+if _bg_css:
+    st.markdown(f"<style>{_bg_css}</style>", unsafe_allow_html=True)
