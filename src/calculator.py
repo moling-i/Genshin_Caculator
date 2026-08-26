@@ -176,10 +176,15 @@ def calculate_damage(
         }
 
     elif reaction_type in ("overload", "superconduct", "swirl", "shatter", "electrocharged"):
-        # 剧变反应（不暴击，不受攻击/增伤影响）
+        # 剧变反应（不暴击，不受攻击/增伤影响；不经过防御乘区）
+        # gensri.wiki 权威公式：(等级系数 × 反应系数 × 剧变精通乘区 + 数值提升) × 暴击乘区 × 抗性乘区
         em_bonus = constants.em_bonus_transformative(panel["elemental_mastery"])
-        transformative_dmg = constants.LEVEL_COEFFICIENT * (1 + em_bonus) * res_factor
+        trans_coeff = constants.TRANSFORMATIVE_COEFF.get(reaction_type, 1.0)
+        transformative_dmg = (
+            constants.LEVEL_COEFFICIENT * trans_coeff * (1 + em_bonus) * res_factor
+        )
         breakdown["transformative_damage"] = transformative_dmg
+        breakdown["transformative_coeff"] = trans_coeff
         return {
             "damage": transformative_dmg,
             "breakdown": {**breakdown, "reaction": reaction_detail, "note": "剧变反应不受攻击/增伤/暴击影响"},
@@ -187,12 +192,22 @@ def calculate_damage(
 
     elif reaction_type in ("aggravate", "spread"):
         # 激化反应（为基础伤害区提供 flat_bonus）
+        # gensri.wiki 权威系数：超激化(aggravate) 1.15、蔓激化(spread) 1.25
+        quicken_coeff = (
+            constants.AGGRAVATE_COEFF if reaction_type == "aggravate"
+            else constants.SPREAD_COEFF
+        )
         em_bonus = 5 * panel["elemental_mastery"] / (panel["elemental_mastery"] + 1200)
-        flat_bonus = constants.LEVEL_COEFFICIENT * 1.15 * (1 + em_bonus)
+        flat_bonus = constants.LEVEL_COEFFICIENT * quicken_coeff * (1 + em_bonus)
         base_damage += flat_bonus
         breakdown["base_damage"] += flat_bonus
         breakdown["aggravate_flat"] = flat_bonus
-        reaction_detail = {"type": "aggravate", "flat_bonus": flat_bonus}
+        breakdown["quicken_coeff"] = quicken_coeff
+        reaction_detail = {
+            "type": "aggravate" if reaction_type == "aggravate" else "spread",
+            "coeff": quicken_coeff,
+            "flat_bonus": flat_bonus,
+        }
 
     elif reaction_type in ("lunar_charged", "lunar_crystallize", "lunar_bloom"):
         # 月反应间接伤害（需要队伍数据）
@@ -223,13 +238,8 @@ def calculate_damage(
         }
 
     elif reaction_type == "stellar_superconduct":
-        # 星超导（预留接口）
-        if stellar_stacks >= 12:
-            stack_data = constants.STELLAR_SUPERCONDUCT["stacks_12"]
-        elif stellar_stacks >= 6:
-            stack_data = constants.STELLAR_SUPERCONDUCT["stacks_6"]
-        else:
-            stack_data = {"dmg_bonus": 0.0, "reaction_coef": 1.0}
+        # 星超导：按附着记录次数的连续档位公式（gensri.wiki 权威值）
+        stack_data = constants.stellar_superconduct_params(stellar_stacks)
         dmg_bonus_factor += stack_data["dmg_bonus"]
         reaction_factor = stack_data["reaction_coef"]
         reaction_detail = {"type": "stellar_superconduct", "stacks": stellar_stacks, **stack_data}

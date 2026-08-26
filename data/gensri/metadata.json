@@ -1,0 +1,16 @@
+{
+  "source": "gensri.wiki",
+  "base_url": "https://www.gensri.wiki",
+  "fetch_date": "2026-08-26",
+  "fetched_at": "2026-08-26 10:01:56",
+  "results": {
+    "game_mechanics": true,
+    "calculations": true,
+    "abyss": true
+  },
+  "targets": {
+    "game_mechanics": "/wiki/",
+    "calculations": "/data/ (manifest.json + 卡片详情)",
+    "abyss": "/985/"
+  }
+}

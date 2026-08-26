@@ -1,0 +1,64 @@
+{
+  "source": "gensri.wiki",
+  "url": "https://www.gensri.wiki/data/",
+  "fetch_date": "2026-08-26",
+  "current_test_version": "V7.0.50",
+  "versions": [
+    "7.1",
+    "7.0",
+    "6.7",
+    "6.6"
+  ],
+  "articles": [
+    {
+      "id": "dt-vesna7.0.50-01",
+      "version": "7.1",
+      "title": "薇斯纳&沃雅妮莎星扩散各配置数值情况",
+      "sub_version": "V7.0.50",
+      "date": "2026/8/14-16:00",
+      "link": "dt-vesna7.0.50-01/",
+      "url": "https://www.gensri.wiki/data/dt-vesna7.0.50-01/",
+      "content_preview": "计算数据详情 — 强度研究院 正在加载数据…"
+    },
+    {
+      "id": "dt-skirk7.0.50-01",
+      "version": "7.1",
+      "title": "沃雅妮莎替换莫娜对丝柯克队伍提升情况",
+      "sub_version": "V7.0.50",
+      "date": "2026/8/14-04:20",
+      "link": "dt-skirk7.0.50-01/",
+      "url": "https://www.gensri.wiki/data/dt-skirk7.0.50-01/",
+      "content_preview": "计算数据详情 — 强度研究院 正在加载数据…"
+    },
+    {
+      "id": "dt-mizuki6.7.54-01",
+      "version": "7.0",
+      "title": "梦见月瑞希星扩散不同配置伤害",
+      "sub_version": "V6.7.54",
+      "date": "2026/8/03-19:49",
+      "link": "dt-mizuki6.7.54-01/",
+      "url": "https://www.gensri.wiki/data/dt-mizuki6.7.54-01/",
+      "content_preview": "计算数据详情 — 强度研究院 正在加载数据…"
+    },
+    {
+      "id": "dt-odette6.7.54-02",
+      "version": "7.0",
+      "title": "奥黛塔各武器期望排行",
+      "sub_version": "V6.7.54",
+      "date": "2026/7/30-0:30",
+      "link": "dt-odette6.7.54-02/",
+      "url": "https://www.gensri.wiki/data/dt-odette6.7.54-02/",
+      "content_preview": "计算数据详情 — 强度研究院 正在加载数据…"
+    },
+    {
+      "id": "dt-odette6.7.54-01",
+      "version": "7.0",
+      "title": "不同配置奥黛塔对桑多涅队伍提升情况",
+      "sub_version": "V6.7.54",
+      "date": "2026/7/27-12:00",
+      "link": "dt-odette6.7.54-01/",
+      "url": "https://www.gensri.wiki/data/dt-odette6.7.54-01/",
+      "content_preview": "计算数据详情 — 强度研究院 正在加载数据…"
+    }
+  ]
+}

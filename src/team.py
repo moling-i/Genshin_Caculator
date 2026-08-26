@@ -52,7 +52,7 @@ class Team:
         # 从高到低排序
         personal_damages.sort(reverse=True)
 
-        # 加权求和（只取前四高）
+        # 加权求和（只取前四高，权重 0.6 / 0.3 / 0.05 / 0.05，gensri.wiki 权威值）
         total = 0.0
         for i, dmg in enumerate(personal_damages[:4]):
             weight = constants.LUNAR_INDIRECT_WEIGHTS[i]

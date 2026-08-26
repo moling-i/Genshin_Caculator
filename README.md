@@ -116,9 +116,9 @@ lunar_dmg = team.calculate_lunar_indirect_damage("lunar_charged", enemy_res=0.1)
 - **间接伤害**（加权求和）：
   ```
   个人伤害_i = 反应系数 × 等级系数 × (1 + lunar_dmg_bonus_i) × (1 + EM_bonus_i + reaction_dmg_bonus_i) × 抗性区_i × 暴击区_i
-  最终 = 最高×1 + 第二高×1/2 + 第三高×1/12 + 第四高×1/12
+  最终 = 最高×0.6 + 第二高×0.3 + 第三高×0.05 + 第四高×0.05
   ```
-  - 月感电间接系数 1.8，月结晶间接系数 0.96，月绽放间接 0
+  - 权重与系数已按 gensri.wiki《游戏机制》权威值校准（月感电/月结晶反应系数分别为 3.0 / 1.6）
 - **直接伤害**：
   ```
   (反应系数 × 属性 × 倍率 × (1 + lunar_dmg_bonus) × (1 + EM_bonus + reaction_dmg_bonus) + flat_bonus) × 抗性区 × 暴击区
@@ -149,7 +149,9 @@ lunar_dmg = team.calculate_lunar_indirect_damage("lunar_charged", enemy_res=0.1)
 │   └── test_calculator.py # 单元测试
 ├── main.py                # CLI 入口
 ├── app.py                 # Streamlit 网页界面（推荐）
-├── fetch_data.py          # 数据抓取脚本
+├── fetch_data.py          # 数据抓取脚本（官方 API）
+├── fetch_gensri.py        # gensri.wiki 数据采集脚本
+├── validate_formulas_with_gensri.py # 公式校验脚本（对比 gensri 权威值）
 ├── backend.py / frontend.py / run.py  # 旧版 Streamlit/FastAPI 界面（保留）
 └── README.md
 ```
@@ -157,6 +159,28 @@ lunar_dmg = team.calculate_lunar_indirect_damage("lunar_charged", enemy_res=0.1)
 ## 数据来源
 
 `data/` 目录下的 JSON 由 `fetch_data.py` 从原神官方 API 抓取，包含角色基础属性、技能倍率（`proud_skill_groups`）、武器特效、圣遗物套装效果与命座效果。
+
+### gensri.wiki（强度研究院）
+
+`data/gensri/` 目录由 `fetch_gensri.py` 从 [gensri.wiki](https://www.gensri.wiki/) 采集：
+
+| 文件 | 内容 |
+|------|------|
+| `game_mechanics.json` | 伤害公式体系、增幅/激化/剧变/月曜/星反应系数、等级系数表（1~100） |
+| `calculations.json` | 计算分析文章列表及内容预览 |
+| `abyss.json` | 深境螺旋期次信息 |
+| `validation_report.md` | 公式校验差异报告 |
+
+运行方式：
+
+```bash
+python fetch_gensri.py                    # 全量抓取
+python validate_formulas_with_gensri.py   # 与项目公式逐项比对，生成报告
+```
+
+> 校验说明：gensri.wiki 明确标注「前玉衡杯提供的反应系数以及贡献权重有误，以此处为准」，
+> 本项目的月曜贡献权重（0.6/0.3/0.05/0.05）、月感电/月结晶反应系数、剧变反应系数、
+> 超激化/蔓激化分型系数与星超导连续档位均已按其权威值实现。
 
 ## 声明
 

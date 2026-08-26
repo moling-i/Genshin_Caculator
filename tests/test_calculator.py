@@ -84,7 +84,7 @@ class TestLunarIndirectDamage(unittest.TestCase):
             return coeff * constants.LEVEL_COEFFICIENT * (1 + panel["lunar_dmg_bonus"]) * (1 + em_b) * res_factor * (1 + panel["crit_dmg"])
 
         p = sorted([personal(c) for c in [c1, c2, c3, c4]], reverse=True)
-        expected = p[0] * 1.0 + p[1] * 0.5 + p[2] * (1/12) + p[3] * (1/12)
+        expected = p[0] * 0.6 + p[1] * 0.3 + p[2] * 0.05 + p[3] * 0.05
 
         self.assertAlmostEqual(dmg, expected, places=2)
         print(f"月感电间接伤害: {dmg:.2f}")

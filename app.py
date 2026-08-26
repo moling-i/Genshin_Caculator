@@ -315,8 +315,8 @@ REACTION_OPTIONS = {
     "扩散": "swirl",
     "碎冰": "shatter",
     "感电": "electrocharged",
-    "蔓激化": "aggravate",
-    "超激化": "spread",
+    "超激化": "aggravate",   # 超激化=雷系触发，系数 1.15
+    "蔓激化": "spread",      # 蔓激化=草系触发，系数 1.25
     "月感电": "lunar_charged",
     "月结晶": "lunar_crystallize",
     "月绽放": "lunar_bloom",

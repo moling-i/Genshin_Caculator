@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="游戏机制 - 硬核理论数据查询 | 强度研究院" />
+
+  <!-- 网站图标 -->
+  <link rel="icon" type="image/png" href="../png/gensri.png" />
+
+  <!-- HTTP/2 资源预加载：提前发起背景大图请求 -->
+  <link rel="preload" as="image" href="../png/index-background.png" fetchpriority="high" />
+
+  <!-- Google Fonts 预连接 + Noto Sans SC（统一全平台字体，消除系统差异） -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- KaTeX 数学公式渲染 CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
+  />
+
+  <!-- Font Awesome 6 CDN（免费版） -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+  />
+
+  <!-- 全局样式 -->
+  <link rel="stylesheet" href="../style.css" />
+
+  <!-- Wiki 专属样式 -->
+  <link rel="stylesheet" href="style.css" />
+
+  <title>游戏机制 - 强度研究院</title>
+</head>
+<body>
+
+  <!-- 背景图片层 -->
+  <div class="background-layer" aria-hidden="true"></div>
+
+  <!-- 顶部导航栏（仅电脑端显示） -->
+  <nav class="navbar glass-nav" aria-label="主导航">
+    <!-- 左侧：主页 + 音乐 -->
+    <div class="nav-left">
+      <a id="nav-home" class="nav-link" href="../" aria-label="返回主页">
+        <i class="fa-solid fa-house" aria-hidden="true"></i>
+        <span>主页</span>
+      </a>
+
+      <!-- 音乐控制按钮 -->
+      <button
+        id="music-toggle"
+        class="nav-music"
+        aria-label="切换背景音乐"
+        title="切换背景音乐"
+      >
+        <i class="fa-solid fa-volume-xmark nav-music-icon" aria-hidden="true"></i>
+        <span class="nav-music-text">音乐：关</span>
+      </button>
+    </div>
+
+    <!-- 右侧：子页面快捷导航 -->
+    <div class="nav-right">
+      <a id="nav-wiki" class="nav-link" href="../wiki/" aria-label="游戏机制">
+        游戏机制
+      </a>
+      <a id="nav-data" class="nav-link" href="../data/" aria-label="计算数据">
+        计算数据
+      </a>
+      <a id="nav-985" class="nav-link" href="../985/" aria-label="深渊幽境">
+        深渊幽境
+      </a>
+      <a id="nav-more" class="nav-link" href="../more/" aria-label="更多内容">
+        更多内容
+      </a>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       主内容区
+       ============================================================ -->
+  <main class="wiki-main">
+
+    <!-- 标题区域 -->
+    <div class="title-area">
+      <img
+        class="gensri-icon"
+        src="../png/gensri.png"
+        alt="强度研究院网站图标"
+        width="64"
+        height="64"
+      />
+      <div class="title-text">
+        <h1 class="title-main">游戏机制</h1>
+        <p class="title-sub">GI Mechanics</p>
+      </div>
+    </div>
+
+    <!-- 版本信息（由全局 script.js 动态填充） -->
+    <div class="version-info glass">
+      <span class="version-item">当前版本：<span id="game-version" class="version-value">加载中...</span></span>
+      <span class="version-separator" aria-hidden="true">|</span>
+      <span class="version-item">最后更新：<span id="last-updated" class="version-value">加载中...</span></span>
+    </div>
+
+    <!-- ============================================================
+         内容标签导航栏
+         ============================================================ -->
+    <nav class="wiki-tabs glass" role="tablist" aria-label="内容导航">
+      <button
+        class="wiki-tab active"
+        role="tab"
+        aria-selected="true"
+        data-panel="panel-formulas"
+      >
+        <i class="fa-solid fa-calculator" aria-hidden="true"></i>
+        公式与算法
+      </button>
+      <button
+        class="wiki-tab"
+        role="tab"
+        aria-selected="false"
+        data-panel="panel-aura"
+      >
+        <i class="fa-solid fa-droplet" aria-hidden="true"></i>
+        附着与产球
+      </button>
+      <button
+        class="wiki-tab"
+        role="tab"
+        aria-selected="false"
+        data-panel="panel-energy"
+      >
+        <i class="fa-solid fa-bolt" aria-hidden="true"></i>
+        充能计算
+      </button>
+      <button
+        class="wiki-tab"
+        role="tab"
+        aria-selected="false"
+        data-panel="panel-lookup"
+      >
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        数值查询
+      </button>
+    </nav>
+
+    <!-- ============================================================
+         标签面板容器
+         ============================================================ -->
+    <div class="wiki-panels">
+
+      <!-- =========================================================
+           PANEL 1: 公式与算法（当前激活）
+           ========================================================= -->
+      <section class="wiki-panel active" id="panel-formulas" role="tabpanel" aria-label="公式与算法">
+
+        <!-- 页面贡献者 -->
+        <div class="contributors glass">
+          <span class="contributors-label"><i class="fa-solid fa-user-pen" aria-hidden="true"></i> 页面贡献者</span>
+          <div class="contributor-avatar" data-qq="1062976603" data-nickname="海兔子教父">
+            <img src="https://q1.qlogo.cn/g?b=qq&nk=1062976603&s=100" alt="海兔子教父" />
+          </div>
+        </div>
+
+        <!-- ============ SECTION A: 总伤计算公式 ============ -->
+        <section class="wiki-section">
+          <h2 class="wiki-section-title">总伤计算公式</h2>
+
+          <!-- 1. 普通直伤类型 -->
+          <article class="wiki-card glass">
+            <h3 class="card-title">普通直伤类型</h3>
+            <div class="formula-line">
+              <span class="formula-label">最终伤害 = </span>
+              <span class="multiplier-ref" data-ref="multiplier-base">基础乘区</span>
+              <span class="formula-op"> × </span>
+              <span class="multiplier-ref" data-ref="multiplier-dmg">增伤乘区</span>
+              <span class="formula-op"> × </span>
+              <span class="multiplier-ref" data-ref="multiplier-crit">暴击乘区</span>
+              <span class="formula-op"> × </span>
+              <span class="multiplier-ref" data-ref="multiplier-res">抗性乘区</span>
+              <span class="formula-op"> × </span>
+              <span class="multiplier-ref" data-ref="multiplier-def">防御乘区</span>
+            </div>
+            <div class="multiplier-expand" aria-live="polite" aria-label="乘区展开详情"></div>
+            <p class="formula-note">注解：适用于所有不触发元素反应的非月、星类技能伤害。</p>
+          </article>
+
+          <!-- 2. 增幅反应类型 -->
+          <article class="wiki-card glass">
+            <h3 class="card-title">增幅反应类型</h3>
+            <div class="formula-line">
+              <span class="formula-label">最终伤害 = </span>
+              <span class="multiplier-ref" data-ref="multiplier-base">基础乘区</span>
+              <span class="formula-op"> × </span>
+              <span class="formula-label">反应系数 × </span>
+              <span class="multiplier-ref" data-ref="multiplier-em-amplify">增幅精通乘区</span>
+              <span class="formula-op"> × </span>
+              <span class="multiplier-ref" data-ref="multiplier-dmg">增伤乘区</span>
+              <span class="formula-op"> × </span>
+              <span class="multiplier-ref" data-ref="multiplier-crit">暴击乘区</span>
+              <span class="formula-op"> × </span>
+              <span class="multiplier-ref" data-ref="multiplier-res">抗性乘区</span>
+              <span class="formula-op"> × </span>
+              <span class="multiplier-ref" data-ref="multiplier-def">防御乘区</span>
+            </div>
+            <div class="multiplier-expand" aria-live="polite" aria-label="乘区展开详情"></div>
+            <div class="table-scroll">
+              <table class="wiki-table">
+                <thead>
+                  <tr><th>元素反应</th><th>触发元素类型</th><th>反应系数</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td rowspan="2">融化反应</td><td>火元素融化反应（火打冰）</td><td>2.0</td></tr>
+                  <tr><td>冰元素融化反应（冰打火）</td><td>1.5</td></tr>
+                  <tr><td rowspan="2">蒸发反应</td><td>水元素蒸发反应（水打火）</td><td>2.0</td></tr>
+                  <tr><td>火元素蒸发反应（火打水）</td><td>1.5</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="formula-note">注解：适用于触发蒸发、融化反应的技能伤害。</p>
+          </article>
+
+          <!-- 3. 激化反应类型 -->
+          <article class="wiki-card glass">
+            <h3 class="card-title">激化反应类型</h3>
+            <div class="formula-line">
+              <span class="formula-label">最终伤害 = (</span>
+              <span class="multiplier-ref" data-ref="multiplier-base">基础乘区</span>
+              <span class="formula-op"> + </span>
+              <span class="formula-label">角色等级系数</span>
+              <span class="formula-op"> × 反应系数 × </span>
+              <span class="multiplier-ref" data-ref="multiplier-em-quicken">激化精通乘区</span>
+              <span class="formula-label">) × </span>
+              <span class="multiplier-ref" data-ref="multiplier-dmg">增伤乘区</span>
+              <span class="formula-op"> × </span>
+              <span class="multiplier-ref" data-ref="multiplier-crit">暴击乘区</span>
+              <span class="formula-op"> × </span>
+              <span class="multiplier-ref" data-ref="multiplier-res">抗性乘区</span>
+              <span class="formula-op"> × </span>
+              <span class="multiplier-ref" data-ref="multiplier-def">防御乘区</span>
+            </div>
+            <div class="multiplier-expand" aria-live="polite" aria-label="乘区展开详情"></div>
+            <p class="formula-note">
+              超激化反应系数：<strong>1.15</strong>；蔓激化反应系数：<strong>1.25</strong><br />
+              等级系数：点击 "<a href="#appendix-level-coefficient" class="ref-link">角色等级系数</a>" 可跳转到附录查询等级 1~100 具体数值。
+            </p>
+            <p class="formula-note">注解：适用于触发超激化、蔓激化反应的技能伤害。</p>
+          </article>
+
+          <!-- 4. 剧变伤害类型 -->
+          <article class="wiki-card glass">
+            <h3 class="card-title">剧变伤害类型</h3>
+            <div class="formula-line">
+              <span class="formula-label">最终伤害 = (</span>
+              <span class="formula-label">角色等级系数</span>
+              <span class="formula-op"> × 反应系数 × </span>
+              <span class="multiplier-ref" data-ref="multiplier-em-transform">剧变精通乘区</span>
+              <span class="formula-op"> + </span>
+              <span class="formula-label">数值提升) × </span>
+              <span class="multiplier-ref" data-ref="multiplier-crit">暴击乘区</span>
+              <span class="formula-op"> × </span>
+              <span class="multiplier-ref" data-ref="multiplier-res">抗性乘区</span>
+            </div>
+            <div class="multiplier-expand" aria-live="polite" aria-label="乘区展开详情"></div>
+            <div class="table-scroll">
+              <table class="wiki-table">
+                <thead>
+                  <tr><th>元素反应</th><th>反应系数（V5.2.0 增强后）</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>碎冰反应</td><td>3.0</td></tr>
+                  <tr><td>超/烈绽放反应</td><td>3.0</td></tr>
+                  <tr><td>超载反应</td><td>2.75</td></tr>
+                  <tr><td>绽放反应</td><td>2.0</td></tr>
+                  <tr><td>感电反应</td><td>2.0</td></tr>
+                  <tr><td>超导反应</td><td>1.5</td></tr>
+                  <tr><td>扩散反应</td><td>0.6</td></tr>
+                  <tr><td>燃烧反应</td><td>0.25</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="formula-note">
+              等级系数：点击 "<a href="#appendix-level-coefficient" class="ref-link">角色等级系数</a>" 可跳转到附录查询。<br />
+              注解①：一般情况下剧变类反应不会触发暴击，也就没有暴击乘区，但有个别特殊情况，比如纳西妲二命能够让绽放、燃烧反应伤害触发暴击，菈乌玛（初辉）天赋能够让绽放反应触发暴击等。诸如这类剧变暴击类效果，暴击乘区的数值不依据角色面板，而是看效果提供的具体数值。<br />
+              注解②：适用于绽放（非月曜）、感电、超导、超载、扩散、燃烧、碎冰反应造成的伤害。
+            </p>
+          </article>
+
+          <!-- 5. 月曜反应类型 -->
+          <article class="wiki-card glass">
+            <h3 class="card-title">月曜反应类型</h3>
+            <div class="formula-line">
+              <span class="formula-label">每名角色贡献伤害 = (</span>
+              <span class="formula-label">角色等级系数</span>
+              <span class="formula-op"> × 反应系数 × 基础提升 × </span>
+              <span class="multiplier-ref" data-ref="multiplier-em-lunar">月曜精通乘区</span>
+              <span class="formula-op"> + </span>
+              <span class="formula-label">数值提升) × </span>
+              <span class="multiplier-ref" data-ref="multiplier-crit">暴击乘区</span>
+              <span class="formula-op"> × </span>
+              <span class="multiplier-ref" data-ref="multiplier-res">抗性乘区</span>
+              <span class="formula-op"> × (1 + 擢升)</span>
+            </div>
+            <div class="multiplier-expand" aria-live="polite" aria-label="乘区展开详情"></div>
+            <div class="formula-line">
+              <span class="formula-label">最终伤害 = 第1贡献伤害 × 0.6 + 第2贡献伤害 × 0.3 + 第3贡献伤害 × 0.05 + 第4贡献伤害 × 0.05</span>
+            </div>
+            <div class="table-scroll">
+              <table class="wiki-table">
+                <thead>
+                  <tr><th>元素反应</th><th>反应系数</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>月感电反应（雷暴云）</td><td>3.0</td></tr>
+                  <tr><td>月结晶反应（月笼谐奏）</td><td>1.6</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="formula-note">
+              等级系数：点击 "<a href="#appendix-level-coefficient" class="ref-link">角色等级系数</a>" 可跳转到附录查询。<br />
+              基础提升：五星月兆角色（月曜天赋）依据自身某种属性提供的反应基础提升。<br />
+              注解①：经过 C1 莉奈娅的多次月笼谐奏测试，前玉衡杯提供的反应系数以及贡献权重有误，以此处为准。若为月感电反应，或者无 C1 莉奈娅的月结晶反应，前玉衡杯算法与此处算法结果相同。<br />
+              注解②：适用于月感电反应（雷暴云伤害）和月结晶反应（月笼谐奏伤害）。月绽放反应产生的草原核爆炸伤害属于普通绽放伤害而非月绽放，因此不适用此算法。技能造成的月曜伤害并不属于触发月曜反应，因此也不适用此算法。
+            </p>
+          </article>
+
+          <!-- 6. 月曜直伤类型 -->
+          <article class="wiki-card glass">
+            <h3 class="card-title">月曜直伤类型</h3>
+            <div class="formula-line">
+              <span class="formula-label">最终伤害 = (某面板属性 × 技能倍率 × 基础提升 × 独立乘区 × 月乘区 × </span>
+              <span class="multiplier-ref" data-ref="multiplier-em-lunar">月曜精通乘区</span>
+              <span class="formula-op"> + </span>
+              <span class="formula-label">数值提升) × </span>
+              <span class="multiplier-ref" data-ref="multiplier-crit">暴击乘区</span>
+              <span class="formula-op"> × </span>
+              <span class="multiplier-ref" data-ref="multiplier-res">抗性乘区</span>
+              <span class="formula-op"> × (1 + 擢升)</span>
+            </div>
+            <div class="multiplier-expand" aria-live="polite" aria-label="乘区展开详情"></div>
+            <div class="table-scroll">
+              <table class="wiki-table">
+                <thead>
+                  <tr><th>月曜类型</th><th>月乘区</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>月感电</td><td>3.0</td></tr>
+                  <tr><td>月结晶</td><td>1.6</td></tr>
+                  <tr><td>月绽放</td><td>1.0</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="formula-note">
+              基础提升：同月曜反应（五星月兆角色天赋提供）。<br />
+              注解：适用于技能造成的月曜伤害（月感电技能、月绽放技能、月结晶技能）。
+            </p>
+          </article>
+
+          <!-- 7. 星烁反应类型 -->
+          <article class="wiki-card glass">
+            <h3 class="card-title">星烁反应类型</h3>
+            <p class="formula-note">
+              反应简介：风元素触及冰元素时，若满足特定条件，会引发特殊的星扩散反应，生成一个风涡。风涡将在 4.5 秒后引爆，造成一次冰元素的星扩散反应伤害。风涡存在期间，再次触发星扩散反应时，都将造成一次风元素的星扩散反应伤害，并且使风涡提升 1 级。风涡至多提升至 6 级，当升至满级时，风涡会自动引爆。此外，风涡引爆并造成伤害时，将使风涡等级清零。
+            </p>
+            <div class="formula-line">
+              <span class="formula-label">每名角色贡献伤害 = (</span>
+              <span class="formula-label">角色等级系数</span>
+              <span class="formula-op"> × 反应系数 × 基础提升 × </span>
+              <span class="multiplier-ref" data-ref="multiplier-em-lunar">月曜精通乘区</span>
+              <span class="formula-op"> + </span>
+              <span class="formula-label">数值提升) × </span>
+              <span class="multiplier-ref" data-ref="multiplier-crit">暴击乘区</span>
+              <span class="formula-op"> × </span>
+              <span class="multiplier-ref" data-ref="multiplier-res">抗性乘区</span>
+              <span class="formula-op"> × (1 + 擢升)</span>
+            </div>
+            <div class="multiplier-expand" aria-live="polite" aria-label="乘区展开详情"></div>
+            <div class="formula-line">
+              <span class="formula-label">最终伤害 = 第1贡献伤害 × 0.6 + 第2贡献伤害 × 0.3 + 第3贡献伤害 × 0.05 + 第4贡献伤害 × 0.05</span>
+            </div>
+            <p class="formula-note">
+              注意①：对于冰元素星扩散反应，第一贡献伤害必定为冰元素角色，第二贡献伤害必定为风元素角色；对于风元素星扩散反应，第一贡献伤害必定为风元素角色。
+            </p>
+            <div class="table-scroll">
+              <table class="wiki-table">
+                <thead>
+                  <tr><th>元素反应</th><th>风涡等级</th><th>反应系数</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td rowspan="2">冰元素星扩散</td><td>风涡等级 1–2</td><td>2</td></tr>
+                  <tr><td>风涡等级 ≥ 3</td><td>3</td></tr>
+                  <tr><td>风元素星扩散</td><td>—</td><td>0.75</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="formula-note">
+              等级系数：点击 "<a href="#appendix-level-coefficient" class="ref-link">角色等级系数</a>" 可跳转到附录查询。<br />
+              基础提升：桑多涅、奥黛塔天赋，依据自身攻击力提供的反应基础提升，2000 攻击力可达到 14% 基础提升上限，基础提升乘区即为 1.14；旅行者（冰）天赋，依据自身攻击力提供的反应基础提升，2000 攻击力可达到 7% 基础提升上限，基础提升乘区即为 1.07。<br />
+              注解①：星烁反应伤害的精通乘区继续沿用月曜反应的精通乘区算法，唯一区别是附加精通乘区依据的元素反应不再是月曜反应，而是星烁反应。<br />
+              注解②：该算法适用于由星扩散反应伤害（风涡）。
+            </p>
+          </article>
+
+          <!-- 8. 星超导直伤类型 -->
+          <article class="wiki-card glass">
+            <h3 class="card-title">星超导直伤类型</h3>
+            <p class="formula-note">
+              反应简介：冰元素触及雷元素时，若满足特定条件，会引发特殊的星超导反应，并将附近的区域短暂变换为奇妙的"极星辉域"。处于"极星辉域"中的敌人受到冰元素或雷元素附着时，"极星辉域"会冻存这些溢散的元素力，并每隔 4 秒将冻存的元素力全部释放，使其转换为领域内所有角色的增益效果：使他们获得冰元素与雷元素伤害加成，并提升他们造成的星超导反应伤害的基础反应系数，持续 4 秒；此外，处于极星辉域中的敌人，物理抗性将会降低。
+            </p>
+            <div class="formula-line">
+              <span class="formula-label">最终伤害 = 某面板属性 × 技能倍率 × 反应系数 × 基础提升 × </span>
+              <span class="multiplier-ref" data-ref="multiplier-em-lunar">月曜精通乘区</span>
+              <span class="formula-op"> × </span>
+              <span class="multiplier-ref" data-ref="multiplier-crit">暴击乘区</span>
+              <span class="formula-op"> × </span>
+              <span class="multiplier-ref" data-ref="multiplier-res">抗性乘区</span>
+              <span class="formula-op"> × (1 + 擢升)</span>
+            </div>
+            <div class="multiplier-expand" aria-live="polite" aria-label="乘区展开详情"></div>
+            <p class="formula-note">
+              反应系数和伤害加成：触发星超导反应后，每 4 秒会记录期间雷元素或冰元素附着敌人的次数，至多记录 10 次，记录结束时提升此后 4 秒内的星超导反应系数和雷、冰元素伤害加成。规则如下：<br />
+              · 记录次数 = 0 时：反应系数 = 1.00；雷、冰元素伤害加成 = 20%<br />
+              · 记录次数 = 1 时：反应系数 = 1.45；雷、冰元素伤害加成 = 29%<br />
+              · 记录次数 ＞ 1 时：每多一次记录，+0.05 反应系数和 +1% 伤害加成<br />
+              （12 次记录达到最大值：反应系数 = 2.0；雷、冰元素伤害加成 = 40%）
+            </p>
+            <p class="formula-note">
+              基础提升：桑多涅、奥黛塔天赋，依据自身攻击力提供的反应基础提升，2000 攻击力可达到 14% 基础提升上限，基础提升乘区即为 1.14；旅行者（冰）天赋，依据自身攻击力提供的反应基础提升，2000 攻击力可达到 7% 基础提升上限，基础提升乘区即为 1.07。<br />
+              注解①：星超导伤害的精通乘区继续沿用月曜反应的精通乘区算法，唯一区别是附加精通乘区依据的元素反应不再是月曜反应，而是星超导反应。<br />
+              注解②：星超导伤害并非单一的冰伤或者雷伤，而是依据触发者决定，因此可以是冰元素伤害，也能是雷元素伤害，唯一区别是抗性乘区依据的元素类型不一样，需要注意。<br />
+              注解③：该算法适用于由技能造成的雷元素星超导伤害和冰元素星超导伤害。
+            </p>
+          </article>
+
+          <!-- 9. 星扩散直伤类型 -->
+          <article class="wiki-card glass">
+            <h3 class="card-title">星扩散直伤类型</h3>
+            <div class="formula-line">
+              <span class="formula-label">最终伤害 = 某面板属性 × 技能倍率 × 基础提升 × </span>
+              <span class="multiplier-ref" data-ref="multiplier-em-lunar">月曜精通乘区</span>
+              <span class="formula-op"> × </span>
+              <span class="multiplier-ref" data-ref="multiplier-crit">暴击乘区</span>
+              <span class="formula-op"> × </span>
+              <span class="multiplier-ref" data-ref="multiplier-res">抗性乘区</span>
+              <span class="formula-op"> × (1 + 擢升)</span>
+            </div>
+            <div class="multiplier-expand" aria-live="polite" aria-label="乘区展开详情"></div>
+            <p class="formula-note">注解：星扩散反应的反应系数始终为 1，所以可以视为没有反应系数这一个乘区。</p>
+          </article>
+
+        </section>
+
+        <!-- ============ SECTION B: 乘区公式 ============ -->
+        <section class="wiki-section section-gold">
+          <h2 class="wiki-section-title">乘区公式</h2>
+
+          <!-- 1. 基础乘区 -->
+          <article class="wiki-card glass" id="multiplier-base">
+            <h3 class="card-title">基础乘区</h3>
+            <div class="formula-katex" data-latex="\text{基础乘区} = \text{某面板属性} \times \text{技能倍率} \times \text{独立乘区} + \text{数值提升}"></div>
+            <p class="formula-note">注解：独立乘区只是习惯性叫法，但实际上并不完全独立。例如那维莱特固有天赋、丝柯克固有天赋、法尔伽固有天赋等，文本描述通常为"该伤害造成原本 x% 的伤害"，那么独立乘区即为 x%。</p>
+          </article>
+
+          <!-- 2. 暴击乘区 -->
+          <article class="wiki-card glass" id="multiplier-crit">
+            <h3 class="card-title">暴击乘区</h3>
+            <div class="formula-katex" data-latex="\text{期望暴击乘区} = 1 + \text{暴击率} \times \text{暴击伤害}"></div>
+            <p class="formula-note">注解：考虑暴击率对实战概率影响的期望算法。</p>
+            <div class="formula-katex" data-latex="\text{绝对暴击乘区} = 1 + \text{暴击伤害}"></div>
+            <p class="formula-note">注解：实战的本次伤害默认暴击，不考虑暴击率的影响。</p>
+          </article>
+
+          <!-- 3. 增伤乘区 -->
+          <article class="wiki-card glass" id="multiplier-dmg">
+            <h3 class="card-title">增伤乘区</h3>
+            <div class="formula-katex" data-latex="\text{增伤乘区} = 1 + \sum\text{任意来源增伤}"></div>
+            <p class="formula-note">注解：面板元素伤害、技能造成伤害提升、任意伤害提升均计入。</p>
+          </article>
+
+          <!-- 4. 抗性乘区 -->
+          <article class="wiki-card glass" id="multiplier-res">
+            <h3 class="card-title">抗性乘区</h3>
+            <div class="formula-katex" data-latex="\text{敌人实际抗性} = \text{敌人初始抗性} - \text{抗性降低}"></div>
+            <div class="formula-katex" data-display data-latex="\text{抗性乘区} =
+\begin{cases}
+1 - \frac{\text{实际抗性}}{2} &amp; \text{实际抗性} &lt; 0 \\[0.6em]
+1 - \text{实际抗性} &amp; 0 \leq \text{实际抗性} \leq 75\% \\[0.6em]
+\frac{1}{1 + 4 \times \text{实际抗性}} &amp; \text{实际抗性} &gt; 75\%
+\end{cases}"></div>
+          </article>
+
+          <!-- 5. 防御乘区 -->
+          <article class="wiki-card glass" id="multiplier-def">
+            <h3 class="card-title">防御乘区</h3>
+            <div class="formula-katex" data-display data-latex="\text{防御乘区} = \frac{500 + \text{角色等级} \times 5}{(500 + \text{角色等级} \times 5) + (1 - \text{无视防御}_\text{总和}) \times (1 - \text{降低防御}_\text{总和}) \times (500 + \text{敌人等级} \times 5)}"></div>
+            <p class="formula-note">注解：防御乘区 ≤ 1，最大为 1（意味防御已被完全无视）。</p>
+          </article>
+
+          <!-- 6. 精通乘区 -->
+          <article class="wiki-card glass" id="multiplier-em">
+            <h3 class="card-title">精通乘区</h3>
+
+            <div class="em-sub" data-em-type="amplify">
+              <h4>增幅反应（蒸发、融化）</h4>
+              <div class="formula-katex" data-latex="\text{增幅精通乘区} = 1 + \frac{2.78 \times \text{元素精通}}{\text{元素精通} + 1400} + \text{附加精通乘区}"></div>
+            </div>
+
+            <div class="em-sub" data-em-type="quicken">
+              <h4>激化反应（超激化、蔓激化）</h4>
+              <div class="formula-katex" data-latex="\text{激化精通乘区} = 1 + \frac{5 \times \text{元素精通}}{\text{元素精通} + 1200} + \text{附加精通乘区}"></div>
+            </div>
+
+            <div class="em-sub" data-em-type="transform">
+              <h4>剧变反应（超载、感电、超导、绽放、扩散、燃烧、碎冰）</h4>
+              <div class="formula-katex" data-latex="\text{剧变精通乘区} = 1 + \frac{16 \times \text{元素精通}}{\text{元素精通} + 2000} + \text{附加精通乘区}"></div>
+            </div>
+
+            <div class="em-sub" data-em-type="lunar">
+              <h4>月曜（月感电、月绽放、月结晶）&amp; 星超导反应</h4>
+              <div class="formula-katex" data-latex="\text{月曜精通乘区} = 1 + \frac{6 \times \text{元素精通}}{\text{元素精通} + 2000} + \text{附加精通乘区}"></div>
+            </div>
+
+            <p class="formula-note">统一注解：上述"附加精通乘区"即元素反应增伤，文本描述通常为"某元素反应造成的伤害提升 x%"。任何反应的此类描述 buff 都并非增伤乘区，而是属于精通乘区！</p>
+          </article>
+
+        </section>
+
+        <!-- ============ 附录：角色等级系数表 ============ -->
+        <section class="wiki-section wiki-appendix" id="appendix-level-coefficient">
+          <details class="wiki-details glass">
+            <summary class="wiki-summary">
+              <i class="fa-solid fa-table-list" aria-hidden="true"></i>
+              附录：角色等级系数表（等级 1~100）
+              <span class="summary-hint">点击展开/收起</span>
+            </summary>
+            <div class="table-scroll">
+              <table class="wiki-table level-table">
+                <thead>
+                  <tr><th>等级</th><th>角色等级系数</th><th>等级</th><th>角色等级系数</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>1</td><td>17.165</td><td>2</td><td>18.535</td></tr>
+                  <tr><td>3</td><td>19.904</td><td>4</td><td>21.274</td></tr>
+                  <tr><td>5</td><td>22.645</td><td>6</td><td>24.649</td></tr>
+                  <tr><td>7</td><td>26.640</td><td>8</td><td>28.868</td></tr>
+                  <tr><td>9</td><td>31.367</td><td>10</td><td>34.143</td></tr>
+                  <tr><td>11</td><td>37.201</td><td>12</td><td>40.659</td></tr>
+                  <tr><td>13</td><td>44.446</td><td>14</td><td>48.563</td></tr>
+                  <tr><td>15</td><td>53.748</td><td>16</td><td>59.081</td></tr>
+                  <tr><td>17</td><td>64.420</td><td>18</td><td>69.724</td></tr>
+                  <tr><td>19</td><td>75.123</td><td>20</td><td>80.584</td></tr>
+                  <tr><td>21</td><td>86.112</td><td>22</td><td>91.703</td></tr>
+                  <tr><td>23</td><td>97.244</td><td>24</td><td>102.812</td></tr>
+                  <tr><td>25</td><td>108.409</td><td>26</td><td>113.201</td></tr>
+                  <tr><td>27</td><td>118.102</td><td>28</td><td>122.979</td></tr>
+                  <tr><td>29</td><td>129.727</td><td>30</td><td>136.292</td></tr>
+                  <tr><td>31</td><td>142.670</td><td>32</td><td>149.029</td></tr>
+                  <tr><td>33</td><td>155.416</td><td>34</td><td>161.825</td></tr>
+                  <tr><td>35</td><td>169.106</td><td>36</td><td>176.518</td></tr>
+                  <tr><td>37</td><td>184.072</td><td>38</td><td>191.709</td></tr>
+                  <tr><td>39</td><td>199.556</td><td>40</td><td>207.382</td></tr>
+                  <tr><td>41</td><td>215.398</td><td>42</td><td>224.165</td></tr>
+                  <tr><td>43</td><td>233.502</td><td>44</td><td>243.350</td></tr>
+                  <tr><td>45</td><td>256.063</td><td>46</td><td>268.543</td></tr>
+                  <tr><td>47</td><td>281.526</td><td>48</td><td>295.013</td></tr>
+                  <tr><td>49</td><td>309.067</td><td>50</td><td>323.601</td></tr>
+                  <tr><td>51</td><td>336.757</td><td>52</td><td>350.530</td></tr>
+                  <tr><td>53</td><td>364.482</td><td>54</td><td>378.619</td></tr>
+                  <tr><td>55</td><td>398.600</td><td>56</td><td>416.398</td></tr>
+                  <tr><td>57</td><td>434.386</td><td>58</td><td>452.951</td></tr>
+                  <tr><td>59</td><td>472.606</td><td>60</td><td>492.884</td></tr>
+                  <tr><td>61</td><td>513.568</td><td>62</td><td>539.103</td></tr>
+                  <tr><td>63</td><td>565.510</td><td>64</td><td>592.538</td></tr>
+                  <tr><td>65</td><td>624.443</td><td>66</td><td>651.470</td></tr>
+                  <tr><td>67</td><td>679.496</td><td>68</td><td>707.794</td></tr>
+                  <tr><td>69</td><td>736.671</td><td>70</td><td>765.640</td></tr>
+                  <tr><td>71</td><td>794.773</td><td>72</td><td>824.677</td></tr>
+                  <tr><td>73</td><td>851.157</td><td>74</td><td>877.742</td></tr>
+                  <tr><td>75</td><td>914.229</td><td>76</td><td>946.746</td></tr>
+                  <tr><td>77</td><td>979.411</td><td>78</td><td>1011.223</td></tr>
+                  <tr><td>79</td><td>1044.791</td><td>80</td><td>1077.443</td></tr>
+                  <tr><td>81</td><td>1109.997</td><td>82</td><td>1142.976</td></tr>
+                  <tr><td>83</td><td>1176.369</td><td>84</td><td>1210.184</td></tr>
+                  <tr><td>85</td><td>1253.835</td><td>86</td><td>1288.952</td></tr>
+                  <tr><td>87</td><td>1325.484</td><td>88</td><td>1363.456</td></tr>
+                  <tr><td>89</td><td>1405.097</td><td>90</td><td>1446.853</td></tr>
+                  <tr><td>91</td><td>1488.215</td><td>92</td><td>1528.444</td></tr>
+                  <tr><td>93</td><td>1580.367</td><td>94</td><td>1630.847</td></tr>
+                  <tr><td>95</td><td>1711.197</td><td>96</td><td>1780.453</td></tr>
+                  <tr><td>97</td><td>1847.322</td><td>98</td><td>1911.474</td></tr>
+                  <tr><td>99</td><td>1972.864</td><td>100</td><td>2030.071</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </details>
+        </section>
+
+      </section>
+
+      <!-- =========================================================
+           PANEL 2: 附着与产球
+           ========================================================= -->
+      <section class="wiki-panel" id="panel-aura" role="tabpanel" aria-label="附着与产球">
+
+        <!-- 页面贡献者 -->
+        <div class="contributors glass">
+          <span class="contributors-label"><i class="fa-solid fa-user-pen" aria-hidden="true"></i> 页面贡献者</span>
+          <div class="contributor-avatar" data-qq="3476286587" data-nickname="艾莲其实是爱恋的意思">
+            <img src="https://q1.qlogo.cn/g?b=qq&nk=3476286587&s=100" alt="艾莲其实是爱恋的意思" />
+          </div>
+          <div class="contributor-avatar" data-qq="1062976603" data-nickname="海兔子教父">
+            <img src="https://q1.qlogo.cn/g?b=qq&nk=1062976603&s=100" alt="海兔子教父" />
+          </div>
+        </div>
+
+        <!-- 元素筛选栏 -->
+        <div class="aura-filter glass">
+          <button class="aura-filter-btn active" data-element="fire" aria-label="火元素" title="火元素">
+            <img src="../png/Element-Pro/Pyro.png" alt="火" width="32" height="32" />
+            <span>火</span>
+          </button>
+          <button class="aura-filter-btn" data-element="water" aria-label="水元素" title="水元素">
+            <img src="../png/Element-Pro/Hydro.png" alt="水" width="32" height="32" />
+            <span>水</span>
+          </button>
+          <button class="aura-filter-btn" data-element="thunder" aria-label="雷元素" title="雷元素">
+            <img src="../png/Element-Pro/Electro.png" alt="雷" width="32" height="32" />
+            <span>雷</span>
+          </button>
+          <button class="aura-filter-btn" data-element="ice" aria-label="冰元素" title="冰元素">
+            <img src="../png/Element-Pro/Cryo.png" alt="冰" width="32" height="32" />
+            <span>冰</span>
+          </button>
+          <button class="aura-filter-btn" data-element="wind" aria-label="风元素" title="风元素">
+            <img src="../png/Element-Pro/Anemo.png" alt="风" width="32" height="32" />
+            <span>风</span>
+          </button>
+          <button class="aura-filter-btn" data-element="rock" aria-label="岩元素" title="岩元素">
+            <img src="../png/Element-Pro/Geo.png" alt="岩" width="32" height="32" />
+            <span>岩</span>
+          </button>
+          <button class="aura-filter-btn" data-element="grass" aria-label="草元素" title="草元素">
+            <img src="../png/Element-Pro/Dendro.png" alt="草" width="32" height="32" />
+            <span>草</span>
+          </button>
+        </div>
+
+        <!-- 工具条 -->
+        <div class="aura-toolbar">
+          <button class="aura-toggle-btn glass" id="aura-toggle-all" aria-label="全部展开/收起">
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+            <span>全部展开</span>
+          </button>
+          <div class="aura-search glass">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            <input
+              type="search"
+              id="aura-search-input"
+              placeholder="搜索角色名称..."
+              aria-label="搜索角色名称"
+            />
+          </div>
+        </div>
+
+        <!-- 角色卡片容器（JS 动态渲染） -->
+        <div class="aura-chars" id="aura-chars">
+          <!-- 由 particles-data.js 数据动态生成 -->
+        </div>
+
+      </section>
+
+      <!-- =========================================================
+           PANEL 3: 充能计算
+           ========================================================= -->
+      <section class="wiki-panel" id="panel-energy" role="tabpanel" aria-label="充能计算">
+
+        <!-- 页面贡献者 -->
+        <div class="contributors glass">
+          <span class="contributors-label"><i class="fa-solid fa-user-pen" aria-hidden="true"></i> 页面贡献者</span>
+          <div class="contributor-avatar" data-qq="1062976603" data-nickname="海兔子教父">
+            <img src="https://q1.qlogo.cn/g?b=qq&nk=1062976603&s=100" alt="海兔子教父" />
+          </div>
+          <p class="contributors-hint">当前仅为测试阶段，会持续优化，bug较多，请添加群 779554708 反馈。手机端 UI 问题较大，可前往电脑端获得良好体验。</p>
+        </div>
+
+        <!-- 左右布局容器 -->
+        <div class="energy-layout">
+
+          <!-- 左侧：输入区 -->
+          <div class="energy-inputs">
+
+            <!-- 微粒/晶球吸收表格 -->
+            <div class="wiki-card glass">
+              <h3 class="card-title">微粒 &amp; 晶球吸收</h3>
+              <div class="table-scroll">
+                <table class="energy-table">
+                  <thead>
+                    <tr>
+                      <th>吸收类型</th>
+                      <th class="particle-header">同元素微粒</th><th class="particle-header">异元素微粒</th><th class="particle-header">无元素微粒</th>
+                      <th class="orb-header">同元素晶球</th><th class="orb-header">异元素晶球</th><th class="orb-header">无元素晶球</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>前台吸收</td>
+                      <td><input type="number" id="ec-front-particle-same" value="0" min="0" max="128" step="any" aria-label="前台同元素微粒" /></td>
+                      <td><input type="number" id="ec-front-particle-diff" value="0" min="0" max="128" step="any" aria-label="前台异元素微粒" /></td>
+                      <td><input type="number" id="ec-front-particle-neutral" value="0" min="0" max="128" step="any" aria-label="前台无元素微粒" /></td>
+                      <td><input type="number" id="ec-front-orb-same" value="0" min="0" max="128" step="any" aria-label="前台同元素晶球" /></td>
+                      <td><input type="number" id="ec-front-orb-diff" value="0" min="0" max="128" step="any" aria-label="前台异元素晶球" /></td>
+                      <td><input type="number" id="ec-front-orb-neutral" value="0" min="0" max="128" step="any" aria-label="前台无元素晶球" /></td>
+                    </tr>
+                    <tr>
+                      <td>后台吸收</td>
+                      <td><input type="number" id="ec-back-particle-same" value="0" min="0" max="128" step="any" aria-label="后台同元素微粒" /></td>
+                      <td><input type="number" id="ec-back-particle-diff" value="0" min="0" max="128" step="any" aria-label="后台异元素微粒" /></td>
+                      <td><input type="number" id="ec-back-particle-neutral" value="0" min="0" max="128" step="any" aria-label="后台无元素微粒" /></td>
+                      <td><input type="number" id="ec-back-orb-same" value="0" min="0" max="128" step="any" aria-label="后台同元素晶球" /></td>
+                      <td><input type="number" id="ec-back-orb-diff" value="0" min="0" max="128" step="any" aria-label="后台异元素晶球" /></td>
+                      <td><input type="number" id="ec-back-orb-neutral" value="0" min="0" max="128" step="any" aria-label="后台无元素晶球" /></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- 配置 + 高级设置 同行 -->
+            <div class="energy-config-row">
+              <div class="wiki-card glass energy-config-card">
+                <h3 class="card-title">配置信息</h3>
+                <div class="energy-config">
+                  <label class="energy-config-item">
+                    <span>队伍人数</span>
+                    <input type="number" id="ec-team-size" value="4" min="1" max="4" aria-label="队伍人数" />
+                  </label>
+                  <label class="energy-config-item">
+                    <span>所需能量</span>
+                    <input type="number" id="ec-required-energy" value="60" min="0" max="256" aria-label="所需能量" />
+                  </label>
+                  <label class="energy-config-item">
+                    <span>固定恢复能量</span>
+                    <input type="number" id="ec-fixed-energy" value="0" min="0" max="128" aria-label="固定恢复能量" />
+                  </label>
+                  <label class="energy-config-item">
+                    <span>元素充能效率</span>
+                    <span class="er-input-wrap"><input type="number" id="ec-er" value="100" min="100" max="10000" step="any" aria-label="元素充能效率" />%</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="wiki-card glass energy-config-card energy-advanced">
+                <h3 class="card-title"><i class="fa-solid fa-gear" aria-hidden="true"></i> 高级设置</h3>
+                <div class="energy-advanced-body">
+                  <label class="energy-config-item">
+                    <span>普攻 &amp; 重击次数</span>
+                    <input type="number" id="ec-attack-count" value="0" min="0" max="128" aria-label="普攻和重击次数" />
+                  </label>
+                  <label class="energy-config-item">
+                    <span>武器类型</span>
+                    <select id="ec-weapon-type" aria-label="武器类型">
+                      <option value="单手剑">单手剑</option>
+                      <option value="双手剑">双手剑</option>
+                      <option value="长柄武器">长柄武器</option>
+                      <option value="法器">法器</option>
+                      <option value="弓">弓</option>
+                    </select>
+                  </label>
+                  <div class="energy-config-item energy-slider-item">
+                    <span class="energy-slider-value" id="ec-style-text">平衡（×1.00）</span>
+                    <div class="energy-slider-wrap">
+                      <input type="range" id="ec-expectation-style" value="50" min="0" max="100" step="1" aria-label="期望风格" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" />
+                    </div>
+                    <div class="energy-slider-labels">
+                      <span>轻松</span><span>平衡</span><span>严格</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- 右侧：计算结果 -->
+          <div class="energy-result">
+            <div class="wiki-card glass" id="ec-result-card">
+              <div class="energy-result-header">
+                <h3 class="card-title" style="margin-bottom:0;">计算结果</h3>
+                <button class="energy-reset-btn" id="ec-reset-btn" aria-label="恢复默认设置"><i class="fa-solid fa-rotate-left"></i> 恢复</button>
+              </div>
+              <div class="energy-result-status" id="ec-result-status">
+                <i class="fa-solid fa-circle-xmark" aria-hidden="true"></i>
+                <span id="ec-result-status-text">充能未达标</span>
+              </div>
+              <div class="energy-result-row">
+                <span>最低充能需求</span>
+                <span class="energy-result-value" id="ec-result-min-er">--</span>
+              </div>
+              <div class="energy-result-row">
+                <span>能量已恢复</span>
+                <span class="energy-result-value" id="ec-result-recovered">--</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- =========================================================
+           PANEL 4: 数值查询（占位）
+           ========================================================= -->
+      <section class="wiki-panel" id="panel-lookup" role="tabpanel" aria-label="数值查询">
+        <div class="wiki-placeholder glass">
+          <i class="fa-solid fa-clock" aria-hidden="true"></i>
+          <p>即将上线</p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="site-footer">
+    <span>2026 强度研究院</span>
+    <span>Genshin Impact SRI</span>
+  </footer>
+
+  <!-- 角色技能附着及产球数据 -->
+  <script src="data/particles-data.js" defer></script>
+
+  <!-- KaTeX 公式渲染库 -->
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+
+  <!-- 全局脚本（配置加载、音乐播放、导航状态） -->
+  <script src="../script.js" defer></script>
+
+  <!-- Wiki 专属脚本（标签切换、乘区展开） -->
+  <script src="script.js" defer></script>
+
+  <!-- 充能计算器脚本 -->
+  <script src="js/energy-calculator.js" defer></script>
+
+</body>
+</html>
