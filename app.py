@@ -59,7 +59,7 @@ st.markdown(
         background-color: #16213e;
         background-image:
             linear-gradient(180deg, rgba(26, 26, 46, 0.30), rgba(15, 52, 96, 0.42)),
-            url("https://enka.network/ui/UI_NameCardPic_Furina_P.png");
+            url("/app/static/furina_starry_bg.jpg");
         background-size: cover;
         background-position: center top;
         background-attachment: fixed;
