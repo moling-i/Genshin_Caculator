@@ -37,9 +37,9 @@ st.markdown(
         border-bottom: 1px solid var(--border);
     }
     h1, h2, h3 { color: var(--text) !important; font-weight: 600 !important; }
-    /* 卡片：半透明毛玻璃（透出海报背景） */
+    /* 卡片：白色半透明毛玻璃（浮于浅色渐变之上） */
     .stExpander, [data-testid="stExpander"] {
-        border: 1px solid rgba(255, 255, 255, 0.4) !important;
+        border: 1px solid rgba(120, 130, 160, 0.25) !important;
         border-radius: 6px !important;
         box-shadow: none !important;
         background: rgba(255, 255, 255, 0.92);
@@ -51,17 +51,13 @@ st.markdown(
         background: rgba(255, 255, 255, 0.92) !important;
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
-        border: 1px solid rgba(255, 255, 255, 0.4) !important;
+        border: 1px solid rgba(120, 130, 160, 0.25) !important;
         border-radius: 8px !important;
     }
-    /* 全屏壁纸背景：高清星空原图直出（无压暗遮罩），加载失败时兜底为深色底 */
+    /* 简约背景：浅蓝到淡紫的柔和渐变，无任何图片 */
     .stApp {
-        background-color: #16213e;
-        background-image: url("/app/static/furina_starry_bg.png");
-        background-size: cover;
-        background-position: center;
+        background: linear-gradient(135deg, #e8f0fe 0%, #d4e0f0 50%, #f0e6f6 100%);
         background-attachment: fixed;
-        background-repeat: no-repeat;
     }
     /* 顶栏与主容器透明，让背景完整露出 */
     [data-testid="stHeader"] {
@@ -78,12 +74,11 @@ st.markdown(
         background: rgba(255, 255, 255, 0.86) !important;
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
-        border-right: 1px solid rgba(255, 255, 255, 0.3);
+        border-right: 1px solid rgba(120, 130, 160, 0.2);
     }
-    /* 文字在背景上保持清晰 */
+    /* 文字保持清晰（浅色底上无需白影） */
     h1, h2, h3, .stMarkdown p, label, span, div {
         color: var(--text);
-        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.55);
     }
     /* 图片：无边框、轻圆角 */
     .stImage img, [data-testid="stImage"] img {
@@ -660,7 +655,7 @@ with side_col:
         with st.expander("背景设置", expanded=False):
             bg_mode = st.radio(
                 "选择背景",
-                ["默认海报", "渐变纯色", "自定义图片"],
+                ["简约渐变", "深色渐变", "自定义图片"],
                 horizontal=True,
             )
             uploaded_bg = None
@@ -668,7 +663,6 @@ with side_col:
                 uploaded_bg = st.file_uploader(
                     "上传背景图", type=["jpg", "jpeg", "png", "webp"]
                 )
-            st.caption("壁纸来源：芙宁娜·枫丹星夜莲池 4K（qimanbz 壁纸库，本地静态托管）")
 
 # ---------- 主界面 ----------
 if optimize_btn:
@@ -830,19 +824,17 @@ if bg_mode == "自定义图片" and uploaded_bg is not None:
     )
     _bg_css = (
         ".stApp {"
-        "background-color: #16213e;"
-        "background-image: linear-gradient(180deg, rgba(26,26,46,0.25), rgba(15,52,96,0.35)),"
         f"url(\"{_bg_data_url}\");"
         "background-size: cover; background-position: center;"
         "background-attachment: fixed; background-repeat: no-repeat;}"
     )
-elif bg_mode == "渐变纯色":
+elif bg_mode == "深色渐变":
     _bg_css = (
         ".stApp {"
         "background-image: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);}"
     )
 else:
-    _bg_css = ""  # 默认海报已在顶部样式中定义
+    _bg_css = ""  # 简约渐变已在顶部样式中定义
 
 if _bg_css:
     st.markdown(f"<style>{_bg_css}</style>", unsafe_allow_html=True)
