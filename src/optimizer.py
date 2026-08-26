@@ -71,6 +71,7 @@ class OptimizationInput:
         weapon_id=None,
         artifact_set_2=None,
         artifact_set_4=None,
+        is_double_two_piece: bool = False,
         total_substat_rolls: int = 30,
         min_crit_rate: float = 0.2,
         main_stats: dict = None,
@@ -92,6 +93,8 @@ class OptimizationInput:
         self.weapon_id = weapon_id
         self.artifact_set_2 = artifact_set_2
         self.artifact_set_4 = artifact_set_4
+        # 圣遗物分支：False=单四件套（自动附带其2件套效果）；True=2+2（两套各触发2件套）
+        self.is_double_two_piece = is_double_two_piece
         self.total_substat_rolls = total_substat_rolls
         self.min_crit_rate = min_crit_rate
         self.main_stats = main_stats or {}
@@ -230,6 +233,9 @@ class DamageOptimizer:
         char.stack_context.update(effects.get("stack_context") or {})
         # 状态标签触发上下文（UI 开关 → 引擎门控）
         char.active_states.update(effects.get("active_states") or {})
+        # 敌人减抗（重云/夏沃蕾/希格雯式：解析后进入抗性区）
+        for rs in effects.get("res_shreds") or []:
+            char.add_res_shred(rs)
 
     def _build_member_character(self, cfg: dict) -> Character:
         """按队伍成员独立配置构建队友角色（武器/圣遗物/面板/固有天赋）"""
@@ -256,18 +262,29 @@ class DamageOptimizer:
 
     def _build_effect_manager(self, char: Character, weapon_id=None,
                               refinement: int = 1, artifact_set_2=None,
-                              artifact_set_4=None) -> EffectManager:
+                              artifact_set_4=None,
+                              is_double_two_piece=None) -> EffectManager:
         """构建并应用效果管理器（默认使用主角配置）"""
         em = EffectManager(char)
         wid = weapon_id or self.input.weapon_id
         a2 = artifact_set_2 or self.input.artifact_set_2
         a4 = artifact_set_4 or self.input.artifact_set_4
+        d22 = self.input.is_double_two_piece if is_double_two_piece is None \
+            else is_double_two_piece
         if wid:
             em.apply_weapon_effect(wid, refinement)
-        if a2:
-            em.apply_artifact_effect(set_2_id=a2)
-        if a4:
-            em.apply_artifact_effect(set_4_id=a4)
+        if d22:
+            # 2+2 组合：两个套装各只触发其 2件套效果
+            if a2:
+                em.apply_artifact_pieces(a2, {2})
+            if a4:
+                em.apply_artifact_pieces(a4, {2})
+        else:
+            # 单四件套：同时触发该套装的 2件套 + 4件套效果
+            if a4:
+                em.apply_artifact_effect(set_4_id=a4)
+            elif a2:
+                em.apply_artifact_effect(set_2_id=a2)
         em.apply_constellation_effects()
         em.trigger_event("always")
         return em
@@ -283,6 +300,7 @@ class DamageOptimizer:
 
         # 队伍构建：优先使用成员独立配置（UI 队伍面板），否则回退 team_members
         team = None
+        extra_res_shred = 0.0
         if self.input.team_configs and any(self.input.team_configs):
             from .team import Team
             members = []
@@ -295,6 +313,11 @@ class DamageOptimizer:
             while len(members) < 4:
                 members.append(None)
             team = Team(members[:4])
+            # 队友提供的减抗（全元素恒生效；元素专属需匹配主力元素）
+            extra_res_shred = sum(
+                m.get_applicable_res_shred(getattr(char, "element", None))
+                for m in members if m and m is not char
+            )
         else:
             active_members = [m for m in self.input.team_members if m]
             if len(active_members) >= 2:
@@ -322,6 +345,7 @@ class DamageOptimizer:
             is_crit=False,
             effect_manager=em,
             team=team,
+            extra_res_shred=extra_res_shred,
         )
         non_crit = result["damage"]
         panel = char.get_effective_panel()

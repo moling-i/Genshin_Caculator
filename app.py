@@ -176,7 +176,7 @@ def render_passive_toggles(char_id, member_idx):
     effects = {
         "modifiers": {}, "conversions": [], "er_scalings": [],
         "talent_multipliers": {}, "extra_hits": [], "damage_amps": [],
-        "stack_context": {}, "active_states": {},
+        "stack_context": {}, "active_states": {}, "res_shreds": [],
     }
     # ---- 状态标签触发判定（夜魂/魔导/星超导/星扩散/月兆）----
     # 开关列表 = 角色固有标签 ∪ 各天赋描述中检测到的依赖状态
@@ -241,6 +241,16 @@ def render_passive_toggles(char_id, member_idx):
         # ---- 数值合并 ----
         for attr, val in parsed["modifiers"].items():
             effects["modifiers"][attr] = effects["modifiers"].get(attr, 0.0) + val
+        rs = parsed.get("res_shred")
+        if rs:
+            entry = {k: v for k, v in rs.items() if k != "text"}
+            if entry not in effects["res_shreds"]:
+                effects["res_shreds"].append(entry)
+            elems = [entry.get("element"), entry.get("element2")]
+            elem_txt = "/".join(e for e in elems if e) or "全部元素"
+            st.caption(
+                f"　↳ 敌人减抗已计入：{elem_txt}抗性 -{entry.get('value', 0) * 100:g}%"
+            )
         if parsed.get("conversion"):
             conv = {k: v for k, v in parsed["conversion"].items() if k != "text"}
             effects["conversions"].append(conv)
@@ -377,6 +387,7 @@ def member_config_panel(idx):
             "constellation_level": 0,
             "weapon_id": None, "refinement": 1,
             "artifact_set_2": None, "artifact_set_4": None,
+            "is_double_two_piece": False,
             "talent_levels": {"normal": 10, "skill": 10, "burst": 10},
             "panel": {}, "passive_modifiers": {}, "passive_effects": {},
             "states": [],
@@ -423,30 +434,45 @@ def member_config_panel(idx):
             else:
                 st.caption(f"⚔️ {wname} 无特殊被动效果")
 
-        # ---- 圣遗物（2件套/4件套独立选择 + 效果展示）----
+        # ---- 圣遗物（四件套 / 2+2 分支选择）----
         col_apic, col_asel = st.columns([1, 4])
         with col_asel:
-            a2 = searchable_select("圣遗物 2件套", art_names, f"m{idx}_a2")
-            if a2 is None:
-                a2 = "无"
-        sid2 = art_ids.get(a2) if a2 != "无" else None
-        with col_apic:
-            show_icon("relic", sid2, suffix="_5")
-        a4 = searchable_select("圣遗物 4件套", art_names, f"m{idx}_a4")
-        if a4 is None:
-            a4 = "无"
-        sid4 = art_ids.get(a4) if a4 != "无" else None
-        cfg["artifact_set_2"], cfg["artifact_set_4"] = sid2, sid4
-
-        # 按实际选择分别显示对应件套描述；同套装同时选 2+4 时完整展示
-        if sid2:
-            e2, _ = get_artifact_effect(sid2)
-            st.caption(f"**📜 {a2} · 2件套**")
-            st.write(e2 or "（暂无描述）")
-        if sid4:
-            _, e4 = get_artifact_effect(sid4)
-            st.caption(f"**📜 {a4} · 4件套**")
-            st.write(e4 or "（暂无描述）")
+            is_22 = st.checkbox("2+2 组合（两个两件套）", key=f"m{idx}_a22")
+        cfg["is_double_two_piece"] = is_22
+        if is_22:
+            # 2+2：选择两个套装，各自只触发其 2件套效果
+            with col_asel:
+                aA = searchable_select("圣遗物套装①（触发其2件套）", art_names, f"m{idx}_a2")
+                if aA is None:
+                    aA = "无"
+                aB = searchable_select("圣遗物套装②（触发其2件套）", art_names, f"m{idx}_a4")
+                if aB is None:
+                    aB = "无"
+            sidA = art_ids.get(aA) if aA != "无" else None
+            sidB = art_ids.get(aB) if aB != "无" else None
+            with col_apic:
+                show_icon("relic", sidA, suffix="_5")
+            cfg["artifact_set_2"], cfg["artifact_set_4"] = sidA, sidB
+            for nm, sid in ((aA, sidA), (aB, sidB)):
+                if sid:
+                    e2, _ = get_artifact_effect(sid)
+                    st.caption(f"**📜 {nm} · 2件套**")
+                    st.write(e2 or "（暂无描述）")
+        else:
+            # 单四件套：只选一个套装，自动同时触发其 2件套 + 4件套效果
+            with col_asel:
+                a4 = searchable_select("圣遗物四件套（自动附带2件套效果）", art_names, f"m{idx}_a4")
+                if a4 is None:
+                    a4 = "无"
+            sid4 = art_ids.get(a4) if a4 != "无" else None
+            with col_apic:
+                show_icon("relic", sid4, suffix="_5")
+            cfg["artifact_set_2"], cfg["artifact_set_4"] = None, sid4
+            if sid4:
+                e2, e4 = get_artifact_effect(sid4)
+                st.caption(f"**📜 {a4} · 四件套（2件套 + 4件套效果同时生效）**")
+                st.write("**2件套：** " + (e2 or "（暂无描述）"))
+                st.write("**4件套：** " + (e4 or "（暂无描述）"))
 
         # ---- 天赋等级（3 个滑块）+ Meropide 天赋信息 ----
         st.markdown("**🎯 天赋等级**")
@@ -559,6 +585,7 @@ if optimize_btn:
                     weapon_id=main_cfg["weapon_id"],
                     artifact_set_2=main_cfg["artifact_set_2"],
                     artifact_set_4=main_cfg["artifact_set_4"],
+                    is_double_two_piece=main_cfg.get("is_double_two_piece", False),
                     total_substat_rolls=total_rolls,
                     min_crit_rate=min_cr,
                     main_stats={

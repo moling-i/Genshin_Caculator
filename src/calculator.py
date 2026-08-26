@@ -17,6 +17,7 @@ def calculate_damage(
     team: Team = None,
     effect_manager: EffectManager = None,
     stellar_stacks: int = 0,
+    extra_res_shred: float = 0.0,
 ) -> dict:
     """
     计算最终伤害
@@ -38,6 +39,7 @@ def calculate_damage(
         team: 队伍实例（月反应间接伤害需要）
         effect_manager: 效果管理器（提供最终修饰器）
         stellar_stacks: 星超导附着次数（0/6/12）
+        extra_res_shred: 额外敌人减抗（如队友提供的全队减抗，直接叠加到抗性区）
 
     返回:
         {
@@ -133,9 +135,17 @@ def calculate_damage(
         def_factor = def_factor * (1 - enemy_shred)
     breakdown["def_factor"] = def_factor
 
-    # 5. 抗性区
-    res_factor = constants.resistance_factor(enemy_res)
+    # 5. 抗性区（应用减抗：全元素减抗恒生效；元素专属减抗仅匹配角色元素时生效）
+    main_elem = getattr(character, "element", None)
+    res_shred_total = (
+        character.get_applicable_res_shred(main_elem)
+        + float(extra_res_shred or 0.0)
+    )
+    effective_enemy_res = float(enemy_res) - res_shred_total
+    res_factor = constants.resistance_factor(effective_enemy_res)
     breakdown["res_factor"] = res_factor
+    breakdown["res_shred_total"] = res_shred_total
+    breakdown["effective_enemy_res"] = effective_enemy_res
 
     # 6. 暴击区
     if is_crit:

@@ -31,25 +31,40 @@ class EffectManager:
         }
         self.active_effects.append(effect)
 
+    def apply_artifact_pieces(self, set_id, pieces):
+        """加载并应用套装中指定件数的效果条目（pieces 为集合，如 {2} 或 {2, 4}）
+
+        仅加载对应件数的 effect，避免旧实现把整套效果无差别激活的问题。
+        """
+        art_set = data_loader.find_artifact_set(set_id)
+        if not art_set:
+            return
+        for eff in art_set.get("effects", []):
+            pc = eff.get("pieces", 0)
+            if pc not in pieces:
+                continue
+            effect = {
+                "source": "artifact",
+                "set_id": set_id,
+                "pieces": pc,
+                "name": eff.get("name_cn", ""),
+                "open_config": eff.get("open_config", ""),
+                "param_list": eff.get("param_list", []),
+                "trigger": "always" if pc == 2 else "4pc",
+            }
+            self.active_effects.append(effect)
+
     def apply_artifact_effect(self, set_2_id: str = None, set_4_id: str = None):
-        """加载并应用圣遗物套装效果（从 artifacts.json）"""
-        for set_id in [set_2_id, set_4_id]:
-            if not set_id:
-                continue
-            art_set = data_loader.find_artifact_set(set_id)
-            if not art_set:
-                continue
-            for eff in art_set.get("effects", []):
-                effect = {
-                    "source": "artifact",
-                    "set_id": set_id,
-                    "pieces": eff.get("pieces", 0),
-                    "name": eff.get("name_cn", ""),
-                    "open_config": eff.get("open_config", ""),
-                    "param_list": eff.get("param_list", []),
-                    "trigger": "always" if eff.get("pieces") == 2 else "4pc",
-                }
-                self.active_effects.append(effect)
+        """加载并应用圣遗物套装效果（从 artifacts.json）
+
+        兼容旧接口语义（与游戏内真实行为一致）：
+          - set_2_id: 仅触发该套装的 2件套效果；
+          - set_4_id: 装备四件套时，同时触发该套装的 2件套 + 4件套效果。
+        """
+        if set_2_id:
+            self.apply_artifact_pieces(set_2_id, {2})
+        if set_4_id:
+            self.apply_artifact_pieces(set_4_id, {2, 4})
 
     def apply_constellation_effects(self):
         """加载并应用命座效果（从 constellations.json）"""
@@ -105,19 +120,9 @@ class EffectManager:
             oc = eff.get("open_config", "")
             params = eff.get("param_list", [])
             # 根据 open_config 关键词应用不同修饰器
-            if "DamageUpToEnemy" in oc or "AtkUp" in oc:
-                if params:
-                    modifiers["dmg_bonus"] += params[0]
-            elif "ExtraAtkCritUp" in oc:
-                if params:
-                    modifiers["atk_percent"] += params[0]
-                    if len(params) > 1:
-                        modifiers["crit_rate"] += params[1]
-            elif "HPScaleAtkUp" in oc:
-                # 护摩之杖：基于生命值提供攻击力%
-                if params:
-                    modifiers["atk_percent"] += params[0]
-            elif "SkillDamageUp" in oc:
+            # 注意：必须先匹配具体关键词，再匹配通用子串（如 "AtkUp"），
+            # 否则通用分支会吞掉 AtkAndExtraAtkUp / ExtraAtkCritUp 等专属效果
+            if "SkillDamageUp" in oc:
                 # 圣遗物：技能伤害提升
                 if params:
                     modifiers["dmg_bonus"] += params[0]
@@ -133,6 +138,15 @@ class EffectManager:
                 # 圣遗物：攻击力提升
                 if params:
                     modifiers["atk_percent"] += params[0]
+            elif "ExtraAtkCritUp" in oc:
+                if params:
+                    modifiers["atk_percent"] += params[0]
+                    if len(params) > 1:
+                        modifiers["crit_rate"] += params[1]
+            elif "HPScaleAtkUp" in oc:
+                # 护摩之杖：基于生命值提供攻击力%
+                if params:
+                    modifiers["atk_percent"] += params[0]
             elif "ElemDmgEnhanceElemResist" in oc:
                 # 圣遗物：元素伤害加成
                 if params:
@@ -141,6 +155,10 @@ class EffectManager:
                 # 圣遗物：反应获得元素精通
                 if params:
                     modifiers["elemental_mastery"] += params[0]
+            elif "DamageUpToEnemy" in oc or "AtkUp" in oc:
+                # 通用兜底：武器/圣遗物伤害提升（如武器11301 DamageUpToEnemy）
+                if params:
+                    modifiers["dmg_bonus"] += params[0]
             # 命座效果（如雷电将军C2：无视防御）
             elif "Constellation_2" in oc and "Shougun" in oc:
                 # 雷电将军C2：开大时无视60%防御

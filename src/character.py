@@ -49,6 +49,7 @@ class Character:
         self.dmg_bonus = 0
         self.physical_dmg_bonus = 0    # 物理伤害加成（如辛焱固有）
         self.enemy_def_shred = 0       # 敌人防御降低（如丽莎静电场力），上限40%
+        self.enemy_res_shreds = []     # 敌人减抗列表 [{elements:[元素名|'all'], value}]
         self.def_ignore = 0  # 无视防御比例（如雷电将军C2）
         # 扩展：属性转换 / 充能缩放 / 血量上下文（由固有天赋注入，get_effective_panel 时生效）
         self.pending_conversions = []   # [{from, to, ratio}]
@@ -97,6 +98,36 @@ class Character:
         for attr, val in (modifiers or {}).items():
             if hasattr(self, attr) and not callable(getattr(self, attr)):
                 setattr(self, attr, getattr(self, attr) - val)
+
+    def add_res_shred(self, rs: dict):
+        """注册敌人减抗效果（如重云冰抗-10%、夏沃蕾火雷-40%、希格雯全抗-10%）。
+
+        :param rs: parse_effect 输出的 {"element": 元素|"all", "element2": 元素, "value": 数值}
+                   归一化为 {"elements": [...], "value": float} 存入 enemy_res_shreds
+        """
+        if not rs:
+            return
+        elems = []
+        if rs.get("element"):
+            elems.append(rs["element"])
+        if rs.get("element2"):
+            elems.append(rs["element2"])
+        entry = {"elements": elems or ["all"], "value": float(rs.get("value", 0.0))}
+        if entry not in self.enemy_res_shreds:
+            self.enemy_res_shreds.append(entry)
+
+    def get_applicable_res_shred(self, for_element=None) -> float:
+        """对指定元素的伤害生效的减抗总和。
+
+        - "all"（全元素/物理减抗）：恒生效；
+        - 元素专属减抗：仅当目标元素匹配时生效。
+        """
+        total = 0.0
+        for rs in getattr(self, "enemy_res_shreds", []):
+            els = rs.get("elements") or ["all"]
+            if "all" in els or (for_element and for_element in els):
+                total += float(rs.get("value", 0.0))
+        return total
 
     def apply_conversion(self, conversion: dict):
         """注册属性转换型天赋（如"基于生命值上限6%转化为攻击力"）"""
@@ -160,6 +191,7 @@ class Character:
                                 "effect": None})
                 continue
             self.apply_passive(eff["modifiers"])
+            self.add_res_shred(eff.get("res_shred"))
             if eff["conversion"]:
                 self.apply_conversion(eff["conversion"])
             if eff["er_scaling"]:
@@ -380,6 +412,7 @@ class Character:
             ),
             "physical_dmg_bonus": getattr(self, "physical_dmg_bonus", 0.0),
             "enemy_def_shred": min(getattr(self, "enemy_def_shred", 0.0), 0.4),
+            "enemy_res_shreds": [dict(r) for r in getattr(self, "enemy_res_shreds", [])],
             "def_ignore": self.def_ignore,
             "flat_dmg_bonus": flat_dmg_bonus,
             "amplify_bonus": getattr(self, "amplify_bonus", 0.0),
