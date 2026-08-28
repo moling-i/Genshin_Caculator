@@ -60,6 +60,64 @@ class Team:
 
         return total
 
+    def calculate_star_swirl_indirect_damage(self, vortex_level: int = 1,
+                                              element: str = "cryo",
+                                              enemy_res: float = 0.1,
+                                              star_base_boost: float = 0.0) -> float:
+        """
+        计算星扩散间接伤害（风涡，排序加权求和）
+        - 遍历 4 个成员，计算每个人的"个人星扩散伤害"
+        - 从高到低排序
+        - 加权求和：最高×0.6 + 第二×0.3 + 第三×0.05 + 第四×0.05
+
+        gensri.wiki 公式：
+          每名角色贡献伤害 = 等级系数 × 反应系数(风涡) × 基础提升 × 月曜精通乘区
+                            × 暴击乘区 × 抗性乘区 × (1 + 擢升)
+          最终伤害 = Σ 加权贡献
+
+        :param vortex_level: 风涡等级（1~6），决定冰元素星扩散反应系数（1–2级=2，≥3级=3）
+        :param element: 触发元素类型（"cryo"/"冰" 或 "wind"/"风"）
+        :param enemy_res: 敌人抗性
+        :param star_base_boost: 基础提升（按角色 ATK 的 1.07/1.14 近似，单值传入）
+        """
+        coeff = constants.star_swirl_vortex_coeff(vortex_level, element)
+        res_factor = constants.resistance_factor(enemy_res)
+
+        personal_damages = []
+        for char in self.members:
+            if char is None:
+                continue
+            panel = char.get_effective_panel()
+            # 精通乘区：星烁沿用月曜算法（6×EM/(EM+2000)）
+            em_bonus = constants.em_bonus_star(panel["elemental_mastery"])
+            reaction_bonus = panel["reaction_dmg_bonus"]
+            crit_dmg = panel["crit_dmg"]
+            flat = panel.get("flat_dmg_bonus", 0.0)        # 数值提升（羽毛区）
+            uplift = panel.get("star_uplift", 0.0)         # 星烁擢升
+
+            personal = (
+                (coeff
+                 * constants.LEVEL_COEFFICIENT
+                 * (1 + star_base_boost)
+                 * (1 + em_bonus + reaction_bonus)
+                 * res_factor
+                 * (1 + crit_dmg)
+                 + flat)
+                * (1 + uplift)
+            )
+            personal_damages.append(personal)
+
+        # 从高到低排序
+        personal_damages.sort(reverse=True)
+
+        # 加权求和（权重 0.6 / 0.3 / 0.05 / 0.05，gensri.wiki 权威值）
+        total = 0.0
+        for i, dmg in enumerate(personal_damages[:4]):
+            weight = constants.STAR_INDIRECT_WEIGHTS[i]
+            total += dmg * weight
+
+        return total
+
     def apply_team_passives(self) -> dict:
         """
         应用队伍型固有天赋（跨角色增益）：

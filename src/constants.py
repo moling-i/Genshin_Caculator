@@ -18,8 +18,13 @@ def em_bonus_amplifying(em: float) -> float:
     return 2.78 * em / (em + 1400)
 
 def em_bonus_lunar(em: float) -> float:
-    """月反应精通增益（暂用剧变公式，可配置）"""
-    return 16 * em / (em + 2000)
+    """月曜反应精通增益：6×EM/(EM+2000)（meropide 伤害公式权威值）"""
+    return 6 * em / (em + 2000)
+
+def em_bonus_star(em: float) -> float:
+    """星烁（星超导/星扩散）精通增益：6×EM/(EM+2000)（meropide 伤害公式权威值）。
+    星烁反应伤害精通乘区沿用月曜算法，唯一区别是附加精通乘区依据星烁反应。"""
+    return 6 * em / (em + 2000)
 
 # ==================== 反应系数 ====================
 # 增幅反应系数（触发元素 → 被击元素）
@@ -88,13 +93,31 @@ def stellar_superconduct_params(records: int) -> dict:
         bonus = min(0.29 + (n - 1) * 0.01, 0.40)
     return {"reaction_coef": coef, "dmg_bonus": bonus}
 
+# ==================== 星扩散参数 ====================
+# 星扩散风涡反应系数（gensri.wiki 权威值）
+#   冰元素星扩散：风涡等级 1–2 → 2，等级 ≥3 → 3
+#   风元素星扩散：0.75（与风涡等级无关）
+def star_swirl_vortex_coeff(vortex_level: int, element: str = "cryo") -> float:
+    lvl = max(int(vortex_level), 1)
+    el = element or "cryo"
+    if el in ("wind", "风"):
+        return 0.75
+    # 冰元素星扩散（默认）
+    return 3.0 if lvl >= 3 else 2.0
+
+# 星扩散间接伤害（风涡）加权：与月反应一致 [0.6, 0.3, 0.05, 0.05]
+STAR_INDIRECT_WEIGHTS = [0.6, 0.3, 0.05, 0.05]
+
+# 星扩散直伤：反应系数恒为 1（gensri.wiki：可视为没有反应系数乘区）
+STAR_SWIRL_DIRECT_COEFF = 1.0
+
 # ==================== 抗性区计算 ====================
 def resistance_factor(res: float) -> float:
     """
     抗性区计算
     - 0 <= RES <= 0.75: 1 - RES
     - RES < 0: 1 - RES/2
-    - RES > 0.75: 1/(4*RES + 1)
+    - RES > 0.75: 1/(4*RES+1)
     """
     if res < 0:
         return 1 - res / 2
@@ -104,9 +127,19 @@ def resistance_factor(res: float) -> float:
         return 1 / (4 * res + 1)
 
 # ==================== 防御区计算 ====================
-def defense_factor(char_level: int, enemy_level: int) -> float:
-    """防御区 = (char_level + 100) / (char_level + 100 + enemy_level + 100)"""
-    return (char_level + 100) / (char_level + 100 + enemy_level + 100)
+def defense_factor(char_level: int, enemy_level: int,
+                   def_shred: float = 0.0, def_ignore: float = 0.0) -> float:
+    """
+    防御区（meropide《伤害公式》权威公式）
+    防御系数 = (角色等级+100) / ((角色等级+100) + (怪物等级+100)×(1-减防)×(1-无视防御))
+
+    参数:
+        def_shred: 敌人减防比例（0~0.9，多条加算，上限 90%）
+        def_ignore: 无视防御比例（0~1.0，多条加算，上限 100%）
+    """
+    a = char_level + 100
+    b = enemy_level + 100
+    return a / (a + b * max(0, 1 - def_shred) * max(0, 1 - def_ignore))
 
 # ==================== 元素类型映射 ====================
 ELEMENT_MAP = {

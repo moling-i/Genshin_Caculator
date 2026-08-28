@@ -17,6 +17,8 @@ from src import (
     OptimizationInput,
     data_loader,
 )
+from src.team_dps import Rotation, PRESET_ROTATIONS
+from src.team_optimizer import TeamDPSOptimizer, TeamDPSOptimizationInput
 
 st.set_page_config(page_title="原神伤害计算器", layout="wide")
 
@@ -424,6 +426,18 @@ REACTION_OPTIONS = {
     "月结晶": "lunar_crystallize",
     "月绽放": "lunar_bloom",
     "星超导": "stellar_superconduct",
+    "星扩散(直伤)": "star_swirl_direct",
+    "星扩散(风涡)": "star_swirl",
+}
+
+# 反应类型分组（侧边栏二级选择器，避免扁平下拉难找）
+REACTION_GROUPS = {
+    "无": ["无"],
+    "增幅反应": ["蒸发", "融化"],
+    "剧变反应": ["超载", "超导", "扩散", "碎冰", "感电"],
+    "激化反应": ["超激化", "蔓激化"],
+    "月曜反应": ["月感电", "月结晶", "月绽放"],
+    "星烁反应": ["星超导", "星扩散(直伤)", "星扩散(风涡)"],
 }
 
 SKILL_OPTIONS = {"普通攻击": "normal", "元素战技": "skill", "元素爆发": "burst", "重击": "charged"}
@@ -595,19 +609,24 @@ def member_config_panel(idx):
 
         # ---- 面板属性输入（不含副词条的基础值；主词条无需单独设置）----
         st.markdown("**面板属性**")
-        pc = st.columns(6)
-        atk = pc[0].number_input("攻击力", 0, 5000, 1500, key=f"m{idx}_atk")
-        cr = pc[1].number_input("暴击率%", 0.0, 100.0, 5.0, key=f"m{idx}_cr")
-        cd = pc[2].number_input("暴击伤害%", 0.0, 300.0, 50.0, key=f"m{idx}_cd")
-        em = pc[3].number_input("元素精通", 0, 1000, 0, key=f"m{idx}_em")
-        lb = pc[4].number_input("月反应加成%", 0.0, 100.0, 0.0, key=f"m{idx}_lb")
-        erp = pc[5].number_input(
+        pc1, pc2 = st.columns(2)
+        with pc1:
+            atk = st.number_input("攻击力", 0, 5000, 1500, key=f"m{idx}_atk")
+            cr = st.number_input("暴击率%", 0.0, 100.0, 5.0, key=f"m{idx}_cr")
+            cd = st.number_input("暴击伤害%", 0.0, 300.0, 50.0, key=f"m{idx}_cd")
+        with pc2:
+            em = st.number_input("元素精通", 0, 1000, 0, key=f"m{idx}_em")
+            ed = st.number_input("元素伤害加成%", 0.0, 300.0, 0.0, key=f"m{idx}_ed",
+                                 help="杯子主词条+天赋等提供的元素伤害加成（如46.6%火伤杯填46.6）")
+            lb = st.number_input("月反应加成%", 0.0, 100.0, 0.0, key=f"m{idx}_lb")
+        erp = st.number_input(
             "充能加成%（超出基础的充能效率部分，如200%总充能填100）",
             0.0, 400.0, 0.0, key=f"m{idx}_er",
         )
         cfg["panel"] = {
             "atk": float(atk), "crit_rate_pct": float(cr),
             "crit_dmg_pct": float(cd), "em": float(em),
+            "elemental_dmg_bonus_pct": float(ed),
             "lunar_bonus_pct": float(lb), "er_pct": float(erp),
         }
     return cfg
@@ -639,8 +658,34 @@ with side_col:
         st.header("战斗与优化参数")
         enemy_level = st.slider("敌人等级", 1, 100, 90)
         enemy_res = st.slider("敌人抗性", 0.0, 1.0, 0.1, step=0.05)
-        reaction = st.selectbox("反应类型", list(REACTION_OPTIONS.keys()))
+        reaction_group = st.selectbox("反应类别", list(REACTION_GROUPS.keys()))
+        reaction_opts = REACTION_GROUPS[reaction_group]
+        if len(reaction_opts) == 1:
+            reaction = reaction_opts[0]
+        else:
+            reaction = st.selectbox("反应类型", reaction_opts, key="reaction_detail")
         skill_type = st.selectbox("主力技能类型", list(SKILL_OPTIONS.keys()))
+
+        # ---- 星反应参数（星超导/星扩散）----
+        star_cfg = {}
+        _rt = REACTION_OPTIONS.get(reaction)
+        if _rt in ("stellar_superconduct", "star_swirl", "star_swirl_direct"):
+            with st.expander("⭐ 星反应参数", expanded=True):
+                if _rt == "stellar_superconduct":
+                    star_cfg["stellar_stacks"] = st.slider(
+                        "星超导附着次数(0/6/12)", 0, 12, 0, step=1,
+                        key="star_stellar_stacks",
+                    )
+                if _rt in ("star_swirl", "star_swirl_direct"):
+                    star_cfg["star_base_boost"] = st.slider(
+                        "星扩散/星超导基础提升%", 0.0, 40.0, 14.0, step=1.0,
+                        key="star_base_boost",
+                    ) / 100.0
+                if _rt == "star_swirl":
+                    star_cfg["star_vortex_level"] = st.slider(
+                        "星扩散风涡等级(1-6)", 1, 6, 3, step=1,
+                        key="star_vortex_level",
+                    )
 
         st.divider()
         st.subheader("优化参数")
@@ -650,6 +695,15 @@ with side_col:
         goblet = st.selectbox("空之杯主词条", list(MAIN_GOBLET.keys()))
         circlet = st.selectbox("理之冠主词条", list(MAIN_CIRCLET.keys()))
         optimize_btn = st.button("开始优化", type="primary")
+
+        st.divider()
+        st.subheader("队伍DPS 联合优化")
+        st.caption("联合搜索全队 4 名成员的副词条分配，使整队轮换 DPS 最高。"
+                   "轮换步骤在左侧「队伍DPS 轮换编排」中编辑。")
+        member_rolls = st.slider("每名成员总词条数", 10, 45, 20)
+        team_iters = st.slider("随机搜索迭代数", 500, 8000, 2500, step=500)
+        team_refine = st.slider("局部细化迭代数", 200, 3000, 1000, step=200)
+        team_dps_btn = st.button("🚀 开始队伍DPS优化", type="primary")
 
         st.divider()
         with st.expander("背景设置", expanded=False):
@@ -664,6 +718,56 @@ with side_col:
                     "上传背景图", type=["jpg", "jpeg", "png", "webp"]
                 )
 
+# ---------- 队伍DPS 轮换编排 ----------
+_REACTION_REV = {v: k for k, v in REACTION_OPTIONS.items()}
+if "tdps_rotation" not in st.session_state:
+    st.session_state["tdps_rotation"] = [s.to_dict() for s in PRESET_ROTATIONS["玛薇卡火神队（示例）"].steps]
+
+with st.expander("⚔️ 队伍DPS 轮换编排（联合优化的输入）", expanded=False):
+    st.caption("每个步骤指定：哪个成员出手、用哪个技能、打几段、站场几秒、是否触发反应。"
+               "秒数留 0 时自动按默认值（联网运行 fetch_gcsim_frames.py 后可按 gcsim 帧数估算）。")
+    preset_names = ["（自定义）"] + list(PRESET_ROTATIONS.keys())
+    preset = st.selectbox("载入主流配队轮换示例", preset_names, key="tdps_preset")
+    if preset != "（自定义）" and st.button("载入该示例轮换", key="tdps_load"):
+        st.session_state["tdps_rotation"] = [s.to_dict() for s in PRESET_ROTATIONS[preset].steps]
+        st.rerun()
+
+    _rot = st.session_state["tdps_rotation"]
+    _num = st.number_input("步骤数", min_value=0, max_value=30, value=len(_rot), step=1, key="tdps_num")
+    while len(_rot) < _num:
+        _rot.append({"character_index": 0, "skill_type": "normal", "hit_count": 1,
+                     "field_seconds": None, "reaction_type": None, "is_crit": False, "label": ""})
+    while len(_rot) > _num:
+        _rot.pop()
+    st.session_state["tdps_rotation"] = _rot
+
+    _steps_out = []
+    _SK = ["normal", "skill", "burst", "charged"]
+    for i, _stp in enumerate(_rot):
+        c1, c2, c3, c4, c5 = st.columns([1.0, 1.4, 0.9, 1.1, 2.2])
+        with c1:
+            _ci = st.selectbox("成员", [1, 2, 3, 4], index=int(_stp.get("character_index", 0)), key=f"tdps_ci_{i}")
+        with c2:
+            _sk = st.selectbox("技能", _SK, index=_SK.index(_stp.get("skill_type", "normal")), key=f"tdps_sk_{i}")
+        with c3:
+            _hc = st.number_input("段数", 1, 12, int(_stp.get("hit_count", 1)), key=f"tdps_hc_{i}")
+        with c4:
+            _fs = st.number_input("秒数(0=自动)", 0.0, 30.0, float(_stp.get("field_seconds") or 0.0), step=0.5, key=f"tdps_fs_{i}")
+        with c5:
+            _opts = ["（无）"] + list(REACTION_OPTIONS.keys())
+            _cur = _REACTION_REV.get(_stp.get("reaction_type")) if _stp.get("reaction_type") else "（无）"
+            _rk = st.selectbox("反应", _opts, index=_opts.index(_cur) if _cur in _opts else 0, key=f"tdps_rk_{i}")
+        _steps_out.append({
+            "character_index": int(_ci) - 1,
+            "skill_type": _sk,
+            "hit_count": int(_hc),
+            "field_seconds": (None if _fs == 0 else _fs),
+            "reaction_type": (None if _rk == "（无）" else REACTION_OPTIONS[_rk]),
+            "is_crit": False,
+            "label": f"成员{_ci}·{_sk}",
+        })
+    tdps_steps = _steps_out
+
 # ---------- 主界面 ----------
 if optimize_btn:
     active_members = [c for c in team_configs if c and c.get("character_id")]
@@ -672,9 +776,9 @@ if optimize_btn:
     if not main_cfg.get("character_id"):
         st.error("请先在「成员1」中选择主力角色！")
     elif REACTION_OPTIONS[reaction] in (
-        "lunar_charged", "lunar_crystallize", "lunar_bloom"
+        "lunar_charged", "lunar_crystallize", "lunar_bloom", "star_swirl"
     ) and len(active_members) < 1:
-        st.error("月反应间接伤害需要配置至少1名队伍成员！")
+        st.error("月/星反应间接伤害需要配置至少1名队伍成员！")
     elif min_cr > 0.95:
         st.error("最小暴击率要求过高（>95%），可能无法找到可行解，请降低。")
     else:
@@ -699,6 +803,9 @@ if optimize_btn:
                     enemy_res=enemy_res,
                     reaction_type=REACTION_OPTIONS[reaction],
                     weapon_id=main_cfg["weapon_id"],
+                    stellar_stacks=star_cfg.get("stellar_stacks", 0),
+                    star_base_boost=star_cfg.get("star_base_boost", 0.0),
+                    star_vortex_level=star_cfg.get("star_vortex_level", 1),
                     artifact_set_2=main_cfg["artifact_set_2"],
                     artifact_set_4=main_cfg["artifact_set_4"],
                     is_double_two_piece=main_cfg.get("is_double_two_piece", False),
@@ -711,7 +818,6 @@ if optimize_btn:
                     },
                     panel_inputs={
                         k: v for k, v in main_cfg["panel"].items()
-                        if k != "lunar_bonus_pct"
                     },
                     passive_modifiers=main_cfg["passive_modifiers"],
                     passive_effects=main_cfg["passive_effects"],
@@ -773,22 +879,39 @@ if optimize_btn:
                     bd = result.damage_breakdown
                     breakdown_rows = []
                     if "base_damage" in bd:
-                        breakdown_rows.append(("基础伤害区", f"{bd['base_damage']:.2f}"))
+                        breakdown_rows.append(("基础伤害区", bd['base_damage'], False))
                     if "dmg_bonus_factor" in bd:
-                        breakdown_rows.append(("× 增伤区", f"{bd['dmg_bonus_factor']:.4f}"))
+                        breakdown_rows.append(("增伤区", bd['dmg_bonus_factor'], True))
                     if "def_factor" in bd:
-                        breakdown_rows.append(("× 防御区", f"{bd['def_factor']:.4f}"))
+                        breakdown_rows.append(("防御区", bd['def_factor'], True))
                     if "res_factor" in bd:
-                        breakdown_rows.append(("× 抗性区", f"{bd['res_factor']:.4f}"))
+                        breakdown_rows.append(("抗性区", bd['res_factor'], True))
                     if "crit_factor" in bd:
-                        breakdown_rows.append(("× 暴击区", f"{bd['crit_factor']:.4f}"))
+                        breakdown_rows.append(("暴击区", bd['crit_factor'], True))
                     if "reaction_factor" in bd:
-                        breakdown_rows.append(("× 反应区", f"{bd['reaction_factor']:.4f}"))
-                    if "final_damage" in bd:
-                        breakdown_rows.append(("= 最终伤害", f"{bd['final_damage']:.2f}"))
+                        breakdown_rows.append(("反应区", bd['reaction_factor'], True))
 
-                    for label, val in breakdown_rows:
-                        st.write(f"- {label}: **{val}**")
+                    if breakdown_rows:
+                        html = '<div style="background:#f8f9fa;border-radius:8px;padding:14px 18px;font-size:0.88rem">'
+                        html += '<table style="width:100%;border-collapse:collapse">'
+                        for i, (label, val, is_mult) in enumerate(breakdown_rows):
+                            color = "#8b5cf6" if is_mult else "#6b7280"
+                            prefix = "× " if is_mult else ""
+                            formatted = f"{prefix}{val:.4f}" if is_mult else f"{prefix}{val:,.2f}"
+                            html += (
+                                f'<tr>'
+                                f'<td style="padding:4px 0;color:#374151;width:40%">{label}</td>'
+                                f'<td style="padding:4px 0;font-weight:600;color:{color};text-align:right">'
+                                f'{formatted}</td></tr>'
+                            )
+                        if "final_damage" in bd:
+                            html += (
+                                '<tr><td colspan="2" style="border-top:2px solid #d1d5db;padding-top:6px">'
+                                f'<span style="font-weight:700;font-size:1rem;color:#059669">'
+                                f'最终伤害：{bd["final_damage"]:,.2f}</span></td></tr>'
+                            )
+                        html += '</table></div>'
+                        st.markdown(html, unsafe_allow_html=True)
 
                 st.subheader("培养建议")
                 st.info(result.suggestion)
@@ -800,8 +923,79 @@ if optimize_btn:
 
             except Exception as e:
                 st.error(f"优化失败: {e}")
+elif team_dps_btn:
+    active = [c for c in team_configs if c and c.get("character_id")]
+    if not active:
+        st.error("请先在「成员1~4」中配置至少一名队伍成员！")
+    elif not tdps_steps:
+        st.error("轮换步骤不能为空！请在上方「队伍DPS 轮换编排」中添加步骤。")
+    else:
+        char_names_disp = [c.get("display_name") for c in team_configs]
+        with st.spinner("联合搜索全队词条分配..."):
+            try:
+                progress_bar = st.progress(0.0, text="联合优化进行中...")
+                def _update_progress(done, total):
+                    progress_bar.progress(
+                        min(1.0, done / max(total, 1)),
+                        text=f"联合优化进行中... {done}/{total} 次迭代",
+                    )
+                rotation = Rotation(tdps_steps)
+                main_ms = {"sands": MAIN_SANDS[sands], "goblet": MAIN_GOBLET[goblet], "circlet": MAIN_CIRCLET[circlet]}
+                inp = TeamDPSOptimizationInput(
+                    team_configs=team_configs,
+                    rotation=rotation,
+                    total_substat_rolls_per_member=[member_rolls] * 4,
+                    main_stats_per_member=[main_ms] * 4,
+                    enemy_level=enemy_level,
+                    enemy_res=enemy_res,
+                    star_params=star_cfg,
+                )
+                opt = TeamDPSOptimizer(inp)
+                res = opt.optimize(
+                    iterations=team_iters,
+                    refine_iterations=team_refine,
+                    progress_callback=_update_progress,
+                )
+                progress_bar.empty()
+
+                st.metric("最大队伍 DPS", f"{res.max_dps:,.1f}")
+                st.caption(
+                    f"轮换总时长 {res.result['total_time']:.1f}s，共 {len(rotation.steps)} 步；"
+                    f"每名成员按 {member_rolls} 词条联合优化"
+                )
+
+                pc = res.result["per_character"]
+                _active_idx = [i for i in range(4) if team_configs[i].get("character_id")]
+                _df = pd.DataFrame({
+                    "成员": [f"成员{i+1} {char_names_disp[i] or ''}" for i in _active_idx],
+                    "总伤害": [pc[i] for i in _active_idx],
+                })
+                st.bar_chart(_df.set_index("成员"))
+
+                st.subheader("全队最优词条分配")
+                for i in _active_idx:
+                    a = res.allocations[i]
+                    st.write(
+                        f"**成员{i+1} · {char_names_disp[i]}**："
+                        f"攻击% {a['atk_percent']} · 暴击率 {a['crit_rate']} · "
+                        f"暴击伤害 {a['crit_dmg']} · 精通 {a['em']} "
+                        f"（共 {sum(a.values())} 词条）"
+                    )
+
+                with st.expander("分步伤害明细"):
+                    _rows = [
+                        {"步骤": s["label"], "伤害": round(s["damage"], 1), "秒数": s["time"]}
+                        for s in res.result["per_step"]
+                    ]
+                    st.table(pd.DataFrame(_rows))
+
+                if res.history:
+                    st.subheader("收敛曲线")
+                    st.line_chart(pd.DataFrame(res.history).set_index("iteration"))
+            except Exception as e:
+                st.error(f"队伍DPS优化失败: {e}")
 else:
-    st.info("配置好队伍与参数后，点击「开始优化」按钮查看结果。")
+    st.info("配置好队伍与参数后，点击「开始优化」或「🚀 开始队伍DPS优化」按钮查看结果。")
     st.markdown(
         """
         ### 使用说明
@@ -809,10 +1003,11 @@ else:
         2. 输入各成员面板属性（不含副词条的基础值）
         3. 右侧设置敌人等级/抗性、反应类型、主力技能类型
         4. 设定总词条数与最小暴击率要求，选择主词条
-        5. 点击优化，自动搜索最优副词条分配
+        5. 点击「开始优化」自动搜索主力最优副词条分配
+        6. 如需整队 DPS 优化：展开「⚔️ 队伍DPS 轮换编排」编辑轮换步骤，右侧设每名成员词条数，点击「🚀 开始队伍DPS优化」联合搜索全队分配
 
         **固有天赋**：勾选后自动叠加对应加成；条件型天赋可控制是否视为满足触发条件。
-        **月反应**需配置至少1名队伍成员；队伍成员独立配置，互不影响。
+        **月反应/星扩散(风涡)**需配置至少1名队伍成员；队伍成员独立配置，互不影响。
         """
     )
 

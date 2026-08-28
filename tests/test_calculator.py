@@ -112,9 +112,10 @@ class TestConstellation(unittest.TestCase):
             effect_manager=em,
         )
         def_factor = result["breakdown"]["def_factor"]
-        base_def = constants.defense_factor(raiden.char_level, 90)
-        self.assertAlmostEqual(def_factor, base_def * 0.4, places=4)
-        print(f"雷电将军C2防御区: {def_factor:.4f} (基础: {base_def:.4f})")
+        # meropide 权威公式：A/(A + B×(1-减防)×(1-无视防御))
+        expected_def = constants.defense_factor(90, 90, def_shred=0.0, def_ignore=0.60)
+        self.assertAlmostEqual(def_factor, expected_def, places=4)
+        print(f"雷电将军C2防御区: {def_factor:.4f} (meropide公式: {expected_def:.4f})")
 
 
 class TestWeaponEffect(unittest.TestCase):

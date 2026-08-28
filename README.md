@@ -1,21 +1,22 @@
 # 原神伤害计算器
 
-基于原神（Genshin Impact）伤害计算核心公式实现的伤害计算引擎，支持**普通元素反应**、**月反应（Lunar）**与**星反应（Stellar）**的完整乘区计算。
+基于原神（Genshin Impact）伤害计算核心公式实现的伤害计算引擎，支持**普通元素反应**与**月反应（Lunar）**的完整乘区计算。核心功能是在给定总词条数下搜索最优副词条分配，使角色（在队伍语境下）的期望伤害最大化。
 
 ## 功能特点
 
 - **通用乘区计算**：基础伤害区、增伤区、防御区、抗性区、暴击区
 - **常规元素反应**：增幅（蒸发/融化）、剧变（超载/超导/扩散/碎冰/感电）、激化（蔓激化/超激化）、结晶
 - **月反应（Lunar）**：
-  - 间接伤害（由元素反应触发），支持多角色面板加权求和（前四高：1 / 1/2 / 1/12 / 1/12）
+  - 间接伤害（由元素反应触发），支持多角色面板加权求和（前四高：0.6 / 0.3 / 0.05 / 0.05）
   - 直接伤害（由角色技能造成）
   - 月反应伤害可暴击
-- **星反应（Stellar）**：星超导（预留可配置加成项 `stellar_bonus_rate` / `stellar_reaction_coef`）
+
 - **数据驱动**：角色/武器/圣遗物/命座效果从 `data/` 目录的 JSON 加载
 - **效果系统**：武器特效、圣遗物套装、命座效果通过 `open_config` 关键词解析并叠加修饰器
 - **属性优化**：`src/optimizer.py` 在给定总词条数下搜索最优副词条分配（攻击%/暴击率/暴击伤害/元素精通），使期望伤害最大化
-- **网页界面**：`app.py` 提供 Streamlit 交互式 UI，支持配置角色/武器/圣遗物/反应并一键优化
-- **单元测试**：`tests/test_calculator.py` 覆盖核心计算逻辑
+- **队伍DPS 联合优化**：`src/team_dps.py` + `src/team_optimizer.py` 在用户编排的「轮换」下评估整队 DPS，并联合搜索 4 名成员的副词条分配使整队 DPS 最高（自动计入队友联动：精通共享、双火共鸣、增攻击等）
+- **网页界面**：`app.py` 提供 Streamlit 交互式 UI，支持配置角色/武器/圣遗物/反应、编排轮换并一键优化（单体或整队）
+- **单元测试**：`tests/test_calculator.py` 与 `tests/test_team_dps.py` 覆盖核心计算与联合优化逻辑
 
 ## 安装
 
@@ -45,12 +46,11 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-打开浏览器后，在左侧配置角色、武器、圣遗物、敌人、反应类型与优化参数（总词条数、最小暴击率、主词条），点击「🚀 开始优化」即可获得：
-- 最优副词条分配（各属性词条数与占比）
-- 最大期望伤害与乘区明细
-- 培养建议文字
-- 优化收敛曲线图
-- 可下载的 JSON 结果
+打开浏览器后，在左侧配置角色、武器、圣遗物、敌人、反应类型与优化参数（总词条数、最小暴击率、主词条），点击「开始优化」即可获得最优副词条分配、最大期望伤害与乘区明细、培养建议与收敛曲线。
+
+**整队 DPS 优化**：展开「⚔️ 队伍DPS 轮换编排」编辑轮换步骤（哪名成员出哪招、打几段、站场几秒、是否触发反应；可一键载入主流配队示例），右侧设置每名成员词条数后点击「🚀 开始队伍DPS优化」，即联合搜索全队 4 名成员的副词条分配使整队 DPS 最高。
+
+> 动画时长（每步占用秒数）meropide / gensri 数据未提供；联网机器运行 `python fetch_gcsim_frames.py` 会从 [gcsim](https://github.com/genshinsim/gcsim) 抓取动作帧数据写入 `data/action_frames.json`，旋转步骤秒数留 0 时自动按 gcsim 帧数估算（gcsim 采用 GPL-3.0，请保留来源署名）。
 
 ### 4. 在代码中使用
 
@@ -125,12 +125,6 @@ lunar_dmg = team.calculate_lunar_indirect_damage("lunar_charged", enemy_res=0.1)
   ```
   - 月感电直接系数 3.0，月结晶直接系数 1.6，月绽放直接系数 1.0
 
-### 星反应（星超导）
-
-- 冰+雷触发，生成领域，降低 40% 物理抗性
-- 根据冰/雷附着次数（上限12）提供额外雷/冰伤害加成与反应系数（6次：~34% / 1.7；12次：~40% / 2.0）
-- 程序中预留可配置项 `stellar_bonus_rate` 与 `stellar_reaction_coef`
-
 ## 项目结构
 
 ```
@@ -140,19 +134,24 @@ lunar_dmg = team.calculate_lunar_indirect_damage("lunar_charged", enemy_res=0.1)
 │   ├── constants.py       # 公式常量与系数函数
 │   ├── data_loader.py     # 加载 data/ 下的 JSON 数据
 │   ├── character.py       # Character 类（角色面板/技能倍率）
-│   ├── team.py            # Team 类（月反应加权/星反应）
+│   ├── team.py            # Team 类（月反应间接伤害加权）
 │   ├── effects.py         # EffectManager（武器/圣遗物/命座效果）
 │   ├── calculator.py      # calculate_damage 核心函数
-│   └── optimizer.py       # DamageOptimizer（属性配平/最优词条分配）
+│   ├── optimizer.py        # DamageOptimizer（单体属性配平/最优词条分配）
+│   ├── team_dps.py         # Rotation 轮换模型 + 队伍DPS评估器 + 主流配队示例
+│   └── team_optimizer.py   # TeamDPSOptimizer（全队4人词条联合优化）
 ├── data/                  # 角色/武器/圣遗物/技能/命座 JSON
+│   └── action_frames.json  # 动作帧数据（由 fetch_gcsim_frames.py 生成，单位秒）
 ├── tests/
-│   └── test_calculator.py # 单元测试
+│   ├── test_calculator.py  # 核心计算单元测试
+│   └── test_team_dps.py    # 队伍DPS评估 + 联合优化测试
 ├── main.py                # CLI 入口
-├── app.py                 # Streamlit 网页界面（推荐）
+├── app.py                 # Streamlit 网页界面（推荐）：单体/整队词条优化
 ├── fetch_data.py          # 数据抓取脚本（官方 API）
 ├── fetch_gensri.py        # gensri.wiki 数据采集脚本
+├── fetch_gcsim_frames.py  # gcsim 动作帧抓取脚本（联网运行 → 生成 data/action_frames.json）
 ├── validate_formulas_with_gensri.py # 公式校验脚本（对比 gensri 权威值）
-├── backend.py / frontend.py / run.py  # 旧版 Streamlit/FastAPI 界面（保留）
+├── legacy/                # 已归档：早期独立的 Streamlit/FastAPI 伤害计算器（与主线优化器思路分歧，已停用）
 └── README.md
 ```
 
@@ -166,7 +165,7 @@ lunar_dmg = team.calculate_lunar_indirect_damage("lunar_charged", enemy_res=0.1)
 
 | 文件 | 内容 |
 |------|------|
-| `game_mechanics.json` | 伤害公式体系、增幅/激化/剧变/月曜/星反应系数、等级系数表（1~100） |
+| `game_mechanics.json` | 伤害公式体系、增幅/激化/剧变/月曜系数、等级系数表（1~100） |
 | `calculations.json` | 计算分析文章列表及内容预览 |
 | `abyss.json` | 深境螺旋期次信息 |
 | `validation_report.md` | 公式校验差异报告 |
@@ -180,4 +179,4 @@ python validate_formulas_with_gensri.py   # 与项目公式逐项比对，生成
 
 > 校验说明：gensri.wiki 明确标注「前玉衡杯提供的反应系数以及贡献权重有误，以此处为准」，
 > 本项目的月曜贡献权重（0.6/0.3/0.05/0.05）、月感电/月结晶反应系数、剧变反应系数、
-> 超激化/蔓激化分型系数与星超导连续档位均已按其权威值实现。
+> 超激化/蔓激化分型系数均已按其权威值实现。

@@ -82,6 +82,10 @@ class OptimizationInput:
         team_configs: list = None,
         # 完整天赋效果结构：{modifiers{}, conversions[], er_scalings[], er_pct}
         passive_effects: dict = None,
+        # ---- 星反应参数（星超导/星扩散）----
+        stellar_stacks: int = 0,
+        star_base_boost: float = 0.0,
+        star_vortex_level: int = 1,
     ):
         self.character_id = str(character_id)
         self.constellation_level = constellation_level
@@ -105,6 +109,10 @@ class OptimizationInput:
         self.passive_modifiers = passive_modifiers or {}
         # 完整天赋效果（含属性转换/充能缩放）；为空时退回仅 modifiers 模式
         self.passive_effects = passive_effects or {}
+        # 星反应参数
+        self.stellar_stacks = int(stellar_stacks or 0)
+        self.star_base_boost = float(star_base_boost or 0.0)
+        self.star_vortex_level = int(star_vortex_level or 1)
         # 队伍成员独立配置列表（4 项，None 表示空位）：
         # [{character_id, weapon_id, refinement, artifact_set_2, artifact_set_4,
         #   talent_levels{normal,skill,burst}, panel{atk,crit_rate_pct,crit_dmg_pct,em},
@@ -141,6 +149,8 @@ class DamageOptimizer:
             val = MAIN_STAT_VALUES["sands"][sands]
             if sands == "em":
                 char.elemental_mastery += val
+            elif sands == "er":
+                char.er_total += val          # 充能沙 → 元素充能效率
             else:
                 setattr(char, sands, getattr(char, sands) + val)
         # 空之杯
@@ -186,6 +196,8 @@ class DamageOptimizer:
             char.crit_dmg = cd_in - char.base_crit_dmg
         if pi.get("em") is not None:
             char.elemental_mastery = float(pi["em"])
+        if pi.get("elemental_dmg_bonus_pct") is not None:
+            char.elemental_dmg_bonus = float(pi["elemental_dmg_bonus_pct"]) / 100.0
 
         # ---- 2) 主词条与副词条分配 ----
         self._apply_main_stats(char)
@@ -255,6 +267,8 @@ class DamageOptimizer:
             char.elemental_mastery = float(panel["em"])
         if panel.get("lunar_bonus_pct"):
             char.lunar_dmg_bonus += float(panel["lunar_bonus_pct"]) / 100.0
+        if panel.get("elemental_dmg_bonus_pct"):
+            char.elemental_dmg_bonus += float(panel["elemental_dmg_bonus_pct"]) / 100.0
         char.apply_passive(cfg.get("passive_modifiers"))
         self._apply_full_effects(char, cfg.get("passive_effects"),
                                  panel.get("er_pct"))
@@ -346,6 +360,9 @@ class DamageOptimizer:
             effect_manager=em,
             team=team,
             extra_res_shred=extra_res_shred,
+            stellar_stacks=self.input.stellar_stacks,
+            star_base_boost=self.input.star_base_boost,
+            star_vortex_level=self.input.star_vortex_level,
         )
         non_crit = result["damage"]
         panel = char.get_effective_panel()
@@ -366,6 +383,12 @@ class DamageOptimizer:
                 "暴击区系数: %.4f (CR=%.4f, CD=%.4f)",
                 result["breakdown"]["crit_factor"], crit_rate, crit_dmg,
             )
+
+        # 让乘区明细里的 final_damage 与顶部展示的「最大期望伤害」保持一致：
+        # calculate_damage 内部按 is_crit=False 占位，返回的 final_damage 为不暴击值，
+        # 而优化器对外以「期望伤害」(含暴击期望) 作为目标值，两者必须对齐，否则明细错位。
+        result["breakdown"]["final_damage"] = expected
+        result["damage"] = expected
 
         return expected, result, crit_rate, crit_dmg
 

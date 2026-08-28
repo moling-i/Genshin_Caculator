@@ -20,7 +20,7 @@ def main():
     parser.add_argument("--enemy-res", type=float, default=0.1, help="敌人抗性 (0.1 表示 10%%)")
     parser.add_argument("--constellation", type=int, default=0, help="命座等级")
     parser.add_argument("--reaction", type=str, default=None,
-                        help="反应类型: vaporize, melt, lunar_charged, etc.")
+                        help="反应类型: vaporize, melt, lunar_charged, stellar_superconduct, star_swirl, star_swirl_direct")
     parser.add_argument("--crit", action="store_true", help="是否暴击")
     parser.add_argument("--atk", type=float, default=0, help="额外攻击力")
     parser.add_argument("--crit-rate", type=float, default=0, help="暴击率加成")
@@ -28,6 +28,12 @@ def main():
     parser.add_argument("--em", type=float, default=0, help="元素精通")
     parser.add_argument("--elem-dmg", type=float, default=0, help="元素伤害加成")
     parser.add_argument("--lunar-bonus", type=float, default=0, help="月反应基础伤害加成")
+    parser.add_argument("--stellar-stacks", type=int, default=0,
+                        help="星超导附着次数(0/6/12)")
+    parser.add_argument("--star-base-boost", type=float, default=0.0,
+                        help="星扩散/星超导基础提升(如0.14表示14%%)")
+    parser.add_argument("--star-vortex-level", type=int, default=1,
+                        help="星扩散风涡等级(1-6)")
     parser.add_argument("--team", type=str, default=None,
                         help="队伍其他成员（逗号分隔，用于月反应）")
 
@@ -51,9 +57,9 @@ def main():
     em = EffectManager(char)
     em.apply_constellation_effects()
 
-    # 队伍（月反应需要）
+    # 队伍（月反应/星扩散风涡需要）
     team = None
-    if args.team and args.reaction and "lunar" in args.reaction:
+    if args.team and args.reaction and ("lunar" in args.reaction or args.reaction == "star_swirl"):
         members = [char]
         for name in args.team.split(","):
             name = name.strip()
@@ -74,6 +80,9 @@ def main():
         is_crit=args.crit,
         team=team,
         effect_manager=em,
+        stellar_stacks=args.stellar_stacks,
+        star_base_boost=args.star_base_boost,
+        star_vortex_level=args.star_vortex_level,
     )
 
     print(f"\n=== {char.name} 伤害计算结果 ===")

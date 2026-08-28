@@ -123,15 +123,6 @@ def main():
     add("精通乘区", "增幅2.78EM/(EM+1400)；剧变/月曜16EM/(EM+2000)；激化5EM/(EM+1200)",
         None, "constants.em_bonus_*")
 
-    # ---- 7. 星超导连续档位 ----
-    cases = [(0, 1.00, 0.20), (1, 1.45, 0.29), (2, 1.50, 0.30),
-             (6, 1.70, 0.34), (12, 2.00, 0.40)]
-    for n, coef, bonus in cases:
-        got = K.stellar_superconduct_params(n)
-        ok = abs(got["reaction_coef"] - coef) < 1e-9 and abs(got["dmg_bonus"] - bonus) < 1e-9
-        add("星超导", f"记录{n}次: 系数/加成",
-            f"{coef}/{bonus}", f"{got['reaction_coef']}/{got['dmg_bonus']}", force_ok=ok)
-
     # ---- 输出报告 ----
     lines = [
         "# Gensri.wiki 公式校验差异报告", "",

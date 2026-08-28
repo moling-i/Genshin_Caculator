@@ -16,8 +16,11 @@ def calculate_damage(
     is_crit: bool = False,
     team: Team = None,
     effect_manager: EffectManager = None,
-    stellar_stacks: int = 0,
     extra_res_shred: float = 0.0,
+    stellar_stacks: int = 0,
+    star_base_boost: float = 0.0,
+    star_vortex_level: int = 1,
+    talent_ratio_override: float = None,
 ) -> dict:
     """
     计算最终伤害
@@ -35,11 +38,15 @@ def calculate_damage(
             - 月反应间接: "lunar_charged", "lunar_crystallize", "lunar_bloom"
             - 月反应直接: "lunar_charged_direct", "lunar_crystallize_direct", "lunar_bloom_direct"
             - 星超导: "stellar_superconduct"
+            - 星扩散间接(风涡): "star_swirl"
+            - 星扩散直伤: "star_swirl_direct"
         is_crit: 是否暴击
-        team: 队伍实例（月反应间接伤害需要）
+        team: 队伍实例（月反应/星扩散间接伤害需要）
         effect_manager: 效果管理器（提供最终修饰器）
-        stellar_stacks: 星超导附着次数（0/6/12）
         extra_res_shred: 额外敌人减抗（如队友提供的全队减抗，直接叠加到抗性区）
+        stellar_stacks: 星超导附着次数（0/6/12）
+        star_base_boost: 星扩散/星超导基础提升（按角色 ATK 的 1.07/1.14 近似，单值传入）
+        star_vortex_level: 星扩散风涡等级（1~6，决定冰元素星扩散反应系数）
 
     返回:
         {
@@ -65,7 +72,11 @@ def calculate_damage(
         panel["def_ignore"] = max(panel["def_ignore"], mods["def_ignore"])
 
     # 2. 基础伤害区
-    talent_ratio = character.get_talent_ratio(skill_type, talent_level)
+    talent_ratio = (
+        talent_ratio_override
+        if talent_ratio_override is not None
+        else character.get_talent_ratio(skill_type, talent_level)
+    )
     base_damage = panel["atk"] * talent_ratio
 
     breakdown = {
@@ -104,7 +115,9 @@ def calculate_damage(
     # scope=reaction 时仅作用于月曜/星曜反应伤害路径
     damage_amp_total = 0.0
     is_reaction_path = bool(reaction_type and (
-        reaction_type.startswith("lunar") or reaction_type.startswith("stellar")
+        reaction_type.startswith("lunar")
+        or reaction_type.startswith("stellar")
+        or reaction_type.startswith("star")
     ))
     for da in getattr(character, "damage_amps", []):
         if da.get("scope") == "reaction" and not is_reaction_path:
@@ -126,13 +139,13 @@ def calculate_damage(
     )
     breakdown["dmg_bonus_factor"] = dmg_bonus_factor
 
-    # 4. 防御区（考虑无视防御与敌人防御降低，减防上限40%）
-    def_factor = constants.defense_factor(character.char_level, enemy_level)
-    if panel["def_ignore"] > 0:
-        def_factor = def_factor * (1 - panel["def_ignore"])
+    # 4. 防御区（meropide 权威公式：减防与无视防御同时作用于分母）
     enemy_shred = panel.get("enemy_def_shred", 0.0)
-    if enemy_shred > 0:
-        def_factor = def_factor * (1 - enemy_shred)
+    def_factor = constants.defense_factor(
+        character.char_level, enemy_level,
+        def_shred=enemy_shred,
+        def_ignore=panel.get("def_ignore", 0.0),
+    )
     breakdown["def_factor"] = def_factor
 
     # 5. 抗性区（应用减抗：全元素减抗恒生效；元素专属减抗仅匹配角色元素时生效）
@@ -237,12 +250,83 @@ def calculate_damage(
             "breakdown": {**breakdown, "reaction": {"type": "lunar_direct", "coeff": coeff}},
         }
 
-    elif reaction_type == "stellar_superconduct":
-        # 星超导：按附着记录次数的连续档位公式（gensri.wiki 权威值）
-        stack_data = constants.stellar_superconduct_params(stellar_stacks)
-        dmg_bonus_factor += stack_data["dmg_bonus"]
-        reaction_factor = stack_data["reaction_coef"]
-        reaction_detail = {"type": "stellar_superconduct", "stacks": stellar_stacks, **stack_data}
+    elif reaction_type in ("stellar_superconduct", "star_swirl_direct"):
+        # ===== meropide《伤害公式》- 星烁伤害 · 直伤星烁伤害 =====
+        #
+        # 直伤星烁伤害 = (倍率 × 属性 × 星烁基础系数 × (1 + 星烁基础增伤)
+        #                  × (1 + 6×EM/(EM+2000) + 星烁增伤) × 星烁大权区
+        #                  + 直伤星烁羽毛区)
+        #                 × (1 + 暴击率×暴击伤害) × 抗性系数 × (1 + 星烁擢升)
+        #
+        # 差异仅在星烁基础系数：
+        #   星超导 = 星烁基础系数（星超导）按层数档位
+        #   星扩散直伤 = 1（反应系数恒为1，可视为没有反应系数乘区）
+        if reaction_type == "stellar_superconduct":
+            stack_data = constants.stellar_superconduct_params(stellar_stacks)
+            star_coeff = stack_data["reaction_coef"]        # 星烁基础系数
+            domain_bonus = stack_data["dmg_bonus"]           # 极星辉域 冰/雷普通增伤 → 大权区
+        else:
+            star_coeff = 1.0                                  # 星扩散直伤
+            domain_bonus = 0.0
+
+        em_bonus = constants.em_bonus_star(panel["elemental_mastery"])   # 6×EM/(EM+2000)
+        reaction_bonus = panel["reaction_dmg_bonus"]                     # 星烁增伤
+
+        # 星烁大权区 = 通用增伤区 + 极星辉域冰雷普通增伤
+        star_dmg_bonus_factor = (
+            1 + panel["elemental_dmg_bonus"] + panel["dmg_bonus"]
+            + panel.get("physical_dmg_bonus", 0.0) + domain_bonus
+        )
+        flat_dmg = panel.get("flat_dmg_bonus", 0.0)        # 直伤星烁羽毛区
+        uplift = panel.get("star_uplift", 0.0)             # 星烁擢升（暂默认 0）
+
+        direct_dmg = (
+            (panel["atk"] * talent_ratio * talent_mult_factor * amp_factor
+             * star_coeff * (1 + star_base_boost)
+             * (1 + em_bonus + reaction_bonus) * star_dmg_bonus_factor
+             + flat_dmg)
+            * crit_factor * res_factor * (1 + uplift)
+        )
+
+        breakdown["star_direct_damage"] = direct_dmg
+        breakdown["dmg_bonus_factor"] = star_dmg_bonus_factor
+        breakdown["def_factor"] = 1.0   # 直伤星烁不经过防御乘区
+        breakdown["reaction_factor"] = star_coeff
+        breakdown["final_damage"] = direct_dmg
+
+        return {
+            "damage": direct_dmg,
+            "breakdown": {
+                **breakdown,
+                "reaction": {
+                    "type": reaction_type,
+                    "coeff": star_coeff,
+                    "em_bonus": em_bonus,
+                    "base_boost": star_base_boost,
+                    "domain_bonus": domain_bonus,
+                    "uplift": uplift,
+                },
+            },
+        }
+
+    elif reaction_type == "star_swirl":
+        # 星扩散间接伤害（风涡，需要队伍数据），团队加权求和（gensri.wiki 权威值）
+        if team is None:
+            raise ValueError("星扩散间接伤害需要 Team 实例")
+        star_dmg = team.calculate_star_swirl_indirect_damage(
+            vortex_level=star_vortex_level,
+            element=getattr(character, "element", None) or "cryo",
+            enemy_res=enemy_res,
+            star_base_boost=star_base_boost,
+        )
+        return {
+            "damage": star_dmg,
+            "breakdown": {
+                **breakdown,
+                "reaction": {"type": "star_swirl_indirect", "vortex_level": star_vortex_level},
+                "star_swirl_indirect_damage": star_dmg,
+            },
+        }
 
     breakdown["reaction_factor"] = reaction_factor
     breakdown["reaction"] = reaction_detail
