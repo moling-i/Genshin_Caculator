@@ -72,13 +72,25 @@ st.markdown(
         border-radius: 8px !important;
     }
     .stApp {
-        background: linear-gradient(135deg, #e8f0fe 0%, #d4e0f0 50%, #f0e6f6 100%);
+        background-image: url("/app/static/furina_rain_bg.png");
+        background-color: transparent !important;
+        background-size: cover;
+        background-position: center;
         background-attachment: fixed;
+        background-repeat: no-repeat;
+    }
+    /* 轻量可读性覆盖层 —— 保证文字在复杂背景上清晰 */
+    section.main > div.block-container {
+        background: rgba(255, 255, 255, 0.55) !important;
+        backdrop-filter: blur(16px) saturate(160%);
+        -webkit-backdrop-filter: blur(16px) saturate(160%);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
     }
     [data-testid="stHeader"] { background: transparent !important; }
     [data-testid="stAppViewContainer"],
-    [data-testid="stAppViewContainer"] > div,
-    section.main > div.block-container {
+    [data-testid="stAppViewContainer"] > div {
         background: transparent !important;
         box-shadow: none !important;
     }
@@ -1415,7 +1427,6 @@ def render_data_browse():
                     st.write(e4)
 
 
-@st.cache_data
 def _scan_local_bg_images():
     """扫描 Steam 壁纸工作坊路径，返回 [(文件名, 完整路径)] 的可选背景列表。"""
     _base = r"E:\SteamLibrary\steamapps\workshop\content\431960\3305687727"
@@ -1428,7 +1439,6 @@ def _scan_local_bg_images():
     return _imgs
 
 
-@st.cache_data
 def _scan_local_videos():
     """扫描 Steam 壁纸工作坊路径，返回 [(文件名, 完整路径)] 的可选视频列表。"""
     _base = r"E:\SteamLibrary\steamapps\workshop\content\431960\3305687727"
@@ -1495,12 +1505,12 @@ elif nav_mode == "数据速查":
 # 毛玻璃覆盖层：图片/视频背景时自动附加，保证文字在复杂背景上清晰可读
 _GLASS_OVERLAY = (
     "section.main > div.block-container {"
-    " background: rgba(240, 242, 246, 0.68) !important;"
-    " backdrop-filter: blur(22px) saturate(180%);"
-    " -webkit-backdrop-filter: blur(22px) saturate(180%);"
+    " background: rgba(255, 255, 255, 0.48) !important;"
+    " backdrop-filter: blur(18px) saturate(160%);"
+    " -webkit-backdrop-filter: blur(18px) saturate(160%);"
     " border-radius: 12px;"
     " border: 1px solid rgba(255, 255, 255, 0.45);"
-    " box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);"
+    " box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);"
     "}"
 )
 _bg_html = ""
@@ -1557,6 +1567,22 @@ elif bg_mode == "深色渐变":
     _bg_css = (
         ".stApp {"
         "background-image: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);}"
+    )
+elif bg_mode == "简约渐变":
+    _bg_css = (
+        ".stApp {"
+        "background-image: url(\"/app/static/furina_rain_bg.png\");"
+        "background-color: transparent !important;"
+        "background-size: cover; background-position: center;"
+        "background-attachment: fixed; background-repeat: no-repeat;}"
+    ) + (
+        "section.main > div.block-container {"
+        " background: rgba(255, 255, 255, 0.55) !important;"
+        " backdrop-filter: blur(16px) saturate(160%);"
+        " -webkit-backdrop-filter: blur(16px) saturate(160%);"
+        " border-radius: 12px;"
+        " border: 1px solid rgba(255, 255, 255, 0.4);"
+        " box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);}"
     )
 else:
     _bg_css = ""
