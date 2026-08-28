@@ -72,7 +72,7 @@ st.markdown(
         border-radius: 8px !important;
     }
     .stApp {
-        background-image: url("/app/static/furina_rain_bg.png");
+        background-image: url("app/static/furina_rain_bg.webp");
         background-color: transparent !important;
         background-size: cover;
         background-position: center;
@@ -1571,7 +1571,7 @@ elif bg_mode == "深色渐变":
 elif bg_mode == "简约渐变":
     _bg_css = (
         ".stApp {"
-        "background-image: url(\"/app/static/furina_rain_bg.png\");"
+        "background-image: url(\"app/static/furina_rain_bg.webp\");"
         "background-color: transparent !important;"
         "background-size: cover; background-position: center;"
         "background-attachment: fixed; background-repeat: no-repeat;}"
