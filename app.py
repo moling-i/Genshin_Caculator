@@ -1415,6 +1415,32 @@ def render_data_browse():
                     st.write(e4)
 
 
+@st.cache_data
+def _scan_local_bg_images():
+    """扫描 Steam 壁纸工作坊路径，返回 [(文件名, 完整路径)] 的可选背景列表。"""
+    _base = r"E:\SteamLibrary\steamapps\workshop\content\431960\3305687727"
+    _imgs = []
+    if os.path.isdir(_base):
+        for _fn in os.listdir(_base):
+            if _fn.lower().endswith((".png", ".jpg", ".jpeg", ".webp", ".bmp", ".gif")):
+                _imgs.append((_fn, os.path.join(_base, _fn)))
+    _imgs.sort()
+    return _imgs
+
+
+@st.cache_data
+def _scan_local_videos():
+    """扫描 Steam 壁纸工作坊路径，返回 [(文件名, 完整路径)] 的可选视频列表。"""
+    _base = r"E:\SteamLibrary\steamapps\workshop\content\431960\3305687727"
+    _vids = []
+    if os.path.isdir(_base):
+        for _fn in os.listdir(_base):
+            if _fn.lower().endswith((".mp4", ".webm", ".ogg", ".mov")):
+                _vids.append((_fn, os.path.join(_base, _fn)))
+    _vids.sort()
+    return _vids
+
+
 # ============================================================================
 # 左侧导航 + 模式分发
 # ============================================================================
@@ -1428,10 +1454,30 @@ with st.sidebar:
                         key="nav_mode")
     st.divider()
     with st.expander("背景设置", expanded=False):
-        bg_mode = st.radio("选择背景", ["简约渐变", "深色渐变", "自定义图片"], horizontal=True)
+        bg_mode = st.radio("选择背景", ["简约渐变", "深色渐变", "Steam 壁纸", "视频背景", "自定义图片"],
+ horizontal=True)
         uploaded_bg = None
+        local_bg_path = None
+        video_path = None
         if bg_mode == "自定义图片":
             uploaded_bg = st.file_uploader("上传背景图", type=["jpg", "jpeg", "png", "webp"])
+        elif bg_mode == "Steam 壁纸":
+            _imgs = _scan_local_bg_images()
+            if _imgs:
+                _sel = st.selectbox("选择壁纸", [n for n, _ in _imgs])
+                local_bg_path = dict(_imgs)[_sel]
+            else:
+                st.caption("未在 Steam 壁纸目录找到图片文件")
+        elif bg_mode == "视频背景":
+            _vids = _scan_local_videos()
+            _custom = st.text_input("或手动输入视频文件路径", placeholder=r"E:\...\furina_loop.mp4")
+            if _custom and os.path.isfile(_custom):
+                video_path = _custom
+            elif _vids:
+                _sel = st.selectbox("选择视频", [n for n, _ in _vids])
+                video_path = dict(_vids)[_sel]
+            else:
+                st.caption("未在默认目录找到视频，请手动填写导出后的视频路径")
 
 # 模式分发
 if nav_mode == "首页":
@@ -1446,6 +1492,18 @@ elif nav_mode == "数据速查":
     render_data_browse()
 
 # ---------- 动态背景（跟随侧边栏「背景设置」，置于文件尾以覆盖静态默认样式） ----------
+# 毛玻璃覆盖层：图片/视频背景时自动附加，保证文字在复杂背景上清晰可读
+_GLASS_OVERLAY = (
+    "section.main > div.block-container {"
+    " background: rgba(240, 242, 246, 0.68) !important;"
+    " backdrop-filter: blur(22px) saturate(180%);"
+    " -webkit-backdrop-filter: blur(22px) saturate(180%);"
+    " border-radius: 12px;"
+    " border: 1px solid rgba(255, 255, 255, 0.45);"
+    " box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);"
+    "}"
+)
+_bg_html = ""
 if bg_mode == "自定义图片" and uploaded_bg is not None:
     _bg_data_url = (
         f"data:{uploaded_bg.type or 'image/png'};base64,"
@@ -1453,10 +1511,48 @@ if bg_mode == "自定义图片" and uploaded_bg is not None:
     )
     _bg_css = (
         ".stApp {"
-        f"url(\"{_bg_data_url}\");"
+        f"background-image: url(\"{_bg_data_url}\");"
         "background-size: cover; background-position: center;"
         "background-attachment: fixed; background-repeat: no-repeat;}"
-    )
+    ) + _GLASS_OVERLAY
+elif bg_mode == "Steam 壁纸" and local_bg_path and os.path.exists(local_bg_path):
+    try:
+        with open(local_bg_path, "rb") as _f:
+            _bg_bytes = _f.read()
+        _ext = os.path.splitext(local_bg_path)[1].lower().lstrip(".")
+        _mime = {"jpg": "image/jpeg", "jpeg": "image/jpeg",
+                 "png": "image/png", "webp": "image/webp",
+                 "gif": "image/gif", "bmp": "image/bmp"}.get(_ext, "image/jpeg")
+        _bg_data_url = f"data:{_mime};base64," + base64.b64encode(_bg_bytes).decode()
+        _bg_css = (
+            ".stApp {"
+            f"background-image: url(\"{_bg_data_url}\");"
+            "background-size: cover; background-position: center;"
+            "background-attachment: fixed; background-repeat: no-repeat;}"
+        ) + _GLASS_OVERLAY
+    except Exception:
+        _bg_css = ""
+elif bg_mode == "视频背景" and video_path and os.path.exists(video_path):
+    try:
+        with open(video_path, "rb") as _f:
+            _vbytes = _f.read()
+        _vext = os.path.splitext(video_path)[1].lower().lstrip(".")
+        _vmime = {"mp4": "video/mp4", "webm": "video/webm",
+                  "ogg": "video/ogg", "mov": "video/mp4"}.get(_vext, "video/mp4")
+        _vurl = f"data:{_vmime};base64," + base64.b64encode(_vbytes).decode()
+        # 让 .stApp 透明，视频固定在最底层铺满视口，主内容区加毛玻璃
+        _bg_css = (
+            ".stApp { background: transparent !important; }"
+            "video.bg-video { position: fixed; top: 0; left: 0;"
+            " width: 100vw; height: 100vh; object-fit: cover; z-index: -1; }"
+        ) + _GLASS_OVERLAY
+        _bg_html = (
+            f'<video class="bg-video" autoplay loop muted playsinline>'
+            f'<source src="{_vurl}" type="{_vmime}"></video>'
+        )
+    except Exception:
+        _bg_css = ""
+        _bg_html = ""
 elif bg_mode == "深色渐变":
     _bg_css = (
         ".stApp {"
@@ -1467,3 +1563,5 @@ else:
 
 if _bg_css:
     st.markdown(f"<style>{_bg_css}</style>", unsafe_allow_html=True)
+if _bg_html:
+    st.markdown(_bg_html, unsafe_allow_html=True)

@@ -355,9 +355,9 @@ class TestEnemyDebuffs(unittest.TestCase):
         self.assertAlmostEqual(panel["enemy_def_shred"], 0.15)
 
         res = calculate_damage(c, "burst", 10, 90, 0.1)
-        base = constants.defense_factor(90, 90)
-        self.assertAlmostEqual(res["breakdown"]["def_factor"],
-                               base * (1 - 0.15), places=6)
+        # meropide 权威公式：A/(A+B×(1-减防)×(1-无视防御))
+        expected = constants.defense_factor(90, 90, def_shred=0.15, def_ignore=0.0)
+        self.assertAlmostEqual(res["breakdown"]["def_factor"], expected, places=6)
 
     def test_chongyun_res_shred_parsed(self):
         """重云·追冰剑诀：敌人冰抗-10%（结构化输出，供敌方抗性区使用）"""
