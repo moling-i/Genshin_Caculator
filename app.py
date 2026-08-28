@@ -43,23 +43,23 @@ st.set_page_config(page_title="原神伤害计算器", layout="wide", initial_si
 # ============================================================================
 _CSS_GLASS_CORE = """
 <style>
-:root{--bg:transparent;--card:rgba(255,255,255,0.85);--text:#1A1A2E;--text-2:#6B7280;--border:rgba(255,255,255,0.35);--accent:#4F46E5}
+:root{--bg:transparent;--card:rgba(255,255,255,0.50);--text:#1A1A2E;--text-2:#6B7280;--border:rgba(255,255,255,0.30);--accent:#4F46E5}
 [data-testid="stAppViewContainer"],[data-testid="stAppViewContainer"]>div{background:transparent!important;box-shadow:none!important}
 [data-testid="stHeader"]{background:transparent!important}
 .stApp{background-image:url("app/static/furina_rain_bg.webp");background-color:transparent!important;background-size:cover;background-position:center;background-attachment:fixed;background-repeat:no-repeat}
-section.main>div.block-container{background:rgba(255,255,255,0.50)!important;backdrop-filter:blur(18px) saturate(170%);-webkit-backdrop-filter:blur(18px) saturate(170%);border-radius:12px;border:1px solid rgba(255,255,255,0.4);box-shadow:0 4px 24px rgba(0,0,0,0.04)}
-[data-testid="stSidebar"]{background:rgba(255,255,255,0.22)!important;backdrop-filter:blur(22px) saturate(180%)!important;-webkit-backdrop-filter:blur(22px) saturate(180%)!important;border-right:1px solid rgba(255,255,255,0.30)!important;box-shadow:2px 0 20px rgba(0,0,0,0.06)!important}
+section.main>div.block-container{background:rgba(255,255,255,0.35)!important;backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);border-radius:12px;border:1px solid rgba(255,255,255,0.30);box-shadow:0 4px 24px rgba(0,0,0,0.04)}
+[data-testid="stSidebar"]{background:rgba(255,255,255,0.12)!important;backdrop-filter:blur(20px) saturate(180%)!important;-webkit-backdrop-filter:blur(20px) saturate(180%)!important;border-right:1px solid rgba(255,255,255,0.25)!important;box-shadow:2px 0 20px rgba(0,0,0,0.06)!important}
 [data-testid="stSidebar"] section{background:transparent!important}
-[data-testid="stSidebar"] .stMarkdown,[data-testid="stSidebar"] .stSelectbox label,[data-testid="stSidebar"] .stTextInput label,[data-testid="stSidebar"] .stMultiSelect label,[data-testid="stSidebar"] .stNumberInput label{color:#1A1A2E!important;font-weight:500!important;text-shadow:0 1px 2px rgba(255,255,255,0.6)}
+[data-testid="stSidebar"] .stMarkdown,[data-testid="stSidebar"] .stSelectbox label,[data-testid="stSidebar"] .stTextInput label,[data-testid="stSidebar"] .stMultiSelect label,[data-testid="stSidebar"] .stNumberInput label{color:#1A1A2E!important;font-weight:500!important;text-shadow:0 1px 2px rgba(255,255,255,0.7)}
 </style>"""
 st.markdown(_CSS_GLASS_CORE, unsafe_allow_html=True)
 _CSS_GLASS_WIDGETS = """
 <style>
-[data-testid="stSelectbox"]>div,[data-testid="stMultiSelect"]>div{background:rgba(255,255,255,0.40)!important;backdrop-filter:blur(8px)!important;-webkit-backdrop-filter:blur(8px)!important;border:1px solid rgba(255,255,255,0.50)!important;border-radius:8px!important;transition:background 0.2s!important}
-[data-testid="stSelectbox"]>div:hover,[data-testid="stMultiSelect"]>div:hover{background:rgba(255,255,255,0.55)!important}
-[data-testid="stTextInput"] input,[data-testid="stNumberInput"] input{background:rgba(255,255,255,0.40)!important;backdrop-filter:blur(8px)!important;-webkit-backdrop-filter:blur(8px)!important;border:1px solid rgba(255,255,255,0.50)!important;border-radius:8px!important;color:#1A1A2E!important;transition:all 0.2s!important}
-[data-testid="stTextInput"] input:focus,[data-testid="stNumberInput"] input:focus{background:rgba(255,255,255,0.60)!important;border-color:#6C63FF!important;box-shadow:0 0 0 2px rgba(108,99,255,0.15)!important}
-[data-testid="stSlider"] .stSliderTrack{background:rgba(108,99,255,0.20)!important;border-radius:4px!important}
+[data-testid="stSelectbox"]>div,[data-testid="stMultiSelect"]>div{background:rgba(255,255,255,0.25)!important;backdrop-filter:blur(8px)!important;-webkit-backdrop-filter:blur(8px)!important;border:1px solid rgba(255,255,255,0.40)!important;border-radius:8px!important;transition:background 0.2s!important}
+[data-testid="stSelectbox"]>div:hover,[data-testid="stMultiSelect"]>div:hover{background:rgba(255,255,255,0.38)!important}
+[data-testid="stTextInput"] input,[data-testid="stNumberInput"] input{background:rgba(255,255,255,0.25)!important;backdrop-filter:blur(8px)!important;-webkit-backdrop-filter:blur(8px)!important;border:1px solid rgba(255,255,255,0.40)!important;border-radius:8px!important;color:#1A1A2E!important;transition:all 0.2s!important}
+[data-testid="stTextInput"] input:focus,[data-testid="stNumberInput"] input:focus{background:rgba(255,255,255,0.42)!important;border-color:#6C63FF!important;box-shadow:0 0 0 2px rgba(108,99,255,0.15)!important}
+[data-testid="stSlider"] .stSliderTrack{background:rgba(108,99,255,0.18)!important;border-radius:4px!important}
 [data-testid="stSlider"] .stSliderThumb{background:#6C63FF!important;box-shadow:0 2px 8px rgba(108,99,255,0.35)!important}
 .stButton button,[data-testid="stBase"] button{background:linear-gradient(135deg,#6C63FF,#4F46E5)!important;color:white!important;border:none!important;border-radius:8px!important;font-weight:500!important;box-shadow:0 4px 14px rgba(79,70,229,0.25)!important;transition:all 0.2s!important}
 .stButton button:hover,[data-testid="stBase"] button:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(79,70,229,0.35)!important}
@@ -70,17 +70,17 @@ _CSS_GLASS_EXTRA = """
 <style>
 h1,h2,h3{color:var(--text)!important;font-weight:600!important}
 h1,h2,h3,.stMarkdown p,label,span,div{color:var(--text)}
-.stExpander,[data-testid="stExpander"]{border:1px solid rgba(255,255,255,0.35)!important;border-radius:6px!important;box-shadow:none!important;background:rgba(255,255,255,0.65);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
-[data-testid="stVerticalBlockBorderWrapper"]{background:rgba(255,255,255,0.72)!important;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,0.40)!important;border-radius:8px!important}
+.stExpander,[data-testid="stExpander"]{border:1px solid rgba(255,255,255,0.30)!important;border-radius:6px!important;box-shadow:none!important;background:rgba(255,255,255,0.45);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+[data-testid="stVerticalBlockBorderWrapper"]{background:rgba(255,255,255,0.42)!important;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,0.35)!important;border-radius:8px!important}
 .stImage img,[data-testid="stImage"] img{border:none!important;border-radius:4px!important}
 .icon-fallback{display:flex;align-items:center;justify-content:center;background:var(--bg);border:1px solid var(--border);border-radius:4px}
 .stTable td,.stTable th,[data-testid="stTable"] td,[data-testid="stTable"] th{border:none!important;padding:0.25rem 0.6rem!important;font-size:0.85rem}
 thead tr th{color:var(--text-2)!important;font-weight:500!important}
 hr{border-color:rgba(255,255,255,0.35);margin:0.75rem 0}
-.hero{background:rgba(255,255,255,0.50);border:1px solid rgba(255,255,255,0.40);border-radius:14px;padding:28px 32px;margin-bottom:20px;backdrop-filter:blur(14px)}
+.hero{background:rgba(255,255,255,0.35);border:1px solid rgba(255,255,255,0.35);border-radius:14px;padding:28px 32px;margin-bottom:20px;backdrop-filter:blur(14px)}
 .hero h1{font-size:1.9rem;margin:0 0 6px}
 .hero p{color:var(--text-2);margin:0;font-size:1rem}
-.mode-card{background:rgba(255,255,255,0.50);border:1px solid rgba(255,255,255,0.40);border-radius:12px;padding:18px 18px 14px;height:100%;backdrop-filter:blur(12px);transition:transform .12s ease,box-shadow .12s ease}
+.mode-card{background:rgba(255,255,255,0.35);border:1px solid rgba(255,255,255,0.35);border-radius:12px;padding:18px 18px 14px;height:100%;backdrop-filter:blur(12px);transition:transform .12s ease,box-shadow .12s ease}
 .mode-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(79,70,229,0.15)}
 .mode-card .mc-icon{font-size:1.7rem}
 .mode-card .mc-title{font-weight:600;font-size:1.05rem;margin:8px 0 4px;color:var(--text)}
@@ -1447,11 +1447,11 @@ elif nav_mode == "数据速查":
 # 毛玻璃覆盖层：图片/视频背景时自动附加，保证文字在复杂背景上清晰可读
 _GLASS_OVERLAY = (
     "section.main > div.block-container {"
-    " background: rgba(255, 255, 255, 0.48) !important;"
-    " backdrop-filter: blur(18px) saturate(160%);"
-    " -webkit-backdrop-filter: blur(18px) saturate(160%);"
+    " background: rgba(255, 255, 255, 0.35) !important;"
+    " backdrop-filter: blur(16px) saturate(160%);"
+    " -webkit-backdrop-filter: blur(16px) saturate(160%);"
     " border-radius: 12px;"
-    " border: 1px solid rgba(255, 255, 255, 0.45);"
+    " border: 1px solid rgba(255, 255, 255, 0.30);"
     " box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);"
     "}"
 )
@@ -1519,11 +1519,11 @@ elif bg_mode == "简约渐变":
         "background-attachment: fixed; background-repeat: no-repeat;}"
     ) + (
         "section.main > div.block-container {"
-        " background: rgba(255, 255, 255, 0.55) !important;"
+        " background: rgba(255, 255, 255, 0.35) !important;"
         " backdrop-filter: blur(16px) saturate(160%);"
         " -webkit-backdrop-filter: blur(16px) saturate(160%);"
         " border-radius: 12px;"
-        " border: 1px solid rgba(255, 255, 255, 0.4);"
+        " border: 1px solid rgba(255, 255, 255, 0.30);"
         " box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);}"
     )
 else:
