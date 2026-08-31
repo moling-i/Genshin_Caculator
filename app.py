@@ -38,9 +38,8 @@ from src import constants
 
 st.set_page_config(page_title="原神伤害计算器", layout="wide", initial_sidebar_state="expanded")
 
-# 确保 nav_mode session_state 键存在（防止首次加载/直接渲染首页时 KeyError）
-if "nav_mode" not in st.session_state:
-    st.session_state["nav_mode"] = "首页"
+# 确保 nav_mode session_state 键存在（最稳妥的 setdefault 写法，位于主流程最顶部）
+st.session_state.setdefault("nav_mode", "首页")
 
 # ============================================================================
 # 样式（meropide 极简风格 + 左侧导航）
@@ -63,6 +62,13 @@ _CSS_GLASS_WIDGETS = """
 [data-testid="stSelectbox"]>div:hover,[data-testid="stMultiSelect"]>div:hover{background:rgba(255,255,255,0.38)!important}
 [data-testid="stTextInput"] input,[data-testid="stNumberInput"] input{background:rgba(255,255,255,0.25)!important;backdrop-filter:blur(8px)!important;-webkit-backdrop-filter:blur(8px)!important;border:1px solid rgba(255,255,255,0.40)!important;border-radius:8px!important;color:#1A1A2E!important;transition:all 0.2s!important}
 [data-testid="stTextInput"] input:focus,[data-testid="stNumberInput"] input:focus{background:rgba(255,255,255,0.42)!important;border-color:#6C63FF!important;box-shadow:0 0 0 2px rgba(108,99,255,0.15)!important}
+/* 下拉选项列表：半透明白色毛玻璃，文字清晰（不改底层选择框） */
+[data-baseweb="menu"]{background:rgba(255,255,255,0.92)!important;backdrop-filter:blur(16px) saturate(150%)!important;-webkit-backdrop-filter:blur(16px) saturate(150%)!important;border-radius:10px!important;border:1px solid rgba(255,255,255,0.35)!important;box-shadow:0 8px 24px rgba(0,0,0,0.10)!important}
+[data-baseweb="option"]{color:#1A1A2E!important}
+[data-baseweb="option"]:hover,[data-baseweb="option"][aria-selected="true"]{background:rgba(108,99,255,0.10)!important;color:#1A1A2E!important}
+/* 命座滑块区域：半透明白色毛玻璃，文字清晰 */
+[data-testid="stSlider"]{background:rgba(255,255,255,0.45)!important;backdrop-filter:blur(12px)!important;-webkit-backdrop-filter:blur(12px)!important;border:1px solid rgba(255,255,255,0.35)!important;border-radius:8px!important;padding:14px 16px 4px!important}
+[data-testid="stSlider"] label{color:#1A1A2E!important;font-weight:500!important}
 [data-testid="stSlider"] .stSliderTrack{background:rgba(108,99,255,0.18)!important;border-radius:4px!important}
 [data-testid="stSlider"] .stSliderThumb{background:#6C63FF!important;box-shadow:0 2px 8px rgba(108,99,255,0.35)!important}
 .stButton button,[data-testid="stBase"] button{background:linear-gradient(135deg,#6C63FF,#4F46E5)!important;color:white!important;border:none!important;border-radius:8px!important;font-weight:500!important;box-shadow:0 4px 14px rgba(79,70,229,0.25)!important;transition:all 0.2s!important}
@@ -760,9 +766,6 @@ def render_rotation_editor():
 # 模式 1：首页
 # ============================================================================
 def render_home():
-    # 确保 session_state 键存在
-    if "nav_mode" not in st.session_state:
-        st.session_state["nav_mode"] = "首页"
     st.markdown(
         """
         <div class="hero">
@@ -1441,8 +1444,7 @@ MODES = ["首页", "伤害优化", "队伍DPS", "反应速查", "数据速查"]
 
 with st.sidebar:
     st.markdown("### 🎮 原神伤害计算器")
-    if "nav_mode" not in st.session_state:
-        st.session_state["nav_mode"] = "首页"
+    st.session_state.setdefault("nav_mode", "首页")
     # 处理首页卡片跳转（deferred，避免与 widget key 冲突）
     if "_pending_nav" in st.session_state:
         st.session_state["nav_mode"] = st.session_state.pop("_pending_nav")
