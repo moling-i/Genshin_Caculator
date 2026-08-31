@@ -792,7 +792,7 @@ def render_home():
                 unsafe_allow_html=True,
             )
             if st.button(f"进入「{title}」", key=f"home_{mode}", use_container_width=True):
-                st.session_state["nav_mode"] = mode
+                st.session_state["_pending_nav"] = mode
                 st.rerun()
     st.divider()
     st.caption(
@@ -1443,6 +1443,9 @@ with st.sidebar:
     st.markdown("### 🎮 原神伤害计算器")
     if "nav_mode" not in st.session_state:
         st.session_state["nav_mode"] = "首页"
+    # 处理首页卡片跳转（deferred，避免与 widget key 冲突）
+    if "_pending_nav" in st.session_state:
+        st.session_state["nav_mode"] = st.session_state.pop("_pending_nav")
     nav_mode = st.radio("导航", MODES, index=MODES.index(st.session_state["nav_mode"]),
                         key="nav_mode")
     st.divider()
