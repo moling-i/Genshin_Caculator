@@ -982,6 +982,24 @@ def _run_optimizer(team_configs, p):
             st.subheader("培养建议")
             st.info(result.suggestion)
 
+            # ---- Top-N 词条分配排行榜 ----
+            if result.top_allocations:
+                st.subheader("词条分配排行榜（Top 方案对比）")
+                _rank_data = []
+                _cn = {"atk_percent": "攻击%", "crit_rate": "暴击率", "crit_dmg": "暴击伤害", "em": "元素精通"}
+                for rank_i, ta in enumerate(result.top_allocations):
+                    a = ta["alloc"]
+                    parts = []
+                    for k in ["atk_percent", "crit_rate", "crit_dmg", "em"]:
+                        if a[k] > 0:
+                            parts.append(f"{_cn[k]} {a[k]}词条")
+                    _rank_data.append({
+                        "排名": f"#{rank_i+1}",
+                        "分配": " · ".join(parts) if parts else "全0",
+                        "伤害": f"{ta['damage']:,.2f}",
+                    })
+                st.dataframe(pd.DataFrame(_rank_data), use_container_width=True, hide_index=True)
+
             if result.history:
                 st.subheader("优化收敛曲线")
                 hist_df = pd.DataFrame(result.history).set_index("iteration")

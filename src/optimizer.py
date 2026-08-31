@@ -82,6 +82,8 @@ class OptimizationInput:
         team_configs: list = None,
         # 完整天赋效果结构：{modifiers{}, conversions[], er_scalings[], er_pct}
         passive_effects: dict = None,
+        # ---- 词条候选（限定参与分配的属性，None 表示全部 4 项）----
+        allowed_substats: list = None,
         # ---- 星反应参数（星超导/星扩散）----
         stellar_stacks: int = 0,
         star_base_boost: float = 0.0,
@@ -118,19 +120,22 @@ class OptimizationInput:
         #   talent_levels{normal,skill,burst}, panel{atk,crit_rate_pct,crit_dmg_pct,em},
         #   lunar_bonus_pct, passive_modifiers}, ...]
         self.team_configs = team_configs
+        # 词条候选（限定参与分配的属性，None=全部）
+        self.allowed_substats = allowed_substats
 
 
 class OptimizationResult:
     """优化结果"""
 
     def __init__(self, optimal_stats, max_damage, damage_breakdown,
-                 history, suggestion, allocation):
+                 history, suggestion, allocation, top_allocations=None):
         self.optimal_stats = optimal_stats      # 最终面板属性（含基础+主词条+副词条）
         self.max_damage = max_damage            # 最大期望伤害
         self.damage_breakdown = damage_breakdown  # 乘区明细
         self.history = history                  # 收敛曲线
         self.suggestion = suggestion            # 培养建议
         self.allocation = allocation            # 各属性分配的词条数
+        self.top_allocations = top_allocations or []  # Top-N 分配方案 [{alloc, damage}]
 
 
 class DamageOptimizer:
@@ -408,6 +413,16 @@ class DamageOptimizer:
         best = None
         best_score = -1.0
         best_alloc = None
+        all_results = []  # 记录所有分配方案及伤害，用于 top-N 排行
+
+        # 确定参与分配的属性索引（用户多选的属性）
+        if self.input.allowed_substats is not None:
+            allowed_indices = [i for i, k in enumerate(SUBSTAT_KEYS)
+                               if k in self.input.allowed_substats]
+        else:
+            allowed_indices = list(range(len(SUBSTAT_KEYS)))
+        if not allowed_indices:
+            raise ValueError("请至少选择一种词条类型")
 
         # 用户已直接指定暴击率时，输入值作为基础面板起点，
         # 不应再因低于 min_crit_rate 而拒绝所有分配方案
@@ -425,10 +440,10 @@ class DamageOptimizer:
         total_steps = iterations + refine_iterations
 
         for i in range(iterations):
-            # 随机分配 N 个词条到 4 个属性
+            # 随机分配 N 个词条到允许的属性
             alloc = [0, 0, 0, 0]
             for _ in range(N):
-                alloc[random.randrange(4)] += 1
+                alloc[random.choice(allowed_indices)] += 1
             substats = self._allocation_to_substats(alloc)
 
             # 构建一次角色，约束检查与评估复用同一实例
@@ -437,6 +452,7 @@ class DamageOptimizer:
                 continue
 
             score, result, cr, cd = self._evaluate(substats, char_tmp)
+            all_results.append((score, alloc[:]))
             if score > best_score:
                 best_score = score
                 best = (substats, result, cr, cd)
@@ -451,11 +467,11 @@ class DamageOptimizer:
         if best_alloc is not None:
             for j in range(refine_iterations):
                 alloc = best_alloc[:]
-                # 随机移动 1~2 个词条
+                # 随机移动 1~2 个词条（仅在允许的属性间移动）
                 for _ in range(random.randint(1, 2)):
-                    src = random.randrange(4)
+                    src = random.choice(allowed_indices)
                     if alloc[src] > 0:
-                        dst = random.randrange(4)
+                        dst = random.choice(allowed_indices)
                         alloc[src] -= 1
                         alloc[dst] += 1
                 substats = self._allocation_to_substats(alloc)
@@ -494,6 +510,21 @@ class DamageOptimizer:
 
         suggestion = self._generate_suggestion(optimal_stats, allocation, cr, cd)
 
+        # 生成 Top-8 分配排行榜（去重后按伤害排序）
+        seen = set()
+        top_list = []
+        for sc, al in sorted(all_results, key=lambda x: -x[0]):
+            key = tuple(al)
+            if key in seen:
+                continue
+            seen.add(key)
+            top_list.append({
+                "alloc": {SUBSTAT_KEYS[i]: al[i] for i in range(4)},
+                "damage": round(sc, 2),
+            })
+            if len(top_list) >= 8:
+                break
+
         return OptimizationResult(
             optimal_stats=optimal_stats,
             max_damage=best_score,
@@ -501,6 +532,7 @@ class DamageOptimizer:
             history=self.history,
             suggestion=suggestion,
             allocation=allocation,
+            top_allocations=top_list,
         )
 
     def _generate_suggestion(self, optimal_stats, allocation, cr, cd) -> str:
