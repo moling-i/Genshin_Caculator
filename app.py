@@ -38,6 +38,10 @@ from src import constants
 
 st.set_page_config(page_title="原神伤害计算器", layout="wide", initial_sidebar_state="expanded")
 
+# 确保 nav_mode session_state 键存在（防止首次加载/直接渲染首页时 KeyError）
+if "nav_mode" not in st.session_state:
+    st.session_state["nav_mode"] = "首页"
+
 # ============================================================================
 # 样式（meropide 极简风格 + 左侧导航）
 # ============================================================================
@@ -663,8 +667,22 @@ def render_battle_params():
                 )
 
     st.divider()
-    st.subheader("优化参数")
-    total_rolls = st.slider("总有效词条数", 15, 45, 30)
+    st.subheader("词条分配方案")
+    total_rolls = st.slider("可用有效词条数", 10, 45, 30)
+    st.markdown("**候选词条类型**（勾选后系统会在这些属性间分配词条，通过对比伤害找最优分配）")
+    sc1, sc2, sc3, sc4 = st.columns(4)
+    _sub_atk  = sc1.checkbox("攻击力%", value=True,  key="sub_atk")
+    _sub_cr   = sc2.checkbox("暴击率", value=True,   key="sub_cr")
+    _sub_cd   = sc3.checkbox("暴击伤害", value=True,  key="sub_cd")
+    _sub_em   = sc4.checkbox("元素精通", value=False,  key="sub_em")
+    allowed_substats = []
+    if _sub_atk: allowed_substats.append("atk_percent")
+    if _sub_cr:  allowed_substats.append("crit_rate")
+    if _sub_cd:  allowed_substats.append("crit_dmg")
+    if _sub_em:  allowed_substats.append("em")
+    if not allowed_substats:
+        st.warning("请至少勾选一种词条类型")
+
     min_cr = st.slider("最小暴击率要求", 0.2, 0.8, 0.2, step=0.05)
     sands = st.selectbox("时之沙主词条", list(MAIN_SANDS.keys()))
     goblet = st.selectbox("空之杯主词条", list(MAIN_GOBLET.keys()))
@@ -675,6 +693,7 @@ def render_battle_params():
         "reaction": reaction, "skill_type": skill_type,
         "star_cfg": star_cfg, "total_rolls": total_rolls, "min_cr": min_cr,
         "sands": sands, "goblet": goblet, "circlet": circlet,
+        "allowed_substats": allowed_substats,
     }
 
 
@@ -741,6 +760,9 @@ def render_rotation_editor():
 # 模式 1：首页
 # ============================================================================
 def render_home():
+    # 确保 session_state 键存在
+    if "nav_mode" not in st.session_state:
+        st.session_state["nav_mode"] = "首页"
     st.markdown(
         """
         <div class="hero">
@@ -858,6 +880,7 @@ def _run_optimizer(team_configs, p):
                 is_double_two_piece=main_cfg.get("is_double_two_piece", False),
                 total_substat_rolls=p["total_rolls"],
                 min_crit_rate=p["min_cr"],
+                allowed_substats=p.get("allowed_substats") or None,
                 main_stats={
                     "sands": MAIN_SANDS[p["sands"]],
                     "goblet": MAIN_GOBLET[p["goblet"]],
