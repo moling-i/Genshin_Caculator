@@ -301,17 +301,37 @@ def clear_cache():
 
 # ==================== 图标 / 天赋 / 固有天赋 ====================
 
-# 图标源优先级：米游社官方 CDN（同图标体积最大、最清晰）→ Yatta 高清站 → enka（兜底，覆盖最全）。
+# 图标源优先级：meropide webp 大图（最清晰，角色立绘级）→ 米游社 CDN → Yatta 高清站 → enka（兜底）。
 # 注意：Yatta 不托管圣遗物（UI_RelicIcon_* 全部 404）；米社 CDN 缺少部分新武器/新圣遗物。
 _MHY_EQUIP_UI = "https://upload-os-bbs.mihoyo.com/game_record/genshin/equip/{icon}.png"
 _YATTA_UI = "https://gi.yatta.moe/assets/UI/{icon}.png"
 _ENKA_UI = "https://enka.network/ui/{icon}.png"
+_MEROPIDE_AVATAR = "https://meropide.com/images/characters/{icon}.webp"
 
 _ICON_SOURCES = {
     "avatar": (_MHY_EQUIP_UI, _YATTA_UI, _ENKA_UI),
     "weapon": (_MHY_EQUIP_UI, _YATTA_UI, _ENKA_UI),
     "relic": (_MHY_EQUIP_UI, _ENKA_UI),
 }
+
+# 缓存：角色 ID → 中文名（用于生成 meropide 高清图 URL）
+_CHAR_ID_NAME_CN = {}
+
+
+def _get_char_name_cn(char_id) -> str:
+    """按角色 ID 查中文名（懒加载缓存）"""
+    key = str(char_id)
+    if key in _CHAR_ID_NAME_CN:
+        return _CHAR_ID_NAME_CN[key]
+    # 首次调用时从 characters.json 构建完整映射
+    if not _CHAR_ID_NAME_CN:
+        for ch in get_characters():
+            cid = str(ch.get("id", ""))
+            cn = ch.get("name_cn") or ch.get("name") or ""
+            if cid and cn:
+                _CHAR_ID_NAME_CN[cid] = cn
+    name = _CHAR_ID_NAME_CN.get(key, "")
+    return name
 
 
 def get_icons() -> dict:
@@ -328,12 +348,26 @@ def get_icon_url_candidates(kind: str, obj_id, default_suffix: str = "") -> list
     kind: "avatar" | "weapon" | "relic"
     圣遗物图标名若不含件数后缀，用 default_suffix 补全（如 "_5"）。
     """
+    from urllib.parse import quote
     icon = get_icons().get(kind, {}).get(str(obj_id), "")
     if not icon:
         return []
     if kind == "relic" and icon.endswith("_"):
         icon = icon.rstrip("_") + default_suffix
-    return [tpl.format(icon=icon) for tpl in _ICON_SOURCES.get(kind, (_ENKA_UI,))]
+    base_urls = [tpl.format(icon=icon) for tpl in _ICON_SOURCES.get(kind, (_ENKA_UI,))]
+
+    # 角色：meropide 高清 webp 立绘优先（最清晰，1024px 级）
+    if kind == "avatar":
+        name_cn = _get_char_name_cn(obj_id)
+        if name_cn:
+            try:
+                encoded = quote(name_cn)
+                meropide_url = _MEROPIDE_AVATAR.format(icon=encoded)
+                base_urls.insert(0, meropide_url)
+            except Exception:
+                pass
+
+    return base_urls
 
 
 def get_icon_url(kind: str, obj_id, default_suffix: str = "") -> str:
