@@ -204,7 +204,7 @@ def _fetch_image(url):
     try:
         import urllib.request
         req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-        with urllib.request.urlopen(req, timeout=8) as r:
+        with urllib.request.urlopen(req, timeout=15) as r:
             return r.read()
     except Exception:
         return None
@@ -477,7 +477,7 @@ def member_config_panel(idx):
             if _tags:
                 st.caption("  ".join(_tags))
     with col_pic:
-        show_icon("avatar", cid)
+        show_icon("avatar", cid, width=100)
 
     cfg = {
         "character_id": cid,
@@ -1357,7 +1357,7 @@ def render_data_browse():
             ch = Character(cid)
             c1, c2 = st.columns([1, 4])
             with c1:
-                show_icon("avatar", cid, width=96)
+                show_icon("avatar", cid, width=200)
             with c2:
                 elem = _ELEMENT_CN.get(ch.element, ch.element)
                 wtype = char_wtypes.get(cid) or data_loader.get_character_weapon_type(cid)

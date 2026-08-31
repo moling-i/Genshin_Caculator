@@ -314,8 +314,13 @@ _ICON_SOURCES = {
     "relic": (_MHY_EQUIP_UI, _ENKA_UI),
 }
 
+# 角色高清立绘（Enka Gacha Art，2048x1024，所有小图标源都只有 256x256）
+_ENKA_GACHA = "https://enka.network/ui/UI_Gacha_AvatarImg_{name}.png"
+
 # 缓存：角色 ID → 中文名（用于生成 meropide 高清图 URL）
 _CHAR_ID_NAME_CN = {}
+# 缓存：图标名 → 英文名（用于生成 enka 立绘 URL）
+_ICON_NAME_TO_EN = {}
 
 
 def _get_char_name_cn(char_id) -> str:
@@ -356,14 +361,16 @@ def get_icon_url_candidates(kind: str, obj_id, default_suffix: str = "") -> list
         icon = icon.rstrip("_") + default_suffix
     base_urls = [tpl.format(icon=icon) for tpl in _ICON_SOURCES.get(kind, (_ENKA_UI,))]
 
-    # 角色：meropide 高清 webp 立绘优先（最清晰，1024px 级）
+    # 角色：用 Enka 2048x1024 高清立绘作为最高优先源
     if kind == "avatar":
-        name_cn = _get_char_name_cn(obj_id)
-        if name_cn:
+        # 从图标名提取英文名（如 UI_AvatarIcon_Ayaka → Ayaka）
+        en_name = ""
+        if icon.startswith("UI_AvatarIcon_"):
+            en_name = icon[len("UI_AvatarIcon_"):]
+        if en_name:
             try:
-                encoded = quote(name_cn)
-                meropide_url = _MEROPIDE_AVATAR.format(icon=encoded)
-                base_urls.insert(0, meropide_url)
+                gacha_url = _ENKA_GACHA.format(name=en_name)
+                base_urls.insert(0, gacha_url)
             except Exception:
                 pass
 
